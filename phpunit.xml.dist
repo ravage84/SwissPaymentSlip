@@ -1,0 +1,11 @@
+<phpunit>
+    <testsuites>
+        <testsuite name="SwissPaymentSlip">
+            <file>src/Tests/SwissPaymentSlip/SwissPaymentSlipDataTest.php</file>
+            <file>src/Tests/SwissPaymentSlip/SwissPaymentSlipTest.php</file>
+        </testsuite>
+    </testsuites>
+    <logging>
+        <log type="coverage-html" target="report/coverage/" charset="UTF-8"/>
+    </logging>
+</phpunit>

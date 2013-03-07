@@ -1,0 +1,46 @@
+{
+    "name": "swiss-payment-slip/swiss-payment-slip",
+    "description": "A class to create Swiss payment slips with reference number (ESR)",
+	"version": "0.5.0",
+	"time": "2013-03-07",
+    "license": "MIT",
+	"homepage": "https://github.com/ravage84/SwissPaymentSlip",
+	"keywords": [
+			"Payment slip",
+			"Inpayment slip",
+			"Einzahlungsschein",
+			"ESR"
+	],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "authors": [
+		{
+			"name": "Marc Würth",
+			"email": "ravage@bluewin.ch",
+			"role": "Lead developer"
+		},
+        {
+            "name": "Manuel Reinhard",
+            "email": "manu@sprain.ch",
+			"homepage": "http://www.sprain.ch",
+			"role": "Developer of the original class"
+        },
+        {
+            "name": "Peter Siska",
+            "email": "pesche@gridonic.ch",
+			"homepage": "http://www.gridonic.ch",
+			"role": "Contributor"
+        }
+    ],
+	"support": {
+			"email": "ravage@bluewin.ch",
+			"issues": "https://github.com/ravage84/SwissPaymentSlip/issues",
+			"source": "https://github.com/ravage84/SwissPaymentSlip"
+	},
+    "autoload": {
+        "psr-0": {
+            "": "src"
+        }
+    }
+}
