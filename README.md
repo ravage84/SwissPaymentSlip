@@ -67,6 +67,7 @@ Todos
 
 - Finish support for red inpayment slips
 - Improve code documentation
+- Add more exampples/improve existing ones
 - Improve tests
 - Add an [.editorconfig](http://editorconfig.org/) file
 - Release the stable release of the API
