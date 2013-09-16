@@ -47,7 +47,6 @@ use InvalidArgumentException;
  * @todo implement full red slip support (code line + additional code line)
  * @todo implement currency (CHF, EUR), means different prefixes in code line
  * @todo implement payment on own account, means different prefixes in code line --> edge case!
- * @todo implement notForInpaying (XXXX.XX)
  * @todo implement cash on delivery (Nachnahme), means different prefixes in code line --> do it on demand
  * @todo implement amount check for unrounded (.05) cents, document why (see manual)
  */
@@ -77,6 +76,13 @@ class SwissPaymentSlipData
 	 * @var string Orange or red payment slip
 	 */
 	protected $type = self::ORANGE;
+
+	/**
+	 * Determines if the payment slip must not be used for payment (XXXed out)
+	 * 
+	 * @var bool Normally false, true if not for payment
+	 */
+	protected $notForPayment = false;
 
 	/**
 	 * Determines if the payment slip has a recipient bank. Can be disabled for preprinted payment slips
@@ -361,6 +367,38 @@ class SwissPaymentSlipData
 	public function getType()
 	{
 		return $this->type;
+	}
+
+	/**
+	 * Set payment slip for not to be used for payment
+	 *
+	 * XXXes out all fields to prevent people using the payment slip.
+	 *
+	 * @param boolean $notForPayment True if not for payment, else false
+	 */
+	public function setNotForPayment($notForPayment = true)
+	{
+		$this->notForPayment = $notForPayment;
+
+		if ($notForPayment === true) {
+			$this->setBankData('XXXXXX', 'XXXXXX');
+			$this->setAccountNumber('XXXXXX');
+			$this->setRecipientData('XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX');
+			$this->setPayerData('XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX');
+
+			$this->setAmount('XXXXXXXX.XX');
+			$this->setReferenceNumber('XXXXXXXXXXXXXXXXXXXX');
+			$this->setBankingCustomerId('XXXXXX');
+		}
+	}
+
+	/**
+	 * Get whether this payment slip must not be used for payment
+	 *
+	 * @return bool
+	 */
+	public function getNotForPayment() {
+		return $this->notForPayment;
 	}
 
 	/**
@@ -1302,22 +1340,26 @@ class SwissPaymentSlipData
 	{
 		if ($this->getWithReferenceNumber()) {
 			if ($this->getWithBankingCustomerId()) {
-				// get reference number and fill with zeros
+				// Get reference number and fill with zeros
 				$completeReferenceNumber = str_pad($this->getReferenceNumber(), 20 ,'0', STR_PAD_LEFT);
-				// add banking customer identification code
+				// Add banking customer identification code
 				$completeReferenceNumber = $this->getBankingCustomerId() . $completeReferenceNumber;
 			} else {
 				if ($fillZeros) {
-					// get reference number and fill with zeros
+					// Get reference number and fill with zeros
 					$completeReferenceNumber = str_pad($this->getReferenceNumber(), 26 ,'0', STR_PAD_LEFT);
 				} else{
-					// get reference number and fill with zeros
+					// Get just reference number
 					$completeReferenceNumber = $this->getReferenceNumber();
 				}
 			}
 
-			// add check digit
-			$completeReferenceNumber .= $this->modulo10($completeReferenceNumber);
+			// Add check digit
+			if ($this->getNotForPayment()) {
+				$completeReferenceNumber .= 'X';
+			} else {
+				$completeReferenceNumber .= $this->modulo10($completeReferenceNumber);
+			}
 
 			if ($formatted) {
 				$completeReferenceNumber = $this->breakStringIntoBlocks($completeReferenceNumber);
@@ -1368,31 +1410,47 @@ class SwissPaymentSlipData
 		if ($this->getWithAmount()) {
 			$francs = str_pad($francs, 8 ,'0', STR_PAD_LEFT);
 			$cents = str_pad($cents, 2 ,'0', STR_PAD_RIGHT);
-			$amountPart = '01' . $francs . $cents;
-			$amountPart = $amountPart . $this->modulo10($amountPart) .  '>';
+			$amountPrefix = '01';
+			$amountPart = $francs . $cents;
+			$amountCheck = $this->modulo10($amountPrefix . $amountPart);
 		} else {
-			$amountPart = '042>';
+			$amountPrefix = '04';
+			$amountPart = '';
+			$amountCheck = '2';
 		}
 		if ($fillZeros) {
-			$referenceNumberPart = str_pad($referenceNumber, 27 ,'0', STR_PAD_LEFT) . "+ ";
+			$referenceNumberPart = str_pad($referenceNumber, 27 ,'0', STR_PAD_LEFT);
 		} else {
-			$referenceNumberPart = $referenceNumber . "+ ";
+			$referenceNumberPart = $referenceNumber;
 		}
 		$accountNumberPart = substr($accountNumber,0, 2) .
-			str_pad(substr($accountNumber,2), 7 ,'0', STR_PAD_LEFT) . ">";
+			str_pad(substr($accountNumber, 2), 7 ,'0', STR_PAD_LEFT);
 
-		$codeLine = $amountPart . $referenceNumberPart . $accountNumberPart;
+		if ($this->getNotForPayment()) {
+			$amountPrefix = 'XX';
+			$amountCheck = 'X';
+		}
+
+		$codeLine = sprintf('%s%s%s>%s+ %s>',
+			$amountPrefix,
+			$amountPart,
+			$amountCheck,
+			$referenceNumberPart,
+			$accountNumberPart
+		);
 
 		return $codeLine;
 	}
 
 	/**
 	 * Clear the account of the two hyphens
-	 *
 	 */
 	protected function getAccountDigits()
 	{
 		if ($this->getWithAccountNumber()) {
+			if ($this->getNotForPayment()) {
+				return 'XXXXXXXXX';
+			}
 			$accountNumber = $this->getAccountNumber();
 			if ($accountNumber) {
 				$accountDigits = str_replace('-', '', $accountNumber, $replacedHyphens);
@@ -1411,6 +1469,9 @@ class SwissPaymentSlipData
 	 */
 	public function getAmountFrancs() {
 		$amount = $this->getAmount();
+		if ($this->getNotForPayment()) {
+			return 'XXXXXXXX';
+		}
 		if ($amount === false) {
 			return false;
 		}
@@ -1425,6 +1486,9 @@ class SwissPaymentSlipData
 	 */
 	public function getAmountCents() {
 		$amount = $this->getAmount();
+		if ($this->getNotForPayment()) {
+			return 'XX';
+		}
 		if ($amount === false) {
 			return false;
 		}
@@ -1461,15 +1525,15 @@ class SwissPaymentSlipData
 	 */
 	private function breakStringIntoBlocks($string, $blockSize = 5, $alignFromRight = true)
 	{
-		// lets reverse the string (because we want the block to be aligned from the right)
+		// Lets reverse the string (because we want the block to be aligned from the right)
 		if ($alignFromRight) {
 			$string = strrev($string);
 		}
 
-		// chop it into blocks
+		// Chop it into blocks
 		$string = trim(chunk_split($string, $blockSize, ' '));
 
-		// re-reverse
+		// Re-reverse
 		if ($alignFromRight) {
 			$string = strrev($string);
 		}

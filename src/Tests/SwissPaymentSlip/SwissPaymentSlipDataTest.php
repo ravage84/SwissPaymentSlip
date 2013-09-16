@@ -1686,4 +1686,34 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
 		$this->object->setWithAmount(false);
 		$this->assertFalse($this->object->getAmountCents());
     }
+
+	public function testSetNotForPayment() {
+		$this->object->setNotForPayment(true);
+		$this->assertTrue($this->object->getNotForPayment());
+
+		$this->assertEquals('XXXXXX', $this->object->getBankName());
+		$this->assertEquals('XXXXXX', $this->object->getBankCity());
+
+		$this->assertEquals('XXXXXX', $this->object->getRecipientLine1());
+		$this->assertEquals('XXXXXX', $this->object->getRecipientLine2());
+		$this->assertEquals('XXXXXX', $this->object->getRecipientLine3());
+		$this->assertEquals('XXXXXX', $this->object->getRecipientLine4());
+
+		$this->assertEquals('XXXXXX', $this->object->getAccountNumber());
+
+		$this->assertEquals('XXXXXXXX.XX', $this->object->getAmount());
+		$this->assertEquals('XXXXXXXX', $this->object->getAmountFrancs());
+		$this->assertEquals('XX', $this->object->getAmountCents());
+
+		$this->assertEquals('XXXXXXXXXXXXXXXXXXXX', $this->object->getReferenceNumber());
+		$this->assertEquals('XXXXXXXXXXXXXXXXXXXXXXXXXXX', $this->object->getCompleteReferenceNumber(false));
+		$this->assertEquals('XX XXXXX XXXXX XXXXX XXXXX XXXXX', $this->object->getCompleteReferenceNumber());
+
+		$this->assertEquals('XXXXXX', $this->object->getPayerLine1());
+		$this->assertEquals('XXXXXX', $this->object->getPayerLine2());
+		$this->assertEquals('XXXXXX', $this->object->getPayerLine3());
+		$this->assertEquals('XXXXXX', $this->object->getPayerLine4());
+
+		$this->assertEquals('XXXXXXXXXXXXX>XXXXXXXXXXXXXXXXXXXXXXXXXXX+ XXXXXXXXX>', $this->object->getCodeLine());
+	}
 }
