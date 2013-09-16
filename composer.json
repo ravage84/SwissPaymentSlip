@@ -2,7 +2,7 @@
     "name": "swiss-payment-slip/swiss-payment-slip",
     "description": "A class to create Swiss payment slips with reference number (ESR)",
 	"version": "0.6.0",
-	"time": "2013-03-07",
+	"time": "2013-09-16",
     "license": "MIT",
 	"homepage": "https://github.com/ravage84/SwissPaymentSlip",
 	"keywords": [
