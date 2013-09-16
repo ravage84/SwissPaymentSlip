@@ -300,34 +300,31 @@ class SwissPaymentSlipData
 	 */
 	public function setType($type = self::ORANGE, $forceReset = false)
 	{
-		if (is_string($type)) {
-			$type = strtolower($type);
-		} else {
+		if (!is_string($type)) {
 			throw new InvalidArgumentException('Type parameter is not a string!');
 		}
 		if (!is_bool($forceReset)) {
 			throw new InvalidArgumentException('ForceReset parameter is not a bool!');
 		}
-
-		if ($type == self::ORANGE || $type == self::RED) {
-			if ($this->type != $type || $forceReset) {
-				$this->type = $type;
-
-				if ($type == self::ORANGE) {
-					$this->setOrangeDefaults();
-				} elseif ($type == self::RED) {
-					$this->setRedDefaults();
-				}
-			}
-
-			return true;
-		} else {
+		$type = strtolower($type);
+		if ($type !== self::ORANGE && $type !== self::RED) {
 			throw new InvalidArgumentException('Invalid type parameter ' . $type . '!');
 		}
+
+		if ($this->type != $type || $forceReset) {
+			$this->type = $type;
+
+			if ($type == self::ORANGE) {
+				$this->setOrangeDefaults();
+			} elseif ($type == self::RED) {
+				$this->setRedDefaults();
+			}
+		}
+		return true;
 	}
 
 	/**
-	 *
+	 * Set the default values for the orange payment slip
 	 */
 	protected function setOrangeDefaults() {
 		$this->setWithBank(true);
@@ -342,7 +339,7 @@ class SwissPaymentSlipData
 	}
 
 	/**
-	 *
+	 * Set the default values for the red payment slip
 	 */
 	protected function setRedDefaults() {
 		$this->setWithBank(true);
@@ -786,19 +783,12 @@ class SwissPaymentSlipData
 	 */
 	public function setRecipientData($recipientLine1, $recipientLine2, $recipientLine3 = '', $recipientLine4 = '')
 	{
-		if (!$this->setRecipientLine1($recipientLine1)) {
+		if (!$this->setRecipientLine1($recipientLine1) ||
+			!$this->setRecipientLine2($recipientLine2) ||
+			!$this->setRecipientLine3($recipientLine3) ||
+			!$this->setRecipientLine4($recipientLine4)) {
 			return false;
 		}
-		if (!$this->setRecipientLine2($recipientLine2)) {
-			return false;
-		}
-		if (!$this->setRecipientLine3($recipientLine3)) {
-			return false;
-		}
-		if (!$this->setRecipientLine4($recipientLine4)) {
-			return false;
-		}
-
 		return true;
 	}
 
@@ -900,7 +890,6 @@ class SwissPaymentSlipData
 			$this->recipientLine4 = $recipientLine4;
 			return true;
 		}
-
 		return false;
 	}
 
@@ -998,7 +987,7 @@ class SwissPaymentSlipData
 	public function getBankingCustomerId()
 	{
 		if ($this->getWithBankingCustomerId()) {
-				return $this->bankingCustomerId;
+			return $this->bankingCustomerId;
 		}
 		return false;
 	}
@@ -1014,19 +1003,12 @@ class SwissPaymentSlipData
 	 */
 	public function setPayerData($payerLine1, $payerLine2, $payerLine3 = '', $payerLine4 = '')
 	{
-		if (!$this->setPayerLine1($payerLine1)) {
+		if (!$this->setPayerLine1($payerLine1) ||
+			!$this->setPayerLine2($payerLine2) ||
+			!$this->setPayerLine3($payerLine3) ||
+			!$this->setPayerLine4($payerLine4)) {
 			return false;
 		}
-		if (!$this->setPayerLine2($payerLine2)) {
-			return false;
-		}
-		if (!$this->setPayerLine3($payerLine3)) {
-			return false;
-		}
-		if (!$this->setPayerLine4($payerLine4)) {
-			return false;
-		}
-
 		return true;
 	}
 
@@ -1185,19 +1167,12 @@ class SwissPaymentSlipData
 	public function setPaymentReasonData($paymentReasonLine1 = '',$paymentReasonLine2 = '',
 									 $paymentReasonLine3 = '', $paymentReasonLine4 = '')
 	{
-		if (!$this->setPaymentReasonLine1($paymentReasonLine1)) {
+		if (!$this->setPaymentReasonLine1($paymentReasonLine1) ||
+			!$this->setPaymentReasonLine2($paymentReasonLine2) ||
+			!$this->setPaymentReasonLine3($paymentReasonLine3) ||
+			!$this->setPaymentReasonLine4($paymentReasonLine4)) {
 			return false;
 		}
-		if (!$this->setPaymentReasonLine2($paymentReasonLine2)) {
-			return false;
-		}
-		if (!$this->setPaymentReasonLine3($paymentReasonLine3)) {
-			return false;
-		}
-		if (!$this->setPaymentReasonLine4($paymentReasonLine4)) {
-			return false;
-		}
-
 		return true;
 	}
 
