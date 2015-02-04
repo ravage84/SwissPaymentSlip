@@ -48,6 +48,9 @@ use InvalidArgumentException;
  * @todo Implement payment on own account, means different prefixes in code line --> edge case!
  * @todo Implement cash on delivery (Nachnahme), means different prefixes in code line --> do it on demand
  * @todo Implement amount check for unrounded (.05) cents, document why (see manual)
+ * @todo Create a getBankData method with formatting parameter
+ * @todo Create a getRecipientData with formatting parameter
+ * @todo Create a getPaymentReason with formatting parameter
  */
 class SwissPaymentSlipData
 {
@@ -720,8 +723,6 @@ class SwissPaymentSlipData
         return true;
     }
 
-    // TODO create a getBankData with formatting parameter
-
     /**
      * Set the name of the bank
      *
@@ -824,15 +825,14 @@ class SwissPaymentSlipData
     public function setRecipientData($recipientLine1, $recipientLine2, $recipientLine3 = '', $recipientLine4 = '')
     {
         if (!$this->setRecipientLine1($recipientLine1) ||
-        !$this->setRecipientLine2($recipientLine2) ||
-        !$this->setRecipientLine3($recipientLine3) ||
-        !$this->setRecipientLine4($recipientLine4)) {
+            !$this->setRecipientLine2($recipientLine2) ||
+            !$this->setRecipientLine3($recipientLine3) ||
+            !$this->setRecipientLine4($recipientLine4)
+        ) {
             return false;
         }
         return true;
     }
-
-    // TODO create a getRecipientData with formatting parameter
 
     /**
      * Set the first line of the recipient
@@ -983,7 +983,7 @@ class SwissPaymentSlipData
     public function setReferenceNumber($referenceNumber)
     {
         if ($this->getWithReferenceNumber()) {
-         // TODO validate reference number
+            // TODO validate reference number
             $this->referenceNumber = $referenceNumber;
             return true;
         }
@@ -1012,7 +1012,7 @@ class SwissPaymentSlipData
     public function setBankingCustomerId($bankingCustomerId)
     {
         if ($this->getWithBankingCustomerId()) {
-         // TODO check length (exactly 6)
+            // TODO check length (exactly 6)
             $this->bankingCustomerId = $bankingCustomerId;
             return true;
         }
@@ -1173,9 +1173,9 @@ class SwissPaymentSlipData
     public function setIban($iban)
     {
         if ($this->getWithIban()) {
-         // TODO plausible IBAN method http://www.six-interbank-clearing.com/de/tkicch_financialinstitutions_ibanipi.htm
-         // TODO check if to implement http://code.google.com/p/php-iban/ (composer!)
-         // TODO At least strip spaces (may be more?)
+            // TODO plausible IBAN method http://www.six-interbank-clearing.com/de/tkicch_financialinstitutions_ibanipi.htm
+            // TODO check if to implement http://code.google.com/p/php-iban/ (composer!)
+            // TODO At least strip spaces (may be more?)
             $this->iban = $iban;
             return true;
         }
@@ -1218,8 +1218,6 @@ class SwissPaymentSlipData
         }
         return true;
     }
-
-    // TODO create a getPaymentReason with formatting parameter
 
     /**
      * Set the first line of the payment reason
@@ -1396,7 +1394,7 @@ class SwissPaymentSlipData
      * @param bool $fillZeros Fill up with leading zeros
      * @return string|bool Either the full code line or false if something was wrong
      *
-     * @todo implement red slip support
+     * @todo Implement red slip support
      */
     public function getCodeLine($fillZeros = true)
     {

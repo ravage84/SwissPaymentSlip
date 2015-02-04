@@ -277,7 +277,7 @@ class SwissPaymentSlip
             $this->setPayerRightAttr(125, 48, 50, 4);
             $this->setCodeLineAttr(64, 85, 140, 4, null, 'OCRB10');
 
-         // TODO Eliminate system dependency
+            // TODO Eliminate system dependency
             $this->setSlipBackground(__DIR__.'/Resources/img/ezs_orange.gif');
 
         } elseif ($this->paymentSlipData->getType() == SwissPaymentSlipData::RED) {
@@ -297,7 +297,7 @@ class SwissPaymentSlip
             $this->setPayerRightAttr(125, 48, 50, 4);
             $this->setCodeLineAttr(64, 85, 140, 4, null, 'OCRB10');
 
-         // TODO Eliminate system dependency
+            // TODO Eliminate system dependency
             $this->setSlipBackground(__DIR__.'/Resources/img/ezs_red.gif');
         }
     }
