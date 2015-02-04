@@ -241,12 +241,13 @@ class SwissPaymentSlip
 	protected $codeLineAttr = array();
 
 	/**
-	 * @param SwissPaymentSlipData $paymentSlipData
-	 * @param integer $slipPosX
-	 * @param integer $slipPosY
+	 * Create a new payment slip
 	 *
-	 * @throws \InvalidArgumentException
-	 * @todo Implement width and height as optional parameters
+	 * @param SwissPaymentSlipData $paymentSlipData The payment slip data.
+	 * @param float|null $slipPosX The optional X position of the slip.
+	 * @param float|null $slipPosY The optional Y position of the slip.
+	 *
+	 * @throws \InvalidArgumentException If the payment slip data object is invalid.
 	 */
 	public function __construct($paymentSlipData, $slipPosX = null, $slipPosY = null)
 	{
@@ -270,6 +271,7 @@ class SwissPaymentSlip
 	/**
 	 * Sets the default attributes of the elements according to the type
 	 *
+	 * @return void
 	 * @todo Eliminate the direct system dependency, make the background image a mandatory constructor parameter
 	 */
 	protected function setDefaults()
@@ -317,6 +319,8 @@ class SwissPaymentSlip
 	}
 
 	/**
+	 *
+	 *
 	 * @return SwissPaymentSlipData
 	 */
 	public function getPaymentSlipData() {
@@ -340,6 +344,8 @@ class SwissPaymentSlip
 	}
 
 	/**
+	 *
+	 *
 	 * @param $slipPosX
 	 * @return bool
 	 */
@@ -353,6 +359,8 @@ class SwissPaymentSlip
 	}
 
 	/**
+	 *
+	 *
 	 * @param $slipPosY
 	 * @return bool
 	 */
@@ -382,6 +390,8 @@ class SwissPaymentSlip
 	}
 
 	/**
+	 *
+	 *
 	 * @param $slipWidth
 	 * @return bool
 	 */
@@ -395,6 +405,8 @@ class SwissPaymentSlip
 	}
 
 	/**
+	 *
+	 *
 	 * @param $slipHeight
 	 * @return bool
 	 */
@@ -408,6 +420,8 @@ class SwissPaymentSlip
 	}
 
 	/**
+	 *
+	 *
 	 * @param string $slipBackground
 	 * @return bool Always true
 	 *
@@ -421,18 +435,20 @@ class SwissPaymentSlip
 	}
 
 	/**
-	 * @param $attributes
-	 * @param null $posX
-	 * @param null $posY
-	 * @param null $width
-	 * @param null $height
-	 * @param null $background
-	 * @param null $fontFamily
-	 * @param null $fontSize
-	 * @param null $fontColor
-	 * @param null $lineHeight
-	 * @param null $textAlign
-	 * @return bool
+	 * Set the attributes for a given payment slip element
+	 *
+	 * @param array $attributes The element (attributes) to set.
+	 * @param float|null $posX The X position.
+	 * @param float|null $posY The Y Position.
+	 * @param float|null $width The width.
+	 * @param float|null $height The height.
+	 * @param string|null $background The background.
+	 * @param string|null $fontFamily The font family.
+	 * @param float|null $fontSize The font size.
+	 * @param string|null $fontColor The font color.
+	 * @param float|null $lineHeight The line height.
+	 * @param string|null $textAlign The text alignment.
+	 * @return bool Always true.
 	 */
 	protected function setAttributes(&$attributes, $posX = null, $posY = null, $width = null, $height = null, $background = null,
 								   $fontFamily = null, $fontSize = null, $fontColor = null,
@@ -492,17 +508,19 @@ class SwissPaymentSlip
 	}
 
 	/**
-	 * @param null $posX
-	 * @param null $posY
-	 * @param null $width
-	 * @param null $height
-	 * @param null $background
-	 * @param null $fontFamily
-	 * @param null $fontSize
-	 * @param null $fontColor
-	 * @param null $lineHeight
-	 * @param null $textAlign
-	 * @return bool
+	 * Set the XXXX attributes
+	 *
+	 * @param float|null $posX The X position.
+	 * @param float|null $posY The Y Position.
+	 * @param float|null $width The width.
+	 * @param float|null $height The height.
+	 * @param string|null $background The background.
+	 * @param string|null $fontFamily The font family.
+	 * @param float|null $fontSize The font size.
+	 * @param string|null $fontColor The font color.
+	 * @param float|null $lineHeight The line height.
+	 * @param string|null $textAlign The text alignment.
+	 * @return bool Always true.
 	 */
 	public function setBankLeftAttr($posX = null, $posY = null, $width = null, $height = null,
 		$background = null,	$fontFamily = null, $fontSize = null, $fontColor = null,
@@ -512,17 +530,19 @@ class SwissPaymentSlip
 	}
 
 	/**
-	 * @param null $posX
-	 * @param null $posY
-	 * @param null $width
-	 * @param null $height
-	 * @param null $background
-	 * @param null $fontFamily
-	 * @param null $fontSize
-	 * @param null $fontColor
-	 * @param null $lineHeight
-	 * @param null $textAlign
-	 * @return bool
+	 * Set the XXXX attributes
+	 *
+	 * @param float|null $posX The X position.
+	 * @param float|null $posY The Y Position.
+	 * @param float|null $width The width.
+	 * @param float|null $height The height.
+	 * @param string|null $background The background.
+	 * @param string|null $fontFamily The font family.
+	 * @param float|null $fontSize The font size.
+	 * @param string|null $fontColor The font color.
+	 * @param float|null $lineHeight The line height.
+	 * @param string|null $textAlign The text alignment.
+	 * @return bool Always true.
 	 */
 	public function setBankRightAttr($posX = null, $posY = null, $width = null, $height = null,
 		$background = null,	$fontFamily = null, $fontSize = null, $fontColor = null,
@@ -532,17 +552,19 @@ class SwissPaymentSlip
 	}
 
 	/**
-	 * @param null $posX
-	 * @param null $posY
-	 * @param null $width
-	 * @param null $height
-	 * @param null $background
-	 * @param null $fontFamily
-	 * @param null $fontSize
-	 * @param null $fontColor
-	 * @param null $lineHeight
-	 * @param null $textAlign
-	 * @return bool
+	 * Set the XXXX attributes
+	 *
+	 * @param float|null $posX The X position.
+	 * @param float|null $posY The Y Position.
+	 * @param float|null $width The width.
+	 * @param float|null $height The height.
+	 * @param string|null $background The background.
+	 * @param string|null $fontFamily The font family.
+	 * @param float|null $fontSize The font size.
+	 * @param string|null $fontColor The font color.
+	 * @param float|null $lineHeight The line height.
+	 * @param string|null $textAlign The text alignment.
+	 * @return bool Always true.
 	 */
 	public function setRecipientLeftAttr($posX = null, $posY = null, $width = null, $height = null,
 		$background = null,	$fontFamily = null, $fontSize = null, $fontColor = null,
@@ -552,17 +574,19 @@ class SwissPaymentSlip
 	}
 
 	/**
-	 * @param null $posX
-	 * @param null $posY
-	 * @param null $width
-	 * @param null $height
-	 * @param null $background
-	 * @param null $fontFamily
-	 * @param null $fontSize
-	 * @param null $fontColor
-	 * @param null $lineHeight
-	 * @param null $textAlign
-	 * @return bool
+	 * Set the XXXX attributes
+	 *
+	 * @param float|null $posX The X position.
+	 * @param float|null $posY The Y Position.
+	 * @param float|null $width The width.
+	 * @param float|null $height The height.
+	 * @param string|null $background The background.
+	 * @param string|null $fontFamily The font family.
+	 * @param float|null $fontSize The font size.
+	 * @param string|null $fontColor The font color.
+	 * @param float|null $lineHeight The line height.
+	 * @param string|null $textAlign The text alignment.
+	 * @return bool Always true.
 	 */
 	public function setRecipientRightAttr($posX = null, $posY = null, $width = null, $height = null,
 		$background = null,	$fontFamily = null, $fontSize = null, $fontColor = null,
@@ -572,17 +596,19 @@ class SwissPaymentSlip
 	}
 
 	/**
-	 * @param null $posX
-	 * @param null $posY
-	 * @param null $width
-	 * @param null $height
-	 * @param null $background
-	 * @param null $fontFamily
-	 * @param null $fontSize
-	 * @param null $fontColor
-	 * @param null $lineHeight
-	 * @param null $textAlign
-	 * @return bool
+	 * Set the XXXX attributes
+	 *
+	 * @param float|null $posX The X position.
+	 * @param float|null $posY The Y Position.
+	 * @param float|null $width The width.
+	 * @param float|null $height The height.
+	 * @param string|null $background The background.
+	 * @param string|null $fontFamily The font family.
+	 * @param float|null $fontSize The font size.
+	 * @param string|null $fontColor The font color.
+	 * @param float|null $lineHeight The line height.
+	 * @param string|null $textAlign The text alignment.
+	 * @return bool Always true.
 	 */
 	public function setAccountLeftAttr($posX = null, $posY = null, $width = null, $height = null,
 		$background = null,	$fontFamily = null, $fontSize = null, $fontColor = null,
@@ -592,17 +618,19 @@ class SwissPaymentSlip
 	}
 
 	/**
-	 * @param null $posX
-	 * @param null $posY
-	 * @param null $width
-	 * @param null $height
-	 * @param null $background
-	 * @param null $fontFamily
-	 * @param null $fontSize
-	 * @param null $fontColor
-	 * @param null $lineHeight
-	 * @param null $textAlign
-	 * @return bool
+	 * Set the XXXX attributes
+	 *
+	 * @param float|null $posX The X position.
+	 * @param float|null $posY The Y Position.
+	 * @param float|null $width The width.
+	 * @param float|null $height The height.
+	 * @param string|null $background The background.
+	 * @param string|null $fontFamily The font family.
+	 * @param float|null $fontSize The font size.
+	 * @param string|null $fontColor The font color.
+	 * @param float|null $lineHeight The line height.
+	 * @param string|null $textAlign The text alignment.
+	 * @return bool Always true.
 	 */
 	public function setAccountRightAttr($posX = null, $posY = null, $width = null, $height = null,
 		$background = null,	$fontFamily = null, $fontSize = null, $fontColor = null,
@@ -612,17 +640,19 @@ class SwissPaymentSlip
 	}
 
 	/**
-	 * @param null $posX
-	 * @param null $posY
-	 * @param null $width
-	 * @param null $height
-	 * @param null $background
-	 * @param null $fontFamily
-	 * @param null $fontSize
-	 * @param null $fontColor
-	 * @param null $lineHeight
-	 * @param null $textAlign
-	 * @return bool
+	 * Set the XXXX attributes
+	 *
+	 * @param float|null $posX The X position.
+	 * @param float|null $posY The Y Position.
+	 * @param float|null $width The width.
+	 * @param float|null $height The height.
+	 * @param string|null $background The background.
+	 * @param string|null $fontFamily The font family.
+	 * @param float|null $fontSize The font size.
+	 * @param string|null $fontColor The font color.
+	 * @param float|null $lineHeight The line height.
+	 * @param string|null $textAlign The text alignment.
+	 * @return bool Always true.
 	 */
 	public function setAmountFrancsLeftAttr($posX = null, $posY = null, $width = null, $height = null,
 		$background = null,	$fontFamily = null, $fontSize = null, $fontColor = null,
@@ -636,17 +666,19 @@ class SwissPaymentSlip
 	}
 
 	/**
-	 * @param null $posX
-	 * @param null $posY
-	 * @param null $width
-	 * @param null $height
-	 * @param null $background
-	 * @param null $fontFamily
-	 * @param null $fontSize
-	 * @param null $fontColor
-	 * @param null $lineHeight
-	 * @param null $textAlign
-	 * @return bool
+	 * Set the XXXX attributes
+	 *
+	 * @param float|null $posX The X position.
+	 * @param float|null $posY The Y Position.
+	 * @param float|null $width The width.
+	 * @param float|null $height The height.
+	 * @param string|null $background The background.
+	 * @param string|null $fontFamily The font family.
+	 * @param float|null $fontSize The font size.
+	 * @param string|null $fontColor The font color.
+	 * @param float|null $lineHeight The line height.
+	 * @param string|null $textAlign The text alignment.
+	 * @return bool Always true.
 	 */
 	public function setAmountFrancsRightAttr($posX = null, $posY = null, $width = null, $height = null,
 		$background = null,	$fontFamily = null, $fontSize = null, $fontColor = null,
@@ -660,17 +692,19 @@ class SwissPaymentSlip
 	}
 
 	/**
-	 * @param null $posX
-	 * @param null $posY
-	 * @param null $width
-	 * @param null $height
-	 * @param null $background
-	 * @param null $fontFamily
-	 * @param null $fontSize
-	 * @param null $fontColor
-	 * @param null $lineHeight
-	 * @param null $textAlign
-	 * @return bool
+	 * Set the XXXX attributes
+	 *
+	 * @param float|null $posX The X position.
+	 * @param float|null $posY The Y Position.
+	 * @param float|null $width The width.
+	 * @param float|null $height The height.
+	 * @param string|null $background The background.
+	 * @param string|null $fontFamily The font family.
+	 * @param float|null $fontSize The font size.
+	 * @param string|null $fontColor The font color.
+	 * @param float|null $lineHeight The line height.
+	 * @param string|null $textAlign The text alignment.
+	 * @return bool Always true.
 	 */
 	public function setAmountCentsLeftAttr($posX = null, $posY = null, $width = null, $height = null,
 		$background = null,	$fontFamily = null, $fontSize = null, $fontColor = null,
@@ -680,17 +714,19 @@ class SwissPaymentSlip
 	}
 
 	/**
-	 * @param null $posX
-	 * @param null $posY
-	 * @param null $width
-	 * @param null $height
-	 * @param null $background
-	 * @param null $fontFamily
-	 * @param null $fontSize
-	 * @param null $fontColor
-	 * @param null $lineHeight
-	 * @param null $textAlign
-	 * @return bool
+	 * Set the XXXX attributes
+	 *
+	 * @param float|null $posX The X position.
+	 * @param float|null $posY The Y Position.
+	 * @param float|null $width The width.
+	 * @param float|null $height The height.
+	 * @param string|null $background The background.
+	 * @param string|null $fontFamily The font family.
+	 * @param float|null $fontSize The font size.
+	 * @param string|null $fontColor The font color.
+	 * @param float|null $lineHeight The line height.
+	 * @param string|null $textAlign The text alignment.
+	 * @return bool Always true.
 	 */
 	public function setAmountCentsRightAttr($posX = null, $posY = null, $width = null, $height = null,
 		$background = null,	$fontFamily = null, $fontSize = null, $fontColor = null,
@@ -700,17 +736,19 @@ class SwissPaymentSlip
 	}
 
 	/**
-	 * @param null $posX
-	 * @param null $posY
-	 * @param null $width
-	 * @param null $height
-	 * @param null $background
-	 * @param null $fontFamily
-	 * @param null $fontSize
-	 * @param null $fontColor
-	 * @param null $lineHeight
-	 * @param null $textAlign
-	 * @return bool
+	 * Set the XXXX attributes
+	 *
+	 * @param float|null $posX The X position.
+	 * @param float|null $posY The Y Position.
+	 * @param float|null $width The width.
+	 * @param float|null $height The height.
+	 * @param string|null $background The background.
+	 * @param string|null $fontFamily The font family.
+	 * @param float|null $fontSize The font size.
+	 * @param string|null $fontColor The font color.
+	 * @param float|null $lineHeight The line height.
+	 * @param string|null $textAlign The text alignment.
+	 * @return bool Always true.
 	 */
 	public function setReferenceNumberLeftAttr($posX = null, $posY = null, $width = null, $height = null,
 		$background = null,	$fontFamily = null, $fontSize = null, $fontColor = null,
@@ -720,17 +758,19 @@ class SwissPaymentSlip
 	}
 
 	/**
-	 * @param null $posX
-	 * @param null $posY
-	 * @param null $width
-	 * @param null $height
-	 * @param null $background
-	 * @param null $fontFamily
-	 * @param null $fontSize
-	 * @param null $fontColor
-	 * @param null $lineHeight
-	 * @param null $textAlign
-	 * @return bool
+	 * Set the XXXX attributes
+	 *
+	 * @param float|null $posX The X position.
+	 * @param float|null $posY The Y Position.
+	 * @param float|null $width The width.
+	 * @param float|null $height The height.
+	 * @param string|null $background The background.
+	 * @param string|null $fontFamily The font family.
+	 * @param float|null $fontSize The font size.
+	 * @param string|null $fontColor The font color.
+	 * @param float|null $lineHeight The line height.
+	 * @param string|null $textAlign The text alignment.
+	 * @return bool Always true.
 	 */
 	public function setReferenceNumberRightAttr($posX = null, $posY = null, $width = null, $height = null,
 		$background = null,	$fontFamily = null, $fontSize = null, $fontColor = null,
@@ -744,17 +784,19 @@ class SwissPaymentSlip
 	}
 
 	/**
-	 * @param null $posX
-	 * @param null $posY
-	 * @param null $width
-	 * @param null $height
-	 * @param null $background
-	 * @param null $fontFamily
-	 * @param null $fontSize
-	 * @param null $fontColor
-	 * @param null $lineHeight
-	 * @param null $textAlign
-	 * @return bool
+	 * Set the XXXX attributes
+	 *
+	 * @param float|null $posX The X position.
+	 * @param float|null $posY The Y Position.
+	 * @param float|null $width The width.
+	 * @param float|null $height The height.
+	 * @param string|null $background The background.
+	 * @param string|null $fontFamily The font family.
+	 * @param float|null $fontSize The font size.
+	 * @param string|null $fontColor The font color.
+	 * @param float|null $lineHeight The line height.
+	 * @param string|null $textAlign The text alignment.
+	 * @return bool Always true.
 	 */
 	public function setPayerLeftAttr($posX = null, $posY = null, $width = null, $height = null,
 		$background = null,	$fontFamily = null, $fontSize = null, $fontColor = null,
@@ -764,17 +806,19 @@ class SwissPaymentSlip
 	}
 
 	/**
-	 * @param null $posX
-	 * @param null $posY
-	 * @param null $width
-	 * @param null $height
-	 * @param null $background
-	 * @param null $fontFamily
-	 * @param null $fontSize
-	 * @param null $fontColor
-	 * @param null $lineHeight
-	 * @param null $textAlign
-	 * @return bool
+	 * Set the XXXX attributes
+	 *
+	 * @param float|null $posX The X position.
+	 * @param float|null $posY The Y Position.
+	 * @param float|null $width The width.
+	 * @param float|null $height The height.
+	 * @param string|null $background The background.
+	 * @param string|null $fontFamily The font family.
+	 * @param float|null $fontSize The font size.
+	 * @param string|null $fontColor The font color.
+	 * @param float|null $lineHeight The line height.
+	 * @param string|null $textAlign The text alignment.
+	 * @return bool Always true.
 	 */
 	public function setPayerRightAttr($posX = null, $posY = null, $width = null, $height = null,
 		$background = null,	$fontFamily = null, $fontSize = null, $fontColor = null,
@@ -784,17 +828,19 @@ class SwissPaymentSlip
 	}
 
 	/**
-	 * @param null $posX
-	 * @param null $posY
-	 * @param null $width
-	 * @param null $height
-	 * @param null $background
-	 * @param null $fontFamily
-	 * @param null $fontSize
-	 * @param null $fontColor
-	 * @param null $lineHeight
-	 * @param null $textAlign
-	 * @return bool
+	 * Set the XXXX attributes
+	 *
+	 * @param float|null $posX The X position.
+	 * @param float|null $posY The Y Position.
+	 * @param float|null $width The width.
+	 * @param float|null $height The height.
+	 * @param string|null $background The background.
+	 * @param string|null $fontFamily The font family.
+	 * @param float|null $fontSize The font size.
+	 * @param string|null $fontColor The font color.
+	 * @param float|null $lineHeight The line height.
+	 * @param string|null $textAlign The text alignment.
+	 * @return bool Always true.
 	 */
 	public function setCodeLineAttr($posX = null, $posY = null, $width = null, $height = null,
 		$background = null,	$fontFamily = null, $fontSize = null, $fontColor = null,

@@ -29,6 +29,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     /**
      * Sets up the fixture, for example, opens a network connection.
      * This method is called before a test is executed.
+	 *
+	 * @return void
      */
     protected function setUp()
     {
@@ -66,12 +68,16 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     /**
      * Tears down the fixture, for example, closes a network connection.
      * This method is called after a test is executed.
+	 *
+	 * @return void
      */
     protected function tearDown()
     {
     }
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::__construct
 	 */
 	public function testIsInstanceOf()
@@ -85,6 +91,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::__construct
 	 * @expectedException \InvalidArgumentException
 	 */
@@ -94,6 +102,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::__construct
 	 * @expectedException \InvalidArgumentException
 	 */
@@ -103,6 +113,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
     /**
+	 *
+	 * @return void
      * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getPaymentSlipData
      */
     public function testGetPaymentSlipDataIsInstanceOf()
@@ -112,6 +124,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+	 *
+	 * @return void
      * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setSlipPosition
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setSlipPosX
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setSlipPosY
@@ -134,6 +148,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+	 *
+	 * @return void
      * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setSlipSize
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setSlipWidth
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setSlipHeight
@@ -156,6 +172,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+	 *
+	 * @return void
      * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setSlipBackground
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getSlipBackground
      */
@@ -169,6 +187,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
      */
     public function testBankLeftAttrDefaultValuesOrangeType()
@@ -186,6 +206,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 */
 	public function testBankRightAttrDefaultValuesOrangeType()
@@ -203,6 +225,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 */
 	public function testRecipientLeftAttrDefaultValuesOrangeType()
@@ -220,6 +244,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 */
 	public function testRecipientRightAttrDefaultValuesOrangeType()
@@ -237,6 +263,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 */
 	public function testAccountLeftAttrDefaultValuesOrangeType()
@@ -254,6 +282,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 */
 	public function testAccountRightAttrDefaultValuesOrangeType()
@@ -271,6 +301,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 */
 	public function testAmountFrancsLeftAttrDefaultValuesOrangeType()
@@ -289,6 +321,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 */
 	public function testAmountFrancsRightAttrDefaultValuesOrangeType()
@@ -307,6 +341,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 */
 	public function testAmountCentsLeftAttrDefaultValuesOrangeType()
@@ -324,6 +360,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 */
 	public function testAmountCentsRightAttrDefaultValuesOrangeType()
@@ -341,6 +379,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 */
 	public function testReferenceNumberLeftAttrDefaultValuesOrangeType()
@@ -359,6 +399,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 */
 	public function testReferenceNumberRightAttrDefaultValuesOrangeType()
@@ -377,6 +419,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 */
 	public function testPayerLeftAttrDefaultValuesOrangeType()
@@ -394,6 +438,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 */
 	public function testPayerRightAttrDefaultValuesOrangeType()
@@ -411,6 +457,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 */
 	public function testCodeLineAttrDefaultValuesOrangeType()
@@ -430,6 +478,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 */
 	public function testSlipBackgroundDefaultValuesOrangeType()
@@ -438,6 +488,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 * @todo Implement testBankLeftAttrDefaultValuesRedType
 	 */
@@ -449,6 +501,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 * @todo Implement testBankRightAttrDefaultValuesRedType
 	 */
@@ -460,6 +514,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 * @todo Implement testRecipientLeftAttrDefaultValuesRedType
 	 */
@@ -471,6 +527,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 * @todo Implement testRecipientRightAttrDefaultValuesRedType
 	 */
@@ -482,6 +540,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 * @todo Implement testAccountLeftAttrDefaultValuesRedType
 	 */
@@ -493,6 +553,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 * @todo Implement testAccountRightAttrDefaultValuesRedType
 	 */
@@ -504,6 +566,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 * @todo Implement testAmountFrancsLeftAttrDefaultValuesRedType
 	 */
@@ -515,6 +579,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 * @todo Implement testAmountFrancsRightAttrDefaultValuesRedType
 	 */
@@ -526,6 +592,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 * @todo Implement testAmountCentsLeftAttrDefaultValuesRedType
 	 */
@@ -537,6 +605,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 * @todo Implement testAmountCentsRightAttrDefaultValuesRedType
 	 */
@@ -548,6 +618,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 * @todo Implement testReferenceNumberLeftAttrDefaultValuesRedType
 	 */
@@ -559,6 +631,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 * @todo Implement testReferenceNumberRightAttrDefaultValuesRedType
 	 */
@@ -570,6 +644,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 * @todo Implement testPayerLeftAttrDefaultValuesRedType
 	 */
@@ -581,6 +657,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 * @todo Implement testPayerRightAttrDefaultValuesRedType
 	 */
@@ -592,6 +670,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 * @todo Implement testCodeLineAttrDefaultValuesRedType
 	 */
@@ -603,6 +683,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDefaults
 	 */
 	public function testSlipBackgroundDefaultValuesRedType()
@@ -614,6 +696,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
     /**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setBankLeftAttr
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setAttributes
      * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getBankLeftAttr
@@ -625,6 +709,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setBankRightAttr
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setAttributes
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getBankRightAttr
@@ -636,6 +722,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setRecipientLeftAttr
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setAttributes
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getRecipientLeftAttr
@@ -647,6 +735,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setRecipientRightAttr
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setAttributes
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getRecipientRightAttr
@@ -658,6 +748,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setAccountLeftAttr
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setAttributes
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getAccountLeftAttr
@@ -669,6 +761,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setAccountRightAttr
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setAttributes
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getAccountRightAttr
@@ -680,6 +774,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setAmountFrancsLeftAttr
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setAttributes
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getAmountFrancsLeftAttr
@@ -691,6 +787,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setAmountCentsLeftAttr
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setAttributes
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getAmountCentsLeftAttr
@@ -702,6 +800,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setAmountCentsRightAttr
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setAttributes
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getAmountCentsRightAttr
@@ -713,6 +813,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setAmountFrancsRightAttr
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setAttributes
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getAmountFrancsRightAttr
@@ -724,6 +826,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setReferenceNumberLeftAttr
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setAttributes
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getReferenceNumberLeftAttr
@@ -735,6 +839,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setReferenceNumberRightAttr
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setAttributes
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getReferenceNumberRightAttr
@@ -746,6 +852,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setPayerLeftAttr
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setAttributes
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getPayerLeftAttr
@@ -757,6 +865,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setPayerRightAttr
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setAttributes
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getPayerRightAttr
@@ -768,6 +878,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setCodeLineAttr
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setAttributes
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getCodeLineAttr
@@ -779,6 +891,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDisplayBank
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getDisplayBank
 	 */
@@ -797,6 +911,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
     /**
+	 *
+	 * @return void
      * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDisplayAccount
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getDisplayAccount
      */
@@ -815,6 +931,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDisplayRecipient
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getDisplayRecipient
 	 */
@@ -833,6 +951,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDisplayAmount
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getDisplayAmount
 	 */
@@ -851,6 +971,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDisplayReferenceNr
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getDisplayReferenceNr
 	 */
@@ -869,6 +991,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDisplayPayer
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getDisplayPayer
 	 */
@@ -887,6 +1011,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDisplayCodeLine
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getDisplayCodeLine
 	 */
@@ -905,6 +1031,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDisplayIban
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getDisplayIban
 	 */
@@ -923,6 +1051,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::setDisplayPaymentReason
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getDisplayPaymentReason
 	 */
@@ -941,6 +1071,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	}
 
     /**
+	 *
+	 * @return void
      * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getAllElements
      */
     public function testGetAllElementsOrangeType()
@@ -972,6 +1104,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
 	/**
+	 *
+	 * @return void
 	 * @covers SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::getAllElements
 	 * @todo Implement testGetAllElementsRedType
 	 */
