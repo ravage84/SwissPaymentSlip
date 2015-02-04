@@ -2,15 +2,12 @@
 /**
  * Swiss Payment Slip
  *
- * PHP version >= 5.3.0
- *
- * @licence MIT
- * @copyright 2012-2013 Some nice Swiss guys
+ * @license http://www.opensource.org/licenses/mit-license.php MIT License
+ * @copyright 2012-2015 Some nice Swiss guys
  * @author Manuel Reinhard <manu@sprain.ch>
  * @author Peter Siska <pesche@gridonic.ch>
  * @author Marc Würth ravage@bluewin.ch
  * @link https://github.com/sprain/class.Einzahlungsschein.php
- * @version: 0.5.0
  */
 
 namespace SwissPaymentSlip\SwissPaymentSlip;
@@ -18,6 +15,8 @@ namespace SwissPaymentSlip\SwissPaymentSlip;
 use InvalidArgumentException;
 
 /**
+ * Swiss Payment SLip Data
+ *
  * Creates data containers for standard Swiss payment slips with or without reference number.
  * It doesn't actually do much. It's mostly a data container class to keep
  * including classes from having to care about how SwissPaymentSlip works.
