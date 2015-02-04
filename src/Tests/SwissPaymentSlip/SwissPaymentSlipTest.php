@@ -96,7 +96,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @return void
 	 * @covers ::__construct
-	 * @expectedException \InvalidArgumentException
+	 * @expectedException \PHPUnit_Framework_Error
+	 * @expectedExceptionMessage Argument 1 passed to SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::__construct() must be an instance of SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData, null given
 	 */
 	public function testNullSlipDataParameter()
 	{
@@ -107,7 +108,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 	 *
 	 * @return void
 	 * @covers ::__construct
-	 * @expectedException \InvalidArgumentException
+	 * @expectedException \PHPUnit_Framework_Error
+	 * @expectedExceptionMessage Argument 1 passed to SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::__construct() must be an instance of SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData, instance of ArrayObject given
 	 */
 	public function testInvalidSlipDataParameter()
 	{

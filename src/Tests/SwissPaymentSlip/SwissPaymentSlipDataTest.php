@@ -40,7 +40,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
 
 	/**
 	 * @covers ::__construct
-	 * @covers :setType
+	 * @covers ::setType
 	 *
 	 * @return void
 	 */
