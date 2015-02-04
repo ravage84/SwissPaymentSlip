@@ -437,7 +437,7 @@ class SwissPaymentSlip
 	/**
 	 * Set the attributes for a given payment slip element
 	 *
-	 * @param array $attributes The element (attributes) to set.
+	 * @param array $element The element (attributes) to set.
 	 * @param float|null $posX The X position.
 	 * @param float|null $posY The Y Position.
 	 * @param float|null $width The width.
@@ -450,58 +450,58 @@ class SwissPaymentSlip
 	 * @param string|null $textAlign The text alignment.
 	 * @return bool Always true.
 	 */
-	protected function setAttributes(&$attributes, $posX = null, $posY = null, $width = null, $height = null, $background = null,
+	protected function setAttributes(&$element, $posX = null, $posY = null, $width = null, $height = null, $background = null,
 								   $fontFamily = null, $fontSize = null, $fontColor = null,
 								   $lineHeight = null, $textAlign = null) {
 		if ($posX) {
-			$attributes['PosX'] = $posX;
-		} elseif (!isset($attributes['PosX'])) {
-			$attributes['PosX'] = 0;
+			$element['PosX'] = $posX;
+		} elseif (!isset($element['PosX'])) {
+			$element['PosX'] = 0;
 		}
 		if ($posY) {
-			$attributes['PosY'] = $posY;
-		} elseif (!isset($attributes['PosY'])) {
-			$attributes['PosY'] = 0;
+			$element['PosY'] = $posY;
+		} elseif (!isset($element['PosY'])) {
+			$element['PosY'] = 0;
 		}
 		if ($width) {
-			$attributes['Width'] = $width;
-		} elseif (!isset($attributes['Width'])) {
-			$attributes['Width'] = 0;
+			$element['Width'] = $width;
+		} elseif (!isset($element['Width'])) {
+			$element['Width'] = 0;
 		}
 		if ($height) {
-			$attributes['Height'] = $height;
-		} elseif (!isset($attributes['Height'])) {
-			$attributes['Height'] = 0;
+			$element['Height'] = $height;
+		} elseif (!isset($element['Height'])) {
+			$element['Height'] = 0;
 		}
 		if ($background) {
-			$attributes['Background'] = $background;
-		} elseif (!isset($attributes['Background'])) {
-			$attributes['Background'] = 'transparent';
+			$element['Background'] = $background;
+		} elseif (!isset($element['Background'])) {
+			$element['Background'] = 'transparent';
 		}
 		if ($fontFamily) {
-			$attributes['FontFamily'] = $fontFamily;
-		} elseif (!isset($attributes['FontFamily'])) {
-			$attributes['FontFamily'] = $this->defaultFontFamily;
+			$element['FontFamily'] = $fontFamily;
+		} elseif (!isset($element['FontFamily'])) {
+			$element['FontFamily'] = $this->defaultFontFamily;
 		}
 		if ($fontSize) {
-			$attributes['FontSize'] = $fontSize;
-		} elseif (!isset($attributes['FontSize'])) {
-			$attributes['FontSize'] = $this->defaultFontSize;
+			$element['FontSize'] = $fontSize;
+		} elseif (!isset($element['FontSize'])) {
+			$element['FontSize'] = $this->defaultFontSize;
 		}
 		if ($fontColor) {
-			$attributes['FontColor'] = $fontColor;
-		} elseif (!isset($attributes['FontColor'])) {
-			$attributes['FontColor'] = $this->defaultFontColor;
+			$element['FontColor'] = $fontColor;
+		} elseif (!isset($element['FontColor'])) {
+			$element['FontColor'] = $this->defaultFontColor;
 		}
 		if ($lineHeight) {
-			$attributes['LineHeight'] = $lineHeight;
-		} elseif (!isset($attributes['LineHeight'])) {
-			$attributes['LineHeight'] = $this->defaultLineHeight;
+			$element['LineHeight'] = $lineHeight;
+		} elseif (!isset($element['LineHeight'])) {
+			$element['LineHeight'] = $this->defaultLineHeight;
 		}
 		if ($textAlign) {
-			$attributes['TextAlign'] = $textAlign;
-		} elseif (!isset($attributes['TextAlign'])) {
-			$attributes['TextAlign'] = $this->defaultTextAlign;
+			$element['TextAlign'] = $textAlign;
+		} elseif (!isset($element['TextAlign'])) {
+			$element['TextAlign'] = $this->defaultTextAlign;
 		}
 		return true;
 
