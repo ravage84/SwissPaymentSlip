@@ -249,14 +249,8 @@ class SwissPaymentSlip
 	 *
 	 * @throws \InvalidArgumentException If the payment slip data object is invalid.
 	 */
-	public function __construct($paymentSlipData, $slipPosX = null, $slipPosY = null)
+	public function __construct(SwissPaymentSlipData $paymentSlipData, $slipPosX = null, $slipPosY = null)
 	{
-		if (!is_object($paymentSlipData)) {
-			throw new InvalidArgumentException('PaymentSlipData parameter is not an object!');
-		}
-		if (!$paymentSlipData instanceof SwissPaymentSlipData) {
-			throw new InvalidArgumentException('PaymentSlipData parameter is not an instance of SwissPaymentSlipData!');
-		}
 		$this->paymentSlipData = $paymentSlipData;
 
 		if (!is_null($slipPosX)) {
