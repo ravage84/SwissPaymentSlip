@@ -44,11 +44,11 @@ use InvalidArgumentException;
  * @link https://www.postfinance.ch/content/dam/pf/de/doc/consult/manual/dlserv/inpayslip_isr_man_de.pdf German manual
  * @link http://www.six-interbank-clearing.com/en/home/standardization/dta.html
  *
- * @todo implement full red slip support (code line + additional code line)
- * @todo implement currency (CHF, EUR), means different prefixes in code line
- * @todo implement payment on own account, means different prefixes in code line --> edge case!
- * @todo implement cash on delivery (Nachnahme), means different prefixes in code line --> do it on demand
- * @todo implement amount check for unrounded (.05) cents, document why (see manual)
+ * @todo Implement full red slip support (code line + additional code line)
+ * @todo Implement currency (CHF, EUR), means different prefixes in code line
+ * @todo Implement payment on own account, means different prefixes in code line --> edge case!
+ * @todo Implement cash on delivery (Nachnahme), means different prefixes in code line --> do it on demand
+ * @todo Implement amount check for unrounded (.05) cents, document why (see manual)
  */
 class SwissPaymentSlipData
 {
@@ -79,7 +79,7 @@ class SwissPaymentSlipData
 
 	/**
 	 * Determines if the payment slip must not be used for payment (XXXed out)
-	 * 
+	 *
 	 * @var bool Normally false, true if not for payment
 	 */
 	protected $notForPayment = false;
