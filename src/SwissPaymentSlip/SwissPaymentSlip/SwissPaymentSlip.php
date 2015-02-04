@@ -12,8 +12,6 @@
 
 namespace SwissPaymentSlip\SwissPaymentSlip;
 
-use InvalidArgumentException;
-
 /**
  * Swiss Payment Slip
  *
@@ -240,8 +238,6 @@ class SwissPaymentSlip
 	 * @param SwissPaymentSlipData $paymentSlipData The payment slip data.
 	 * @param float|null $slipPosX The optional X position of the slip.
 	 * @param float|null $slipPosY The optional Y position of the slip.
-	 *
-	 * @throws \InvalidArgumentException If the payment slip data object is invalid.
 	 */
 	public function __construct(SwissPaymentSlipData $paymentSlipData, $slipPosX = null, $slipPosY = null)
 	{
