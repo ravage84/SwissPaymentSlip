@@ -503,7 +503,7 @@ class SwissPaymentSlip
     }
 
     /**
-     * Set the XXXX attributes
+     * Set the left bank attributes
      *
      * @param float|null $posX The X position.
      * @param float|null $posY The Y Position.
@@ -545,7 +545,7 @@ class SwissPaymentSlip
     }
 
     /**
-     * Set the XXXX attributes
+     * Set the right bank attributes
      *
      * @param float|null $posX The X position.
      * @param float|null $posY The Y Position.
@@ -587,7 +587,7 @@ class SwissPaymentSlip
     }
 
     /**
-     * Set the XXXX attributes
+     * Set the left recipient attributes
      *
      * @param float|null $posX The X position.
      * @param float|null $posY The Y Position.
@@ -629,7 +629,7 @@ class SwissPaymentSlip
     }
 
     /**
-     * Set the XXXX attributes
+     * Set the right recipient attributes
      *
      * @param float|null $posX The X position.
      * @param float|null $posY The Y Position.
@@ -671,7 +671,7 @@ class SwissPaymentSlip
     }
 
     /**
-     * Set the XXXX attributes
+     * Set the left account attributes
      *
      * @param float|null $posX The X position.
      * @param float|null $posY The Y Position.
@@ -713,7 +713,7 @@ class SwissPaymentSlip
     }
 
     /**
-     * Set the XXXX attributes
+     * Set the right account attributes
      *
      * @param float|null $posX The X position.
      * @param float|null $posY The Y Position.
@@ -755,7 +755,7 @@ class SwissPaymentSlip
     }
 
     /**
-     * Set the XXXX attributes
+     * Set the left francs amount attributes
      *
      * @param float|null $posX The X position.
      * @param float|null $posY The Y Position.
@@ -801,7 +801,7 @@ class SwissPaymentSlip
     }
 
     /**
-     * Set the XXXX attributes
+     * Set the right francs amount attributes
      *
      * @param float|null $posX The X position.
      * @param float|null $posY The Y Position.
@@ -847,7 +847,7 @@ class SwissPaymentSlip
     }
 
     /**
-     * Set the XXXX attributes
+     * Set the left cents amount attributes
      *
      * @param float|null $posX The X position.
      * @param float|null $posY The Y Position.
@@ -889,7 +889,7 @@ class SwissPaymentSlip
     }
 
     /**
-     * Set the XXXX attributes
+     * Set the right cents amount attributes
      *
      * @param float|null $posX The X position.
      * @param float|null $posY The Y Position.
@@ -931,7 +931,7 @@ class SwissPaymentSlip
     }
 
     /**
-     * Set the XXXX attributes
+     * Set the left reference number attributes
      *
      * @param float|null $posX The X position.
      * @param float|null $posY The Y Position.
@@ -973,7 +973,7 @@ class SwissPaymentSlip
     }
 
     /**
-     * Set the XXXX attributes
+     * Set the right reference number attributes
      *
      * @param float|null $posX The X position.
      * @param float|null $posY The Y Position.
@@ -1019,7 +1019,7 @@ class SwissPaymentSlip
     }
 
     /**
-     * Set the XXXX attributes
+     * Set the left payer attributes
      *
      * @param float|null $posX The X position.
      * @param float|null $posY The Y Position.
@@ -1061,7 +1061,7 @@ class SwissPaymentSlip
     }
 
     /**
-     * Set the XXXX attributes
+     * Set the right payer attributes
      *
      * @param float|null $posX The X position.
      * @param float|null $posY The Y Position.
@@ -1103,7 +1103,7 @@ class SwissPaymentSlip
     }
 
     /**
-     * Set the XXXX attributes
+     * Set the code line attributes
      *
      * @param float|null $posX The X position.
      * @param float|null $posY The Y Position.
