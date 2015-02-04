@@ -25,6 +25,7 @@ namespace SwissPaymentSlip\SwissPaymentSlip;
  * @todo Create constants for the attribute keys
  * @todo Create constants for left, right and center text alignment (L, R, C)
  * @todo Create central cell placement and formatting code (lines as array, attributes)...
+ * @todo Implement fluent interface
  */
 class SwissPaymentSlip
 {

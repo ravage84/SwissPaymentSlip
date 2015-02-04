@@ -51,6 +51,7 @@ use InvalidArgumentException;
  * @todo Create a getBankData method with formatting parameter
  * @todo Create a getRecipientData with formatting parameter
  * @todo Create a getPaymentReason with formatting parameter
+ * @todo Implement fluent interface
  */
 class SwissPaymentSlipData
 {
