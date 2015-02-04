@@ -17,23 +17,18 @@ namespace SwissPaymentSlip\SwissPaymentSlip;
 
 use InvalidArgumentException;
 
-// TODO include CHF boxed slip image (609, SwissPaymentSlip+)
-// TODO include EUR framed slip image (701) --> back side!
-// TODO include EUR boxed slip image (701) --> back side!
-// TODO implement notForInpaying (XXXX.XX)
-// TODO implement cash on delivery (Nachnahme)
-// TODO include cash on delivery (Nachnahme) slip image
-// TODO create constants for the attribute keys
-// TODO create constants for left, right and center text alignment (L, R, C)
-// TODO create central cell placement and formatting code (lines as array, attributes)...
-// TODO code cleanup
-// TODO create Tests, what's possible (getter and setter, setter without getters testable?
-// TODO docblocks
-// TODO class docblock
-// TODO test docs generated
-
 /**
  * A general purpose class for swiss payment slips. Data is organized by its sister class SwissPaymentSlipData.
+ *
+ * @todo Include CHF boxed slip image (609, SwissPaymentSlip+)
+ * @todo Include EUR framed slip image (701) --> back side!
+ * @todo Include EUR boxed slip image (701) --> back side!
+ * @todo Implement notForInpaying (XXXX.XX)
+ * @todo Implement cash on delivery (Nachnahme)
+ * @todo Include cash on delivery (Nachnahme) slip image
+ * @todo Create constants for the attribute keys
+ * @todo Create constants for left, right and center text alignment (L, R, C)
+ * @todo Create central cell placement and formatting code (lines as array, attributes)...
  */
 class SwissPaymentSlip
 {
