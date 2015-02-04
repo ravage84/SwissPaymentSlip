@@ -20,7 +20,6 @@ namespace SwissPaymentSlip\SwissPaymentSlip;
  * @todo Include CHF boxed slip image (609, SwissPaymentSlip+)
  * @todo Include EUR framed slip image (701) --> back side!
  * @todo Include EUR boxed slip image (701) --> back side!
- * @todo Implement notForInpaying (XXXX.XX)
  * @todo Implement cash on delivery (Nachnahme)
  * @todo Include cash on delivery (Nachnahme) slip image
  * @todo Create constants for the attribute keys
