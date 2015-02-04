@@ -1838,6 +1838,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
 	/**
 	 *
 	 * @return void
+	 * @covers ::setNotForPayment
 	 * @covers ::getNotForPayment
 	 */
 	public function testSetNotForPayment() {
