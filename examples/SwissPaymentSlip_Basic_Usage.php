@@ -48,15 +48,15 @@ $paymentSlip = new SwissPaymentSlip($paymentSlipData);
 $elements = $paymentSlip->getAllElements();
 
 // Iterate through the elements (its lines and attributes)
-foreach($elements as $elementName => $element) {
-	echo "<h2>Element: " . $elementName . "</h2>";
-	foreach ($element['lines'] as $lineNr => $line) {
-		echo "-- Line " . $lineNr . ": " . $line . " <br>";
-	}
-	echo "<br>";
-	foreach ($element['attributes'] as $lineNr => $line) {
-		echo "-- Attribute " . $lineNr . ": " . $line . " <br>";
-	}
+foreach ($elements as $elementName => $element) {
+    echo "<h2>Element: " . $elementName . "</h2>";
+    foreach ($element['lines'] as $lineNr => $line) {
+        echo "-- Line " . $lineNr . ": " . $line . " <br>";
+    }
+    echo "<br>";
+    foreach ($element['attributes'] as $lineNr => $line) {
+        echo "-- Attribute " . $lineNr . ": " . $line . " <br>";
+    }
 }
 
 echo "<br>";
