@@ -1,10 +1,19 @@
-<phpunit>
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.0/phpunit.xsd"
+    forceCoversAnnotation="false"
+    verbose="false">
     <testsuites>
-        <testsuite name="SwissPaymentSlip">
-            <file>src/Tests/SwissPaymentSlip/SwissPaymentSlipDataTest.php</file>
-            <file>src/Tests/SwissPaymentSlip/SwissPaymentSlipTest.php</file>
+        <testsuite name="All SwissPaymentSlip tests">
+            <file>./src/Tests/SwissPaymentSlip/SwissPaymentSlipDataTest.php</file>
+            <file>./src/Tests/SwissPaymentSlip/SwissPaymentSlipTest.php</file>
         </testsuite>
     </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src/SwissPaymentSlip</directory>
+        </whitelist>
+    </filter>
     <logging>
         <log type="coverage-html" target="report/coverage/" charset="UTF-8"/>
     </logging>
