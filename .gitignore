@@ -1,5 +1,3 @@
 phpunit.xml
-composer.lock
 vendor
 report
-doc
