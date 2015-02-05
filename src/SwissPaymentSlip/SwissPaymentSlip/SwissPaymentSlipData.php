@@ -90,21 +90,21 @@ class SwissPaymentSlipData
     protected $notForPayment = false;
 
     /**
-     * Determines if the payment slip has a recipient bank. Can be disabled for preprinted payment slips
+     * Determines if the payment slip has a recipient bank. Can be disabled for pre-printed payment slips
      *
      * @var bool True if yes, false if no
      */
     protected $withBank = true;
 
     /**
-     * Determines if the payment slip has a account number. Can be disabled for preprinted payment slips
+     * Determines if the payment slip has a account number. Can be disabled for pre-printed payment slips
      *
      * @var bool True if yes, false if no
      */
     protected $withAccountNumber = true;
 
     /**
-     * Determines if the payment slip has a recipient. Can be disabled for preprinted payment slips
+     * Determines if the payment slip has a recipient. Can be disabled for pre-printed payment slips
      *
      * @var bool True if yes, false if no
      */
@@ -118,7 +118,7 @@ class SwissPaymentSlipData
     protected $withAmount = true;
 
     /**
-     * Determines if the payment slip has a reference number. Can be disabled for preprinted payment slips
+     * Determines if the payment slip has a reference number. Can be disabled for pre-printed payment slips
      *
      * @var bool True if yes, false if no
      */
@@ -133,14 +133,14 @@ class SwissPaymentSlipData
     protected $withBankingCustomerId = true;
 
     /**
-     * Determines if the payment slip has a payer. Can be disabled for preprinted payment slips
+     * Determines if the payment slip has a payer. Can be disabled for pre-printed payment slips
      *
      * @var bool True if yes, false if no
      */
     protected $withPayer = true;
 
     /**
-     * Determines if the payment slip has a IBAN specified. Can be disabled for preprinted payment slips
+     * Determines if the payment slip has a IBAN specified. Can be disabled for pre-printed payment slips
      * Only possible for ES, but not for SwissPaymentSlip
      *
      * @var bool True if yes, false if no
@@ -148,7 +148,7 @@ class SwissPaymentSlipData
     protected $withIban = false;
 
     /**
-     * Determines if the payment slip has a payment reason. Can be disabled for preprinted payment slips
+     * Determines if the payment slip has a payment reason. Can be disabled for pre-printed payment slips
      * Only possible for ES, but not for SwissPaymentSlip
      *
      * @var bool True if yes, false if no
