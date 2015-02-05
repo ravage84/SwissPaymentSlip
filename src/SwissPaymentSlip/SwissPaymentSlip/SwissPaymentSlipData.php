@@ -379,6 +379,26 @@ class SwissPaymentSlipData
     }
 
     /**
+     * Determines if it is a orange payment slip
+     *
+     * @return bool True if it is a orange payment slip
+     */
+    public function isOrangeSlip()
+    {
+        return $this->getType() == self::ORANGE;
+    }
+
+    /**
+     * Determines if it is a red payment slip
+     *
+     * @return bool True if it is a red payment slip
+     */
+    public function isRedSlip()
+    {
+        return $this->getType() == self::RED;
+    }
+
+    /**
      * Set payment slip for not to be used for payment
      *
      * XXXes out all fields to prevent people using the payment slip.
@@ -542,7 +562,7 @@ class SwissPaymentSlipData
      */
     public function setWithReferenceNumber($withReferenceNumber = true)
     {
-        if ($this->getType() == self::ORANGE) {
+        if ($this->isOrangeSlip()) {
             if (is_bool($withReferenceNumber)) {
                 $this->withReferenceNumber = $withReferenceNumber;
 
@@ -576,7 +596,7 @@ class SwissPaymentSlipData
      */
     public function setWithBankingCustomerId($withBankingCustomerId = true)
     {
-        if ($this->getType() == self::ORANGE) {
+        if ($this->isOrangeSlip()) {
             if (is_bool($withBankingCustomerId)) {
                 $this->withBankingCustomerId = $withBankingCustomerId;
 
@@ -643,7 +663,7 @@ class SwissPaymentSlipData
      */
     public function setWithIban($withIban = false)
     {
-        if ($this->getType() == self::RED) {
+        if ($this->isRedSlip()) {
             if (is_bool($withIban)) {
                 $this->withIban = $withIban;
 
@@ -678,7 +698,7 @@ class SwissPaymentSlipData
      */
     public function setWithPaymentReason($withPaymentReason = false)
     {
-        if ($this->getType() == self::RED) {
+        if ($this->isRedSlip()) {
             if (is_bool($withPaymentReason)) {
                 $this->withPaymentReason = $withPaymentReason;
 

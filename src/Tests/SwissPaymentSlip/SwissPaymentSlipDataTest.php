@@ -78,6 +78,36 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the isOrangeSlip method
+     *
+     * @return void
+     * @covers ::isOrangeSlip
+     */
+    public function testIsOrangeSlip()
+    {
+        $slipData = new SwissPaymentSlipData('red');
+        $this->assertFalse($slipData->isOrangeSlip());
+
+        $slipData = new SwissPaymentSlipData('orange');
+        $this->assertTrue($slipData->isOrangeSlip());
+    }
+
+    /**
+     * Tests the isRedSlip method
+     *
+     * @return void
+     * @covers ::isRedSlip
+     */
+    public function testIsRedSlip()
+    {
+        $slipData = new SwissPaymentSlipData('orange');
+        $this->assertFalse($slipData->isRedSlip());
+
+        $slipData = new SwissPaymentSlipData('red');
+        $this->assertTrue($slipData->isRedSlip());
+    }
+
+    /**
      * Tests the setRedDefaults method when setting up an unspecified slip (defaults to orange)
      *
      * @return void
