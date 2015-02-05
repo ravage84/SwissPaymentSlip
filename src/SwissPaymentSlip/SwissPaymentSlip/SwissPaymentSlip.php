@@ -51,11 +51,15 @@ class SwissPaymentSlip
     protected $slipPosY = 191;
 
     /**
+     * The height of the slip
+     *
      * @var int|float
      */
     protected $slipHeight = 106; // default height of an orange slip
 
     /**
+     * The width of the slip
+     *
      * @var int|float
      */
     protected $slipWidth = 210; // default width of an orange slip
@@ -70,164 +74,204 @@ class SwissPaymentSlip
     protected $slipBackground = null;
 
     /**
+     * The default font family
+     *
      * @var string
      */
     protected $defaultFontFamily = 'Helvetica';
 
     /**
+     * The default font size
+     *
      * @var string
      */
     protected $defaultFontSize = '10';
 
     /**
+     * The default font color
+     *
      * @var string
      */
     protected $defaultFontColor = '#000';
 
     /**
+     * The default line height
+     *
      * @var int
      */
     protected $defaultLineHeight = 4;
 
     /**
+     * The default text alignment
+     *
      * @var string
      */
     protected $defaultTextAlign = 'L';
 
     /**
-     * Determines if the bank details should be displayed
+     * Determines whether the bank details should be displayed
      *
      * @var bool True if yes, false if no
      */
     protected $displayBank = true;
 
     /**
-     * Determines if the recipient details should be displayed
+     * Determines whether the recipient details should be displayed
      *
      * @var bool True if yes, false if no
      */
     protected $displayRecipient = true;
 
     /**
-     * Determines if the account should be displayed
+     * Determines whether the account should be displayed
      *
      * @var bool True if yes, false if no
      */
     protected $displayAccount = true;
 
     /**
-     * Determines if the amount should be displayed
+     * Determines whether the amount should be displayed
      *
      * @var bool True if yes, false if no
      */
     protected $displayAmount = true;
 
     /**
-     * Determines if the reference number should be displayed
+     * Determines whether the reference number should be displayed
      *
      * @var bool True if yes, false if no
      */
     protected $displayReferenceNr = true;
 
     /**
-     * Determines if the payer details should be displayed
+     * Determines whether the payer details should be displayed
      *
      * @var bool True if yes, false if no
      */
     protected $displayPayer = true;
 
     /**
-     * Determines if the IBAN should be displayed
+     * Determines whether the IBAN should be displayed
      *
      * @var bool True if yes, false if no
      */
     protected $displayIban = false;
 
     /**
-     * Determines if the payment reason should be displayed
+     * Determines whether the payment reason should be displayed
      *
      * @var bool True if yes, false if no
      */
     protected $displayPaymentReason = false;
 
     /**
-     * Determines if the code line at the bottom should be displayed
+     * Determines whether the code line at the bottom should be displayed
      *
      * @var bool True if yes, false if no
      */
     protected $displayCodeLine = true;
 
     /**
+     * Attributes of the left bank element
+     *
      * @var array
      */
     protected $bankLeftAttr = array();
 
     /**
+     * Attributes of the right bank element
+     *
      * @var array
      */
     protected $bankRightAttr = array();
 
     /**
+     * Attributes of the left recipient element
+     *
      * @var array
      */
     protected $recipientLeftAttr = array();
 
     /**
+     * Attributes of the right recipient element
+     *
      * @var array
      */
     protected $recipientRightAttr = array();
 
     /**
+     * Attributes of the left account element
+     *
      * @var array
      */
     protected $accountLeftAttr = array();
 
     /**
+     * Attributes of the right account element
+     *
      * @var array
      */
     protected $accountRightAttr = array();
 
     /**
+     * Attributes of the left francs amount element
+     *
      * @var array
      */
     protected $amountFrancsLeftAttr = array();
 
     /**
+     * Attributes of the right francs amount element
+     *
      * @var array
      */
     protected $amountFrancsRightAttr = array();
 
     /**
+     * Attributes of the left cents amount element
+     *
      * @var array
      */
     protected $amountCentsLeftAttr = array();
 
     /**
+     * Attributes of the right cents amount element
+     *
      * @var array
      */
     protected $amountCentsRightAttr = array();
 
     /**
+     * Attributes of the left reference number element
+     *
      * @var array
      */
     protected $referenceNumberLeftAttr = array();
 
     /**
+     * Attributes of the right reference number element
+     *
      * @var array
      */
     protected $referenceNumberRightAttr = array();
 
     /**
+     * Attributes of the left payer element
+     *
      * @var array
      */
     protected $payerLeftAttr = array();
 
     /**
+     * Attributes of the right payer element
+     *
      * @var array
      */
     protected $payerRightAttr = array();
 
     /**
+     * Attributes of the code line element
+     *
      * @var array
      */
     protected $codeLineAttr = array();
@@ -1269,7 +1313,9 @@ class SwissPaymentSlip
     }
 
     /**
-     * @return null
+     * Get the background image or color
+     *
+     * @return null|string The background image.
      */
     public function getSlipBackground()
     {
