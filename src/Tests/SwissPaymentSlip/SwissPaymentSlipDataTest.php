@@ -42,6 +42,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the constructor with an empty string
      *
      * @return void
      * @covers ::__construct
@@ -54,6 +55,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the constructor with an invalid string
      *
      * @return void
      * @covers ::__construct
@@ -66,6 +68,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the constructor with an array
      *
      * @return void
      * @covers ::__construct
@@ -180,6 +183,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setType method when setting up an orange slip without reset
      *
      * @return void
      * @covers ::setType
@@ -210,6 +214,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setType method when setting up a red slip without reset
      *
      * @return void
      * @covers ::setType
@@ -242,6 +247,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setType method when setting up an orange slip with reset
      *
      * @return void
      * @covers ::setType
@@ -273,6 +279,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setType method when setting up a red slip with reset
      *
      * @return void
      * @covers ::setType
@@ -304,6 +311,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setType method with an empty string as first parameter
      *
      * @return void
      * @covers ::setType
@@ -315,6 +323,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setType method with an invalid string as first parameter
      *
      * @return void
      * @covers ::setType
@@ -326,6 +335,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setType method with an array as first parameter
      *
      * @return void
      * @covers ::setType
@@ -337,6 +347,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setType method with an empty string as second parameter
      *
      * @return void
      * @covers ::setType
@@ -348,6 +359,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setType method with an invalid string as second parameter
      *
      * @return void
      * @covers ::setType
@@ -359,6 +371,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setType method with an array as array second parameter
      *
      * @return void
      * @covers ::setType
@@ -370,6 +383,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithBank method with an unspecified slip type
      *
      * @return void
      * @covers ::setWithBank
@@ -396,6 +410,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithBank method with an orange slip
      *
      * @return void
      * @covers ::setWithBank
@@ -423,6 +438,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithBank method with a red slip
      *
      * @return void
      * @covers ::setWithBank
@@ -450,6 +466,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithBank method with various parameters
      *
      * @return void
      * @covers ::setWithBank
@@ -483,6 +500,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithAccountNumber method with an unspecified slip type
      *
      * @return void
      * @covers ::setWithAccountNumber
@@ -506,6 +524,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithAccountNumber method with an orange slip
      *
      * @return void
      * @covers ::setWithAccountNumber
@@ -530,6 +549,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithAccountNumber method with a red slip
      *
      * @return void
      * @covers ::setWithAccountNumber
@@ -554,6 +574,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithAccountNumber method with various parameters
      *
      * @return void
      * @covers ::setWithAccountNumber
@@ -585,6 +606,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithRecipient method with an unspecified slip type
      *
      * @return void
      * @covers ::setWithRecipient
@@ -617,6 +639,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithRecipient method with an orange slip
      *
      * @return void
      * @covers ::setWithRecipient
@@ -650,6 +673,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithRecipient method with a red slip
      *
      * @return void
      * @covers ::setWithRecipient
@@ -683,6 +707,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithBank method with various parameters
      *
      * @return void
      * @covers ::setWithRecipient
@@ -720,6 +745,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithAmount method with an unspecified slip type
      *
      * @return void
      * @covers ::setWithAmount
@@ -743,6 +769,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithAmount method with an orange slip
      *
      * @return void
      * @covers ::setWithAmount
@@ -767,6 +794,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithAmount method with a red slip
      *
      * @return void
      * @covers ::setWithAmount
@@ -791,6 +819,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithAmount method with various parameters
      *
      * @return void
      * @covers ::setWithAmount
@@ -822,6 +851,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithReferenceNumber method with an unspecified slip type
      *
      * @return void
      * @covers ::setWithReferenceNumber
@@ -845,6 +875,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithReferenceNumber method with an orange slip
      *
      * @return void
      * @covers ::setWithReferenceNumber
@@ -869,6 +900,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithReferenceNumber method with a red slip
      *
      * @return void
      * @covers ::setWithReferenceNumber
@@ -893,6 +925,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithReferenceNumber method with various parameters
      *
      * @return void
      * @covers ::setWithReferenceNumber
@@ -924,6 +957,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithBankingCustomerId method with an unspecified slip type
      *
      * @return void
      * @covers ::setWithBankingCustomerId
@@ -947,6 +981,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithBankingCustomerId method with an orange slip
      *
      * @return void
      * @covers ::setWithBankingCustomerId
@@ -971,6 +1006,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithBankingCustomerId method with a red slip
      *
      * @return void
      * @covers ::setWithBankingCustomerId
@@ -995,6 +1031,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithBankingCustomerId method with various parameters
      *
      * @return void
      * @covers ::setWithBankingCustomerId
@@ -1026,6 +1063,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithPayer method with an unspecified slip type
      *
      * @return void
      * @covers ::setWithPayer
@@ -1058,6 +1096,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithPayer method with an orange slip
      *
      * @return void
      * @covers ::setWithPayer
@@ -1091,6 +1130,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithPayer method with a red slip
      *
      * @return void
      * @covers ::setWithPayer
@@ -1124,6 +1164,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithPayer method with various parameters
      *
      * @return void
      * @covers ::setWithPayer
@@ -1161,6 +1202,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithIban method with an unspecified slip type
      *
      * @return void
      * @covers ::setWithIban
@@ -1184,6 +1226,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithIban method with an orange slip
      *
      * @return void
      * @covers ::setWithIban
@@ -1208,6 +1251,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithIban method with a red slip
      *
      * @return void
      * @covers ::setWithIban
@@ -1232,6 +1276,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithIban method with various parameters
      *
      * @return void
      * @covers ::setWithIban
@@ -1264,6 +1309,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithPaymentReason method with an unspecified slip type
      *
      * @return void
      * @covers ::setWithPaymentReason
@@ -1296,6 +1342,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithPaymentReason method with an orange slip
      *
      * @return void
      * @covers ::setWithPaymentReason
@@ -1329,6 +1376,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithPaymentReason method with a red slip
      *
      * @return void
      * @covers ::setWithPaymentReason
@@ -1362,6 +1410,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setWithPaymentReason method with various parameters
      *
      * @return void
      * @covers ::setWithPaymentReason
@@ -1400,6 +1449,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setBankData method
      *
      * @return void
      * @covers ::setBankData
@@ -1424,6 +1474,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setAccountNumber method
      *
      * @return void
      * @covers ::setAccountNumber
@@ -1443,6 +1494,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setRecipientData method
      *
      * @return void
      * @covers ::setRecipientData
@@ -1475,6 +1527,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setAmount method
      *
      * @return void
      * @covers ::setAmount
@@ -1494,6 +1547,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setReferenceNumber method
      *
      * @return void
      * @covers ::setReferenceNumber
@@ -1513,6 +1567,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setBankingCustomerId method
      *
      * @return void
      * @covers ::setBankingCustomerId
@@ -1532,6 +1587,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setPayerData method
      *
      * @return void
      * @covers ::setPayerData
@@ -1564,6 +1620,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setIban method
      *
      * @return void
      * @covers ::setIban
@@ -1583,6 +1640,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setPaymentReasonData method
      *
      * @return void
      * @covers ::setPaymentReasonData
@@ -1619,6 +1677,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the getCompleteReferenceNumber method for an orange slip
      *
      * @return void
      * @covers ::getCompleteReferenceNumber
@@ -1648,12 +1707,13 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the getCompleteReferenceNumber method for a red slip
      *
      * @return void
      * @covers ::getCompleteReferenceNumber
      * @covers ::breakStringIntoBlocks
      * @covers ::modulo10
-     * @todo Implement testGetCompleteReferenceNumberOrangeType
+     * @todo Implement testGetCompleteReferenceNumberRedType
      */
     public function testGetCompleteReferenceNumberRedType()
     {
@@ -1663,6 +1723,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tsets the getFormattedIban method
      *
      * @return void
      * @covers ::getFormattedIban
@@ -1680,6 +1741,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the getCodeLine method with an unspecified slip type
      *
      * @return void
      * @covers ::getCodeLine
@@ -1749,6 +1811,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the getCodeLine method with an orange slip
      *
      * @return void
      * @covers ::getCodeLine
@@ -1819,6 +1882,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the getCodeLine method with a red slip
      *
      * @return void
      * @covers ::getCodeLine
@@ -1834,6 +1898,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the getCodeLine method with invalid preconditions
      *
      * @return void
      * @covers ::getCodeLine
@@ -1866,6 +1931,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the getAmountFrancs method
      *
      * @return void
      * @covers ::getAmountFrancs
@@ -1883,6 +1949,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the getAmountCents method
      *
      * @return void
      * @covers ::getAmountCents
@@ -1900,6 +1967,7 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setNotForPayment method
      *
      * @return void
      * @covers ::setNotForPayment
