@@ -346,9 +346,9 @@ class SwissPaymentSlip
     }
 
     /**
+     * Get the slip data object of the slip
      *
-     *
-     * @return SwissPaymentSlipData
+     * @return SwissPaymentSlipData The data object of the slip.
      */
     public function getPaymentSlipData()
     {
@@ -356,11 +356,11 @@ class SwissPaymentSlip
     }
 
     /**
-     * Set slip X & Y position
+     * Set the starting X & Y position of the slip
      *
-     * @param float $slipPosX
-     * @param float $slipPosY
-     * @return bool True if successful, else false
+     * @param float $slipPosX The starting X position of the slip.
+     * @param float $slipPosY The starting Y position of the slip
+     * @return bool True if successful, else false.
      */
     public function setSlipPosition($slipPosX, $slipPosY)
     {
@@ -372,10 +372,10 @@ class SwissPaymentSlip
     }
 
     /**
+     * Set the starting X position of the slip
      *
-     *
-     * @param float $slipPosX
-     * @return bool
+     * @param float $slipPosX The starting X position of the slip.
+     * @return bool True if successful, else false.
      */
     protected function setSlipPosX($slipPosX)
     {
@@ -387,10 +387,10 @@ class SwissPaymentSlip
     }
 
     /**
+     * Set the starting Y position of the slip
      *
-     *
-     * @param float $slipPosY
-     * @return bool
+     * @param float $slipPosY The starting Y position of the slip.
+     * @return bool True if successful, else false.
      */
     protected function setSlipPosY($slipPosY)
     {
@@ -402,11 +402,11 @@ class SwissPaymentSlip
     }
 
     /**
-     * Set slip height & width
+     * Set the height & width of the slip
      *
-     * @param float $slipWidth
-     * @param float $slipHeight
-     * @return bool True if successful, else false
+     * @param float $slipWidth The width of the slip
+     * @param float $slipHeight The height of the slip
+     * @return bool True if successful, else false.
      */
     public function setSlipSize($slipWidth, $slipHeight)
     {
@@ -418,10 +418,10 @@ class SwissPaymentSlip
     }
 
     /**
+     * Set the width of the slip
      *
-     *
-     * @param float $slipWidth
-     * @return bool
+     * @param float $slipWidth The width of the slip
+     * @return bool True if successful, else false.
      */
     protected function setSlipWidth($slipWidth)
     {
@@ -433,10 +433,10 @@ class SwissPaymentSlip
     }
 
     /**
+     * Set the height of the slip
      *
-     *
-     * @param float $slipHeight
-     * @return bool
+     * @param float $slipHeight The height of the slip
+     * @return bool True if successful, else false.
      */
     protected function setSlipHeight($slipHeight)
     {
@@ -452,8 +452,8 @@ class SwissPaymentSlip
      *
      * Can be either 'transparent', a color or an image
      *
-     * @param string $slipBackground
-     * @return bool Always true
+     * @param string $slipBackground The background of the slip.
+     * @return bool Always true.
      *
      * @todo Implement sanity checks on parameter (filename or color)
      */
@@ -1194,7 +1194,9 @@ class SwissPaymentSlip
     }
 
     /**
-     * @return array
+     * Get the attributes of the left account element
+     *
+     * @return array The attributes of the left account element.
      */
     public function getAccountLeftAttr()
     {
@@ -1202,7 +1204,9 @@ class SwissPaymentSlip
     }
 
     /**
-     * @return array
+     * Get the attributes of the right account element
+     *
+     * @return array The attributes of the right account element.
      */
     public function getAccountRightAttr()
     {
@@ -1210,7 +1214,9 @@ class SwissPaymentSlip
     }
 
     /**
-     * @return array
+     * Get the attributes of the right cents amount element
+     *
+     * @return array The attributes of the right cents amount element.
      */
     public function getAmountCentsRightAttr()
     {
@@ -1218,7 +1224,9 @@ class SwissPaymentSlip
     }
 
     /**
-     * @return array
+     * Get the attributes of the left cents amount element
+     *
+     * @return array The attributes of the left cents amount element.
      */
     public function getAmountCentsLeftAttr()
     {
@@ -1226,7 +1234,9 @@ class SwissPaymentSlip
     }
 
     /**
-     * @return array
+     * Get the attributes of the left francs amount element
+     *
+     * @return array The attributes of the left francs amount element.
      */
     public function getAmountFrancsLeftAttr()
     {
@@ -1234,7 +1244,9 @@ class SwissPaymentSlip
     }
 
     /**
-     * @return array
+     * Get the attributes of the right francs amount element
+     *
+     * @return array The attributes of the right francs amount element.
      */
     public function getAmountFrancsRightAttr()
     {
@@ -1242,7 +1254,9 @@ class SwissPaymentSlip
     }
 
     /**
-     * @return array
+     * Get the attributes of the left bank element
+     *
+     * @return array The attributes of the left bank element.
      */
     public function getBankLeftAttr()
     {
@@ -1250,7 +1264,9 @@ class SwissPaymentSlip
     }
 
     /**
-     * @return array
+     * Get the attributes of the right bank element
+     *
+     * @return array The attributes of the right bank element.
      */
     public function getBankRightAttr()
     {
@@ -1258,7 +1274,9 @@ class SwissPaymentSlip
     }
 
     /**
-     * @return array
+     * Get the attributes of the code line element
+     *
+     * @return array The attributes of the code line element.
      */
     public function getCodeLineAttr()
     {
@@ -1266,7 +1284,9 @@ class SwissPaymentSlip
     }
 
     /**
-     * @return array
+     * Get the attributes of the right recipient element
+     *
+     * @return array The attributes of the right recipient element.
      */
     public function getRecipientRightAttr()
     {
@@ -1274,7 +1294,9 @@ class SwissPaymentSlip
     }
 
     /**
-     * @return array
+     * Get the attributes of the left recipient element
+     *
+     * @return array The attributes of the left recipient element.
      */
     public function getRecipientLeftAttr()
     {
@@ -1282,7 +1304,9 @@ class SwissPaymentSlip
     }
 
     /**
-     * @return array
+     * Get the attributes of the right payer element
+     *
+     * @return array The attributes of the right payer element.
      */
     public function getPayerRightAttr()
     {
@@ -1290,7 +1314,9 @@ class SwissPaymentSlip
     }
 
     /**
-     * @return array
+     * Get the attributes of the left payer element
+     *
+     * @return array The attributes of the left payer element.
      */
     public function getPayerLeftAttr()
     {
@@ -1298,7 +1324,9 @@ class SwissPaymentSlip
     }
 
     /**
-     * @return array
+     * Get the attributes of the left reference number element
+     *
+     * @return array The attributes of the left reference number element.
      */
     public function getReferenceNumberLeftAttr()
     {
@@ -1306,7 +1334,9 @@ class SwissPaymentSlip
     }
 
     /**
-     * @return array
+     * Get the attributes of the right reference umber element
+     *
+     * @return array The attributes of the right reference umber element.
      */
     public function getReferenceNumberRightAttr()
     {
@@ -1326,7 +1356,9 @@ class SwissPaymentSlip
     }
 
     /**
-     * @return int
+     * Get the starting X position of the slip
+     *
+     * @return int|float The starting X position of the slip.
      */
     public function getSlipPosX()
     {
@@ -1334,7 +1366,9 @@ class SwissPaymentSlip
     }
 
     /**
-     * @return int
+     * Get the starting Y position of the slip
+     *
+     * @return int|float The starting Y position of the slip.
      */
     public function getSlipPosY()
     {
@@ -1342,7 +1376,9 @@ class SwissPaymentSlip
     }
 
     /**
-     * @return int
+     * Get the width of the slip
+     *
+     * @return int|float The width of the slip.
      */
     public function getSlipWidth()
     {
@@ -1350,7 +1386,9 @@ class SwissPaymentSlip
     }
 
     /**
-     * @return int
+     * Get the height of the slip
+     *
+     * @return int|float The height of the slip.
      */
     public function getSlipHeight()
     {
@@ -1360,8 +1398,8 @@ class SwissPaymentSlip
     /**
      * Set whether or not to display the account
      *
-     * @param bool $displayAccount True if yes, false if no
-     * @return bool True if successful, else false
+     * @param bool $displayAccount True if yes, false if no.
+     * @return bool True if successful, else false..
      */
     public function setDisplayAccount($displayAccount = true)
     {
@@ -1375,7 +1413,7 @@ class SwissPaymentSlip
     /**
      * Get whether or not to display the account
      *
-     * @return bool True if yes, false if no
+     * @return bool True if yes, false if no.
      */
     public function getDisplayAccount()
     {
@@ -1386,7 +1424,7 @@ class SwissPaymentSlip
      * Set whether or not to display the amount
      *
      * @param bool $displayAmount True if yes, false if no
-     * @return bool True if successful, else false
+     * @return bool True if successful, else false.
      */
     public function setDisplayAmount($displayAmount = true)
     {
@@ -1400,7 +1438,7 @@ class SwissPaymentSlip
     /**
      * Get whether or not to display the amount
      *
-     * @return bool True if yes, false if no
+     * @return bool True if yes, false if no.
      */
     public function getDisplayAmount()
     {
@@ -1411,7 +1449,7 @@ class SwissPaymentSlip
      * Set whether or not to display the bank
      *
      * @param bool $displayBank True if yes, false if no
-     * @return bool True if successful, else false
+     * @return bool True if successful, else false.
      */
     public function setDisplayBank($displayBank = true)
     {
@@ -1425,7 +1463,7 @@ class SwissPaymentSlip
     /**
      * Get whether or not to display the bank
      *
-     * @return bool True if yes, false if no
+     * @return bool True if yes, false if no.
      */
     public function getDisplayBank()
     {
@@ -1436,7 +1474,7 @@ class SwissPaymentSlip
      * Set whether or not to display the payer
      *
      * @param bool $displayPayer True if yes, false if no
-     * @return bool True if successful, else false
+     * @return bool True if successful, else false.
      */
     public function setDisplayPayer($displayPayer = true)
     {
@@ -1450,7 +1488,7 @@ class SwissPaymentSlip
     /**
      * Get whether or not to display the payer
      *
-     * @return bool True if yes, false if no
+     * @return bool True if yes, false if no.
      */
     public function getDisplayPayer()
     {
@@ -1461,7 +1499,7 @@ class SwissPaymentSlip
      * Set whether or not to display the recipient
      *
      * @param bool $displayRecipient True if yes, false if no
-     * @return bool True if successful, else false
+     * @return bool True if successful, else false.
      */
     public function setDisplayRecipient($displayRecipient = true)
     {
@@ -1475,7 +1513,7 @@ class SwissPaymentSlip
     /**
      * Get whether or not to display the recipient
      *
-     * @return bool True if yes, false if no
+     * @return bool True if yes, false if no.
      */
     public function getDisplayRecipient()
     {
@@ -1486,7 +1524,7 @@ class SwissPaymentSlip
      * Set whether or not to display the reference number
      *
      * @param bool $displayReferenceNr True if yes, false if no
-     * @return bool True if successful, else false
+     * @return bool True if successful, else false.
      */
     public function setDisplayReferenceNr($displayReferenceNr = true)
     {
@@ -1500,7 +1538,7 @@ class SwissPaymentSlip
     /**
      * Get whether or not to display the reference number
      *
-     * @return bool True if yes, false if no
+     * @return bool True if yes, false if no.
      */
     public function getDisplayReferenceNr()
     {
@@ -1511,7 +1549,7 @@ class SwissPaymentSlip
      * Set whether or not to display the IBAN
      *
      * @param bool $displayIban True if yes, false if no
-     * @return bool True if successful, else false
+     * @return bool True if successful, else false.
      */
     public function setDisplayIban($displayIban = true)
     {
@@ -1525,7 +1563,7 @@ class SwissPaymentSlip
     /**
      * Get whether or not to display the IBAN
      *
-     * @return bool True if yes, false if no
+     * @return bool True if yes, false if no.
      */
     public function getDisplayIban()
     {
@@ -1536,7 +1574,7 @@ class SwissPaymentSlip
      * Set whether or not to display the payment reason lines
      *
      * @param bool $displayPaymentReason True if yes, false if no
-     * @return bool True if successful, else false
+     * @return bool True if successful, else false.
      */
     public function setDisplayPaymentReason($displayPaymentReason = true)
     {
@@ -1550,7 +1588,7 @@ class SwissPaymentSlip
     /**
      * Get whether or not to display the payment reason lines
      *
-     * @return bool True if yes, false if no
+     * @return bool True if yes, false if no.
      */
     public function getDisplayPaymentReason()
     {
@@ -1561,7 +1599,7 @@ class SwissPaymentSlip
      * Set whether or not to display the code line at the bottom
      *
      * @param bool $displayCodeLine True if yes, false if no
-     * @return bool True if successful, else false
+     * @return bool True if successful, else false.
      */
     public function setDisplayCodeLine($displayCodeLine = true)
     {
@@ -1575,7 +1613,7 @@ class SwissPaymentSlip
     /**
      * Get whether or not to display the code line at the bottom
      *
-     * @return bool True if yes, false if no
+     * @return bool True if yes, false if no.
      */
     public function getDisplayCodeLine()
     {
@@ -1583,9 +1621,11 @@ class SwissPaymentSlip
     }
 
     /**
-     * @param bool $formatted
-     * @param bool $fillZeroes
-     * @return array
+     * Get all elements of the slip
+     *
+     * @param bool $formatted Whether to return the reference number formatted or not.
+     * @param bool $fillZeroes Whether to return the reference number filled with zeros or not.
+     * @return array All elements with their lines and attributes.
      */
     public function getAllElements($formatted = true, $fillZeroes = true)
     {
@@ -1603,7 +1643,7 @@ class SwissPaymentSlip
 
         // Place right bank lines
         if ($this->getDisplayBank()) {
-         // reuse lines from above
+               // Reuse lines from above
             $elements['bankRight'] = array('lines' => $lines,
             'attributes' => $this->getBankRightAttr()
             );
@@ -1621,7 +1661,7 @@ class SwissPaymentSlip
 
         // Place right recipient lines
         if ($this->getDisplayRecipient()) {
-         // reuse lines from above
+            // Reuse lines from above
             $elements['recipientRight'] = array('lines' => $lines,
             'attributes' => $this->getRecipientRightAttr()
             );
@@ -1637,7 +1677,7 @@ class SwissPaymentSlip
 
         // Place right account number
         if ($this->getDisplayAccount()) {
-         // reuse lines from above
+            // Reuse lines from above
             $elements['accountRight'] = array('lines' => $lines,
             'attributes' => $this->getAccountRightAttr()
             );
@@ -1653,7 +1693,7 @@ class SwissPaymentSlip
 
         // Place right amount in francs
         if ($this->getDisplayAmount()) {
-         // reuse lines from above
+            // Reuse lines from above
             $elements['amountFrancsRight'] = array('lines' => $lines,
             'attributes' => $this->getAmountFrancsRightAttr()
             );
@@ -1669,7 +1709,7 @@ class SwissPaymentSlip
 
         // Place right amount in cents
         if ($this->getDisplayAmount()) {
-         // reuse lines from above
+            // Reuse lines from above
             $elements['amountCentsRight'] = array('lines' => $lines,
             'attributes' => $this->getAmountCentsRightAttr()
             );
@@ -1685,7 +1725,7 @@ class SwissPaymentSlip
 
         // Place right reference number
         if ($this->getDisplayReferenceNr()) {
-         // reuse lines from above
+            // Reuse lines from above
             $elements['referenceNumberRight'] = array('lines' => $lines,
             'attributes' => $this->getReferenceNumberRightAttr()
             );
@@ -1703,7 +1743,7 @@ class SwissPaymentSlip
 
        // Place right payer lines
         if ($this->getDisplayPayer()) {
-         // reuse lines from above
+            // Reuse lines from above
             $elements['payerRight'] = array('lines' => $lines,
             'attributes' => $this->getPayerRightAttr()
             );
