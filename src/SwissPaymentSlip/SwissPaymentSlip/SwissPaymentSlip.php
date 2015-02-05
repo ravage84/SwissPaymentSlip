@@ -69,7 +69,7 @@ class SwissPaymentSlip
     /**
      * Background of the slip
      *
-     * Can be either transparent, a color or image
+     * Can be either 'transparent', a color or an image
      *
      * @var null|string
      */
@@ -448,7 +448,9 @@ class SwissPaymentSlip
     }
 
     /**
+     * Set the background of the slip
      *
+     * Can be either 'transparent', a color or an image
      *
      * @param string $slipBackground
      * @return bool Always true
@@ -1312,9 +1314,11 @@ class SwissPaymentSlip
     }
 
     /**
-     * Get the background image or color
+     * Get the background of the slip
      *
-     * @return null|string The background image.
+     * Can be either 'transparent', a color or an image
+     *
+     * @return null|string The slip background.
      */
     public function getSlipBackground()
     {
