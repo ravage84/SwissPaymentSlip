@@ -28,6 +28,7 @@ namespace SwissPaymentSlip\SwissPaymentSlip;
  * @todo Implement fluent interface
  * @todo Consider sub classing the orange and red payment slip
  * @todo Rename to Slip
+ * @todo Consider extracting the attributes as separate class
  */
 class SwissPaymentSlip
 {
