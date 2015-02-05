@@ -1543,7 +1543,7 @@ class SwissPaymentSlip
         $paymentSlipData = $this->paymentSlipData;
 
         $elements = array();
-     // Place left bank lines
+        // Place left bank lines
         if ($this->getDisplayBank()) {
             $lines = array($paymentSlipData->getBankName(),
             $paymentSlipData->getBankCity());
@@ -1552,7 +1552,7 @@ class SwissPaymentSlip
             );
         }
 
-     // Place right bank lines
+        // Place right bank lines
         if ($this->getDisplayBank()) {
          // reuse lines from above
             $elements['bankRight'] = array('lines' => $lines,
@@ -1560,7 +1560,7 @@ class SwissPaymentSlip
             );
         }
 
-     // Place left recipient lines
+        // Place left recipient lines
         if ($this->getDisplayRecipient()) {
             $lines = array($paymentSlipData->getRecipientLine1(),
             $paymentSlipData->getRecipientLine2(), $paymentSlipData->getRecipientLine3(),
@@ -1570,7 +1570,7 @@ class SwissPaymentSlip
             );
         }
 
-     // Place right recipient lines
+        // Place right recipient lines
         if ($this->getDisplayRecipient()) {
          // reuse lines from above
             $elements['recipientRight'] = array('lines' => $lines,
@@ -1578,7 +1578,7 @@ class SwissPaymentSlip
             );
         }
 
-     // Place left account number
+        // Place left account number
         if ($this->getDisplayAccount()) {
             $lines = array($paymentSlipData->getAccountNumber());
             $elements['accountLeft'] = array('lines' => $lines,
@@ -1586,7 +1586,7 @@ class SwissPaymentSlip
             );
         }
 
-     // Place right account number
+        // Place right account number
         if ($this->getDisplayAccount()) {
          // reuse lines from above
             $elements['accountRight'] = array('lines' => $lines,
@@ -1594,7 +1594,7 @@ class SwissPaymentSlip
             );
         }
 
-     // Place left amount in francs
+        // Place left amount in francs
         if ($this->getDisplayAmount()) {
             $lines = array($this->paymentSlipData->getAmountFrancs());
             $elements['amountFrancsLeft'] = array('lines' => $lines,
@@ -1602,7 +1602,7 @@ class SwissPaymentSlip
             );
         }
 
-     // Place right amount in francs
+        // Place right amount in francs
         if ($this->getDisplayAmount()) {
          // reuse lines from above
             $elements['amountFrancsRight'] = array('lines' => $lines,
@@ -1610,7 +1610,7 @@ class SwissPaymentSlip
             );
         }
 
-     // Place left amount in cents
+        // Place left amount in cents
         if ($this->getDisplayAmount()) {
             $lines = array($this->paymentSlipData->getAmountCents());
             $elements['amountCentsLeft'] = array('lines' => $lines,
@@ -1618,7 +1618,7 @@ class SwissPaymentSlip
             );
         }
 
-     // Place right amount in cents
+        // Place right amount in cents
         if ($this->getDisplayAmount()) {
          // reuse lines from above
             $elements['amountCentsRight'] = array('lines' => $lines,
@@ -1626,7 +1626,7 @@ class SwissPaymentSlip
             );
         }
 
-     // Place left reference number
+        // Place left reference number
         if ($this->getDisplayReferenceNr()) {
             $lines = array($this->paymentSlipData->getCompleteReferenceNumber($formatted, $fillZeroes));
             $elements['referenceNumberLeft'] = array('lines' => $lines,
@@ -1634,7 +1634,7 @@ class SwissPaymentSlip
             );
         }
 
-     // Place right reference number
+        // Place right reference number
         if ($this->getDisplayReferenceNr()) {
          // reuse lines from above
             $elements['referenceNumberRight'] = array('lines' => $lines,
@@ -1642,7 +1642,7 @@ class SwissPaymentSlip
             );
         }
 
-     // Place left payer lines
+       // Place left payer lines
         if ($this->getDisplayPayer()) {
             $lines = array($paymentSlipData->getPayerLine1(),
             $paymentSlipData->getPayerLine2(), $paymentSlipData->getPayerLine3(),
@@ -1652,7 +1652,7 @@ class SwissPaymentSlip
             );
         }
 
-     // Place right payer lines
+       // Place right payer lines
         if ($this->getDisplayPayer()) {
          // reuse lines from above
             $elements['payerRight'] = array('lines' => $lines,
@@ -1660,7 +1660,7 @@ class SwissPaymentSlip
             );
         }
 
-     // Place code line
+        // Place code line
         if ($this->getDisplayCodeLine()) {
             $lines = array($this->paymentSlipData->getCodeLine($fillZeroes));
             $elements['codeLine'] = array('lines' => $lines,
