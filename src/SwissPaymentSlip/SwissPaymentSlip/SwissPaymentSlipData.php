@@ -334,6 +334,8 @@ class SwissPaymentSlipData
 
     /**
      * Set the default values for the orange payment slip
+     *
+     * @return void
      */
     protected function setOrangeDefaults()
     {
@@ -350,6 +352,8 @@ class SwissPaymentSlipData
 
     /**
      * Set the default values for the red payment slip
+     *
+     * @return void
      */
     protected function setRedDefaults()
     {
@@ -380,6 +384,7 @@ class SwissPaymentSlipData
      * XXXes out all fields to prevent people using the payment slip.
      *
      * @param boolean $notForPayment True if not for payment, else false
+     * @return void
      */
     public function setNotForPayment($notForPayment = true)
     {

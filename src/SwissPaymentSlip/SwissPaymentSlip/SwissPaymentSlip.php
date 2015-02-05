@@ -39,24 +39,24 @@ class SwissPaymentSlip
     /**
      * Starting X position of the slip
      *
-     * @var int Starting X position of the slip in mm
+     * @var int|float Starting X position of the slip in mm
      */
     protected $slipPosX = 0;
 
     /**
      * Starting Y position of the slip
      *
-     * @var int Starting Y position of the slip in mm
+     * @var int|float Starting Y position of the slip in mm
      */
     protected $slipPosY = 191;
 
     /**
-     * @var int
+     * @var int|float
      */
     protected $slipHeight = 106; // default height of an orange slip
 
     /**
-     * @var int
+     * @var int|float
      */
     protected $slipWidth = 210; // default width of an orange slip
 
@@ -65,7 +65,7 @@ class SwissPaymentSlip
      *
      * Can be either transparent, a color or image
      *
-     * @var null
+     * @var null|string
      */
     protected $slipBackground = null;
 
@@ -315,8 +315,8 @@ class SwissPaymentSlip
     /**
      * Set slip X & Y position
      *
-     * @param $slipPosX
-     * @param $slipPosY
+     * @param float $slipPosX
+     * @param float $slipPosY
      * @return bool True if successful, else false
      */
     public function setSlipPosition($slipPosX, $slipPosY)
@@ -331,7 +331,7 @@ class SwissPaymentSlip
     /**
      *
      *
-     * @param $slipPosX
+     * @param float $slipPosX
      * @return bool
      */
     protected function setSlipPosX($slipPosX)
@@ -346,7 +346,7 @@ class SwissPaymentSlip
     /**
      *
      *
-     * @param $slipPosY
+     * @param float $slipPosY
      * @return bool
      */
     protected function setSlipPosY($slipPosY)
@@ -361,8 +361,8 @@ class SwissPaymentSlip
     /**
      * Set slip height & width
      *
-     * @param $slipWidth
-     * @param $slipHeight
+     * @param float $slipWidth
+     * @param float $slipHeight
      * @return bool True if successful, else false
      */
     public function setSlipSize($slipWidth, $slipHeight)
@@ -377,7 +377,7 @@ class SwissPaymentSlip
     /**
      *
      *
-     * @param $slipWidth
+     * @param float $slipWidth
      * @return bool
      */
     protected function setSlipWidth($slipWidth)
@@ -392,7 +392,7 @@ class SwissPaymentSlip
     /**
      *
      *
-     * @param $slipHeight
+     * @param float $slipHeight
      * @return bool
      */
     protected function setSlipHeight($slipHeight)

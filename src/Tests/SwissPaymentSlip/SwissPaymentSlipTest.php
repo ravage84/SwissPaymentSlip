@@ -50,6 +50,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
         $slipData = new SwissPaymentSlipData();
         $this->paymentSlip = new SwissPaymentSlip($slipData);
 
+        $attributes = array();
         $attributes['PosX'] = 0;
         $attributes['PosY'] = 0;
         $attributes['Width'] = 0;
@@ -63,7 +64,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 
         $this->defaultAttributes = $attributes;
 
-
+        $attributes = array();
         $attributes['PosX'] = 123;
         $attributes['PosY'] = 456;
         $attributes['Width'] = 987;
@@ -151,12 +152,12 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(200, $this->paymentSlip->getSlipPosX());
         $this->assertEquals(100, $this->paymentSlip->getSlipPosY());
 
-        $this->assertFalse($this->paymentSlip->setSlipPosition('A', 100));
+        $this->assertFalse($this->paymentSlip->setSlipPosition('A', 150));
         $this->assertEquals(200, $this->paymentSlip->getSlipPosX());
         $this->assertEquals(100, $this->paymentSlip->getSlipPosY());
 
-        $this->assertFalse($this->paymentSlip->setSlipPosition(200, 'B'));
-        $this->assertEquals(200, $this->paymentSlip->getSlipPosX());
+        $this->assertFalse($this->paymentSlip->setSlipPosition(225, 'B'));
+        $this->assertEquals(225, $this->paymentSlip->getSlipPosX());
         $this->assertEquals(100, $this->paymentSlip->getSlipPosY());
     }
 
@@ -171,17 +172,17 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetSlipSize()
     {
-        $this->assertTrue($this->paymentSlip->setSlipSize(200, 100));
-        $this->assertEquals(200, $this->paymentSlip->getSlipWidth());
-        $this->assertEquals(100, $this->paymentSlip->getSlipHeight());
+        $this->assertTrue($this->paymentSlip->setSlipSize(250, 150));
+        $this->assertEquals(250, $this->paymentSlip->getSlipWidth());
+        $this->assertEquals(150, $this->paymentSlip->getSlipHeight());
 
-        $this->assertFalse($this->paymentSlip->setSlipSize('A', 100));
-        $this->assertEquals(200, $this->paymentSlip->getSlipWidth());
-        $this->assertEquals(100, $this->paymentSlip->getSlipHeight());
+        $this->assertFalse($this->paymentSlip->setSlipSize('A', 175));
+        $this->assertEquals(250, $this->paymentSlip->getSlipWidth());
+        $this->assertEquals(175, $this->paymentSlip->getSlipHeight());
 
-        $this->assertFalse($this->paymentSlip->setSlipSize(200, 'B'));
-        $this->assertEquals(200, $this->paymentSlip->getSlipWidth());
-        $this->assertEquals(100, $this->paymentSlip->getSlipHeight());
+        $this->assertFalse($this->paymentSlip->setSlipSize(225, 'B'));
+        $this->assertEquals(250, $this->paymentSlip->getSlipWidth());
+        $this->assertEquals(175, $this->paymentSlip->getSlipHeight());
     }
 
     /**
