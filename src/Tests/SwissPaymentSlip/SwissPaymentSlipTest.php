@@ -32,18 +32,21 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     protected $paymentSlip;
 
     /**
+     * The default attributes to test against
+     *
      * @var array
      */
     protected $defaultAttributes;
 
     /**
+     * The set attributes to test against
+     *
      * @var array
      */
     protected $setAttributes;
 
     /**
-     * Sets up the fixture, for example, opens a network connection.
-     * This method is called before a test is executed.
+     * Setup a slip to test and some default and set attributes to test
      *
      * @return void
      */
@@ -79,27 +82,6 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
         $attributes['TextAlign'] = 'C';
 
         $this->setAttributes = $attributes;
-    }
-
-    /**
-     *
-     * @return void
-     * @covers ::__construct
-     */
-    public function testIsInstanceOf()
-    {
-        $this->assertInstanceOf(
-            'SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip',
-            new SwissPaymentSlip(new SwissPaymentSlipData())
-        );
-        $this->assertInstanceOf(
-            'SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip',
-            new SwissPaymentSlip(new SwissPaymentSlipData(), 100)
-        );
-        $this->assertInstanceOf(
-            'SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip',
-            new SwissPaymentSlip(new SwissPaymentSlipData(), 100, 100)
-        );
     }
 
     /**
