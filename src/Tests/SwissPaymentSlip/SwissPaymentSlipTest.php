@@ -25,6 +25,8 @@ require __DIR__.'/../../../vendor/autoload.php';
 class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
 {
     /**
+     * The object under test
+     *
      * @var SwissPaymentSlip
      */
     protected $paymentSlip;

@@ -24,6 +24,8 @@ require __DIR__.'/../../../vendor/autoload.php';
 class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
 {
     /**
+     * The object under test
+     *
      * @var SwissPaymentSlipData
      */
     protected $slipData;
@@ -98,8 +100,10 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setRedDefaults method when setting up an unspecified slip (defaults to orange)
      *
      * @return void
+     * @covers ::setRedDefaults
      * @covers ::setType
      * @covers ::getType
      */
@@ -120,8 +124,10 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setRedDefaults method when setting up an orange slip
      *
      * @return void
+     * @covers ::setRedDefaults
      * @covers ::setType
      * @covers ::getType
      */
@@ -142,11 +148,12 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setRedDefaults method when setting up a red slip
      *
      * @return void
+     * @covers ::setRedDefaults
      * @covers ::setType
      * @covers ::getType
-     * @covers ::setRedDefaults
      */
     public function testSetTypeRedType()
     {
