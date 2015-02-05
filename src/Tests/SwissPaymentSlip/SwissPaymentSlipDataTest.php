@@ -59,23 +59,6 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
             'SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData',
             new SwissPaymentSlipData('red')
         );
-
-        $this->assertInstanceOf(
-            'SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData',
-            new SwissPaymentSlipData('orange', true)
-        );
-        $this->assertInstanceOf(
-            'SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData',
-            new SwissPaymentSlipData('orange', false)
-        );
-        $this->assertInstanceOf(
-            'SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData',
-            new SwissPaymentSlipData('red', true)
-        );
-        $this->assertInstanceOf(
-            'SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData',
-            new SwissPaymentSlipData('red', false)
-        );
     }
 
     /**
