@@ -24,7 +24,7 @@ use InvalidArgumentException;
  * all slip fields are needed in an application.
  *
  * Glossary:
- * SwissPaymentSlip = Einzahlungsschein mit Referenznummer
+ * ESR = Einzahlungsschein mit Referenznummer
  *         Payment slip with reference number
  *         Summary term for orange payment slips in Switzerland
  * BESR = Banken-Einzahlungsschein mit Referenznummer
@@ -33,11 +33,12 @@ use InvalidArgumentException;
  * VESR = Verfahren für Einzahlungsschein mit Referenznummer
  *         Procedure for payment slip with reference number
  *         Orange payment slip for paying into a post cheque account (in contrast to a banking account with a BESR)
- * (B|V)SwissPaymentSlip+ = Einzahlungsschein mit Referenznummer ohne Betragsangabe
+ * (B|V)ESR+ = Einzahlungsschein mit Referenznummer ohne Betragsangabe
  *         Payment slip with reference number without amount specification
  *         An payment slip can be issued without a predefined payment amount
  * ES = Einzahlungsschein
  *         Payment slip
+ *         Summary term for all payment slips.
  *         Red payment slip for paying into a post cheque or bank account without reference number but message box
  *
  * @link https://www.postfinance.ch/content/dam/pf/de/doc/consult/manual/dlserv/inpayslip_isr_man_de.pdf German manual
@@ -70,7 +71,7 @@ class SwissPaymentSlipData
     /**
      * Consists the array table for calculating the check digit by modulo 10
      *
-     * @var array Table for calculating the check digit by modulo 10
+     * @var array Table for calculating the check digit by modulo 10.
      */
     private $moduloTable = array(0, 9, 4, 6, 8, 2, 7, 1, 3, 5);
 
@@ -78,72 +79,72 @@ class SwissPaymentSlipData
      * Determines the payment slip type.
      * Either orange or red
      *
-     * @var string Orange or red payment slip
+     * @var string Orange or red payment slip.
      */
     protected $type = self::ORANGE;
 
     /**
      * Determines if the payment slip must not be used for payment (XXXed out)
      *
-     * @var bool Normally false, true if not for payment
+     * @var bool Normally false, true if not for payment.
      */
     protected $notForPayment = false;
 
     /**
      * Determines if the payment slip has a recipient bank. Can be disabled for pre-printed payment slips
      *
-     * @var bool True if yes, false if no
+     * @var bool True if yes, false if no.
      */
     protected $withBank = true;
 
     /**
      * Determines if the payment slip has a account number. Can be disabled for pre-printed payment slips
      *
-     * @var bool True if yes, false if no
+     * @var bool True if yes, false if no.
      */
     protected $withAccountNumber = true;
 
     /**
      * Determines if the payment slip has a recipient. Can be disabled for pre-printed payment slips
      *
-     * @var bool True if yes, false if no
+     * @var bool True if yes, false if no.
      */
     protected $withRecipient = true;
 
     /**
-     * Determines if it's an SwissPaymentSlip or an SwissPaymentSlip+
+     * Determines if it's an ESR or an ESR+
      *
-     * @var bool True for SwissPaymentSlip, false for SwissPaymentSlip+
+     * @var bool True for ESR, false for ESR+.
      */
     protected $withAmount = true;
 
     /**
      * Determines if the payment slip has a reference number. Can be disabled for pre-printed payment slips
      *
-     * @var bool True if yes, false if no
+     * @var bool True if yes, false if no.
      */
     protected $withReferenceNumber = true;
 
     /**
-     * Determines if the payment slip's reference number should contain the banking customer id.
+     * Determines if the payment slip's reference number should contain the banking customer ID.
      * Can be disabled for recipients who don't need this
      *
-     * @var bool True if yes, false if no
+     * @var bool True if yes, false if no.
      */
     protected $withBankingCustomerId = true;
 
     /**
      * Determines if the payment slip has a payer. Can be disabled for pre-printed payment slips
      *
-     * @var bool True if yes, false if no
+     * @var bool True if yes, false if no.
      */
     protected $withPayer = true;
 
     /**
-     * Determines if the payment slip has a IBAN specified. Can be disabled for pre-printed payment slips
+     * Determines if the payment slip has an IBAN specified. Can be disabled for pre-printed payment slips
      * Only possible for ES, but not for SwissPaymentSlip
      *
-     * @var bool True if yes, false if no
+     * @var bool True if yes, false if no.
      */
     protected $withIban = false;
 
@@ -151,140 +152,140 @@ class SwissPaymentSlipData
      * Determines if the payment slip has a payment reason. Can be disabled for pre-printed payment slips
      * Only possible for ES, but not for SwissPaymentSlip
      *
-     * @var bool True if yes, false if no
+     * @var bool True if yes, false if no.
      */
     protected $withPaymentReason = true;
 
     /**
      * The name of the bank
      *
-     * @var string The name of the bank
+     * @var string The name of the bank.
      */
     protected $bankName = '';
 
     /**
      * The postal code and city of the bank
      *
-     * @var string The postal code and city of the bank
+     * @var string The postal code and city of the bank.
      */
     protected $bankCity = '';
 
     /**
      * The bank or post cheque account where the money will be transferred to
      *
-     * @var string The bank or post cheque account
+     * @var string The bank or post cheque account.
      */
     protected $accountNumber = '';
 
     /**
      * The first line of the recipient, e.g. "My Company Ltd."
      *
-     * @var string The first line of the recipient
+     * @var string The first line of the recipient.
      */
     protected $recipientLine1 = '';
 
     /**
      * The second line of the recipient, e.g. "Examplestreet 61"
      *
-     * @var string The second line of the recipient
+     * @var string The second line of the recipient.
      */
     protected $recipientLine2 = '';
 
     /**
      * The third line of the recipient, e.g. "8000 Zürich"
      *
-     * @var string The third line of the recipient
+     * @var string The third line of the recipient.
      */
     protected $recipientLine3 = '';
 
     /**
      * The fourth line of the recipient, if needed
      *
-     * @var string The fourth line of the recipient
+     * @var string The fourth line of the recipient.
      */
     protected $recipientLine4 = '';
 
     /**
-     * The amount to be payed into. Can be disabled with withAmount = false for SwissPaymentSlip+ slips
+     * The amount to be payed into. Can be disabled with withAmount = false for ESR+ slips
      *
-     * @var float The amount to be payed into
+     * @var float The amount to be payed into.
      */
     protected $amount = 0.0;
 
     /**
-     * The reference number, without banking customer id and check digit
+     * The reference number, without banking customer ID and check digit
      *
-     * @var string The reference number
+     * @var string The reference number.
      */
     protected $referenceNumber = '';
 
     /**
-     * The banking customer id, which will be prepended to the reference number
+     * The banking customer ID, which will be prepended to the reference number
      *
-     * @var string The banking customer id
+     * @var string The banking customer ID.
      */
     protected $bankingCustomerId = '';
 
     /**
      * The first line of the payer, e.g. "Hans Mustermann"
      *
-     * @var string The first line of the payer
+     * @var string The first line of the payer.
      */
     protected $payerLine1 = '';
 
     /**
      * The second line of the payer, e.g. "Main Street 11"
      *
-     * @var string The second line of the payer
+     * @var string The second line of the payer.
      */
     protected $payerLine2 = '';
 
     /**
      * The third line of the payer, e.g. "4052 Basel"
      *
-     * @var string The third line of the payer
+     * @var string The third line of the payer.
      */
     protected $payerLine3 = '';
 
     /**
      * The fourth line of the payer, if needed
      *
-     * @var string The fourth line of the payer
+     * @var string The fourth line of the payer.
      */
     protected $payerLine4 = '';
 
     /**
      * The IBAN of the recipient of a ES. Not available on a SwissPaymentSlip
      *
-     * @var string The IBAN of the recipient
+     * @var string The IBAN of the recipient.
      */
     protected $iban = '';
 
     /**
      * The first line of the payment reason of a ES. Not available on a SwissPaymentSlip
      *
-     * @var string The first line of the payment reason
+     * @var string The first line of the payment reason.
      */
     protected $paymentReasonLine1 = '';
 
     /**
      * The second line of the payment reason of a ES. Not available on a SwissPaymentSlip
      *
-     * @var string The second line of the payment reason
+     * @var string The second line of the payment reason.
      */
     protected $paymentReasonLine2 = '';
 
     /**
      * The third line of the payment reason of a ES. Not available on a SwissPaymentSlip
      *
-     * @var string The third line of the payment reason
+     * @var string The third line of the payment reason.
      */
     protected $paymentReasonLine3 = '';
 
     /**
      * The fourth line of the payment reason of a ES. Not available on a SwissPaymentSlip
      *
-     * @var string The fourth line of the payment reason
+     * @var string The fourth line of the payment reason.
      */
     protected $paymentReasonLine4 = '';
 
@@ -294,7 +295,7 @@ class SwissPaymentSlipData
      * By default it creates an empty orange payment slip.
      * Can be changed to a red one by supplying red as parameter.
      *
-     * @param string $type The slip type, either orange or red
+     * @param string $type The slip type, either orange or red.
      */
     public function __construct($type = self::ORANGE)
     {
@@ -304,10 +305,10 @@ class SwissPaymentSlipData
     /**
      * Set payment slip type. Resets settings and data if changing the type or being forced to
      *
-     * @param string $type The slip type
-     * @param bool $forceReset Force a data reset according to the given type
-     * @throws \InvalidArgumentException
-     * @return bool True if successful
+     * @param string $type The slip type.
+     * @param bool $forceReset Force a data reset according to the given type.
+     * @throws \InvalidArgumentException If one of the parameters is invalid.
+     * @return bool True if successful.
      */
     public function setType($type = self::ORANGE, $forceReset = false)
     {
@@ -319,7 +320,7 @@ class SwissPaymentSlipData
         }
         $type = strtolower($type);
         if ($type !== self::ORANGE && $type !== self::RED) {
-            throw new InvalidArgumentException('Invalid type parameter ' . $type . '!');
+            throw new InvalidArgumentException('Invalid type parameter "' . $type . '"!');
         }
 
         if ($this->type != $type || $forceReset) {
@@ -373,7 +374,7 @@ class SwissPaymentSlipData
     /**
      * Get payment slip type
      *
-     * @return string The slip type
+     * @return string The slip type.
      */
     public function getType()
     {
@@ -383,7 +384,7 @@ class SwissPaymentSlipData
     /**
      * Determines if it is a orange payment slip
      *
-     * @return bool True if it is a orange payment slip
+     * @return bool True if it is a orange payment slip.
      */
     public function isOrangeSlip()
     {
@@ -393,7 +394,7 @@ class SwissPaymentSlipData
     /**
      * Determines if it is a red payment slip
      *
-     * @return bool True if it is a red payment slip
+     * @return bool True if it is a red payment slip.
      */
     public function isRedSlip()
     {
@@ -405,7 +406,7 @@ class SwissPaymentSlipData
      *
      * XXXes out all fields to prevent people using the payment slip.
      *
-     * @param boolean $notForPayment True if not for payment, else false
+     * @param boolean $notForPayment True if not for payment, else false.
      * @return void
      */
     public function setNotForPayment($notForPayment = true)
@@ -427,7 +428,7 @@ class SwissPaymentSlipData
     /**
      * Get whether this payment slip must not be used for payment
      *
-     * @return bool
+     * @return bool True if yes, else false.
      */
     public function getNotForPayment()
     {
@@ -438,7 +439,7 @@ class SwissPaymentSlipData
      * Set if payment slip has a bank specified
      *
      * @param bool $withBank True for yes, false for no
-     * @return bool True if successful, else false
+     * @return bool True if successful, else false.
      */
     public function setWithBank($withBank = true)
     {
@@ -457,7 +458,7 @@ class SwissPaymentSlipData
     /**
      * Get if payment slip has recipient specified
      *
-     * @return bool True if payment slip has the recipient specified, else false
+     * @return bool True if payment slip has the recipient specified, else false.
      */
     public function getWithBank()
     {
@@ -467,8 +468,8 @@ class SwissPaymentSlipData
     /**
      * Set if payment slip has an account number specified
      *
-     * @param bool $withAccountNumber True if yes, false if no
-     * @return bool True if successful, else false
+     * @param bool $withAccountNumber True if yes, false if no.
+     * @return bool True if successful, else false.
      */
     public function setWithAccountNumber($withAccountNumber = true)
     {
@@ -486,7 +487,7 @@ class SwissPaymentSlipData
     /**
      * Get if payment slip has an account number specified
      *
-     * @return bool True if payment slip has an account number specified, else false
+     * @return bool True if payment slip has an account number specified, else false.
      */
     public function getWithAccountNumber()
     {
@@ -496,8 +497,8 @@ class SwissPaymentSlipData
     /**
      * Set if payment slip has a recipient specified
      *
-     * @param bool $withRecipient True if yes, false if no
-     * @return bool True if successful, else false
+     * @param bool $withRecipient True if yes, false if no.
+     * @return bool True if successful, else false.
      */
     public function setWithRecipient($withRecipient = true)
     {
@@ -518,7 +519,7 @@ class SwissPaymentSlipData
     /**
      * Get if payment slip has a recipient specified
      *
-     * @return bool True if payment slip has a recipient specified, else false
+     * @return bool True if payment slip has a recipient specified, else false.
      */
     public function getWithRecipient()
     {
@@ -528,8 +529,8 @@ class SwissPaymentSlipData
     /**
      * Set if payment slip has an amount specified
      *
-     * @param bool $withAmount True for yes, false for no
-     * @return bool True if successful, else false
+     * @param bool $withAmount True for yes, false for no.
+     * @return bool True if successful, else false.
      */
     public function setWithAmount($withAmount = true)
     {
@@ -547,7 +548,7 @@ class SwissPaymentSlipData
     /**
      * Get if payment slip has an amount specified
      *
-     * @return bool True if payment slip has an amount specified, else false
+     * @return bool True if payment slip has an amount specified, else false.
      */
     public function getWithAmount()
     {
@@ -559,8 +560,8 @@ class SwissPaymentSlipData
      *
      * Resets reference number if disabled
      *
-     * @param bool $withReferenceNumber True if yes, false if no
-     * @return bool True if successful, else false
+     * @param bool $withReferenceNumber True if yes, false if no.
+     * @return bool True if successful, else false.
      */
     public function setWithReferenceNumber($withReferenceNumber = true)
     {
@@ -583,7 +584,7 @@ class SwissPaymentSlipData
     /**
      * Get if payment slip has a reference number specified
      *
-     * @return bool True if payment slip has a reference number specified, else false
+     * @return bool True if payment slip has a reference number specified, else false.
      */
     public function getWithReferenceNumber()
     {
@@ -591,10 +592,10 @@ class SwissPaymentSlipData
     }
 
     /**
-     * Set if the payment slip's reference number should contain the banking customer id
+     * Set if the payment slip's reference number should contain the banking customer ID
      *
-     * @param bool $withBankingCustomerId True if successful, else false
-     * @return bool True if successful, else false
+     * @param bool $withBankingCustomerId True if successful, else false.
+     * @return bool True if successful, else false.
      */
     public function setWithBankingCustomerId($withBankingCustomerId = true)
     {
@@ -615,9 +616,9 @@ class SwissPaymentSlipData
     }
 
     /**
-     * Get if the payment slip's reference number should contain the banking customer id.
+     * Get if the payment slip's reference number should contain the banking customer ID.
      *
-     * @return bool True if payment slip has the recipient specified, else false
+     * @return bool True if payment slip has the recipient specified, else false.
      */
     public function getWithBankingCustomerId()
     {
@@ -627,8 +628,8 @@ class SwissPaymentSlipData
     /**
      * Set if payment slip has a payer specified
      *
-     * @param bool $withPayer True if yes, false if no
-     * @return bool True if successful, else false
+     * @param bool $withPayer True if yes, false if no.
+     * @return bool True if successful, else false.
      */
     public function setWithPayer($withPayer = true)
     {
@@ -649,7 +650,7 @@ class SwissPaymentSlipData
     /**
      * Get if payment slip has a payer specified
      *
-     * @return bool True if payment slip has a payer specified, else false
+     * @return bool True if payment slip has a payer specified, else false.
      */
     public function getWithPayer()
     {
@@ -660,8 +661,8 @@ class SwissPaymentSlipData
      * Set if payment slip has an IBAN specified.
      * Only available for red payment slips
      *
-     * @param bool $withIban True if yes, false if no
-     * @return bool True if successful, else false
+     * @param bool $withIban True if yes, false if no.
+     * @return bool True if successful, else false.
      */
     public function setWithIban($withIban = false)
     {
@@ -684,7 +685,7 @@ class SwissPaymentSlipData
     /**
      * Get if payment slip has an IBAN specified
      *
-     * @return bool True if payment slip has an IBAN specified, else false
+     * @return bool True if payment slip has an IBAN specified, else false.
      */
     public function getWithIban()
     {
@@ -695,8 +696,8 @@ class SwissPaymentSlipData
      * Set if payment slip has a payment reason specified.
      * Only available for red payment slips
      *
-     * @param bool $withPaymentReason
-     * @return bool True if successful, else false
+     * @param bool $withPaymentReason.
+     * @return bool True if successful, else false.
      */
     public function setWithPaymentReason($withPaymentReason = false)
     {
@@ -725,7 +726,7 @@ class SwissPaymentSlipData
     /**
      * Get if payment slip has a payment reason specified
      *
-     * @return bool True if payment slip has a payment reason specified, else false
+     * @return bool True if payment slip has a payment reason specified, else false.
      */
     public function getWithPaymentReason()
     {
@@ -735,9 +736,9 @@ class SwissPaymentSlipData
     /**
      * Sets the name, city and account number of the bank
      *
-     * @param string $bankName       Name of the bank
-     * @param string $bankCity       City of the bank
-     * @return bool True if successful, else false
+     * @param string $bankName Name of the bank.
+     * @param string $bankCity City of the bank.
+     * @return bool True if successful, else false.
      */
     public function setBankData($bankName, $bankCity)
     {
@@ -754,8 +755,8 @@ class SwissPaymentSlipData
     /**
      * Set the name of the bank
      *
-     * @param string $bankName The name of the bank
-     * @return bool True if successful, else false
+     * @param string $bankName The name of the bank.
+     * @return bool True if successful, else false.
      *
      * @todo Implement max length check
      */
@@ -771,7 +772,7 @@ class SwissPaymentSlipData
     /**
      * Get the name of the bank
      *
-     * @return string|bool The name of the bank or false if withBank = false
+     * @return string|bool The name of the bank or false if withBank = false.
      */
     public function getBankName()
     {
@@ -785,7 +786,7 @@ class SwissPaymentSlipData
      * Set the postal code and city of the bank
      *
      * @param string $bankCity The postal code and city of the bank
-     * @return bool True if successful, else false
+     * @return bool True if successful, else false.
      *
      * @todo Implement max length check
      */
@@ -801,7 +802,7 @@ class SwissPaymentSlipData
     /**
      * Get the postal code and city of the bank
      *
-     * @return string|bool The postal code and city of the bank or false if withBank = false
+     * @return string|bool The postal code and city of the bank or false if withBank = false.
      */
     public function getBankCity()
     {
@@ -814,8 +815,8 @@ class SwissPaymentSlipData
     /**
      * Set the bank or post cheque account where the money will be transferred to
      *
-     * @param string $accountNumber The bank or post cheque account
-     * @return bool True if successful, else false
+     * @param string $accountNumber The bank or post cheque account.
+     * @return bool True if successful, else false.
      *
      * @todo Implement parameter validation (two hyphens, min & max length)
      */
@@ -831,7 +832,7 @@ class SwissPaymentSlipData
     /**
      * Get the bank or post cheque account where the money will be transferred to
      *
-     * @return string|bool The bank or post cheque account or false if withAccountNumber = false
+     * @return string|bool The bank or post cheque account or false if withAccountNumber = false.
      */
     public function getAccountNumber()
     {
@@ -844,11 +845,11 @@ class SwissPaymentSlipData
     /**
      * Sets the four lines of the recipient
      *
-     * @param string $recipientLine1 The first line of the recipient, e.g. "My Company Ltd."
-     * @param string $recipientLine2 The second line of the recipient, e.g. "Examplestreet 61"
-     * @param string $recipientLine3 The third line of the recipient, e.g. "8000 Zürich"
-     * @param string $recipientLine4 The fourth line of the recipient, if needed
-     * @return bool True if successful, else false
+     * @param string $recipientLine1 The first line of the recipient, e.g. "My Company Ltd.".
+     * @param string $recipientLine2 The second line of the recipient, e.g. "Examplestreet 61".
+     * @param string $recipientLine3 The third line of the recipient, e.g. "8000 Zürich".
+     * @param string $recipientLine4 The fourth line of the recipient, if needed.
+     * @return bool True if successful, else false.
      */
     public function setRecipientData($recipientLine1, $recipientLine2, $recipientLine3 = '', $recipientLine4 = '')
     {
@@ -865,8 +866,8 @@ class SwissPaymentSlipData
     /**
      * Set the first line of the recipient
      *
-     * @param string $recipientLine1 The first line of the recipient, e.g. "My Company Ltd."
-     * @return bool True if successful, else false
+     * @param string $recipientLine1 The first line of the recipient, e.g. "My Company Ltd.".
+     * @return bool True if successful, else false.
      */
     protected function setRecipientLine1($recipientLine1)
     {
@@ -880,7 +881,7 @@ class SwissPaymentSlipData
     /**
      * Get the first line of the recipient
      *
-     * @return string|bool The first line of the recipient or false if withRecipient = false
+     * @return string|bool The first line of the recipient or false if withRecipient = false.
      */
     public function getRecipientLine1()
     {
@@ -893,8 +894,8 @@ class SwissPaymentSlipData
     /**
      * Set the second line of the recipient
      *
-     * @param string $recipientLine2 The second line of the recipient, e.g. "Examplestreet 61"
-     * @return bool True if successful, else false
+     * @param string $recipientLine2 The second line of the recipient, e.g. "Examplestreet 61".
+     * @return bool True if successful, else false.
      */
     protected function setRecipientLine2($recipientLine2)
     {
@@ -908,7 +909,7 @@ class SwissPaymentSlipData
     /**
      * Get the second line of the recipient
      *
-     * @return string|bool The second line of the recipient or false if withRecipient = false
+     * @return string|bool The second line of the recipient or false if withRecipient = false.
      */
     public function getRecipientLine2()
     {
@@ -921,8 +922,8 @@ class SwissPaymentSlipData
     /**
      * Set the third line of the recipient
      *
-     * @param string $recipientLine3 The third line of the recipient, e.g. "8000 Zürich"
-     * @return bool True if successful, else false
+     * @param string $recipientLine3 The third line of the recipient, e.g. "8000 Zürich".
+     * @return bool True if successful, else false.
      */
     protected function setRecipientLine3($recipientLine3)
     {
@@ -936,7 +937,7 @@ class SwissPaymentSlipData
     /**
      * Get the third line of the recipient
      *
-     * @return string|bool The third line of the recipient or false if withRecipient = false
+     * @return string|bool The third line of the recipient or false if withRecipient = false.
      */
     public function getRecipientLine3()
     {
@@ -949,8 +950,8 @@ class SwissPaymentSlipData
     /**
      * Set the fourth line of the recipient
      *
-     * @param string $recipientLine4 The fourth line of the recipient, if needed
-     * @return bool True if successful, else false
+     * @param string $recipientLine4 The fourth line of the recipient, if needed.
+     * @return bool True if successful, else false.
      */
     protected function setRecipientLine4($recipientLine4)
     {
@@ -964,7 +965,7 @@ class SwissPaymentSlipData
     /**
      * Get the fourth line of the recipient
      *
-     * @return string|bool The fourth line of the recipient or false if withRecipient = false
+     * @return string|bool The fourth line of the recipient or false if withRecipient = false.
      */
     public function getRecipientLine4()
     {
@@ -975,10 +976,10 @@ class SwissPaymentSlipData
     }
 
     /**
-     * Set the amount of the payment slip. Only possible if it's not a SwissPaymentSlip+
+     * Set the amount of the payment slip. Only possible if it's not a ESR+.
      *
      * @param float $amount The amount to be payed into
-     * @return bool True if successful, else false
+     * @return bool True if successful, else false.
      */
     public function setAmount($amount = 0.0)
     {
@@ -992,7 +993,7 @@ class SwissPaymentSlipData
     /**
      * Get the amount to be payed into
      *
-     * @return float The amount to be payed into
+     * @return float The amount to be payed into.
      */
     public function getAmount()
     {
@@ -1005,8 +1006,8 @@ class SwissPaymentSlipData
     /**
      * Set the reference number
      *
-     * @param string $referenceNumber The reference number
-     * @return bool True if successful, else false
+     * @param string $referenceNumber The reference number.
+     * @return bool True if successful, else false.
      */
     public function setReferenceNumber($referenceNumber)
     {
@@ -1021,7 +1022,7 @@ class SwissPaymentSlipData
     /**
      * Get the reference number
      *
-     * @return string|bool The reference number or false if withReferenceNumber is false
+     * @return string|bool The reference number or false if withReferenceNumber is false.
      */
     public function getReferenceNumber()
     {
@@ -1032,10 +1033,10 @@ class SwissPaymentSlipData
     }
 
     /**
-     * Set the banking customer id
+     * Set the banking customer ID
      *
-     * @param string $bankingCustomerId The banking customer id
-     * @return bool True if successful, else false
+     * @param string $bankingCustomerId The banking customer ID.
+     * @return bool True if successful, else false.
      */
     public function setBankingCustomerId($bankingCustomerId)
     {
@@ -1048,9 +1049,9 @@ class SwissPaymentSlipData
     }
 
     /**
-     * Get the banking customer id
+     * Get the banking customer ID
      *
-     * @return string|bool The  banking customer id or false if withBankingCustomerId is false
+     * @return string|bool The  banking customer ID or false if withBankingCustomerId is false.
      */
     public function getBankingCustomerId()
     {
@@ -1063,11 +1064,11 @@ class SwissPaymentSlipData
     /**
      * Sets the four lines of the payer
      *
-     * @param string $payerLine1 The first line of the payer, e.g. "Hans Mustermann"
-     * @param string $payerLine2 The second line of the payer, e.g. "Main Street 11"
-     * @param string $payerLine3 The third line of the payer, e.g. "4052 Basel"
-     * @param string $payerLine4 The fourth line of the payer, if needed
-     * @return bool True if successful, else false
+     * @param string $payerLine1 The first line of the payer, e.g. "Hans Mustermann".
+     * @param string $payerLine2 The second line of the payer, e.g. "Main Street 11".
+     * @param string $payerLine3 The third line of the payer, e.g. "4052 Basel".
+     * @param string $payerLine4 The fourth line of the payer, if needed.
+     * @return bool True if successful, else false.
      */
     public function setPayerData($payerLine1, $payerLine2, $payerLine3 = '', $payerLine4 = '')
     {
@@ -1083,8 +1084,8 @@ class SwissPaymentSlipData
     /**
      * Set the first line of the payer
      *
-     * @param string $payerLine1 The first line of the payer, e.g. "Hans Mustermann"
-     * @return bool True if successful, else false
+     * @param string $payerLine1 The first line of the payer, e.g. "Hans Mustermann".
+     * @return bool True if successful, else false.
      */
     protected function setPayerLine1($payerLine1)
     {
@@ -1098,7 +1099,7 @@ class SwissPaymentSlipData
     /**
      * Get the first line of the payer
      *
-     * @return string|bool The first line of the payer or false if withPayer = false
+     * @return string|bool The first line of the payer or false if withPayer = false.
      */
     public function getPayerLine1()
     {
@@ -1111,8 +1112,8 @@ class SwissPaymentSlipData
     /**
      * Set the second line of the payer
      *
-     * @param string $payerLine2 The second line of the payer, e.g. "Main Street 11"
-     * @return bool True if successful, else false
+     * @param string $payerLine2 The second line of the payer, e.g. "Main Street 11".
+     * @return bool True if successful, else false.
      */
     protected function setPayerLine2($payerLine2)
     {
@@ -1126,7 +1127,7 @@ class SwissPaymentSlipData
     /**
      * Get the second line of the payer
      *
-     * @return string|bool The second line of the payer or false if withPayer = false
+     * @return string|bool The second line of the payer or false if withPayer = false.
      */
     public function getPayerLine2()
     {
@@ -1139,8 +1140,8 @@ class SwissPaymentSlipData
     /**
      * Set the third line of the payer
      *
-     * @param string $payerLine3 The third line of the payer, e.g. "4052 Basel"
-     * @return bool True if successful, else false
+     * @param string $payerLine3 The third line of the payer, e.g. "4052 Basel".
+     * @return bool True if successful, else false.
      */
     protected function setPayerLine3($payerLine3)
     {
@@ -1154,7 +1155,7 @@ class SwissPaymentSlipData
     /**
      * Get the third line of the payer
      *
-     * @return string|bool The third line of the payer or false if withPayer = false
+     * @return string|bool The third line of the payer or false if withPayer = false.
      */
     public function getPayerLine3()
     {
@@ -1167,8 +1168,8 @@ class SwissPaymentSlipData
     /**
      * Set the fourth line of the payer
      *
-     * @param string $payerLine4 The fourth line of the payer, if needed
-     * @return bool True if successful, else false
+     * @param string $payerLine4 The fourth line of the payer, if needed.
+     * @return bool True if successful, else false.
      */
     protected function setPayerLine4($payerLine4)
     {
@@ -1182,7 +1183,7 @@ class SwissPaymentSlipData
     /**
      * Get the fourth line of the payer
      *
-     * @return string|bool The fourth line of the payer or false if withPayer = false
+     * @return string|bool The fourth line of the payer or false if withPayer = false.
      */
     public function getPayerLine4()
     {
@@ -1195,8 +1196,8 @@ class SwissPaymentSlipData
     /**
      * Set the IBAN
      *
-     * @param $iban String The IBAN
-     * @return bool True if successful, else false
+     * @param string $iban The IBAN.
+     * @return bool True if successful, else false.
      *
      * @todo Consider stripping spaces (may be optionally)
      * @todo Implement validation of the IBAN
@@ -1216,7 +1217,7 @@ class SwissPaymentSlipData
     /**
      * Get the IBAN
      *
-     * @return string|bool The IBAN or false if withIban is false
+     * @return string|bool The IBAN or false if withIban is false.
      */
     public function getIban()
     {
@@ -1229,11 +1230,11 @@ class SwissPaymentSlipData
     /**
      * Set payment reason lines
      *
-     * @param string $paymentReasonLine1 The first line of the payment reason
-     * @param string $paymentReasonLine2 The second line of the payment reason
-     * @param string $paymentReasonLine3 The third line of the payment reason
-     * @param string $paymentReasonLine4 The fourth line of the payment reason
-     * @return bool True if successful, else false
+     * @param string $paymentReasonLine1 The first line of the payment reason.
+     * @param string $paymentReasonLine2 The second line of the payment reason.
+     * @param string $paymentReasonLine3 The third line of the payment reason.
+     * @param string $paymentReasonLine4 The fourth line of the payment reason.
+     * @return bool True if successful, else false.
      */
     public function setPaymentReasonData(
         $paymentReasonLine1 = '',
@@ -1253,8 +1254,8 @@ class SwissPaymentSlipData
     /**
      * Set the first line of the payment reason
      *
-     * @param string $paymentReasonLine1 The first line of the payment reason
-     * @return bool True if successful, else false
+     * @param string $paymentReasonLine1 The first line of the payment reason.
+     * @return bool True if successful, else false.
      */
     protected function setPaymentReasonLine1($paymentReasonLine1)
     {
@@ -1268,7 +1269,7 @@ class SwissPaymentSlipData
     /**
      * Get the first line of the payment reason
      *
-     * @return string|bool The first line of the payment reason or false if withPaymentReason = false
+     * @return string|bool The first line of the payment reason or false if withPaymentReason = false.
      */
     public function getPaymentReasonLine1()
     {
@@ -1281,8 +1282,8 @@ class SwissPaymentSlipData
     /**
      * Set the second line of the payment reason
      *
-     * @param string $paymentReasonLine2 The second line of the payment reason
-     * @return bool True if successful, else false
+     * @param string $paymentReasonLine2 The second line of the payment reason.
+     * @return bool True if successful, else false.
      */
     protected function setPaymentReasonLine2($paymentReasonLine2)
     {
@@ -1296,7 +1297,7 @@ class SwissPaymentSlipData
     /**
      * Get the second line of the payment reason
      *
-     * @return string|bool The second line of the payment reason or false if withPaymentReason = false
+     * @return string|bool The second line of the payment reason or false if withPaymentReason = false.
      */
     public function getPaymentReasonLine2()
     {
@@ -1309,8 +1310,8 @@ class SwissPaymentSlipData
     /**
      * Set the third line of the payment reason
      *
-     * @param string $paymentReasonLine3 The third line of the payment reason
-     * @return bool True if successful, else false
+     * @param string $paymentReasonLine3 The third line of the payment reason.
+     * @return bool True if successful, else false.
      */
     protected function setPaymentReasonLine3($paymentReasonLine3)
     {
@@ -1324,7 +1325,7 @@ class SwissPaymentSlipData
     /**
      * Get the third line of the payment reason
      *
-     * @return string|bool The third line of the payment reason or false if withPaymentReason = false
+     * @return string|bool The third line of the payment reason or false if withPaymentReason = false.
      */
     public function getPaymentReasonLine3()
     {
@@ -1337,8 +1338,8 @@ class SwissPaymentSlipData
     /**
      * Set the fourth line of the payment reason
      *
-     * @param string $paymentReasonLine4 The fourth line of the payment reason
-     * @return bool True if successful, else false
+     * @param string $paymentReasonLine4 The fourth line of the payment reason.
+     * @return bool True if successful, else false.
      */
     protected function setPaymentReasonLine4($paymentReasonLine4)
     {
@@ -1352,7 +1353,7 @@ class SwissPaymentSlipData
     /**
      * Get the fourth line of the payment reason
      *
-     * @return string|bool The fourth line of the payment reason or false if withPaymentReason = false
+     * @return string|bool The fourth line of the payment reason or false if withPaymentReason = false.
      */
     public function getPaymentReasonLine4()
     {
@@ -1365,10 +1366,10 @@ class SwissPaymentSlipData
     /**
      * Get complete reference number
      *
-     * @param bool $formatted Should the returned reference be formatted in blocks of five (for better readability)
-     * @param bool $fillZeros Fill up with leading zeros, only applies to the case where no banking customer id is used
-     * @return string|bool The complete (with/without bank customer id), formatted reference number with check digit
-     * or false if withReferenceNumber is false
+     * @param bool $formatted Should the returned reference be formatted in blocks of five (for better readability).
+     * @param bool $fillZeros Fill up with leading zeros, only applies to the case where no banking customer ID is used.
+     * @return string|bool The complete (with/without bank customer ID), formatted reference number with check digit
+     * or false if withReferenceNumber is false.
      */
     public function getCompleteReferenceNumber($formatted = true, $fillZeros = true)
     {
@@ -1405,10 +1406,11 @@ class SwissPaymentSlipData
     }
 
     /**
-     * Get IBAN number in human readable format.
+     * Get the IBAN number in human readable format
+     *
      * Not valid for electronic transactions.
      *
-     * @return string|bool Formatted IBAN or false if withIban is false
+     * @return string|bool Formatted IBAN or false if withIban is false.
      * @link http://en.wikipedia.org/wiki/International_Bank_Account_Number#Practicalities
      */
     public function getFormattedIban()
@@ -1422,8 +1424,8 @@ class SwissPaymentSlipData
     /**
      * Get the full code line at the bottom of the SwissPaymentSlip
      *
-     * @param bool $fillZeros Fill up with leading zeros
-     * @return string|bool Either the full code line or false if something was wrong
+     * @param bool $fillZeros Fill up with leading zeros.
+     * @return string|bool Either the full code line or false if something was wrong.
      *
      * @todo Implement red slip support
      */
@@ -1479,6 +1481,8 @@ class SwissPaymentSlipData
 
     /**
      * Clear the account of the two hyphens
+     *
+     * @return string|false The account of the two hyphens, 'XXXXXXXXX' if not for payment or else false.
      */
     protected function getAccountDigits()
     {
@@ -1500,7 +1504,7 @@ class SwissPaymentSlipData
     /**
      * Returns francs amount without cents
      *
-     * @return bool|int Francs amount without cents
+     * @return bool|int Francs amount without cents.
      */
     public function getAmountFrancs()
     {
@@ -1518,7 +1522,7 @@ class SwissPaymentSlipData
     /**
      * Returns zero filled, right padded, two digits long cents amount
      *
-     * @return bool|string Amount of Cents, zero filled, right padded, two digits long
+     * @return bool|string Amount of Cents, zero filled, right padded, two digits long.
      */
     public function getAmountCents()
     {
@@ -1538,8 +1542,8 @@ class SwissPaymentSlipData
      * Creates Modulo10 recursive check digit
      *
      * @copyright As found on http://www.developers-guide.net/forums/5431,modulo10-rekursiv (thanks, dude!)
-     * @param string $number Number to create recursive check digit off
-     * @return int Recursive check digit
+     * @param string $number Number to create recursive check digit off.
+     * @return int Recursive check digit.
      */
     private function modulo10($number)
     {
@@ -1555,10 +1559,10 @@ class SwissPaymentSlipData
      * Returns a given string in blocks of a certain size
      * Example: 000000000000000 becomes more readable 00000 00000 00000
      *
-     * @param string $string To be formatted string
-     * @param int $blockSize Block size of choice
-     * @param bool $alignFromRight Right aligned, blocks are build from right
-     * @return string Given string divided in blocks of given block size separated by one space
+     * @param string $string To be formatted string.
+     * @param int $blockSize Block size of choice.
+     * @param bool $alignFromRight Right aligned, blocks are build from right.
+     * @return string Given string divided in blocks of given block size separated by one space.
      */
     private function breakStringIntoBlocks($string, $blockSize = 5, $alignFromRight = true)
     {
