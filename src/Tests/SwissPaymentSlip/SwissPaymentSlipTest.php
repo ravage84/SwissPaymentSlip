@@ -85,6 +85,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test the constructor method with a null parameter
      *
      * @return void
      * @covers ::__construct
@@ -97,6 +98,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test the constructor method with a invalid object parameter
      *
      * @return void
      * @covers ::__construct
@@ -109,6 +111,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the getPaymentSlipData method
      *
      * @return void
      * @covers ::getPaymentSlipData
@@ -122,6 +125,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests setting the slip position
      *
      * @return void
      * @covers ::setSlipPosition
@@ -146,6 +150,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests setting the slip size
      *
      * @return void
      * @covers ::setSlipSize
@@ -170,6 +175,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests setting the slip background
      *
      * @return void
      * @covers ::setSlipBackground
@@ -185,6 +191,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the left bank element for an orange slip
      *
      * @return void
      * @covers ::setDefaults
@@ -204,6 +211,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the right bank element for an orange slip
      *
      * @return void
      * @covers ::setDefaults
@@ -223,6 +231,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the left recipient element for an orange slip
      *
      * @return void
      * @covers ::setDefaults
@@ -242,6 +251,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the right recipient element for an orange slip
      *
      * @return void
      * @covers ::setDefaults
@@ -261,6 +271,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the left account element for an orange slip
      *
      * @return void
      * @covers ::setDefaults
@@ -280,6 +291,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the right account element for an orange slip
      *
      * @return void
      * @covers ::setDefaults
@@ -299,6 +311,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the left francs amount element for an orange slip
      *
      * @return void
      * @covers ::setDefaults
@@ -319,6 +332,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the right francs amount element for an orange slip
      *
      * @return void
      * @covers ::setDefaults
@@ -339,6 +353,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the left cents amount element for an orange slip
      *
      * @return void
      * @covers ::setDefaults
@@ -358,6 +373,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the right cents amount element for an orange slip
      *
      * @return void
      * @covers ::setDefaults
@@ -377,6 +393,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the left reference number element for an orange slip
      *
      * @return void
      * @covers ::setDefaults
@@ -397,6 +414,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the right reference number element for an orange slip
      *
      * @return void
      * @covers ::setDefaults
@@ -417,6 +435,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the left payer element for an orange slip
      *
      * @return void
      * @covers ::setDefaults
@@ -436,6 +455,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the right payer element for an orange slip
      *
      * @return void
      * @covers ::setDefaults
@@ -455,6 +475,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the code line element for an orange slip
      *
      * @return void
      * @covers ::setDefaults
@@ -476,6 +497,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default background for an orange slip
      *
      * @return void
      * @covers ::setDefaults
@@ -486,6 +508,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the left bank element for an red slip
      *
      * @return void
      * @covers ::setDefaults
@@ -499,6 +522,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the right bank element for an red slip
      *
      * @return void
      * @covers ::setDefaults
@@ -512,6 +536,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the left recipient element for a red slip
      *
      * @return void
      * @covers ::setDefaults
@@ -525,6 +550,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the right recipient element for a red slip
      *
      * @return void
      * @covers ::setDefaults
@@ -538,6 +564,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the left account element for a red slip
      *
      * @return void
      * @covers ::setDefaults
@@ -551,6 +578,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the right account element for a red slip
      *
      * @return void
      * @covers ::setDefaults
@@ -564,6 +592,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the left francs amount element for a red slip
      *
      * @return void
      * @covers ::setDefaults
@@ -577,6 +606,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the right francs amount element for a red slip
      *
      * @return void
      * @covers ::setDefaults
@@ -590,6 +620,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the left cents amount element for a red slip
      *
      * @return void
      * @covers ::setDefaults
@@ -603,6 +634,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the right cents amount element for a red slip
      *
      * @return void
      * @covers ::setDefaults
@@ -616,6 +648,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the left reference number element for a red slip
      *
      * @return void
      * @covers ::setDefaults
@@ -629,6 +662,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the right reference number element for a red slip
      *
      * @return void
      * @covers ::setDefaults
@@ -642,6 +676,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the left payer element for a red slip
      *
      * @return void
      * @covers ::setDefaults
@@ -655,6 +690,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the right payer element for a red slip
      *
      * @return void
      * @covers ::setDefaults
@@ -668,6 +704,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default attributes of the code line element for a red slip
      *
      * @return void
      * @covers ::setDefaults
@@ -681,6 +718,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the default background for a red slip
      *
      * @return void
      * @covers ::setDefaults
@@ -694,6 +732,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setBankLeftAttr method
      *
      * @return void
      * @covers ::setBankLeftAttr
@@ -709,6 +748,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setBankRightAttr method
      *
      * @return void
      * @covers ::setBankRightAttr
@@ -724,6 +764,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setRecipientLeftAttr method
      *
      * @return void
      * @covers ::setRecipientLeftAttr
@@ -739,6 +780,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setRecipientRightAttr method
      *
      * @return void
      * @covers ::setRecipientRightAttr
@@ -754,6 +796,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setAccountLeftAttr method
      *
      * @return void
      * @covers ::setAccountLeftAttr
@@ -769,6 +812,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setAccountRightAttr method
      *
      * @return void
      * @covers ::setAccountRightAttr
@@ -784,6 +828,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setAmountFrancsLeftAttr method
      *
      * @return void
      * @covers ::setAmountFrancsLeftAttr
@@ -799,6 +844,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setAmountCentsLeftAttr method
      *
      * @return void
      * @covers ::setAmountCentsLeftAttr
@@ -814,6 +860,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setAmountCentsRightAttr method
      *
      * @return void
      * @covers ::setAmountCentsRightAttr
@@ -829,6 +876,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setAmountFrancsRightAttr method
      *
      * @return void
      * @covers ::setAmountFrancsRightAttr
@@ -844,6 +892,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setReferenceNumberLeftAttr method
      *
      * @return void
      * @covers ::setReferenceNumberLeftAttr
@@ -859,6 +908,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setReferenceNumberRightAttr method
      *
      * @return void
      * @covers ::setReferenceNumberRightAttr
@@ -874,6 +924,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setPayerLeftAttr method
      *
      * @return void
      * @covers ::setPayerLeftAttr
@@ -889,6 +940,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setPayerRightAttr method
      *
      * @return void
      * @covers ::setPayerRightAttr
@@ -904,6 +956,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setCodeLineAttr method
      *
      * @return void
      * @covers ::setCodeLineAttr
@@ -919,6 +972,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setDisplayBank method
      *
      * @return void
      * @covers ::setDisplayBank
@@ -939,6 +993,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setDisplayAccount method
      *
      * @return void
      * @covers ::setDisplayAccount
@@ -959,6 +1014,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setDisplayRecipient method
      *
      * @return void
      * @covers ::setDisplayRecipient
@@ -979,6 +1035,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setDisplayAmount method
      *
      * @return void
      * @covers ::setDisplayAmount
@@ -999,6 +1056,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setDisplayReferenceNr method
      *
      * @return void
      * @covers ::setDisplayReferenceNr
@@ -1019,6 +1077,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setDisplayPayer method
      *
      * @return void
      * @covers ::setDisplayPayer
@@ -1039,6 +1098,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setDisplayCodeLine method
      *
      * @return void
      * @covers ::setDisplayCodeLine
@@ -1059,6 +1119,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setDisplayIban method
      *
      * @return void
      * @covers ::setDisplayIban
@@ -1079,6 +1140,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setDisplayPaymentReason method
      *
      * @return void
      * @covers ::setDisplayPaymentReason
@@ -1099,6 +1161,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the getAllElements method for an orange slip
      *
      * @return void
      * @covers ::getAllElements
@@ -1134,6 +1197,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the getAllElements method for a red slip
      *
      * @return void
      * @covers ::getAllElements
