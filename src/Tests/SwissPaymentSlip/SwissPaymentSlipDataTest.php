@@ -47,14 +47,35 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsInstanceOf()
     {
-        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData', new SwissPaymentSlipData());
-        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData', new SwissPaymentSlipData('orange'));
-        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData', new SwissPaymentSlipData('red'));
+        $this->assertInstanceOf(
+            'SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData',
+            new SwissPaymentSlipData()
+        );
+        $this->assertInstanceOf(
+            'SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData',
+            new SwissPaymentSlipData('orange')
+        );
+        $this->assertInstanceOf(
+            'SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData',
+            new SwissPaymentSlipData('red')
+        );
 
-        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData', new SwissPaymentSlipData('orange', true));
-        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData', new SwissPaymentSlipData('orange', false));
-        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData', new SwissPaymentSlipData('red', true));
-        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData', new SwissPaymentSlipData('red', false));
+        $this->assertInstanceOf(
+            'SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData',
+            new SwissPaymentSlipData('orange', true)
+        );
+        $this->assertInstanceOf(
+            'SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData',
+            new SwissPaymentSlipData('orange', false)
+        );
+        $this->assertInstanceOf(
+            'SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData',
+            new SwissPaymentSlipData('red', true)
+        );
+        $this->assertInstanceOf(
+            'SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData',
+            new SwissPaymentSlipData('red', false)
+        );
     }
 
     /**
@@ -1579,7 +1600,9 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     public function testSetPaymentReasonData()
     {
         $this->slipData = new SwissPaymentSlipData('red');
-        $this->assertTrue($this->slipData->setPaymentReasonData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD'));
+        $this->assertTrue(
+            $this->slipData->setPaymentReasonData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD')
+        );
 
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getPaymentReasonLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getPaymentReasonLine2());
@@ -1587,7 +1610,9 @@ class SwissPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('DDDDDDDDDD', $this->slipData->getPaymentReasonLine4());
 
         $this->slipData->setWithPaymentReason(false);
-        $this->assertFalse($this->slipData->setPaymentReasonData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD'));
+        $this->assertFalse(
+            $this->slipData->setPaymentReasonData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD')
+        );
 
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine1());
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine2());
