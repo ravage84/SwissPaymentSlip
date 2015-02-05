@@ -9,4 +9,12 @@
             <file>./src/Tests/SwissPaymentSlip/SwissPaymentSlipTest.php</file>
         </testsuite>
     </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src/SwissPaymentSlip</directory>
+        </whitelist>
+    </filter>
+    <logging>
+        <log type="coverage-html" target="report/coverage/" charset="UTF-8"/>
+    </logging>
 </phpunit>
