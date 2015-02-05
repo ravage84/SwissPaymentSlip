@@ -72,7 +72,7 @@ class SwissPaymentSlipData
      *
      * @var array Table for calculating the check digit by modulo 10
      */
-    private $moduloTable = array(0,9,4,6,8,2,7,1,3,5);
+    private $moduloTable = array(0, 9, 4, 6, 8, 2, 7, 1, 3, 5);
 
     /**
      * Determines the payment slip type.
