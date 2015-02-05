@@ -26,6 +26,8 @@ namespace SwissPaymentSlip\SwissPaymentSlip;
  * @todo Create constants for left, right and center text alignment (L, R, C)
  * @todo Create central cell placement and formatting code (lines as array, attributes)...
  * @todo Implement fluent interface
+ * @todo Consider sub classing the orange and red payment slip
+ * @todo Rename to Slip
  */
 class SwissPaymentSlip
 {

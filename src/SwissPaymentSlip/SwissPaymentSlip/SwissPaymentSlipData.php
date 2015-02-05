@@ -52,6 +52,8 @@ use InvalidArgumentException;
  * @todo Create a getRecipientData with formatting parameter
  * @todo Create a getPaymentReason with formatting parameter
  * @todo Implement fluent interface
+ * @todo Consider sub classing the orange and red payment slip data
+ * @todo Rename to SlipData
  */
 class SwissPaymentSlipData
 {
