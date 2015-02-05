@@ -13,8 +13,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>SwissPaymentSlip Example 01-03: SwissPaymentSlipData advanced usage</title>
+    <meta charset="utf-8">
+    <title>SwissPaymentSlip Example 01-03: SwissPaymentSlipData advanced usage</title>
 </head>
 <body>
 <h1>SwissPaymentSlip Example 01-03: SwissPaymentSlipData advanced usage</h1>
@@ -55,7 +55,15 @@ $paymentSlipData->setWithPaymentReason(true); // Doesn't work for orange slips
 // Fill the data container with your data
 $paymentSlipData->setBankData('Seldwyla Bank', '8001 Zürich'); // This won't work, because it's disabled
 $paymentSlipData->setAccountNumber('01-145-6');
-$paymentSlipData->setRecipientData('H. Muster AG', 'Versandhaus', 'Industriestrasse 88', '8000 Zürich'); // This won't work, because it's disabled
+
+// This won't work, because it's disabled
+$paymentSlipData->setRecipientData(
+    'H. Muster AG',
+    'Versandhaus',
+    'Industriestrasse 88',
+    '8000 Zürich'
+);
+
 $paymentSlipData->setPayerData('Rutschmann Pia', 'Marktgasse 28', '9400 Rorschach');
 $paymentSlipData->setAmount(2830.50); // This won't work, because it's disabled
 $paymentSlipData->setReferenceNumber('7520033455900012');
@@ -83,9 +91,12 @@ echo "Payer line 4: " . $paymentSlipData->getPayerLine4() . "<br>";
 echo "<br>";
 echo "Banking customer ID: " . $paymentSlipData->getBankingCustomerId() . "<br>"; // Empty, because it's disabled
 echo "<br>";
-echo "Complete reference number (without banking customer ID): " . $paymentSlipData->getCompleteReferenceNumber() . "<br>";
-echo "Complete reference number (ditto), unformatted : " . $paymentSlipData->getCompleteReferenceNumber(false) . "<br>";
-echo "Complete reference number (ditto), not filled with zeroes : " . $paymentSlipData->getCompleteReferenceNumber(true, false) . "<br>";
+echo $paymentSlipData->getCompleteReferenceNumber() .
+   "Complete reference number (without banking customer ID): " . "<br>";
+echo "Complete reference number (ditto), unformatted : " .
+    $paymentSlipData->getCompleteReferenceNumber(false) . "<br>";
+echo "Complete reference number (ditto), not filled with zeroes : " .
+    $paymentSlipData->getCompleteReferenceNumber(true, false) . "<br>";
 echo "<br>";
 echo "Code line (at the bottom): " . $paymentSlipData->getCodeLine() . "<br>";
 echo "Code line (at the bottom), not filled with zeroes: " . $paymentSlipData->getCodeLine(false) . "<br>";
