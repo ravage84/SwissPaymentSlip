@@ -302,7 +302,6 @@ class SwissPaymentSlip
      * Sets the default attributes of the elements according to the type
      *
      * @return void
-     * @todo Eliminate the direct system dependency, make the background image a mandatory constructor parameter
      */
     protected function setDefaults()
     {
@@ -323,7 +322,6 @@ class SwissPaymentSlip
             $this->setPayerRightAttr(125, 48, 50, 4);
             $this->setCodeLineAttr(64, 85, 140, 4, null, 'OCRB10');
 
-            // TODO Eliminate system dependency
             $this->setSlipBackground(__DIR__.'/Resources/img/ezs_orange.gif');
 
         } elseif ($this->paymentSlipData->isRedSlip()) {
@@ -343,7 +341,6 @@ class SwissPaymentSlip
             $this->setPayerRightAttr(125, 48, 50, 4);
             $this->setCodeLineAttr(64, 85, 140, 4, null, 'OCRB10');
 
-            // TODO Eliminate system dependency
             $this->setSlipBackground(__DIR__.'/Resources/img/ezs_red.gif');
         }
     }
