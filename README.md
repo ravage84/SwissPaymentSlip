@@ -1,7 +1,10 @@
 SwissPaymentSlip - Swiss Payment Slips
 ======================================
 
-[![Build Status](https://travis-ci.org/ravage84/SwissPaymentSlip.png?branch=master)](https://travis-ci.org/ravage84/SwissPaymentSlip)
+[![Travis Build Status](https://travis-ci.org/ravage84/SwissPaymentSlip.png?branch=master)](https://travis-ci.org/ravage84/SwissPaymentSlip)
+[![Scrutinizer CI Build Status](https://scrutinizer-ci.com/g/ravage84/SwissPaymentSlip/badges/build.png?b=master)](https://scrutinizer-ci.com/g/ravage84/SwissPaymentSlip/build-status/master)
+[![Scrutinizer CI Code Coverage](https://scrutinizer-ci.com/g/ravage84/SwissPaymentSlip/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/ravage84/SwissPaymentSlip/?branch=master)
+[![Scrutinizer CI Code Quality](https://scrutinizer-ci.com/g/ravage84/SwissPaymentSlip/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ravage84/SwissPaymentSlip/?branch=master)
 
 Do you need to create Swiss payment slips (called ESR) as PDF files in a project of yours?
 Then you found almost the right place, go to [SwissPaymentSlipFpdf](https://github.com/ravage84/SwissPaymentSlipFpdf) or [SwissPaymentSlipTcpdf](https://github.com/ravage84/SwissPaymentSlipTcpdf).
