@@ -1170,13 +1170,16 @@ class SwissPaymentSlipData
      *
      * @param $iban String The IBAN
      * @return bool True if successful, else false
+     *
+     * @todo Consider stripping spaces (may be optionally)
+     * @todo Implement validation of the IBAN
+     * @link http://code.google.com/p/php-iban/
+     * @link https://github.com/jschaedl/Iban
+     * @link http://www.ibancalculator.com/iban_validieren.html
      */
     public function setIban($iban)
     {
         if ($this->getWithIban()) {
-            // TODO plausible IBAN method http://www.six-interbank-clearing.com/de/tkicch_financialinstitutions_ibanipi.htm
-            // TODO check if to implement http://code.google.com/p/php-iban/ (composer!)
-            // TODO At least strip spaces (may be more?)
             $this->iban = $iban;
             return true;
         }
