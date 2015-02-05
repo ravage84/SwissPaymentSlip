@@ -304,7 +304,7 @@ class SwissPaymentSlip
      */
     protected function setDefaults()
     {
-        if ($this->paymentSlipData->getType() == SwissPaymentSlipData::ORANGE) {
+        if ($this->paymentSlipData->isOrangeSlip()) {
             $this->setBankLeftAttr(3, 8, 50, 4);
             $this->setBankRightAttr(66, 8, 50, 4);
             $this->setRecipientLeftAttr(3, 23, 50, 4);
@@ -324,7 +324,7 @@ class SwissPaymentSlip
             // TODO Eliminate system dependency
             $this->setSlipBackground(__DIR__.'/Resources/img/ezs_orange.gif');
 
-        } elseif ($this->paymentSlipData->getType() == SwissPaymentSlipData::RED) {
+        } elseif ($this->paymentSlipData->isRedSlip()) {
             $this->setBankLeftAttr(3, 8, 50, 4);
             $this->setBankRightAttr(66, 8, 50, 4);
             $this->setRecipientLeftAttr(3, 23, 50, 4);
