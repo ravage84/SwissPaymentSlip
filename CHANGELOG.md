@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/ravage84/SwissPaymentSlip/compare/0.6.0...master)
 ### Added
+- This change log
 - .editorconfig file
 - PHPUnit 3.7.38 as development dependency
 - PHPMD 2.1.* as development dependency
