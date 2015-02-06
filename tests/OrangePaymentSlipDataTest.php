@@ -68,97 +68,6 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the constructor with an array
-     *
-     * @return void
-     * @covers ::__construct
-     * @covers ::setType
-     * @expectedException \InvalidArgumentException
-     */
-    public function testConstructorFirstParameterIsArray()
-    {
-        new OrangePaymentSlipData(array('red'));
-    }
-
-    /**
-     * Tests the isOrangeSlip method
-     *
-     * @return void
-     * @covers ::isOrangeSlip
-     */
-    public function testIsOrangeSlip()
-    {
-        $slipData = new OrangePaymentSlipData('red');
-        $this->assertFalse($slipData->isOrangeSlip());
-
-        $slipData = new OrangePaymentSlipData('orange');
-        $this->assertTrue($slipData->isOrangeSlip());
-    }
-
-    /**
-     * Tests the isRedSlip method
-     *
-     * @return void
-     * @covers ::isRedSlip
-     */
-    public function testIsRedSlip()
-    {
-        $slipData = new OrangePaymentSlipData('orange');
-        $this->assertFalse($slipData->isRedSlip());
-
-        $slipData = new OrangePaymentSlipData('red');
-        $this->assertTrue($slipData->isRedSlip());
-    }
-
-    /**
-     * Tests the setRedDefaults method when setting up an orange slip
-     *
-     * @return void
-     * @covers ::setRedDefaults
-     * @covers ::setType
-     * @covers ::getType
-     */
-    public function testSetTypeOrangeType()
-    {
-        $this->slipData->setType('orange');
-        $this->assertEquals('orange', $this->slipData->getType());
-
-        $this->assertTrue($this->slipData->getWithBank());
-        $this->assertTrue($this->slipData->getWithAccountNumber());
-        $this->assertTrue($this->slipData->getWithRecipient());
-        $this->assertTrue($this->slipData->getWithAmount());
-        $this->assertTrue($this->slipData->getWithReferenceNumber());
-        $this->assertTrue($this->slipData->getWithBankingCustomerId());
-        $this->assertTrue($this->slipData->getWithPayer());
-        $this->assertFalse($this->slipData->getWithIban());
-        $this->assertFalse($this->slipData->getWithPaymentReason());
-    }
-
-    /**
-     * Tests the setRedDefaults method when setting up a red slip
-     *
-     * @return void
-     * @covers ::setRedDefaults
-     * @covers ::setType
-     * @covers ::getType
-     */
-    public function testSetTypeRedType()
-    {
-        $this->slipData->setType('red');
-        $this->assertEquals('red', $this->slipData->getType());
-
-        $this->assertTrue($this->slipData->getWithBank());
-        $this->assertTrue($this->slipData->getWithAccountNumber());
-        $this->assertTrue($this->slipData->getWithRecipient());
-        $this->assertTrue($this->slipData->getWithAmount());
-        $this->assertFalse($this->slipData->getWithReferenceNumber());
-        $this->assertFalse($this->slipData->getWithBankingCustomerId());
-        $this->assertTrue($this->slipData->getWithPayer());
-        $this->assertTrue($this->slipData->getWithIban());
-        $this->assertTrue($this->slipData->getWithPaymentReason());
-    }
-
-    /**
      * Tests the setType method when setting up an orange slip without reset
      *
      * @return void
@@ -177,39 +86,6 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData->setWithPaymentReason(true); // Shouldn't set to true
 
         $this->slipData->setType('orange');
-
-        $this->assertFalse($this->slipData->getWithBank());
-        $this->assertFalse($this->slipData->getWithAccountNumber());
-        $this->assertFalse($this->slipData->getWithRecipient());
-        $this->assertFalse($this->slipData->getWithAmount());
-        $this->assertFalse($this->slipData->getWithReferenceNumber());
-        $this->assertFalse($this->slipData->getWithBankingCustomerId());
-        $this->assertFalse($this->slipData->getWithPayer());
-        $this->assertFalse($this->slipData->getWithIban());
-        $this->assertFalse($this->slipData->getWithPaymentReason());
-    }
-
-    /**
-     * Tests the setType method when setting up a red slip without reset
-     *
-     * @return void
-     * @covers ::setType
-     */
-    public function testSetTypeRedTypeWithoutReset()
-    {
-        $this->slipData = new OrangePaymentSlipData('red');
-
-        $this->slipData->setWithBank(false);
-        $this->slipData->setWithAccountNumber(false);
-        $this->slipData->setWithRecipient(false);
-        $this->slipData->setWithAmount(false);
-        $this->slipData->setWithReferenceNumber(true); // Shouldn't set to true
-        $this->slipData->setWithBankingCustomerId(true); // Shouldn't set to true
-        $this->slipData->setWithPayer(false);
-        $this->slipData->setWithIban(false);
-        $this->slipData->setWithPaymentReason(false);
-
-        $this->slipData->setType('red');
 
         $this->assertFalse($this->slipData->getWithBank());
         $this->assertFalse($this->slipData->getWithAccountNumber());
@@ -255,38 +131,6 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the setType method when setting up a red slip with reset
-     *
-     * @return void
-     * @covers ::setType
-     * @covers ::setRedDefaults
-     */
-    public function testSetTypeRedTypeWithReset()
-    {
-        $this->slipData->setWithBank(false);
-        $this->slipData->setWithAccountNumber(false);
-        $this->slipData->setWithRecipient(false);
-        $this->slipData->setWithAmount(false);
-        $this->slipData->setWithReferenceNumber(true);
-        $this->slipData->setWithBankingCustomerId(true);
-        $this->slipData->setWithPayer(false);
-        $this->slipData->setWithIban(false);
-        $this->slipData->setWithPaymentReason(false);
-
-        $this->slipData->setType('red', true);
-
-        $this->assertTrue($this->slipData->getWithBank());
-        $this->assertTrue($this->slipData->getWithAccountNumber());
-        $this->assertTrue($this->slipData->getWithRecipient());
-        $this->assertTrue($this->slipData->getWithAmount());
-        $this->assertFalse($this->slipData->getWithReferenceNumber());
-        $this->assertFalse($this->slipData->getWithBankingCustomerId());
-        $this->assertTrue($this->slipData->getWithPayer());
-        $this->assertTrue($this->slipData->getWithIban());
-        $this->assertTrue($this->slipData->getWithPaymentReason());
-    }
-
-    /**
      * Tests the setType method with an empty string as first parameter
      *
      * @return void
@@ -319,7 +163,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetTypeFirstParameterIsArray()
     {
-        $this->slipData->setType(array('red'));
+        $this->slipData->setType(array('orange'));
     }
 
     /**
@@ -343,7 +187,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetTypeSecondParameterIsInvalidString()
     {
-        $this->slipData->setType('red', '123');
+        $this->slipData->setType('orange', '123');
     }
 
     /**
@@ -355,7 +199,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetTypeSecondParameterIsArray()
     {
-        $this->slipData->setType('red', array(true));
+        $this->slipData->setType('orange', array(true));
     }
 
     /**
@@ -368,34 +212,6 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     public function testSetWithBankOrangeType()
     {
         $this->slipData = new OrangePaymentSlipData('orange');
-        $this->slipData->setBankData('Seldwyla Bank', '8001 Zürich');
-
-        $this->slipData->setWithBank();
-        $this->assertTrue($this->slipData->getWithBank());
-        $this->assertEquals('Seldwyla Bank', $this->slipData->getBankName());
-        $this->assertEquals('8001 Zürich', $this->slipData->getBankCity());
-
-        $this->slipData->setWithBank(true);
-        $this->assertTrue($this->slipData->getWithBank());
-        $this->assertEquals('Seldwyla Bank', $this->slipData->getBankName());
-        $this->assertEquals('8001 Zürich', $this->slipData->getBankCity());
-
-        $this->slipData->setWithBank(false);
-        $this->assertFalse($this->slipData->getWithBank());
-        $this->assertEquals(false, $this->slipData->getBankName());
-        $this->assertEquals(false, $this->slipData->getBankCity());
-    }
-
-    /**
-     * Tests the setWithBank method with a red slip
-     *
-     * @return void
-     * @covers ::setWithBank
-     * @covers ::getWithBank
-     */
-    public function testSetWithBankRedType()
-    {
-        $this->slipData = new OrangePaymentSlipData('red');
         $this->slipData->setBankData('Seldwyla Bank', '8001 Zürich');
 
         $this->slipData->setWithBank();
@@ -474,31 +290,6 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the setWithAccountNumber method with a red slip
-     *
-     * @return void
-     * @covers ::setWithAccountNumber
-     * @covers ::getWithAccountNumber
-     */
-    public function testSetWithAccountNumberRedType()
-    {
-        $this->slipData = new OrangePaymentSlipData('red');
-        $this->slipData->setAccountNumber('01-2345-6');
-
-        $this->slipData->setWithAccountNumber();
-        $this->assertTrue($this->slipData->getWithAccountNumber());
-        $this->assertEquals('01-2345-6', $this->slipData->getAccountNumber());
-
-        $this->slipData->setWithAccountNumber(true);
-        $this->assertTrue($this->slipData->getWithAccountNumber());
-        $this->assertEquals('01-2345-6', $this->slipData->getAccountNumber());
-
-        $this->slipData->setWithAccountNumber(false);
-        $this->assertFalse($this->slipData->getWithAccountNumber());
-        $this->assertEquals(false, $this->slipData->getAccountNumber());
-    }
-
-    /**
      * Tests the setWithAccountNumber method with various parameters
      *
      * @return void
@@ -540,40 +331,6 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     public function testSetWithRecipientOrangeType()
     {
         $this->slipData = new OrangePaymentSlipData('orange');
-        $this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
-
-        $this->slipData->setWithRecipient();
-        $this->assertTrue($this->slipData->getWithRecipient());
-        $this->assertEquals('AAAAAAAAAA', $this->slipData->getRecipientLine1());
-        $this->assertEquals('BBBBBBBBBB', $this->slipData->getRecipientLine2());
-        $this->assertEquals('CCCCCCCCCC', $this->slipData->getRecipientLine3());
-        $this->assertEquals('DDDDDDDDDD', $this->slipData->getRecipientLine4());
-
-        $this->slipData->setWithRecipient(true);
-        $this->assertTrue($this->slipData->getWithRecipient());
-        $this->assertEquals('AAAAAAAAAA', $this->slipData->getRecipientLine1());
-        $this->assertEquals('BBBBBBBBBB', $this->slipData->getRecipientLine2());
-        $this->assertEquals('CCCCCCCCCC', $this->slipData->getRecipientLine3());
-        $this->assertEquals('DDDDDDDDDD', $this->slipData->getRecipientLine4());
-
-        $this->slipData->setWithRecipient(false);
-        $this->assertFalse($this->slipData->getWithRecipient());
-        $this->assertEquals(false, $this->slipData->getRecipientLine1());
-        $this->assertEquals(false, $this->slipData->getRecipientLine2());
-        $this->assertEquals(false, $this->slipData->getRecipientLine3());
-        $this->assertEquals(false, $this->slipData->getRecipientLine4());
-    }
-
-    /**
-     * Tests the setWithRecipient method with a red slip
-     *
-     * @return void
-     * @covers ::setWithRecipient
-     * @covers ::getWithRecipient
-     */
-    public function testSetWithRecipientRedType()
-    {
-        $this->slipData = new OrangePaymentSlipData('red');
         $this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->slipData->setWithRecipient();
@@ -662,31 +419,6 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the setWithAmount method with a red slip
-     *
-     * @return void
-     * @covers ::setWithAmount
-     * @covers ::getWithAmount
-     */
-    public function testSetWithAmountNumberRedType()
-    {
-        $this->slipData = new OrangePaymentSlipData('red');
-        $this->slipData->setAmount(1234567.89);
-
-        $this->slipData->setWithAmount();
-        $this->assertTrue($this->slipData->getWithAmount());
-        $this->assertEquals(1234567.89, $this->slipData->getAmount());
-
-        $this->slipData->setWithAmount(true);
-        $this->assertTrue($this->slipData->getWithAmount());
-        $this->assertEquals(1234567.89, $this->slipData->getAmount());
-
-        $this->slipData->setWithAmount(false);
-        $this->assertFalse($this->slipData->getWithAmount());
-        $this->assertEquals(false, $this->slipData->getAmount());
-    }
-
-    /**
      * Tests the setWithAmount method with various parameters
      *
      * @return void
@@ -737,31 +469,6 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData->setWithReferenceNumber(true);
         $this->assertTrue($this->slipData->getWithReferenceNumber());
         $this->assertEquals('0123456789', $this->slipData->getReferenceNumber());
-
-        $this->slipData->setWithReferenceNumber(false);
-        $this->assertFalse($this->slipData->getWithReferenceNumber());
-        $this->assertEquals(false, $this->slipData->getReferenceNumber());
-    }
-
-    /**
-     * Tests the setWithReferenceNumber method with a red slip
-     *
-     * @return void
-     * @covers ::setWithReferenceNumber
-     * @covers ::getWithReferenceNumber
-     */
-    public function testSetWithReferenceNumberNumberRedType()
-    {
-        $this->slipData = new OrangePaymentSlipData('red');
-        $this->slipData->setReferenceNumber('0123456789');
-
-        $this->slipData->setWithReferenceNumber();
-        $this->assertFalse($this->slipData->getWithReferenceNumber());
-        $this->assertEquals(false, $this->slipData->getReferenceNumber());
-
-        $this->slipData->setWithReferenceNumber(true);
-        $this->assertFalse($this->slipData->getWithReferenceNumber());
-        $this->assertEquals(false, $this->slipData->getReferenceNumber());
 
         $this->slipData->setWithReferenceNumber(false);
         $this->assertFalse($this->slipData->getWithReferenceNumber());
@@ -826,31 +533,6 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the setWithBankingCustomerId method with a red slip
-     *
-     * @return void
-     * @covers ::setWithBankingCustomerId
-     * @covers ::getWithBankingCustomerId
-     */
-    public function testSetWithBankingCustomerIdNumberRedType()
-    {
-        $this->slipData = new OrangePaymentSlipData('red');
-        $this->slipData->setBankingCustomerId('012345');
-
-        $this->slipData->setWithBankingCustomerId();
-        $this->assertFalse($this->slipData->getWithBankingCustomerId());
-        $this->assertEquals(false, $this->slipData->getBankingCustomerId());
-
-        $this->slipData->setWithBankingCustomerId(true);
-        $this->assertFalse($this->slipData->getWithBankingCustomerId());
-        $this->assertEquals(false, $this->slipData->getBankingCustomerId());
-
-        $this->slipData->setWithBankingCustomerId(false);
-        $this->assertFalse($this->slipData->getWithBankingCustomerId());
-        $this->assertEquals(false, $this->slipData->getBankingCustomerId());
-    }
-
-    /**
      * Tests the setWithBankingCustomerId method with various parameters
      *
      * @return void
@@ -892,40 +574,6 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     public function testSetWithPayerOrangeType()
     {
         $this->slipData = new OrangePaymentSlipData('orange');
-        $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
-
-        $this->slipData->setWithPayer();
-        $this->assertTrue($this->slipData->getWithPayer());
-        $this->assertEquals('AAAAAAAAAA', $this->slipData->getPayerLine1());
-        $this->assertEquals('BBBBBBBBBB', $this->slipData->getPayerLine2());
-        $this->assertEquals('CCCCCCCCCC', $this->slipData->getPayerLine3());
-        $this->assertEquals('DDDDDDDDDD', $this->slipData->getPayerLine4());
-
-        $this->slipData->setWithPayer(true);
-        $this->assertTrue($this->slipData->getWithPayer());
-        $this->assertEquals('AAAAAAAAAA', $this->slipData->getPayerLine1());
-        $this->assertEquals('BBBBBBBBBB', $this->slipData->getPayerLine2());
-        $this->assertEquals('CCCCCCCCCC', $this->slipData->getPayerLine3());
-        $this->assertEquals('DDDDDDDDDD', $this->slipData->getPayerLine4());
-
-        $this->slipData->setWithPayer(false);
-        $this->assertFalse($this->slipData->getWithPayer());
-        $this->assertEquals(false, $this->slipData->getPayerLine1());
-        $this->assertEquals(false, $this->slipData->getPayerLine2());
-        $this->assertEquals(false, $this->slipData->getPayerLine3());
-        $this->assertEquals(false, $this->slipData->getPayerLine4());
-    }
-
-    /**
-     * Tests the setWithPayer method with a red slip
-     *
-     * @return void
-     * @covers ::setWithPayer
-     * @covers ::getWithPayer
-     */
-    public function testSetWithPayerRedType()
-    {
-        $this->slipData = new OrangePaymentSlipData('red');
         $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->slipData->setWithPayer();
@@ -1014,64 +662,6 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the setWithIban method with a red slip
-     *
-     * @return void
-     * @covers ::setWithIban
-     * @covers ::getWithIban
-     */
-    public function testSetWithIbanNumberRedType()
-    {
-        $this->slipData = new OrangePaymentSlipData('red');
-        $this->slipData->setIban('CH380123456789');
-
-        $this->slipData->setWithIban(true);
-        $this->assertTrue($this->slipData->getWithIban());
-        $this->assertEquals('CH380123456789', $this->slipData->getIban());
-
-        $this->slipData->setWithIban();
-        $this->assertFalse($this->slipData->getWithIban());
-        $this->assertEquals(false, $this->slipData->getIban());
-
-        $this->slipData->setWithIban(false);
-        $this->assertFalse($this->slipData->getWithIban());
-        $this->assertEquals(false, $this->slipData->getIban());
-    }
-
-    /**
-     * Tests the setWithIban method with various parameters
-     *
-     * @return void
-     * @covers ::setWithIban
-     * @covers ::getWithIban
-     */
-    public function testSetWithIbanNumberParameters()
-    {
-        $this->slipData = new OrangePaymentSlipData('red');
-        $this->slipData->setIban('CH380123456789');
-
-        $this->slipData->setWithIban(1);
-        $this->assertTrue($this->slipData->getWithIban());
-        $this->assertEquals('CH380123456789', $this->slipData->getIban());
-
-        $this->slipData->setWithIban(0);
-        $this->assertTrue($this->slipData->getWithIban());
-        $this->assertEquals('CH380123456789', $this->slipData->getIban());
-
-        $this->slipData->setWithIban('foo');
-        $this->assertTrue($this->slipData->getWithIban());
-
-        $this->slipData->setWithIban(123);
-        $this->assertTrue($this->slipData->getWithIban());
-
-        $this->slipData->setWithIban(123.456);
-        $this->assertTrue($this->slipData->getWithIban());
-
-        $this->slipData->setWithIban(array(true));
-        $this->assertTrue($this->slipData->getWithIban());
-    }
-
-    /**
      * Tests the setWithPaymentReason method with an orange slip
      *
      * @return void
@@ -1103,79 +693,6 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine2());
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine3());
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine4());
-    }
-
-    /**
-     * Tests the setWithPaymentReason method with a red slip
-     *
-     * @return void
-     * @covers ::setWithPaymentReason
-     * @covers ::getWithPaymentReason
-     */
-    public function testSetWithPaymentReasonRedType()
-    {
-        $this->slipData = new OrangePaymentSlipData('red');
-        $this->slipData->setPaymentReasonData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
-
-        $this->slipData->setWithPaymentReason(true);
-        $this->assertTrue($this->slipData->getWithPaymentReason());
-        $this->assertEquals('AAAAAAAAAA', $this->slipData->getPaymentReasonLine1());
-        $this->assertEquals('BBBBBBBBBB', $this->slipData->getPaymentReasonLine2());
-        $this->assertEquals('CCCCCCCCCC', $this->slipData->getPaymentReasonLine3());
-        $this->assertEquals('DDDDDDDDDD', $this->slipData->getPaymentReasonLine4());
-
-        $this->slipData->setWithPaymentReason();
-        $this->assertFalse($this->slipData->getWithPaymentReason());
-        $this->assertEquals(false, $this->slipData->getPaymentReasonLine1());
-        $this->assertEquals(false, $this->slipData->getPaymentReasonLine2());
-        $this->assertEquals(false, $this->slipData->getPaymentReasonLine3());
-        $this->assertEquals(false, $this->slipData->getPaymentReasonLine4());
-
-        $this->slipData->setWithPaymentReason(false);
-        $this->assertFalse($this->slipData->getWithPaymentReason());
-        $this->assertEquals(false, $this->slipData->getPaymentReasonLine1());
-        $this->assertEquals(false, $this->slipData->getPaymentReasonLine2());
-        $this->assertEquals(false, $this->slipData->getPaymentReasonLine3());
-        $this->assertEquals(false, $this->slipData->getPaymentReasonLine4());
-    }
-
-    /**
-     * Tests the setWithPaymentReason method with various parameters
-     *
-     * @return void
-     * @covers ::setWithPaymentReason
-     * @covers ::getWithPaymentReason
-     */
-    public function testSetWithPaymentReasonParameters()
-    {
-        $this->slipData = new OrangePaymentSlipData('red');
-        $this->slipData->setPaymentReasonData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
-
-        $this->slipData->setWithPaymentReason(1);
-        $this->assertTrue($this->slipData->getWithPaymentReason());
-        $this->assertEquals('AAAAAAAAAA', $this->slipData->getPaymentReasonLine1());
-        $this->assertEquals('BBBBBBBBBB', $this->slipData->getPaymentReasonLine2());
-        $this->assertEquals('CCCCCCCCCC', $this->slipData->getPaymentReasonLine3());
-        $this->assertEquals('DDDDDDDDDD', $this->slipData->getPaymentReasonLine4());
-
-        $this->slipData->setWithPaymentReason(0);
-        $this->assertTrue($this->slipData->getWithPaymentReason());
-        $this->assertEquals('AAAAAAAAAA', $this->slipData->getPaymentReasonLine1());
-        $this->assertEquals('BBBBBBBBBB', $this->slipData->getPaymentReasonLine2());
-        $this->assertEquals('CCCCCCCCCC', $this->slipData->getPaymentReasonLine3());
-        $this->assertEquals('DDDDDDDDDD', $this->slipData->getPaymentReasonLine4());
-
-        $this->slipData->setWithPaymentReason('foo');
-        $this->assertTrue($this->slipData->getWithPaymentReason());
-
-        $this->slipData->setWithPaymentReason(123);
-        $this->assertTrue($this->slipData->getWithPaymentReason());
-
-        $this->slipData->setWithPaymentReason(123.456);
-        $this->assertTrue($this->slipData->getWithPaymentReason());
-
-        $this->slipData->setWithPaymentReason(array(true));
-        $this->assertTrue($this->slipData->getWithPaymentReason());
     }
 
     /**
@@ -1350,59 +867,6 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the setIban method
-     *
-     * @return void
-     * @covers ::setIban
-     * @covers ::getIban
-     */
-    public function testSetIban()
-    {
-        $this->slipData = new OrangePaymentSlipData('red');
-        $this->slipData->setIban('CH380123456789');
-
-        $this->assertEquals('CH380123456789', $this->slipData->getIban());
-
-        $this->slipData->setWithIban(false);
-        $this->slipData->setIban('CH380123456789');
-
-        $this->assertEquals(false, $this->slipData->getIban());
-    }
-
-    /**
-     * Tests the setPaymentReasonData method
-     *
-     * @return void
-     * @covers ::setPaymentReasonData
-     * @covers ::setPaymentReasonLine1
-     * @covers ::setPaymentReasonLine2
-     * @covers ::setPaymentReasonLine3
-     * @covers ::setPaymentReasonLine4
-     * @covers ::getPaymentReasonLine1
-     * @covers ::getPaymentReasonLine2
-     * @covers ::getPaymentReasonLine3
-     * @covers ::getPaymentReasonLine4
-     */
-    public function testSetPaymentReasonData()
-    {
-        $this->slipData = new OrangePaymentSlipData('red');
-        $this->slipData->setPaymentReasonData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
-
-        $this->assertEquals('AAAAAAAAAA', $this->slipData->getPaymentReasonLine1());
-        $this->assertEquals('BBBBBBBBBB', $this->slipData->getPaymentReasonLine2());
-        $this->assertEquals('CCCCCCCCCC', $this->slipData->getPaymentReasonLine3());
-        $this->assertEquals('DDDDDDDDDD', $this->slipData->getPaymentReasonLine4());
-
-        $this->slipData->setWithPaymentReason(false);
-        $this->slipData->setPaymentReasonData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
-
-        $this->assertEquals(false, $this->slipData->getPaymentReasonLine1());
-        $this->assertEquals(false, $this->slipData->getPaymentReasonLine2());
-        $this->assertEquals(false, $this->slipData->getPaymentReasonLine3());
-        $this->assertEquals(false, $this->slipData->getPaymentReasonLine4());
-    }
-
-    /**
      * Tests the getCompleteReferenceNumber method for an orange slip
      *
      * @return void
@@ -1430,40 +894,6 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(false, $this->slipData->getCompleteReferenceNumber());
         $this->assertEquals(false, $this->slipData->getCompleteReferenceNumber(false));
         $this->assertEquals(false, $this->slipData->getCompleteReferenceNumber(true, false));
-    }
-
-    /**
-     * Tests the getCompleteReferenceNumber method for a red slip
-     *
-     * @return void
-     * @covers ::getCompleteReferenceNumber
-     * @covers ::breakStringIntoBlocks
-     * @covers ::modulo10
-     * @todo Implement testGetCompleteReferenceNumberRedType
-     */
-    public function testGetCompleteReferenceNumberRedType()
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * Tsets the getFormattedIban method
-     *
-     * @return void
-     * @covers ::getFormattedIban
-     */
-    public function testGetFormattedIban()
-    {
-        $this->slipData = new OrangePaymentSlipData('red');
-        $this->slipData->setIban('CH3808888123456789012');
-
-        $this->assertEquals('CH3808888123456789012', $this->slipData->getIban());
-        $this->assertEquals('CH38 0888 8123 4567 8901 2', $this->slipData->getFormattedIban());
-
-        $this->slipData->setWithIban(false);
-        $this->assertEquals(false, $this->slipData->getFormattedIban());
     }
 
     /**
@@ -1534,22 +964,6 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(
             '042>1234567894+ 010001456>',
             $this->slipData->getCodeLine(false)
-        );
-    }
-
-    /**
-     * Tests the getCodeLine method with a red slip
-     *
-     * @return void
-     * @covers ::getCodeLine
-     * @covers ::modulo10
-     * @covers ::getAccountDigits
-     * @todo Implement testGetCodeLineRedType
-     */
-    public function testGetCodeLineRedType()
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
         );
     }
 
