@@ -19,7 +19,7 @@ use InvalidArgumentException;
  *
  * Creates data containers for standard Swiss payment slips with or without reference number.
  * It doesn't actually do much. It's mostly a data container class to keep
- * including classes from having to care about how SwissPaymentSlip works.
+ * including classes from having to care about how ESR work.
  * But it provides a flexibility of which data it holds, because not always
  * all slip fields are needed in an application.
  *
@@ -141,7 +141,7 @@ class PaymentSlipData
 
     /**
      * Determines if the payment slip has an IBAN specified. Can be disabled for pre-printed payment slips
-     * Only possible for ES, but not for SwissPaymentSlip
+     * Only possible for ES, but not for ESR
      *
      * @var bool True if yes, false if no.
      */
@@ -149,7 +149,7 @@ class PaymentSlipData
 
     /**
      * Determines if the payment slip has a payment reason. Can be disabled for pre-printed payment slips
-     * Only possible for ES, but not for SwissPaymentSlip
+     * Only possible for ES, but not for ESR
      *
      * @var bool True if yes, false if no.
      */
@@ -254,35 +254,35 @@ class PaymentSlipData
     protected $payerLine4 = '';
 
     /**
-     * The IBAN of the recipient of a ES. Not available on a SwissPaymentSlip
+     * The IBAN of the recipient of a ES. Not available on a ESR
      *
      * @var string The IBAN of the recipient.
      */
     protected $iban = '';
 
     /**
-     * The first line of the payment reason of a ES. Not available on a SwissPaymentSlip
+     * The first line of the payment reason of a ES. Not available on a ESR
      *
      * @var string The first line of the payment reason.
      */
     protected $paymentReasonLine1 = '';
 
     /**
-     * The second line of the payment reason of a ES. Not available on a SwissPaymentSlip
+     * The second line of the payment reason of a ES. Not available on a ESR
      *
      * @var string The second line of the payment reason.
      */
     protected $paymentReasonLine2 = '';
 
     /**
-     * The third line of the payment reason of a ES. Not available on a SwissPaymentSlip
+     * The third line of the payment reason of a ES. Not available on a ESR
      *
      * @var string The third line of the payment reason.
      */
     protected $paymentReasonLine3 = '';
 
     /**
-     * The fourth line of the payment reason of a ES. Not available on a SwissPaymentSlip
+     * The fourth line of the payment reason of a ES. Not available on a ESR
      *
      * @var string The fourth line of the payment reason.
      */
@@ -1421,7 +1421,7 @@ class PaymentSlipData
     }
 
     /**
-     * Get the full code line at the bottom of the SwissPaymentSlip
+     * Get the full code line at the bottom of the ESR
      *
      * @param bool $fillZeros Fill up with leading zeros.
      * @return string|bool Either the full code line or false if something was wrong.
