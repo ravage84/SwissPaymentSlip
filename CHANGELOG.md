@@ -15,6 +15,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Various CS and DocBlock improvements and other code clean up
 - Renamed SwissPaymentSlip to PaymentSlip and SwissPaymentSlipData to PaymentSlipData
 - Improved documentation
+- Adopted the PSR-4 autoloader standard
 
 ### Fixed
 - Some minor issues reported by Scrutinizer CI
