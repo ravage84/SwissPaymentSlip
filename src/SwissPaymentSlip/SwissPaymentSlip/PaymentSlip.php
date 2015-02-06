@@ -27,7 +27,6 @@ namespace SwissPaymentSlip\SwissPaymentSlip;
  * @todo Create central cell placement and formatting code (lines as array, attributes)...
  * @todo Implement fluent interface
  * @todo Consider sub classing the orange and red payment slip
- * @todo Rename to Slip
  * @todo Consider extracting the attributes as separate class
  */
 class PaymentSlip
