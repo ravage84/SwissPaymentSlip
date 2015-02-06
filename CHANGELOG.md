@@ -8,6 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 ### Fixed
+- Removed misleading time key, which fooled Packagist
 
 ## [0.7.0](https://github.com/ravage84/SwissPaymentSlip/releases/tag/0.7.0) - 2015-02-06
 ### Added
