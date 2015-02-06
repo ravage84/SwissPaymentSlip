@@ -65,14 +65,13 @@ BUT since the customer I was working for used custom designed payment slips I co
 Now I had to decide whether I want to "just" change the script to fit my needs or to rewrite it and make it as flexible as possible.
 I decided myself for the latter.
 
-Todos
+TODOs
 -----
 
 - Finish support for red inpayment slips
 - Improve code documentation
 - Add more exampples/improve existing ones
 - Improve tests
-- Add an [.editorconfig](http://editorconfig.org/) file
 - Release the stable release of the API
 
 Submitting bugs and feature requests
