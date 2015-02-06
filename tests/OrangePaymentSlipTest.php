@@ -15,8 +15,6 @@ namespace SwissPaymentSlip\SwissPaymentSlip\Tests;
 use SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlip;
 use SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlipData;
 
-require __DIR__.'/../vendor/autoload.php';
-
 /**
  * Tests for the OrangePaymentSlip class
  *
@@ -862,48 +860,6 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(false, $this->paymentSlip->getDisplayCodeLine());
 
         $this->paymentSlip->setDisplayCodeLine('XXX');
-    }
-
-    /**
-     * Tests the setDisplayIban method
-     *
-     * @return void
-     * @covers ::setDisplayIban
-     * @covers ::getDisplayIban
-     */
-    public function testSetDisplayIban()
-    {
-        $this->paymentSlip->setDisplayIban();
-        $this->assertEquals(true, $this->paymentSlip->getDisplayIban());
-
-        $this->paymentSlip->setDisplayIban(true);
-        $this->assertEquals(true, $this->paymentSlip->getDisplayIban());
-
-        $this->paymentSlip->setDisplayIban(false);
-        $this->assertEquals(false, $this->paymentSlip->getDisplayIban());
-
-        $this->paymentSlip->setDisplayIban('XXX');
-    }
-
-    /**
-     * Tests the setDisplayPaymentReason method
-     *
-     * @return void
-     * @covers ::setDisplayPaymentReason
-     * @covers ::getDisplayPaymentReason
-     */
-    public function testSetDisplayPaymentReason()
-    {
-        $this->paymentSlip->setDisplayPaymentReason();
-        $this->assertEquals(true, $this->paymentSlip->getDisplayPaymentReason());
-
-        $this->paymentSlip->setDisplayPaymentReason(true);
-        $this->assertEquals(true, $this->paymentSlip->getDisplayPaymentReason());
-
-        $this->paymentSlip->setDisplayPaymentReason(false);
-        $this->assertEquals(false, $this->paymentSlip->getDisplayPaymentReason());
-
-        $this->paymentSlip->setDisplayPaymentReason('XXX');
     }
 
     /**

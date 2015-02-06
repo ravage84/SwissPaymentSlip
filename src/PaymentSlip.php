@@ -25,11 +25,9 @@ namespace SwissPaymentSlip\SwissPaymentSlip;
  * @todo Create constants for the attribute keys
  * @todo Create constants for left, right and center text alignment (L, R, C)
  * @todo Create central cell placement and formatting code (lines as array, attributes)...
- * @todo Implement fluent interface
- * @todo Consider sub classing the orange and red payment slip
  * @todo Consider extracting the attributes as separate class
  */
-class PaymentSlip
+abstract class PaymentSlip
 {
     /**
      * The payment slip value object, which contains the payment slip data
@@ -151,20 +149,6 @@ class PaymentSlip
      * @var bool True if yes, false if no
      */
     protected $displayPayer = true;
-
-    /**
-     * Determines whether the IBAN should be displayed
-     *
-     * @var bool True if yes, false if no
-     */
-    protected $displayIban = false;
-
-    /**
-     * Determines whether the payment reason should be displayed
-     *
-     * @var bool True if yes, false if no
-     */
-    protected $displayPaymentReason = false;
 
     /**
      * Determines whether the code line at the bottom should be displayed
@@ -295,56 +279,6 @@ class PaymentSlip
         if (!is_null($slipPosY)) {
             $this->setSlipPosY($slipPosY);
         }
-        $this->setDefaults();
-    }
-
-    /**
-     * Sets the default attributes of the elements according to the type
-     *
-     * @return $this The current instance for a fluent interface.
-     */
-    protected function setDefaults()
-    {
-        if ($this->paymentSlipData->isOrangeSlip()) {
-            $this->setBankLeftAttr(3, 8, 50, 4);
-            $this->setBankRightAttr(66, 8, 50, 4);
-            $this->setRecipientLeftAttr(3, 23, 50, 4);
-            $this->setRecipientRightAttr(66, 23, 50, 4);
-            $this->setAccountLeftAttr(27, 43, 30, 4);
-            $this->setAccountRightAttr(90, 43, 30, 4);
-            $this->setAmountFrancsLeftAttr(5, 50.5, 35, 4);
-            $this->setAmountFrancsRightAttr(66, 50.5, 35, 4);
-            $this->setAmountCentsLeftAttr(50, 50.5, 6, 4);
-            $this->setAmountCentsRightAttr(111, 50.5, 6, 4);
-            $this->setReferenceNumberLeftAttr(3, 60, 50, 4, null, null, 8);
-            $this->setReferenceNumberRightAttr(125, 33.5, 80, 4);
-            $this->setPayerLeftAttr(3, 65, 50, 4);
-            $this->setPayerRightAttr(125, 48, 50, 4);
-            $this->setCodeLineAttr(64, 85, 140, 4, null, 'OCRB10');
-
-            $this->setSlipBackground(__DIR__.'/Resources/img/ezs_orange.gif');
-
-        } elseif ($this->paymentSlipData->isRedSlip()) {
-            $this->setBankLeftAttr(3, 8, 50, 4);
-            $this->setBankRightAttr(66, 8, 50, 4);
-            $this->setRecipientLeftAttr(3, 23, 50, 4);
-            $this->setRecipientRightAttr(66, 23, 50, 4);
-            $this->setAccountLeftAttr(27, 43, 30, 4);
-            $this->setAccountRightAttr(90, 43, 30, 4);
-            $this->setAmountFrancsLeftAttr(5, 50.5, 35, 4);
-            $this->setAmountFrancsRightAttr(66, 50.5, 35, 4);
-            $this->setAmountCentsLeftAttr(50, 50.5, 6, 4);
-            $this->setAmountCentsRightAttr(111, 50.5, 6, 4);
-            $this->setReferenceNumberLeftAttr(3, 60, 50, 4, null, null, 8);
-            $this->setReferenceNumberRightAttr(125, 33.5, 80, 4);
-            $this->setPayerLeftAttr(3, 65, 50, 4);
-            $this->setPayerRightAttr(125, 48, 50, 4);
-            $this->setCodeLineAttr(64, 85, 140, 4, null, 'OCRB10');
-
-            $this->setSlipBackground(__DIR__.'/Resources/img/ezs_red.gif');
-        }
-
-        return $this;
     }
 
     /**
@@ -1577,56 +1511,6 @@ class PaymentSlip
     }
 
     /**
-     * Set whether or not to display the IBAN
-     *
-     * @param bool $displayIban True if yes, false if no
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setDisplayIban($displayIban = true)
-    {
-        if (is_bool($displayIban)) {
-            $this->displayIban = $displayIban;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get whether or not to display the IBAN
-     *
-     * @return bool True if yes, false if no.
-     */
-    public function getDisplayIban()
-    {
-        return $this->displayIban;
-    }
-
-    /**
-     * Set whether or not to display the payment reason lines
-     *
-     * @param bool $displayPaymentReason True if yes, false if no
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setDisplayPaymentReason($displayPaymentReason = true)
-    {
-        if (is_bool($displayPaymentReason)) {
-            $this->displayPaymentReason = $displayPaymentReason;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get whether or not to display the payment reason lines
-     *
-     * @return bool True if yes, false if no.
-     */
-    public function getDisplayPaymentReason()
-    {
-        return $this->displayPaymentReason;
-    }
-
-    /**
      * Set whether or not to display the code line at the bottom
      *
      * @param bool $displayCodeLine True if yes, false if no
@@ -1658,136 +1542,5 @@ class PaymentSlip
      * @param bool $fillZeroes Whether to return the reference number filled with zeros or not.
      * @return array All elements with their lines and attributes.
      */
-    public function getAllElements($formatted = true, $fillZeroes = true)
-    {
-        $paymentSlipData = $this->paymentSlipData;
-
-        $elements = array();
-        // Place left bank lines
-        if ($this->getDisplayBank()) {
-            $lines = array($paymentSlipData->getBankName(),
-            $paymentSlipData->getBankCity());
-            $elements['bankLeft'] = array('lines' => $lines,
-            'attributes' => $this->getBankLeftAttr()
-            );
-        }
-
-        // Place right bank lines
-        if ($this->getDisplayBank()) {
-               // Reuse lines from above
-            $elements['bankRight'] = array('lines' => $lines,
-            'attributes' => $this->getBankRightAttr()
-            );
-        }
-
-        // Place left recipient lines
-        if ($this->getDisplayRecipient()) {
-            $lines = array($paymentSlipData->getRecipientLine1(),
-            $paymentSlipData->getRecipientLine2(), $paymentSlipData->getRecipientLine3(),
-            $paymentSlipData->getRecipientLine4());
-            $elements['recipientLeft'] = array('lines' => $lines,
-            'attributes' => $this->getRecipientLeftAttr()
-            );
-        }
-
-        // Place right recipient lines
-        if ($this->getDisplayRecipient()) {
-            // Reuse lines from above
-            $elements['recipientRight'] = array('lines' => $lines,
-            'attributes' => $this->getRecipientRightAttr()
-            );
-        }
-
-        // Place left account number
-        if ($this->getDisplayAccount()) {
-            $lines = array($paymentSlipData->getAccountNumber());
-            $elements['accountLeft'] = array('lines' => $lines,
-            'attributes' => $this->getAccountLeftAttr()
-            );
-        }
-
-        // Place right account number
-        if ($this->getDisplayAccount()) {
-            // Reuse lines from above
-            $elements['accountRight'] = array('lines' => $lines,
-            'attributes' => $this->getAccountRightAttr()
-            );
-        }
-
-        // Place left amount in francs
-        if ($this->getDisplayAmount()) {
-            $lines = array($this->paymentSlipData->getAmountFrancs());
-            $elements['amountFrancsLeft'] = array('lines' => $lines,
-            'attributes' => $this->getAmountFrancsLeftAttr()
-            );
-        }
-
-        // Place right amount in francs
-        if ($this->getDisplayAmount()) {
-            // Reuse lines from above
-            $elements['amountFrancsRight'] = array('lines' => $lines,
-            'attributes' => $this->getAmountFrancsRightAttr()
-            );
-        }
-
-        // Place left amount in cents
-        if ($this->getDisplayAmount()) {
-            $lines = array($this->paymentSlipData->getAmountCents());
-            $elements['amountCentsLeft'] = array('lines' => $lines,
-            'attributes' => $this->getAmountCentsLeftAttr()
-            );
-        }
-
-        // Place right amount in cents
-        if ($this->getDisplayAmount()) {
-            // Reuse lines from above
-            $elements['amountCentsRight'] = array('lines' => $lines,
-            'attributes' => $this->getAmountCentsRightAttr()
-            );
-        }
-
-        // Place left reference number
-        if ($this->getDisplayReferenceNr()) {
-            $lines = array($this->paymentSlipData->getCompleteReferenceNumber($formatted, $fillZeroes));
-            $elements['referenceNumberLeft'] = array('lines' => $lines,
-            'attributes' => $this->getReferenceNumberLeftAttr()
-            );
-        }
-
-        // Place right reference number
-        if ($this->getDisplayReferenceNr()) {
-            // Reuse lines from above
-            $elements['referenceNumberRight'] = array('lines' => $lines,
-            'attributes' => $this->getReferenceNumberRightAttr()
-            );
-        }
-
-       // Place left payer lines
-        if ($this->getDisplayPayer()) {
-            $lines = array($paymentSlipData->getPayerLine1(),
-            $paymentSlipData->getPayerLine2(), $paymentSlipData->getPayerLine3(),
-            $paymentSlipData->getPayerLine4());
-            $elements['payerLeft'] = array('lines' => $lines,
-            'attributes' => $this->getPayerLeftAttr()
-            );
-        }
-
-       // Place right payer lines
-        if ($this->getDisplayPayer()) {
-            // Reuse lines from above
-            $elements['payerRight'] = array('lines' => $lines,
-            'attributes' => $this->getPayerRightAttr()
-            );
-        }
-
-        // Place code line
-        if ($this->getDisplayCodeLine()) {
-            $lines = array($this->paymentSlipData->getCodeLine($fillZeroes));
-            $elements['codeLine'] = array('lines' => $lines,
-            'attributes' => $this->getCodeLineAttr()
-            );
-        }
-
-        return $elements;
-    }
+    abstract public function getAllElements($formatted = true, $fillZeroes = true);
 }

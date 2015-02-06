@@ -13,9 +13,6 @@
 namespace SwissPaymentSlip\SwissPaymentSlip\Tests;
 
 use SwissPaymentSlip\SwissPaymentSlip\PaymentSlip;
-use SwissPaymentSlip\SwissPaymentSlip\PaymentSlipData;
-
-require __DIR__.'/../vendor/autoload.php';
 
 /**
  * Tests for the PaymentSlip class
@@ -52,8 +49,8 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $slipData = new PaymentSlipData();
-        $this->paymentSlip = new PaymentSlip($slipData);
+        $slipData = new TestablePaymentSlipData();
+        $this->paymentSlip = new TestablePaymentSlip($slipData);
 
         $attributes = array();
         $attributes['PosX'] = 0;
@@ -94,7 +91,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testNullSlipDataParameter()
     {
-        new PaymentSlip(null);
+        new TestablePaymentSlip(null);
     }
 
     /**
@@ -107,7 +104,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidSlipDataParameter()
     {
-        new PaymentSlip(new \ArrayObject());
+        new TestablePaymentSlip(new \ArrayObject());
     }
 
     /**
@@ -725,8 +722,8 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSlipBackgroundDefaultValuesRedType()
     {
-        $slipData = new PaymentSlipData('red');
-        $this->paymentSlip = new PaymentSlip($slipData);
+        $slipData = new TestablePaymentSlipData('red');
+        $this->paymentSlip = new TestablePaymentSlip($slipData);
 
         $this->assertEquals('ezs_red.gif', basename($this->paymentSlip->getSlipBackground()));
     }
@@ -1086,48 +1083,6 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(false, $this->paymentSlip->getDisplayCodeLine());
 
         $this->paymentSlip->setDisplayCodeLine('XXX');
-    }
-
-    /**
-     * Tests the setDisplayIban method
-     *
-     * @return void
-     * @covers ::setDisplayIban
-     * @covers ::getDisplayIban
-     */
-    public function testSetDisplayIban()
-    {
-        $this->paymentSlip->setDisplayIban();
-        $this->assertEquals(true, $this->paymentSlip->getDisplayIban());
-
-        $this->paymentSlip->setDisplayIban(true);
-        $this->assertEquals(true, $this->paymentSlip->getDisplayIban());
-
-        $this->paymentSlip->setDisplayIban(false);
-        $this->assertEquals(false, $this->paymentSlip->getDisplayIban());
-
-        $this->paymentSlip->setDisplayIban('XXX');
-    }
-
-    /**
-     * Tests the setDisplayPaymentReason method
-     *
-     * @return void
-     * @covers ::setDisplayPaymentReason
-     * @covers ::getDisplayPaymentReason
-     */
-    public function testSetDisplayPaymentReason()
-    {
-        $this->paymentSlip->setDisplayPaymentReason();
-        $this->assertEquals(true, $this->paymentSlip->getDisplayPaymentReason());
-
-        $this->paymentSlip->setDisplayPaymentReason(true);
-        $this->assertEquals(true, $this->paymentSlip->getDisplayPaymentReason());
-
-        $this->paymentSlip->setDisplayPaymentReason(false);
-        $this->assertEquals(false, $this->paymentSlip->getDisplayPaymentReason());
-
-        $this->paymentSlip->setDisplayPaymentReason('XXX');
     }
 
     /**

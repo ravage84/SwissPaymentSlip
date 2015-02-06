@@ -57,37 +57,6 @@ use InvalidArgumentException;
  */
 class RedPaymentSlipData extends PaymentSlipData
 {
-    /**
-     * Constant for orange payment slips
-     */
-    const ORANGE = 'orange';
-
-    /**
-     * Constant for red payment slips
-     */
-    const RED = 'red';
-
-    /**
-     * Consists the array table for calculating the check digit by modulo 10
-     *
-     * @var array Table for calculating the check digit by modulo 10.
-     */
-    private $moduloTable = array(0, 9, 4, 6, 8, 2, 7, 1, 3, 5);
-
-    /**
-     * Determines the payment slip type.
-     * Either orange or red
-     *
-     * @var string Orange or red payment slip.
-     */
-    protected $type = self::ORANGE;
-
-    /**
-     * Determines if the payment slip must not be used for payment (XXXed out)
-     *
-     * @var bool Normally false, true if not for payment.
-     */
-    protected $notForPayment = false;
 
     /**
      * Determines if the payment slip has a recipient bank. Can be disabled for pre-printed payment slips
@@ -116,21 +85,6 @@ class RedPaymentSlipData extends PaymentSlipData
      * @var bool True for ESR, false for ESR+.
      */
     protected $withAmount = true;
-
-    /**
-     * Determines if the payment slip has a reference number. Can be disabled for pre-printed payment slips
-     *
-     * @var bool True if yes, false if no.
-     */
-    protected $withReferenceNumber = true;
-
-    /**
-     * Determines if the payment slip's reference number should contain the banking customer ID.
-     * Can be disabled for recipients who don't need this
-     *
-     * @var bool True if yes, false if no.
-     */
-    protected $withBankingCustomerId = true;
 
     /**
      * Determines if the payment slip has a payer. Can be disabled for pre-printed payment slips
@@ -212,20 +166,6 @@ class RedPaymentSlipData extends PaymentSlipData
     protected $amount = 0.0;
 
     /**
-     * The reference number, without banking customer ID and check digit
-     *
-     * @var string The reference number.
-     */
-    protected $referenceNumber = '';
-
-    /**
-     * The banking customer ID, which will be prepended to the reference number
-     *
-     * @var string The banking customer ID.
-     */
-    protected $bankingCustomerId = '';
-
-    /**
      * The first line of the payer, e.g. "Hans Mustermann"
      *
      * @var string The first line of the payer.
@@ -289,122 +229,6 @@ class RedPaymentSlipData extends PaymentSlipData
     protected $paymentReasonLine4 = '';
 
     /**
-     * Construct an empty payment slip
-     *
-     * By default it creates an empty orange payment slip.
-     * Can be changed to a red one by supplying red as parameter.
-     *
-     * @param string $type The slip type, either orange or red.
-     */
-    public function __construct($type = self::ORANGE)
-    {
-        $this->setType($type, true);
-    }
-
-    /**
-     * Set payment slip type. Resets settings and data if changing the type or being forced to
-     *
-     * @param string $type The slip type.
-     * @param bool $forceReset Force a data reset according to the given type.
-     * @throws \InvalidArgumentException If one of the parameters is invalid.
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setType($type = self::ORANGE, $forceReset = false)
-    {
-        if (!is_string($type)) {
-            throw new InvalidArgumentException('Type parameter is not a string!');
-        }
-        if (!is_bool($forceReset)) {
-            throw new InvalidArgumentException('ForceReset parameter is not a bool!');
-        }
-        $type = strtolower($type);
-        if ($type !== self::ORANGE && $type !== self::RED) {
-            throw new InvalidArgumentException('Invalid type parameter "' . $type . '"!');
-        }
-
-        if ($this->type != $type || $forceReset) {
-            $this->type = $type;
-
-            if ($type == self::ORANGE) {
-                $this->setOrangeDefaults();
-            } elseif ($type == self::RED) {
-                $this->setRedDefaults();
-            }
-        }
-        return $this;
-    }
-
-    /**
-     * Set the default values for the orange payment slip
-     *
-     * @return $this The current instance for a fluent interface.
-     */
-    protected function setOrangeDefaults()
-    {
-        $this->setWithBank(true);
-        $this->setWithAccountNumber(true);
-        $this->setWithRecipient(true);
-        $this->setWithAmount(true);
-        $this->setWithReferenceNumber(true);
-        $this->setWithBankingCustomerId(true);
-        $this->setWithPayer(true);
-        $this->setWithIban(false);
-        $this->setWithPaymentReason(false);
-
-        return $this;
-    }
-
-    /**
-     * Set the default values for the red payment slip
-     *
-     * @return $this The current instance for a fluent interface.
-     */
-    protected function setRedDefaults()
-    {
-        $this->setWithBank(true);
-        $this->setWithAccountNumber(true);
-        $this->setWithRecipient(true);
-        $this->setWithAmount(true);
-        $this->setWithReferenceNumber(false);
-        $this->setWithBankingCustomerId(false);
-        $this->setWithPayer(true);
-        $this->setWithIban(true);
-        $this->setWithPaymentReason(true);
-
-        return $this;
-    }
-
-    /**
-     * Get payment slip type
-     *
-     * @return string The slip type.
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * Determines if it is a orange payment slip
-     *
-     * @return bool True if it is a orange payment slip.
-     */
-    public function isOrangeSlip()
-    {
-        return $this->getType() == self::ORANGE;
-    }
-
-    /**
-     * Determines if it is a red payment slip
-     *
-     * @return bool True if it is a red payment slip.
-     */
-    public function isRedSlip()
-    {
-        return $this->getType() == self::RED;
-    }
-
-    /**
      * Set payment slip for not to be used for payment
      *
      * XXXes out all fields to prevent people using the payment slip.
@@ -423,8 +247,6 @@ class RedPaymentSlipData extends PaymentSlipData
             $this->setPayerData('XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX');
 
             $this->setAmount('XXXXXXXX.XX');
-            $this->setReferenceNumber('XXXXXXXXXXXXXXXXXXXX');
-            $this->setBankingCustomerId('XXXXXX');
         }
 
         return $this;
@@ -561,76 +383,6 @@ class RedPaymentSlipData extends PaymentSlipData
     }
 
     /**
-     * Set if payment slip has a reference number specified
-     *
-     * Resets reference number if disabled
-     *
-     * @param bool $withReferenceNumber True if yes, false if no.
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setWithReferenceNumber($withReferenceNumber = true)
-    {
-        if ($this->isOrangeSlip()) {
-            if (is_bool($withReferenceNumber)) {
-                $this->withReferenceNumber = $withReferenceNumber;
-
-                if (!$withReferenceNumber) {
-                    $this->referenceNumber = '';
-                }
-            }
-        } else {
-            $this->withReferenceNumber = false;
-            $this->referenceNumber = '';
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get if payment slip has a reference number specified
-     *
-     * @return bool True if payment slip has a reference number specified, else false.
-     */
-    public function getWithReferenceNumber()
-    {
-        return $this->withReferenceNumber;
-    }
-
-    /**
-     * Set if the payment slip's reference number should contain the banking customer ID
-     *
-     * @param bool $withBankingCustomerId True if successful, else false.
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setWithBankingCustomerId($withBankingCustomerId = true)
-    {
-        if ($this->isOrangeSlip()) {
-            if (is_bool($withBankingCustomerId)) {
-                $this->withBankingCustomerId = $withBankingCustomerId;
-
-                if (!$withBankingCustomerId) {
-                    $this->bankingCustomerId = '';
-                }
-            }
-        } else {
-            $this->withBankingCustomerId = false;
-            $this->bankingCustomerId = '';
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get if the payment slip's reference number should contain the banking customer ID.
-     *
-     * @return bool True if payment slip has the recipient specified, else false.
-     */
-    public function getWithBankingCustomerId()
-    {
-        return $this->withBankingCustomerId;
-    }
-
-    /**
      * Set if payment slip has a payer specified
      *
      * @param bool $withPayer True if yes, false if no.
@@ -671,17 +423,12 @@ class RedPaymentSlipData extends PaymentSlipData
      */
     public function setWithIban($withIban = false)
     {
-        if ($this->isRedSlip()) {
-            if (is_bool($withIban)) {
-                $this->withIban = $withIban;
+        if (is_bool($withIban)) {
+            $this->withIban = $withIban;
 
-                if (!$withIban) {
-                    $this->iban = '';
-                }
+            if (!$withIban) {
+                $this->iban = '';
             }
-        } else {
-            $this->withIban = false;
-            $this->iban = '';
         }
 
         return $this;
@@ -706,23 +453,15 @@ class RedPaymentSlipData extends PaymentSlipData
      */
     public function setWithPaymentReason($withPaymentReason = false)
     {
-        if ($this->isRedSlip()) {
-            if (is_bool($withPaymentReason)) {
-                $this->withPaymentReason = $withPaymentReason;
+        if (is_bool($withPaymentReason)) {
+            $this->withPaymentReason = $withPaymentReason;
 
-                if (!$withPaymentReason) {
-                    $this->paymentReasonLine1 = '';
-                    $this->paymentReasonLine2 = '';
-                    $this->paymentReasonLine3 = '';
-                    $this->paymentReasonLine4 = '';
-                }
+            if (!$withPaymentReason) {
+                $this->paymentReasonLine1 = '';
+                $this->paymentReasonLine2 = '';
+                $this->paymentReasonLine3 = '';
+                $this->paymentReasonLine4 = '';
             }
-        } else {
-            $this->withPaymentReason = false;
-            $this->paymentReasonLine1 = '';
-            $this->paymentReasonLine2 = '';
-            $this->paymentReasonLine3 = '';
-            $this->paymentReasonLine4 = '';
         }
 
         return $this;
@@ -998,64 +737,6 @@ class RedPaymentSlipData extends PaymentSlipData
     {
         if ($this->getWithAmount()) {
             return $this->amount;
-        }
-        return false;
-    }
-
-    /**
-     * Set the reference number
-     *
-     * @param string $referenceNumber The reference number.
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setReferenceNumber($referenceNumber)
-    {
-        if ($this->getWithReferenceNumber()) {
-            // TODO validate reference number
-            $this->referenceNumber = $referenceNumber;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get the reference number
-     *
-     * @return string|bool The reference number or false if withReferenceNumber is false.
-     */
-    public function getReferenceNumber()
-    {
-        if ($this->getWithReferenceNumber()) {
-            return $this->referenceNumber;
-        }
-        return false;
-    }
-
-    /**
-     * Set the banking customer ID
-     *
-     * @param string $bankingCustomerId The banking customer ID.
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setBankingCustomerId($bankingCustomerId)
-    {
-        if ($this->getWithBankingCustomerId()) {
-            // TODO check length (exactly 6)
-            $this->bankingCustomerId = $bankingCustomerId;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get the banking customer ID
-     *
-     * @return string|bool The  banking customer ID or false if withBankingCustomerId is false.
-     */
-    public function getBankingCustomerId()
-    {
-        if ($this->getWithBankingCustomerId()) {
-            return $this->bankingCustomerId;
         }
         return false;
     }
@@ -1361,48 +1042,6 @@ class RedPaymentSlipData extends PaymentSlipData
     }
 
     /**
-     * Get complete reference number
-     *
-     * @param bool $formatted Should the returned reference be formatted in blocks of five (for better readability).
-     * @param bool $fillZeros Fill up with leading zeros, only applies to the case where no banking customer ID is used.
-     * @return string|bool The complete (with/without bank customer ID), formatted reference number with check digit
-     * or false if withReferenceNumber is false.
-     */
-    public function getCompleteReferenceNumber($formatted = true, $fillZeros = true)
-    {
-        if ($this->getWithReferenceNumber()) {
-            if ($this->getWithBankingCustomerId()) {
-             // Get reference number and fill with zeros
-                $completeReferenceNumber = str_pad($this->getReferenceNumber(), 20, '0', STR_PAD_LEFT);
-             // Add banking customer identification code
-                $completeReferenceNumber = $this->getBankingCustomerId() . $completeReferenceNumber;
-            } else {
-                if ($fillZeros) {
-                 // Get reference number and fill with zeros
-                    $completeReferenceNumber = str_pad($this->getReferenceNumber(), 26, '0', STR_PAD_LEFT);
-                } else {
-                 // Get just reference number
-                    $completeReferenceNumber = $this->getReferenceNumber();
-                }
-            }
-
-         // Add check digit
-            if ($this->getNotForPayment()) {
-                $completeReferenceNumber .= 'X';
-            } else {
-                $completeReferenceNumber .= $this->modulo10($completeReferenceNumber);
-            }
-
-            if ($formatted) {
-                $completeReferenceNumber = $this->breakStringIntoBlocks($completeReferenceNumber);
-            }
-
-            return $completeReferenceNumber;
-        }
-        return false;
-    }
-
-    /**
      * Get the IBAN number in human readable format
      *
      * Not valid for electronic transactions.
@@ -1419,61 +1058,17 @@ class RedPaymentSlipData extends PaymentSlipData
     }
 
     /**
-     * Get the full code line at the bottom of the ESR
+     * Get the full code line at the bottom of the ES
      *
      * @param bool $fillZeros Fill up with leading zeros.
      * @return string|bool Either the full code line or false if something was wrong.
+     * @throws \Exception When called,not yet implemented
      *
      * @todo Implement red slip support
      */
     public function getCodeLine($fillZeros = true)
     {
-        $francs = $this->getAmountFrancs();
-        $cents = $this->getAmountCents();
-
-        $referenceNumber = $this->getCompleteReferenceNumber(false, $fillZeros);
-        if ($referenceNumber === false) {
-            return false;
-        }
-        $accountNumber = $this->getAccountDigits();
-        if ($accountNumber === false) {
-            return false;
-        }
-
-        if ($this->getWithAmount()) {
-            $francs = str_pad($francs, 8, '0', STR_PAD_LEFT);
-            $cents = str_pad($cents, 2, '0', STR_PAD_RIGHT);
-            $amountPrefix = '01';
-            $amountPart = $francs . $cents;
-            $amountCheck = $this->modulo10($amountPrefix . $amountPart);
-        } else {
-            $amountPrefix = '04';
-            $amountPart = '';
-            $amountCheck = '2';
-        }
-        if ($fillZeros) {
-            $referenceNumberPart = str_pad($referenceNumber, 27, '0', STR_PAD_LEFT);
-        } else {
-            $referenceNumberPart = $referenceNumber;
-        }
-        $accountNumberPart = substr($accountNumber, 0, 2) .
-        str_pad(substr($accountNumber, 2), 7, '0', STR_PAD_LEFT);
-
-        if ($this->getNotForPayment()) {
-            $amountPrefix = 'XX';
-            $amountCheck = 'X';
-        }
-
-        $codeLine = sprintf(
-            '%s%s%s>%s+ %s>',
-            $amountPrefix,
-            $amountPart,
-            $amountCheck,
-            $referenceNumberPart,
-            $accountNumberPart
-        );
-
-        return $codeLine;
+        throw new \Exception('Not yet implemented!');
     }
 
     /**
@@ -1533,23 +1128,6 @@ class RedPaymentSlipData extends PaymentSlipData
         $francs = intval($amount);
         $cents = round(($amount - $francs) * 100);
         return str_pad($cents, 2, '0', STR_PAD_RIGHT);
-    }
-
-    /**
-     * Creates Modulo10 recursive check digit
-     *
-     * @copyright As found on http://www.developers-guide.net/forums/5431,modulo10-rekursiv (thanks, dude!)
-     * @param string $number Number to create recursive check digit off.
-     * @return int Recursive check digit.
-     */
-    private function modulo10($number)
-    {
-        $next = 0;
-        for ($i=0; $i < strlen($number); $i++) {
-            $next = $this->moduloTable[($next + substr($number, $i, 1)) % 10];
-        }
-
-        return (10 - $next) % 10;
     }
 
     /**

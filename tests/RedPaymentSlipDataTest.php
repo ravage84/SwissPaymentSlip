@@ -14,8 +14,6 @@ namespace SwissPaymentSlip\SwissPaymentSlip\Tests;
 
 use SwissPaymentSlip\SwissPaymentSlip\RedPaymentSlipData;
 
-require __DIR__.'/../vendor/autoload.php';
-
 /**
  * Tests for the RedPaymentSlipData class
  *
@@ -39,182 +37,6 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->slipData = new RedPaymentSlipData();
-    }
-
-    /**
-     * Tests the constructor with an empty string
-     *
-     * @return void
-     * @covers ::__construct
-     * @covers ::setType
-     * @expectedException \InvalidArgumentException
-     */
-    public function testConstructorFirstParameterIsEmptyString()
-    {
-        new RedPaymentSlipData('');
-    }
-
-    /**
-     * Tests the constructor with an invalid string
-     *
-     * @return void
-     * @covers ::__construct
-     * @covers ::setType
-     * @expectedException \InvalidArgumentException
-     */
-    public function testConstructorFirstParameterIsInvalidString()
-    {
-        new RedPaymentSlipData('123');
-    }
-
-    /**
-     * Tests the constructor with an array
-     *
-     * @return void
-     * @covers ::__construct
-     * @covers ::setType
-     * @expectedException \InvalidArgumentException
-     */
-    public function testConstructorFirstParameterIsArray()
-    {
-        new RedPaymentSlipData(array('red'));
-    }
-
-    /**
-     * Tests the setType method when setting up a red slip without reset
-     *
-     * @return void
-     * @covers ::setType
-     */
-    public function testSetTypeRedTypeWithoutReset()
-    {
-        $this->slipData = new RedPaymentSlipData('red');
-
-        $this->slipData->setWithBank(false);
-        $this->slipData->setWithAccountNumber(false);
-        $this->slipData->setWithRecipient(false);
-        $this->slipData->setWithAmount(false);
-        $this->slipData->setWithReferenceNumber(true); // Shouldn't set to true
-        $this->slipData->setWithBankingCustomerId(true); // Shouldn't set to true
-        $this->slipData->setWithPayer(false);
-        $this->slipData->setWithIban(false);
-        $this->slipData->setWithPaymentReason(false);
-
-        $this->slipData->setType('red');
-
-        $this->assertFalse($this->slipData->getWithBank());
-        $this->assertFalse($this->slipData->getWithAccountNumber());
-        $this->assertFalse($this->slipData->getWithRecipient());
-        $this->assertFalse($this->slipData->getWithAmount());
-        $this->assertFalse($this->slipData->getWithReferenceNumber());
-        $this->assertFalse($this->slipData->getWithBankingCustomerId());
-        $this->assertFalse($this->slipData->getWithPayer());
-        $this->assertFalse($this->slipData->getWithIban());
-        $this->assertFalse($this->slipData->getWithPaymentReason());
-    }
-
-    /**
-     * Tests the setType method when setting up a red slip with reset
-     *
-     * @return void
-     * @covers ::setType
-     * @covers ::setRedDefaults
-     */
-    public function testSetTypeRedTypeWithReset()
-    {
-        $this->slipData->setWithBank(false);
-        $this->slipData->setWithAccountNumber(false);
-        $this->slipData->setWithRecipient(false);
-        $this->slipData->setWithAmount(false);
-        $this->slipData->setWithReferenceNumber(true);
-        $this->slipData->setWithBankingCustomerId(true);
-        $this->slipData->setWithPayer(false);
-        $this->slipData->setWithIban(false);
-        $this->slipData->setWithPaymentReason(false);
-
-        $this->slipData->setType('red', true);
-
-        $this->assertTrue($this->slipData->getWithBank());
-        $this->assertTrue($this->slipData->getWithAccountNumber());
-        $this->assertTrue($this->slipData->getWithRecipient());
-        $this->assertTrue($this->slipData->getWithAmount());
-        $this->assertFalse($this->slipData->getWithReferenceNumber());
-        $this->assertFalse($this->slipData->getWithBankingCustomerId());
-        $this->assertTrue($this->slipData->getWithPayer());
-        $this->assertTrue($this->slipData->getWithIban());
-        $this->assertTrue($this->slipData->getWithPaymentReason());
-    }
-
-    /**
-     * Tests the setType method with an empty string as first parameter
-     *
-     * @return void
-     * @covers ::setType
-     * @expectedException \InvalidArgumentException
-     */
-    public function testSetTypeFirstParameterIsEmptyString()
-    {
-        $this->slipData->setType('');
-    }
-
-    /**
-     * Tests the setType method with an invalid string as first parameter
-     *
-     * @return void
-     * @covers ::setType
-     * @expectedException \InvalidArgumentException
-     */
-    public function testSetTypeFirstParameterIsInvalidString()
-    {
-        $this->slipData->setType('123');
-    }
-
-    /**
-     * Tests the setType method with an array as first parameter
-     *
-     * @return void
-     * @covers ::setType
-     * @expectedException \InvalidArgumentException
-     */
-    public function testSetTypeFirstParameterIsArray()
-    {
-        $this->slipData->setType(array('red'));
-    }
-
-    /**
-     * Tests the setType method with an empty string as second parameter
-     *
-     * @return void
-     * @covers ::setType
-     * @expectedException \InvalidArgumentException
-     */
-    public function testSetTypeSecondParameterIsEmptyString()
-    {
-        $this->slipData->setType('red', '');
-    }
-
-    /**
-     * Tests the setType method with an invalid string as second parameter
-     *
-     * @return void
-     * @covers ::setType
-     * @expectedException \InvalidArgumentException
-     */
-    public function testSetTypeSecondParameterIsInvalidString()
-    {
-        $this->slipData->setType('red', '123');
-    }
-
-    /**
-     * Tests the setType method with an array as array second parameter
-     *
-     * @return void
-     * @covers ::setType
-     * @expectedException \InvalidArgumentException
-     */
-    public function testSetTypeSecondParameterIsArray()
-    {
-        $this->slipData->setType('red', array(true));
     }
 
     /**
@@ -463,120 +285,6 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
 
         $this->slipData->setWithAmount(array(true));
         $this->assertTrue($this->slipData->getWithAmount());
-    }
-
-    /**
-     * Tests the setWithReferenceNumber method with a red slip
-     *
-     * @return void
-     * @covers ::setWithReferenceNumber
-     * @covers ::getWithReferenceNumber
-     */
-    public function testSetWithReferenceNumberNumberRedType()
-    {
-        $this->slipData = new RedPaymentSlipData('red');
-        $this->slipData->setReferenceNumber('0123456789');
-
-        $this->slipData->setWithReferenceNumber();
-        $this->assertFalse($this->slipData->getWithReferenceNumber());
-        $this->assertEquals(false, $this->slipData->getReferenceNumber());
-
-        $this->slipData->setWithReferenceNumber(true);
-        $this->assertFalse($this->slipData->getWithReferenceNumber());
-        $this->assertEquals(false, $this->slipData->getReferenceNumber());
-
-        $this->slipData->setWithReferenceNumber(false);
-        $this->assertFalse($this->slipData->getWithReferenceNumber());
-        $this->assertEquals(false, $this->slipData->getReferenceNumber());
-    }
-
-    /**
-     * Tests the setWithReferenceNumber method with various parameters
-     *
-     * @return void
-     * @covers ::setWithReferenceNumber
-     * @covers ::getWithReferenceNumber
-     */
-    public function testSetWithReferenceNumberNumberParameters()
-    {
-        $this->slipData->setReferenceNumber('0123456789');
-
-        $this->slipData->setWithReferenceNumber(1);
-        $this->assertTrue($this->slipData->getWithReferenceNumber());
-        $this->assertEquals('0123456789', $this->slipData->getReferenceNumber());
-
-        $this->slipData->setWithReferenceNumber(0);
-        $this->assertTrue($this->slipData->getWithReferenceNumber());
-        $this->assertEquals('0123456789', $this->slipData->getReferenceNumber());
-
-        $this->slipData->setWithReferenceNumber('foo');
-        $this->assertTrue($this->slipData->getWithReferenceNumber());
-
-        $this->slipData->setWithReferenceNumber(123);
-        $this->assertTrue($this->slipData->getWithReferenceNumber());
-
-        $this->slipData->setWithReferenceNumber(123.456);
-        $this->assertTrue($this->slipData->getWithReferenceNumber());
-
-        $this->slipData->setWithReferenceNumber(array(true));
-        $this->assertTrue($this->slipData->getWithReferenceNumber());
-    }
-
-    /**
-     * Tests the setWithBankingCustomerId method with a red slip
-     *
-     * @return void
-     * @covers ::setWithBankingCustomerId
-     * @covers ::getWithBankingCustomerId
-     */
-    public function testSetWithBankingCustomerIdNumberRedType()
-    {
-        $this->slipData = new RedPaymentSlipData('red');
-        $this->slipData->setBankingCustomerId('012345');
-
-        $this->slipData->setWithBankingCustomerId();
-        $this->assertFalse($this->slipData->getWithBankingCustomerId());
-        $this->assertEquals(false, $this->slipData->getBankingCustomerId());
-
-        $this->slipData->setWithBankingCustomerId(true);
-        $this->assertFalse($this->slipData->getWithBankingCustomerId());
-        $this->assertEquals(false, $this->slipData->getBankingCustomerId());
-
-        $this->slipData->setWithBankingCustomerId(false);
-        $this->assertFalse($this->slipData->getWithBankingCustomerId());
-        $this->assertEquals(false, $this->slipData->getBankingCustomerId());
-    }
-
-    /**
-     * Tests the setWithBankingCustomerId method with various parameters
-     *
-     * @return void
-     * @covers ::setWithBankingCustomerId
-     * @covers ::getWithBankingCustomerId
-     */
-    public function testSetWithBankingCustomerIdNumberParameters()
-    {
-        $this->slipData->setBankingCustomerId('012345');
-
-        $this->slipData->setWithBankingCustomerId(1);
-        $this->assertTrue($this->slipData->getWithBankingCustomerId());
-        $this->assertEquals('012345', $this->slipData->getBankingCustomerId());
-
-        $this->slipData->setWithBankingCustomerId(0);
-        $this->assertTrue($this->slipData->getWithBankingCustomerId());
-        $this->assertEquals('012345', $this->slipData->getBankingCustomerId());
-
-        $this->slipData->setWithBankingCustomerId('foo');
-        $this->assertTrue($this->slipData->getWithBankingCustomerId());
-
-        $this->slipData->setWithBankingCustomerId(123);
-        $this->assertTrue($this->slipData->getWithBankingCustomerId());
-
-        $this->slipData->setWithBankingCustomerId(123.456);
-        $this->assertTrue($this->slipData->getWithBankingCustomerId());
-
-        $this->slipData->setWithBankingCustomerId(array(true));
-        $this->assertTrue($this->slipData->getWithBankingCustomerId());
     }
 
     /**
@@ -967,22 +675,6 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getCompleteReferenceNumber method for a red slip
-     *
-     * @return void
-     * @covers ::getCompleteReferenceNumber
-     * @covers ::breakStringIntoBlocks
-     * @covers ::modulo10
-     * @todo Implement testGetCompleteReferenceNumberRedType
-     */
-    public function testGetCompleteReferenceNumberRedType()
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
      * Tsets the getFormattedIban method
      *
      * @return void
@@ -1014,39 +706,6 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->markTestIncomplete(
             'This test has not been implemented yet.'
         );
-    }
-
-    /**
-     * Tests the getCodeLine method with invalid preconditions
-     *
-     * @return void
-     * @covers ::getCodeLine
-     * @covers ::modulo10
-     * @covers ::getAccountDigits
-     */
-    public function testGetCodeLineWithInvalidPreconditions()
-    {
-        $this->slipData->setAmount(2830.50);
-        $this->slipData->setReferenceNumber('7520033455900012');
-        $this->slipData->setBankingCustomerId('215703');
-
-        $this->slipData->setAccountNumber('123456789');
-
-        $this->assertEquals(false, $this->slipData->getCodeLine());
-        $this->assertEquals(false, $this->slipData->getCodeLine(false));
-
-        $this->slipData->setAccountNumber('01-145-6');
-        $this->slipData->setWithAccountNumber(false);
-
-        $this->assertEquals(false, $this->slipData->getCodeLine());
-        $this->assertEquals(false, $this->slipData->getCodeLine(false));
-
-        $this->slipData->setWithAccountNumber(true);
-        $this->slipData->setAccountNumber('01-145-6');
-        $this->slipData->setWithReferenceNumber(false);
-
-        $this->assertEquals(false, $this->slipData->getCodeLine());
-        $this->assertEquals(false, $this->slipData->getCodeLine(false));
     }
 
     /**
@@ -1110,10 +769,6 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('XXXXXXXX.XX', $this->slipData->getAmount());
         $this->assertEquals('XXXXXXXX', $this->slipData->getAmountFrancs());
         $this->assertEquals('XX', $this->slipData->getAmountCents());
-
-        $this->assertEquals('XXXXXXXXXXXXXXXXXXXX', $this->slipData->getReferenceNumber());
-        $this->assertEquals('XXXXXXXXXXXXXXXXXXXXXXXXXXX', $this->slipData->getCompleteReferenceNumber(false));
-        $this->assertEquals('XX XXXXX XXXXX XXXXX XXXXX XXXXX', $this->slipData->getCompleteReferenceNumber());
 
         $this->assertEquals('XXXXXX', $this->slipData->getPayerLine1());
         $this->assertEquals('XXXXXX', $this->slipData->getPayerLine2());

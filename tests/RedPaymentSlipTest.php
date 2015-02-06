@@ -15,8 +15,6 @@ namespace SwissPaymentSlip\SwissPaymentSlip\Tests;
 use SwissPaymentSlip\SwissPaymentSlip\RedPaymentSlip;
 use SwissPaymentSlip\SwissPaymentSlip\RedPaymentSlipData;
 
-require __DIR__.'/../vendor/autoload.php';
-
 /**
  * Tests for the RedPaymentSlip class
  *

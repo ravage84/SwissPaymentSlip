@@ -44,43 +44,15 @@ use InvalidArgumentException;
  * @link https://www.postfinance.ch/content/dam/pf/de/doc/consult/manual/dlserv/inpayslip_isr_man_de.pdf German manual
  * @link http://www.six-interbank-clearing.com/en/home/standardization/dta.html
  *
- * @todo Implement full red slip support (code line + additional code line)
  * @todo Implement currency (CHF, EUR), means different prefixes in code line
  * @todo Implement payment on own account, means different prefixes in code line --> edge case!
  * @todo Implement cash on delivery (Nachnahme), means different prefixes in code line --> do it on demand
  * @todo Implement amount check for unrounded (.05) cents, document why (see manual)
  * @todo Create a getBankData method with formatting parameter
  * @todo Create a getRecipientData with formatting parameter
- * @todo Create a getPaymentReason with formatting parameter
- * @todo Implement fluent interface
- * @todo Consider sub classing the orange and red payment slip data
  */
 class OrangePaymentSlipData extends PaymentSlipData
 {
-    /**
-     * Constant for orange payment slips
-     */
-    const ORANGE = 'orange';
-
-    /**
-     * Constant for red payment slips
-     */
-    const RED = 'red';
-
-    /**
-     * Consists the array table for calculating the check digit by modulo 10
-     *
-     * @var array Table for calculating the check digit by modulo 10.
-     */
-    private $moduloTable = array(0, 9, 4, 6, 8, 2, 7, 1, 3, 5);
-
-    /**
-     * Determines the payment slip type.
-     * Either orange or red
-     *
-     * @var string Orange or red payment slip.
-     */
-    protected $type = self::ORANGE;
 
     /**
      * Determines if the payment slip must not be used for payment (XXXed out)
@@ -138,22 +110,6 @@ class OrangePaymentSlipData extends PaymentSlipData
      * @var bool True if yes, false if no.
      */
     protected $withPayer = true;
-
-    /**
-     * Determines if the payment slip has an IBAN specified. Can be disabled for pre-printed payment slips
-     * Only possible for ES, but not for ESR
-     *
-     * @var bool True if yes, false if no.
-     */
-    protected $withIban = false;
-
-    /**
-     * Determines if the payment slip has a payment reason. Can be disabled for pre-printed payment slips
-     * Only possible for ES, but not for ESR
-     *
-     * @var bool True if yes, false if no.
-     */
-    protected $withPaymentReason = true;
 
     /**
      * The name of the bank
@@ -254,87 +210,6 @@ class OrangePaymentSlipData extends PaymentSlipData
     protected $payerLine4 = '';
 
     /**
-     * The IBAN of the recipient of a ES. Not available on a ESR
-     *
-     * @var string The IBAN of the recipient.
-     */
-    protected $iban = '';
-
-    /**
-     * The first line of the payment reason of a ES. Not available on a ESR
-     *
-     * @var string The first line of the payment reason.
-     */
-    protected $paymentReasonLine1 = '';
-
-    /**
-     * The second line of the payment reason of a ES. Not available on a ESR
-     *
-     * @var string The second line of the payment reason.
-     */
-    protected $paymentReasonLine2 = '';
-
-    /**
-     * The third line of the payment reason of a ES. Not available on a ESR
-     *
-     * @var string The third line of the payment reason.
-     */
-    protected $paymentReasonLine3 = '';
-
-    /**
-     * The fourth line of the payment reason of a ES. Not available on a ESR
-     *
-     * @var string The fourth line of the payment reason.
-     */
-    protected $paymentReasonLine4 = '';
-
-    /**
-     * Construct an empty payment slip
-     *
-     * By default it creates an empty orange payment slip.
-     * Can be changed to a red one by supplying red as parameter.
-     *
-     * @param string $type The slip type, either orange or red.
-     */
-    public function __construct($type = self::ORANGE)
-    {
-        $this->setType($type, true);
-    }
-
-    /**
-     * Set payment slip type. Resets settings and data if changing the type or being forced to
-     *
-     * @param string $type The slip type.
-     * @param bool $forceReset Force a data reset according to the given type.
-     * @throws \InvalidArgumentException If one of the parameters is invalid.
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setType($type = self::ORANGE, $forceReset = false)
-    {
-        if (!is_string($type)) {
-            throw new InvalidArgumentException('Type parameter is not a string!');
-        }
-        if (!is_bool($forceReset)) {
-            throw new InvalidArgumentException('ForceReset parameter is not a bool!');
-        }
-        $type = strtolower($type);
-        if ($type !== self::ORANGE && $type !== self::RED) {
-            throw new InvalidArgumentException('Invalid type parameter "' . $type . '"!');
-        }
-
-        if ($this->type != $type || $forceReset) {
-            $this->type = $type;
-
-            if ($type == self::ORANGE) {
-                $this->setOrangeDefaults();
-            } elseif ($type == self::RED) {
-                $this->setRedDefaults();
-            }
-        }
-        return $this;
-    }
-
-    /**
      * Set the default values for the orange payment slip
      *
      * @return $this The current instance for a fluent interface.
@@ -348,8 +223,6 @@ class OrangePaymentSlipData extends PaymentSlipData
         $this->setWithReferenceNumber(true);
         $this->setWithBankingCustomerId(true);
         $this->setWithPayer(true);
-        $this->setWithIban(false);
-        $this->setWithPaymentReason(false);
 
         return $this;
     }
@@ -368,40 +241,8 @@ class OrangePaymentSlipData extends PaymentSlipData
         $this->setWithReferenceNumber(false);
         $this->setWithBankingCustomerId(false);
         $this->setWithPayer(true);
-        $this->setWithIban(true);
-        $this->setWithPaymentReason(true);
 
         return $this;
-    }
-
-    /**
-     * Get payment slip type
-     *
-     * @return string The slip type.
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * Determines if it is a orange payment slip
-     *
-     * @return bool True if it is a orange payment slip.
-     */
-    public function isOrangeSlip()
-    {
-        return $this->getType() == self::ORANGE;
-    }
-
-    /**
-     * Determines if it is a red payment slip
-     *
-     * @return bool True if it is a red payment slip.
-     */
-    public function isRedSlip()
-    {
-        return $this->getType() == self::RED;
     }
 
     /**
@@ -570,17 +411,12 @@ class OrangePaymentSlipData extends PaymentSlipData
      */
     public function setWithReferenceNumber($withReferenceNumber = true)
     {
-        if ($this->isOrangeSlip()) {
-            if (is_bool($withReferenceNumber)) {
-                $this->withReferenceNumber = $withReferenceNumber;
+        if (is_bool($withReferenceNumber)) {
+            $this->withReferenceNumber = $withReferenceNumber;
 
-                if (!$withReferenceNumber) {
-                    $this->referenceNumber = '';
-                }
+            if (!$withReferenceNumber) {
+                $this->referenceNumber = '';
             }
-        } else {
-            $this->withReferenceNumber = false;
-            $this->referenceNumber = '';
         }
 
         return $this;
@@ -604,17 +440,12 @@ class OrangePaymentSlipData extends PaymentSlipData
      */
     public function setWithBankingCustomerId($withBankingCustomerId = true)
     {
-        if ($this->isOrangeSlip()) {
-            if (is_bool($withBankingCustomerId)) {
-                $this->withBankingCustomerId = $withBankingCustomerId;
+        if (is_bool($withBankingCustomerId)) {
+            $this->withBankingCustomerId = $withBankingCustomerId;
 
-                if (!$withBankingCustomerId) {
-                    $this->bankingCustomerId = '';
-                }
+            if (!$withBankingCustomerId) {
+                $this->bankingCustomerId = '';
             }
-        } else {
-            $this->withBankingCustomerId = false;
-            $this->bankingCustomerId = '';
         }
 
         return $this;
@@ -660,82 +491,6 @@ class OrangePaymentSlipData extends PaymentSlipData
     public function getWithPayer()
     {
         return $this->withPayer;
-    }
-
-    /**
-     * Set if payment slip has an IBAN specified.
-     * Only available for red payment slips
-     *
-     * @param bool $withIban True if yes, false if no.
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setWithIban($withIban = false)
-    {
-        if ($this->isRedSlip()) {
-            if (is_bool($withIban)) {
-                $this->withIban = $withIban;
-
-                if (!$withIban) {
-                    $this->iban = '';
-                }
-            }
-        } else {
-            $this->withIban = false;
-            $this->iban = '';
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get if payment slip has an IBAN specified
-     *
-     * @return bool True if payment slip has an IBAN specified, else false.
-     */
-    public function getWithIban()
-    {
-        return $this->withIban;
-    }
-
-    /**
-     * Set if payment slip has a payment reason specified.
-     * Only available for red payment slips
-     *
-     * @param bool $withPaymentReason True if yes, false if no.
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setWithPaymentReason($withPaymentReason = false)
-    {
-        if ($this->isRedSlip()) {
-            if (is_bool($withPaymentReason)) {
-                $this->withPaymentReason = $withPaymentReason;
-
-                if (!$withPaymentReason) {
-                    $this->paymentReasonLine1 = '';
-                    $this->paymentReasonLine2 = '';
-                    $this->paymentReasonLine3 = '';
-                    $this->paymentReasonLine4 = '';
-                }
-            }
-        } else {
-            $this->withPaymentReason = false;
-            $this->paymentReasonLine1 = '';
-            $this->paymentReasonLine2 = '';
-            $this->paymentReasonLine3 = '';
-            $this->paymentReasonLine4 = '';
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get if payment slip has a payment reason specified
-     *
-     * @return bool True if payment slip has a payment reason specified, else false.
-     */
-    public function getWithPaymentReason()
-    {
-        return $this->withPaymentReason;
     }
 
     /**
@@ -1192,175 +947,6 @@ class OrangePaymentSlipData extends PaymentSlipData
     }
 
     /**
-     * Set the IBAN
-     *
-     * @param string $iban The IBAN.
-     * @return $this The current instance for a fluent interface.
-     *
-     * @todo Consider stripping spaces (may be optionally)
-     * @todo Implement validation of the IBAN
-     * @link http://code.google.com/p/php-iban/
-     * @link https://github.com/jschaedl/Iban
-     * @link http://www.ibancalculator.com/iban_validieren.html
-     */
-    public function setIban($iban)
-    {
-        if ($this->getWithIban()) {
-            $this->iban = $iban;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get the IBAN
-     *
-     * @return string|bool The IBAN or false if withIban is false.
-     */
-    public function getIban()
-    {
-        if ($this->getWithIban()) {
-            return $this->iban;
-        }
-        return false;
-    }
-
-    /**
-     * Set payment reason lines
-     *
-     * @param string $paymentReasonLine1 The first line of the payment reason.
-     * @param string $paymentReasonLine2 The second line of the payment reason.
-     * @param string $paymentReasonLine3 The third line of the payment reason.
-     * @param string $paymentReasonLine4 The fourth line of the payment reason.
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setPaymentReasonData(
-        $paymentReasonLine1 = '',
-        $paymentReasonLine2 = '',
-        $paymentReasonLine3 = '',
-        $paymentReasonLine4 = ''
-    ) {
-        $this->setPaymentReasonLine1($paymentReasonLine1);
-        $this->setPaymentReasonLine2($paymentReasonLine2);
-        $this->setPaymentReasonLine3($paymentReasonLine3);
-        $this->setPaymentReasonLine4($paymentReasonLine4);
-
-        return $this;
-    }
-
-    /**
-     * Set the first line of the payment reason
-     *
-     * @param string $paymentReasonLine1 The first line of the payment reason.
-     * @return $this The current instance for a fluent interface.
-     */
-    protected function setPaymentReasonLine1($paymentReasonLine1)
-    {
-        if ($this->getWithPaymentReason()) {
-            $this->paymentReasonLine1 = $paymentReasonLine1;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get the first line of the payment reason
-     *
-     * @return string|bool The first line of the payment reason or false if withPaymentReason = false.
-     */
-    public function getPaymentReasonLine1()
-    {
-        if ($this->getWithPaymentReason()) {
-            return $this->paymentReasonLine1;
-        }
-        return false;
-    }
-
-    /**
-     * Set the second line of the payment reason
-     *
-     * @param string $paymentReasonLine2 The second line of the payment reason.
-     * @return $this The current instance for a fluent interface.
-     */
-    protected function setPaymentReasonLine2($paymentReasonLine2)
-    {
-        if ($this->getWithPaymentReason()) {
-            $this->paymentReasonLine2 = $paymentReasonLine2;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get the second line of the payment reason
-     *
-     * @return string|bool The second line of the payment reason or false if withPaymentReason = false.
-     */
-    public function getPaymentReasonLine2()
-    {
-        if ($this->getWithPaymentReason()) {
-            return $this->paymentReasonLine2;
-        }
-        return false;
-    }
-
-    /**
-     * Set the third line of the payment reason
-     *
-     * @param string $paymentReasonLine3 The third line of the payment reason.
-     * @return $this The current instance for a fluent interface.
-     */
-    protected function setPaymentReasonLine3($paymentReasonLine3)
-    {
-        if ($this->getWithPaymentReason()) {
-            $this->paymentReasonLine3 = $paymentReasonLine3;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get the third line of the payment reason
-     *
-     * @return string|bool The third line of the payment reason or false if withPaymentReason = false.
-     */
-    public function getPaymentReasonLine3()
-    {
-        if ($this->getWithPaymentReason()) {
-            return $this->paymentReasonLine3;
-        }
-        return false;
-    }
-
-    /**
-     * Set the fourth line of the payment reason
-     *
-     * @param string $paymentReasonLine4 The fourth line of the payment reason.
-     * @return $this The current instance for a fluent interface.
-     */
-    protected function setPaymentReasonLine4($paymentReasonLine4)
-    {
-        if ($this->getWithPaymentReason()) {
-            $this->paymentReasonLine4 = $paymentReasonLine4;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get the fourth line of the payment reason
-     *
-     * @return string|bool The fourth line of the payment reason or false if withPaymentReason = false.
-     */
-    public function getPaymentReasonLine4()
-    {
-        if ($this->getWithPaymentReason()) {
-            return $this->paymentReasonLine4;
-        }
-        return false;
-    }
-
-    /**
      * Get complete reference number
      *
      * @param bool $formatted Should the returned reference be formatted in blocks of five (for better readability).
@@ -1403,28 +989,10 @@ class OrangePaymentSlipData extends PaymentSlipData
     }
 
     /**
-     * Get the IBAN number in human readable format
-     *
-     * Not valid for electronic transactions.
-     *
-     * @return string|bool Formatted IBAN or false if withIban is false.
-     * @link http://en.wikipedia.org/wiki/International_Bank_Account_Number#Practicalities
-     */
-    public function getFormattedIban()
-    {
-        if ($this->getWithIban()) {
-            return $this->breakStringIntoBlocks($this->getIban(), 4, false);
-        }
-        return false;
-    }
-
-    /**
      * Get the full code line at the bottom of the ESR
      *
      * @param bool $fillZeros Fill up with leading zeros.
      * @return string|bool Either the full code line or false if something was wrong.
-     *
-     * @todo Implement red slip support
      */
     public function getCodeLine($fillZeros = true)
     {
@@ -1457,7 +1025,7 @@ class OrangePaymentSlipData extends PaymentSlipData
             $referenceNumberPart = $referenceNumber;
         }
         $accountNumberPart = substr($accountNumber, 0, 2) .
-        str_pad(substr($accountNumber, 2), 7, '0', STR_PAD_LEFT);
+            str_pad(substr($accountNumber, 2), 7, '0', STR_PAD_LEFT);
 
         if ($this->getNotForPayment()) {
             $amountPrefix = 'XX';
@@ -1533,23 +1101,6 @@ class OrangePaymentSlipData extends PaymentSlipData
         $francs = intval($amount);
         $cents = round(($amount - $francs) * 100);
         return str_pad($cents, 2, '0', STR_PAD_RIGHT);
-    }
-
-    /**
-     * Creates Modulo10 recursive check digit
-     *
-     * @copyright As found on http://www.developers-guide.net/forums/5431,modulo10-rekursiv (thanks, dude!)
-     * @param string $number Number to create recursive check digit off.
-     * @return int Recursive check digit.
-     */
-    private function modulo10($number)
-    {
-        $next = 0;
-        for ($i=0; $i < strlen($number); $i++) {
-            $next = $this->moduloTable[($next + substr($number, $i, 1)) % 10];
-        }
-
-        return (10 - $next) % 10;
     }
 
     /**

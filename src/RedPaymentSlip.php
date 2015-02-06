@@ -25,8 +25,6 @@ namespace SwissPaymentSlip\SwissPaymentSlip;
  * @todo Create constants for the attribute keys
  * @todo Create constants for left, right and center text alignment (L, R, C)
  * @todo Create central cell placement and formatting code (lines as array, attributes)...
- * @todo Implement fluent interface
- * @todo Consider sub classing the orange and red payment slip
  * @todo Consider extracting the attributes as separate class
  */
 class RedPaymentSlip extends PaymentSlip
@@ -37,20 +35,6 @@ class RedPaymentSlip extends PaymentSlip
      * @var PaymentSlipData The payment slip value object
      */
     protected $paymentSlipData = null;
-
-    /**
-     * Starting X position of the slip
-     *
-     * @var int|float Starting X position of the slip in mm
-     */
-    protected $slipPosX = 0;
-
-    /**
-     * Starting Y position of the slip
-     *
-     * @var int|float Starting Y position of the slip in mm
-     */
-    protected $slipPosY = 191;
 
     /**
      * The height of the slip
@@ -65,50 +49,6 @@ class RedPaymentSlip extends PaymentSlip
      * @var int|float
      */
     protected $slipWidth = 210; // default width of an orange slip
-
-    /**
-     * Background of the slip
-     *
-     * Can be either 'transparent', a color or an image
-     *
-     * @var null|string
-     */
-    protected $slipBackground = null;
-
-    /**
-     * The default font family
-     *
-     * @var string
-     */
-    protected $defaultFontFamily = 'Helvetica';
-
-    /**
-     * The default font size
-     *
-     * @var string
-     */
-    protected $defaultFontSize = '10';
-
-    /**
-     * The default font color
-     *
-     * @var string
-     */
-    protected $defaultFontColor = '#000';
-
-    /**
-     * The default line height
-     *
-     * @var int
-     */
-    protected $defaultLineHeight = 4;
-
-    /**
-     * The default text alignment
-     *
-     * @var string
-     */
-    protected $defaultTextAlign = 'L';
 
     /**
      * Determines whether the bank details should be displayed
@@ -244,20 +184,6 @@ class RedPaymentSlip extends PaymentSlip
     protected $amountCentsRightAttr = array();
 
     /**
-     * Attributes of the left reference number element
-     *
-     * @var array
-     */
-    protected $referenceNumberLeftAttr = array();
-
-    /**
-     * Attributes of the right reference number element
-     *
-     * @var array
-     */
-    protected $referenceNumberRightAttr = array();
-
-    /**
      * Attributes of the left payer element
      *
      * @var array
@@ -279,273 +205,31 @@ class RedPaymentSlip extends PaymentSlip
     protected $codeLineAttr = array();
 
     /**
-     * Create a new payment slip
-     *
-     * @param PaymentSlipData $paymentSlipData The payment slip data.
-     * @param float|null $slipPosX The optional X position of the slip.
-     * @param float|null $slipPosY The optional Y position of the slip.
-     */
-    public function __construct(PaymentSlipData $paymentSlipData, $slipPosX = null, $slipPosY = null)
-    {
-        $this->paymentSlipData = $paymentSlipData;
-
-        if (!is_null($slipPosX)) {
-            $this->setSlipPosX($slipPosX);
-        }
-        if (!is_null($slipPosY)) {
-            $this->setSlipPosY($slipPosY);
-        }
-        $this->setDefaults();
-    }
-
-    /**
      * Sets the default attributes of the elements according to the type
      *
      * @return $this The current instance for a fluent interface.
      */
     protected function setDefaults()
     {
-        if ($this->paymentSlipData->isOrangeSlip()) {
-            $this->setBankLeftAttr(3, 8, 50, 4);
-            $this->setBankRightAttr(66, 8, 50, 4);
-            $this->setRecipientLeftAttr(3, 23, 50, 4);
-            $this->setRecipientRightAttr(66, 23, 50, 4);
-            $this->setAccountLeftAttr(27, 43, 30, 4);
-            $this->setAccountRightAttr(90, 43, 30, 4);
-            $this->setAmountFrancsLeftAttr(5, 50.5, 35, 4);
-            $this->setAmountFrancsRightAttr(66, 50.5, 35, 4);
-            $this->setAmountCentsLeftAttr(50, 50.5, 6, 4);
-            $this->setAmountCentsRightAttr(111, 50.5, 6, 4);
-            $this->setReferenceNumberLeftAttr(3, 60, 50, 4, null, null, 8);
-            $this->setReferenceNumberRightAttr(125, 33.5, 80, 4);
-            $this->setPayerLeftAttr(3, 65, 50, 4);
-            $this->setPayerRightAttr(125, 48, 50, 4);
-            $this->setCodeLineAttr(64, 85, 140, 4, null, 'OCRB10');
+        $this->setBankLeftAttr(3, 8, 50, 4);
+        $this->setBankRightAttr(66, 8, 50, 4);
+        $this->setRecipientLeftAttr(3, 23, 50, 4);
+        $this->setRecipientRightAttr(66, 23, 50, 4);
+        $this->setAccountLeftAttr(27, 43, 30, 4);
+        $this->setAccountRightAttr(90, 43, 30, 4);
+        $this->setAmountFrancsLeftAttr(5, 50.5, 35, 4);
+        $this->setAmountFrancsRightAttr(66, 50.5, 35, 4);
+        $this->setAmountCentsLeftAttr(50, 50.5, 6, 4);
+        $this->setAmountCentsRightAttr(111, 50.5, 6, 4);
+        $this->setReferenceNumberLeftAttr(3, 60, 50, 4, null, null, 8);
+        $this->setReferenceNumberRightAttr(125, 33.5, 80, 4);
+        $this->setPayerLeftAttr(3, 65, 50, 4);
+        $this->setPayerRightAttr(125, 48, 50, 4);
+        $this->setCodeLineAttr(64, 85, 140, 4, null, 'OCRB10');
 
-            $this->setSlipBackground(__DIR__.'/Resources/img/ezs_orange.gif');
-
-        } elseif ($this->paymentSlipData->isRedSlip()) {
-            $this->setBankLeftAttr(3, 8, 50, 4);
-            $this->setBankRightAttr(66, 8, 50, 4);
-            $this->setRecipientLeftAttr(3, 23, 50, 4);
-            $this->setRecipientRightAttr(66, 23, 50, 4);
-            $this->setAccountLeftAttr(27, 43, 30, 4);
-            $this->setAccountRightAttr(90, 43, 30, 4);
-            $this->setAmountFrancsLeftAttr(5, 50.5, 35, 4);
-            $this->setAmountFrancsRightAttr(66, 50.5, 35, 4);
-            $this->setAmountCentsLeftAttr(50, 50.5, 6, 4);
-            $this->setAmountCentsRightAttr(111, 50.5, 6, 4);
-            $this->setReferenceNumberLeftAttr(3, 60, 50, 4, null, null, 8);
-            $this->setReferenceNumberRightAttr(125, 33.5, 80, 4);
-            $this->setPayerLeftAttr(3, 65, 50, 4);
-            $this->setPayerRightAttr(125, 48, 50, 4);
-            $this->setCodeLineAttr(64, 85, 140, 4, null, 'OCRB10');
-
-            $this->setSlipBackground(__DIR__.'/Resources/img/ezs_red.gif');
-        }
+        $this->setSlipBackground(__DIR__.'/Resources/img/ezs_red.gif');
 
         return $this;
-    }
-
-    /**
-     * Get the slip data object of the slip
-     *
-     * @return PaymentSlipData The data object of the slip.
-     */
-    public function getPaymentSlipData()
-    {
-        return $this->paymentSlipData;
-    }
-
-    /**
-     * Set the starting X & Y position of the slip
-     *
-     * @param float $slipPosX The starting X position of the slip.
-     * @param float $slipPosY The starting Y position of the slip
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setSlipPosition($slipPosX, $slipPosY)
-    {
-        $this->setSlipPosX($slipPosX);
-        $this->setSlipPosY($slipPosY);
-
-        return $this;
-    }
-
-    /**
-     * Set the starting X position of the slip
-     *
-     * @param float $slipPosX The starting X position of the slip.
-     * @return $this The current instance for a fluent interface.
-     */
-    protected function setSlipPosX($slipPosX)
-    {
-        if (is_int($slipPosX) || is_float($slipPosX)) {
-            $this->slipPosX = $slipPosX;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Set the starting Y position of the slip
-     *
-     * @param float $slipPosY The starting Y position of the slip.
-     * @return $this The current instance for a fluent interface.
-     */
-    protected function setSlipPosY($slipPosY)
-    {
-        if (is_int($slipPosY) || is_float($slipPosY)) {
-            $this->slipPosY = $slipPosY;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Set the height & width of the slip
-     *
-     * @param float $slipWidth The width of the slip
-     * @param float $slipHeight The height of the slip
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setSlipSize($slipWidth, $slipHeight)
-    {
-        $this->setSlipHeight($slipHeight);
-        $this->setSlipWidth($slipWidth);
-
-        return $this;
-    }
-
-    /**
-     * Set the width of the slip
-     *
-     * @param float $slipWidth The width of the slip
-     * @return $this The current instance for a fluent interface.
-     */
-    protected function setSlipWidth($slipWidth)
-    {
-        if (is_int($slipWidth) || is_float($slipWidth)) {
-            $this->slipWidth = $slipWidth;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Set the height of the slip
-     *
-     * @param float $slipHeight The height of the slip
-     * @return $this The current instance for a fluent interface.
-     */
-    protected function setSlipHeight($slipHeight)
-    {
-        if (is_int($slipHeight) || is_float($slipHeight)) {
-            $this->slipHeight = $slipHeight;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Set the background of the slip
-     *
-     * Can be either 'transparent', a color or an image
-     *
-     * @param string $slipBackground The background of the slip.
-     * @return $this The current instance for a fluent interface.
-     *
-     * @todo Implement sanity checks on parameter (filename or color)
-     */
-    public function setSlipBackground($slipBackground)
-    {
-        $this->slipBackground = $slipBackground;
-
-        return $this;
-    }
-
-    /**
-     * Set the attributes for a given payment slip element
-     *
-     * @param array $element The element (attributes) to set.
-     * @param float|null $posX The X position.
-     * @param float|null $posY The Y Position.
-     * @param float|null $width The width.
-     * @param float|null $height The height.
-     * @param string|null $background The background.
-     * @param string|null $fontFamily The font family.
-     * @param float|null $fontSize The font size.
-     * @param string|null $fontColor The font color.
-     * @param float|null $lineHeight The line height.
-     * @param string|null $textAlign The text alignment.
-     * @return $this The current instance for a fluent interface.
-     */
-    protected function setAttributes(
-        &$element,
-        $posX = null,
-        $posY = null,
-        $width = null,
-        $height = null,
-        $background = null,
-        $fontFamily = null,
-        $fontSize = null,
-        $fontColor = null,
-        $lineHeight = null,
-        $textAlign = null
-    ) {
-        if ($posX) {
-            $element['PosX'] = $posX;
-        } elseif (!isset($element['PosX'])) {
-            $element['PosX'] = 0;
-        }
-        if ($posY) {
-            $element['PosY'] = $posY;
-        } elseif (!isset($element['PosY'])) {
-            $element['PosY'] = 0;
-        }
-        if ($width) {
-            $element['Width'] = $width;
-        } elseif (!isset($element['Width'])) {
-            $element['Width'] = 0;
-        }
-        if ($height) {
-            $element['Height'] = $height;
-        } elseif (!isset($element['Height'])) {
-            $element['Height'] = 0;
-        }
-        if ($background) {
-            $element['Background'] = $background;
-        } elseif (!isset($element['Background'])) {
-            $element['Background'] = 'transparent';
-        }
-        if ($fontFamily) {
-            $element['FontFamily'] = $fontFamily;
-        } elseif (!isset($element['FontFamily'])) {
-            $element['FontFamily'] = $this->defaultFontFamily;
-        }
-        if ($fontSize) {
-            $element['FontSize'] = $fontSize;
-        } elseif (!isset($element['FontSize'])) {
-            $element['FontSize'] = $this->defaultFontSize;
-        }
-        if ($fontColor) {
-            $element['FontColor'] = $fontColor;
-        } elseif (!isset($element['FontColor'])) {
-            $element['FontColor'] = $this->defaultFontColor;
-        }
-        if ($lineHeight) {
-            $element['LineHeight'] = $lineHeight;
-        } elseif (!isset($element['LineHeight'])) {
-            $element['LineHeight'] = $this->defaultLineHeight;
-        }
-        if ($textAlign) {
-            $element['TextAlign'] = $textAlign;
-        } elseif (!isset($element['TextAlign'])) {
-            $element['TextAlign'] = $this->defaultTextAlign;
-        }
-
-        return $this;
-
     }
 
     /**
