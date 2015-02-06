@@ -17,7 +17,7 @@ namespace SwissPaymentSlip\SwissPaymentSlip;
  *
  * A general purpose class for swiss payment slips. Data is organized by its sister class SwissPaymentSlipData.
  *
- * @todo Include CHF boxed slip image (609, SwissPaymentSlip+)
+ * @todo Include CHF boxed slip image (609, ESR+)
  * @todo Include EUR framed slip image (701) --> back side!
  * @todo Include EUR boxed slip image (701) --> back side!
  * @todo Implement cash on delivery (Nachnahme)
