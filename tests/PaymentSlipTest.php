@@ -136,17 +136,17 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetSlipPosition()
     {
-        $this->assertTrue($this->paymentSlip->setSlipPosition(200, 100));
+        $this->paymentSlip->setSlipPosition(200, 100);
         $this->assertEquals(200, $this->paymentSlip->getSlipPosX());
         $this->assertEquals(100, $this->paymentSlip->getSlipPosY());
 
-        $this->assertFalse($this->paymentSlip->setSlipPosition('A', 150));
+        $this->paymentSlip->setSlipPosition('A', 150);
         $this->assertEquals(200, $this->paymentSlip->getSlipPosX());
-        $this->assertEquals(100, $this->paymentSlip->getSlipPosY());
+        $this->assertEquals(150, $this->paymentSlip->getSlipPosY());
 
-        $this->assertFalse($this->paymentSlip->setSlipPosition(225, 'B'));
+        $this->paymentSlip->setSlipPosition(225, 'B');
         $this->assertEquals(225, $this->paymentSlip->getSlipPosX());
-        $this->assertEquals(100, $this->paymentSlip->getSlipPosY());
+        $this->assertEquals(150, $this->paymentSlip->getSlipPosY());
     }
 
     /**
@@ -161,16 +161,16 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetSlipSize()
     {
-        $this->assertTrue($this->paymentSlip->setSlipSize(250, 150));
+        $this->paymentSlip->setSlipSize(250, 150);
         $this->assertEquals(250, $this->paymentSlip->getSlipWidth());
         $this->assertEquals(150, $this->paymentSlip->getSlipHeight());
 
-        $this->assertFalse($this->paymentSlip->setSlipSize('A', 175));
+        $this->paymentSlip->setSlipSize('A', 175);
         $this->assertEquals(250, $this->paymentSlip->getSlipWidth());
         $this->assertEquals(175, $this->paymentSlip->getSlipHeight());
 
-        $this->assertFalse($this->paymentSlip->setSlipSize(225, 'B'));
-        $this->assertEquals(250, $this->paymentSlip->getSlipWidth());
+        $this->paymentSlip->setSlipSize(225, 'B');
+        $this->assertEquals(225, $this->paymentSlip->getSlipWidth());
         $this->assertEquals(175, $this->paymentSlip->getSlipHeight());
     }
 
@@ -183,10 +183,10 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetSlipBackground()
     {
-        $this->assertTrue($this->paymentSlip->setSlipBackground('#123456'));
+        $this->paymentSlip->setSlipBackground('#123456');
         $this->assertEquals('#123456', $this->paymentSlip->getSlipBackground());
 
-        $this->assertTrue($this->paymentSlip->setSlipBackground(__DIR__.'/Resources/img/ezs_orange.gif'));
+        $this->paymentSlip->setSlipBackground(__DIR__.'/Resources/img/ezs_orange.gif');
         $this->assertEquals(__DIR__.'/Resources/img/ezs_orange.gif', $this->paymentSlip->getSlipBackground());
     }
 
@@ -741,9 +741,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetBankLeftAttr()
     {
-        $this->assertTrue(
-            $this->paymentSlip->setBankLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C')
-        );
+        $this->paymentSlip->setBankLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getBankLeftAttr());
     }
 
@@ -757,9 +755,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetBankRightAttr()
     {
-        $this->assertTrue(
-            $this->paymentSlip->setBankRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C')
-        );
+        $this->paymentSlip->setBankRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getBankRightAttr());
     }
 
@@ -773,9 +769,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetRecipientLeftAttr()
     {
-        $this->assertTrue(
-            $this->paymentSlip->setRecipientLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C')
-        );
+        $this->paymentSlip->setRecipientLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getRecipientLeftAttr());
     }
 
@@ -789,9 +783,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetRecipientRightAttr()
     {
-        $this->assertTrue(
-            $this->paymentSlip->setRecipientRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C')
-        );
+        $this->paymentSlip->setRecipientRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getRecipientRightAttr());
     }
 
@@ -805,9 +797,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAccountLeftAttr()
     {
-        $this->assertTrue(
-            $this->paymentSlip->setAccountLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C')
-        );
+        $this->paymentSlip->setAccountLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getAccountLeftAttr());
     }
 
@@ -821,9 +811,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAccountRightAttr()
     {
-        $this->assertTrue(
-            $this->paymentSlip->setAccountRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C')
-        );
+        $this->paymentSlip->setAccountRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getAccountRightAttr());
     }
 
@@ -837,9 +825,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAmountFrancsLeftAttr()
     {
-        $this->assertTrue(
-            $this->paymentSlip->setAmountFrancsLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C')
-        );
+        $this->paymentSlip->setAmountFrancsLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getAmountFrancsLeftAttr());
     }
 
@@ -853,9 +839,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAmountCentsLeftAttr()
     {
-        $this->assertTrue(
-            $this->paymentSlip->setAmountCentsLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C')
-        );
+        $this->paymentSlip->setAmountCentsLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getAmountCentsLeftAttr());
     }
 
@@ -869,9 +853,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAmountCentsRightAttr()
     {
-        $this->assertTrue(
-            $this->paymentSlip->setAmountCentsRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C')
-        );
+        $this->paymentSlip->setAmountCentsRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getAmountCentsRightAttr());
     }
 
@@ -885,9 +867,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAmountFrancsRightAttr()
     {
-        $this->assertTrue(
-            $this->paymentSlip->setAmountFrancsRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C')
-        );
+        $this->paymentSlip->setAmountFrancsRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getAmountFrancsRightAttr());
     }
 
@@ -901,9 +881,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetReferenceNumberLeftAttr()
     {
-        $this->assertTrue(
-            $this->paymentSlip->setReferenceNumberLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C')
-        );
+        $this->paymentSlip->setReferenceNumberLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getReferenceNumberLeftAttr());
     }
 
@@ -917,9 +895,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetReferenceNumberRightAttr()
     {
-        $this->assertTrue(
-            $this->paymentSlip->setReferenceNumberRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C')
-        );
+        $this->paymentSlip->setReferenceNumberRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getReferenceNumberRightAttr());
     }
 
@@ -933,9 +909,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetPayerLeftAttr()
     {
-        $this->assertTrue(
-            $this->paymentSlip->setPayerLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C')
-        );
+        $this->paymentSlip->setPayerLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getPayerLeftAttr());
     }
 
@@ -949,9 +923,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetPayerRightAttr()
     {
-        $this->assertTrue(
-            $this->paymentSlip->setPayerRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C')
-        );
+        $this->paymentSlip->setPayerRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getPayerRightAttr());
     }
 
@@ -965,9 +937,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetCodeLineAttr()
     {
-        $this->assertTrue(
-            $this->paymentSlip->setCodeLineAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C')
-        );
+        $this->paymentSlip->setCodeLineAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getCodeLineAttr());
     }
 
@@ -980,16 +950,16 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetDisplayBank()
     {
-        $this->assertTrue($this->paymentSlip->setDisplayBank());
+        $this->paymentSlip->setDisplayBank();
         $this->assertEquals(true, $this->paymentSlip->getDisplayBank());
 
-        $this->assertTrue($this->paymentSlip->setDisplayBank(true));
+        $this->paymentSlip->setDisplayBank(true);
         $this->assertEquals(true, $this->paymentSlip->getDisplayBank());
 
-        $this->assertTrue($this->paymentSlip->setDisplayBank(false));
+        $this->paymentSlip->setDisplayBank(false);
         $this->assertEquals(false, $this->paymentSlip->getDisplayBank());
 
-        $this->assertFalse($this->paymentSlip->setDisplayBank('XXX'));
+        $this->paymentSlip->setDisplayBank('XXX');
     }
 
     /**
@@ -1001,16 +971,16 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetDisplayAccount()
     {
-        $this->assertTrue($this->paymentSlip->setDisplayAccount());
+        $this->paymentSlip->setDisplayAccount();
         $this->assertEquals(true, $this->paymentSlip->getDisplayAccount());
 
-        $this->assertTrue($this->paymentSlip->setDisplayAccount(true));
+        $this->paymentSlip->setDisplayAccount(true);
         $this->assertEquals(true, $this->paymentSlip->getDisplayAccount());
 
-        $this->assertTrue($this->paymentSlip->setDisplayAccount(false));
+        $this->paymentSlip->setDisplayAccount(false);
         $this->assertEquals(false, $this->paymentSlip->getDisplayAccount());
 
-        $this->assertFalse($this->paymentSlip->setDisplayAccount('XXX'));
+        $this->paymentSlip->setDisplayAccount('XXX');
     }
 
     /**
@@ -1022,16 +992,16 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetDisplayRecipient()
     {
-        $this->assertTrue($this->paymentSlip->setDisplayRecipient());
+        $this->paymentSlip->setDisplayRecipient();
         $this->assertEquals(true, $this->paymentSlip->getDisplayRecipient());
 
-        $this->assertTrue($this->paymentSlip->setDisplayRecipient(true));
+        $this->paymentSlip->setDisplayRecipient(true);
         $this->assertEquals(true, $this->paymentSlip->getDisplayRecipient());
 
-        $this->assertTrue($this->paymentSlip->setDisplayRecipient(false));
+        $this->paymentSlip->setDisplayRecipient(false);
         $this->assertEquals(false, $this->paymentSlip->getDisplayRecipient());
 
-        $this->assertFalse($this->paymentSlip->setDisplayRecipient('XXX'));
+        $this->paymentSlip->setDisplayRecipient('XXX');
     }
 
     /**
@@ -1043,16 +1013,16 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetDisplayAmount()
     {
-        $this->assertTrue($this->paymentSlip->setDisplayAmount());
+        $this->paymentSlip->setDisplayAmount();
         $this->assertEquals(true, $this->paymentSlip->getDisplayAmount());
 
-        $this->assertTrue($this->paymentSlip->setDisplayAmount(true));
+        $this->paymentSlip->setDisplayAmount(true);
         $this->assertEquals(true, $this->paymentSlip->getDisplayAmount());
 
-        $this->assertTrue($this->paymentSlip->setDisplayAmount(false));
+        $this->paymentSlip->setDisplayAmount(false);
         $this->assertEquals(false, $this->paymentSlip->getDisplayAmount());
 
-        $this->assertFalse($this->paymentSlip->setDisplayAmount('XXX'));
+        $this->paymentSlip->setDisplayAmount('XXX');
     }
 
     /**
@@ -1064,16 +1034,16 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetDisplayReferenceNr()
     {
-        $this->assertTrue($this->paymentSlip->setDisplayReferenceNr());
+        $this->paymentSlip->setDisplayReferenceNr();
         $this->assertEquals(true, $this->paymentSlip->getDisplayReferenceNr());
 
-        $this->assertTrue($this->paymentSlip->setDisplayReferenceNr(true));
+        $this->paymentSlip->setDisplayReferenceNr(true);
         $this->assertEquals(true, $this->paymentSlip->getDisplayReferenceNr());
 
-        $this->assertTrue($this->paymentSlip->setDisplayReferenceNr(false));
+        $this->paymentSlip->setDisplayReferenceNr(false);
         $this->assertEquals(false, $this->paymentSlip->getDisplayReferenceNr());
 
-        $this->assertFalse($this->paymentSlip->setDisplayReferenceNr('XXX'));
+        $this->paymentSlip->setDisplayReferenceNr('XXX');
     }
 
     /**
@@ -1085,16 +1055,16 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetDisplayPayer()
     {
-        $this->assertTrue($this->paymentSlip->setDisplayPayer());
+        $this->paymentSlip->setDisplayPayer();
         $this->assertEquals(true, $this->paymentSlip->getDisplayPayer());
 
-        $this->assertTrue($this->paymentSlip->setDisplayPayer(true));
+        $this->paymentSlip->setDisplayPayer(true);
         $this->assertEquals(true, $this->paymentSlip->getDisplayPayer());
 
-        $this->assertTrue($this->paymentSlip->setDisplayPayer(false));
+        $this->paymentSlip->setDisplayPayer(false);
         $this->assertEquals(false, $this->paymentSlip->getDisplayPayer());
 
-        $this->assertFalse($this->paymentSlip->setDisplayPayer('XXX'));
+        $this->paymentSlip->setDisplayPayer('XXX');
     }
 
     /**
@@ -1106,16 +1076,16 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetDisplayCodeLine()
     {
-        $this->assertTrue($this->paymentSlip->setDisplayCodeLine());
+        $this->paymentSlip->setDisplayCodeLine();
         $this->assertEquals(true, $this->paymentSlip->getDisplayCodeLine());
 
-        $this->assertTrue($this->paymentSlip->setDisplayCodeLine(true));
+        $this->paymentSlip->setDisplayCodeLine(true);
         $this->assertEquals(true, $this->paymentSlip->getDisplayCodeLine());
 
-        $this->assertTrue($this->paymentSlip->setDisplayCodeLine(false));
+        $this->paymentSlip->setDisplayCodeLine(false);
         $this->assertEquals(false, $this->paymentSlip->getDisplayCodeLine());
 
-        $this->assertFalse($this->paymentSlip->setDisplayCodeLine('XXX'));
+        $this->paymentSlip->setDisplayCodeLine('XXX');
     }
 
     /**
@@ -1127,16 +1097,16 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetDisplayIban()
     {
-        $this->assertTrue($this->paymentSlip->setDisplayIban());
+        $this->paymentSlip->setDisplayIban();
         $this->assertEquals(true, $this->paymentSlip->getDisplayIban());
 
-        $this->assertTrue($this->paymentSlip->setDisplayIban(true));
+        $this->paymentSlip->setDisplayIban(true);
         $this->assertEquals(true, $this->paymentSlip->getDisplayIban());
 
-        $this->assertTrue($this->paymentSlip->setDisplayIban(false));
+        $this->paymentSlip->setDisplayIban(false);
         $this->assertEquals(false, $this->paymentSlip->getDisplayIban());
 
-        $this->assertFalse($this->paymentSlip->setDisplayIban('XXX'));
+        $this->paymentSlip->setDisplayIban('XXX');
     }
 
     /**
@@ -1148,16 +1118,16 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetDisplayPaymentReason()
     {
-        $this->assertTrue($this->paymentSlip->setDisplayPaymentReason());
+        $this->paymentSlip->setDisplayPaymentReason();
         $this->assertEquals(true, $this->paymentSlip->getDisplayPaymentReason());
 
-        $this->assertTrue($this->paymentSlip->setDisplayPaymentReason(true));
+        $this->paymentSlip->setDisplayPaymentReason(true);
         $this->assertEquals(true, $this->paymentSlip->getDisplayPaymentReason());
 
-        $this->assertTrue($this->paymentSlip->setDisplayPaymentReason(false));
+        $this->paymentSlip->setDisplayPaymentReason(false);
         $this->assertEquals(false, $this->paymentSlip->getDisplayPaymentReason());
 
-        $this->assertFalse($this->paymentSlip->setDisplayPaymentReason('XXX'));
+        $this->paymentSlip->setDisplayPaymentReason('XXX');
     }
 
     /**

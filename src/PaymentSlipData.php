@@ -307,7 +307,7 @@ class PaymentSlipData
      * @param string $type The slip type.
      * @param bool $forceReset Force a data reset according to the given type.
      * @throws \InvalidArgumentException If one of the parameters is invalid.
-     * @return bool True if successful.
+     * @return $this The current instance for a fluent interface.
      */
     public function setType($type = self::ORANGE, $forceReset = false)
     {
@@ -331,13 +331,13 @@ class PaymentSlipData
                 $this->setRedDefaults();
             }
         }
-        return true;
+        return $this;
     }
 
     /**
      * Set the default values for the orange payment slip
      *
-     * @return void
+     * @return $this The current instance for a fluent interface.
      */
     protected function setOrangeDefaults()
     {
@@ -350,12 +350,14 @@ class PaymentSlipData
         $this->setWithPayer(true);
         $this->setWithIban(false);
         $this->setWithPaymentReason(false);
+
+        return $this;
     }
 
     /**
      * Set the default values for the red payment slip
      *
-     * @return void
+     * @return $this The current instance for a fluent interface.
      */
     protected function setRedDefaults()
     {
@@ -368,6 +370,8 @@ class PaymentSlipData
         $this->setWithPayer(true);
         $this->setWithIban(true);
         $this->setWithPaymentReason(true);
+
+        return $this;
     }
 
     /**
@@ -406,7 +410,7 @@ class PaymentSlipData
      * XXXes out all fields to prevent people using the payment slip.
      *
      * @param boolean $notForPayment True if not for payment, else false.
-     * @return void
+     * @return $this The current instance for a fluent interface.
      */
     public function setNotForPayment($notForPayment = true)
     {
@@ -422,6 +426,8 @@ class PaymentSlipData
             $this->setReferenceNumber('XXXXXXXXXXXXXXXXXXXX');
             $this->setBankingCustomerId('XXXXXX');
         }
+
+        return $this;
     }
 
     /**
@@ -438,7 +444,7 @@ class PaymentSlipData
      * Set if payment slip has a bank specified
      *
      * @param bool $withBank True for yes, false for no
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setWithBank($withBank = true)
     {
@@ -449,9 +455,9 @@ class PaymentSlipData
                 $this->bankName = '';
                 $this->bankCity = '';
             }
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -468,7 +474,7 @@ class PaymentSlipData
      * Set if payment slip has an account number specified
      *
      * @param bool $withAccountNumber True if yes, false if no.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setWithAccountNumber($withAccountNumber = true)
     {
@@ -478,9 +484,9 @@ class PaymentSlipData
             if (!$withAccountNumber) {
                 $this->accountNumber = '';
             }
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -497,7 +503,7 @@ class PaymentSlipData
      * Set if payment slip has a recipient specified
      *
      * @param bool $withRecipient True if yes, false if no.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setWithRecipient($withRecipient = true)
     {
@@ -510,9 +516,9 @@ class PaymentSlipData
                 $this->recipientLine3 = '';
                 $this->recipientLine4 = '';
             }
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -529,7 +535,7 @@ class PaymentSlipData
      * Set if payment slip has an amount specified
      *
      * @param bool $withAmount True for yes, false for no.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setWithAmount($withAmount = true)
     {
@@ -539,9 +545,9 @@ class PaymentSlipData
             if (!$withAmount) {
                 $this->amount = 0.0;
             }
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -560,7 +566,7 @@ class PaymentSlipData
      * Resets reference number if disabled
      *
      * @param bool $withReferenceNumber True if yes, false if no.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setWithReferenceNumber($withReferenceNumber = true)
     {
@@ -571,13 +577,13 @@ class PaymentSlipData
                 if (!$withReferenceNumber) {
                     $this->referenceNumber = '';
                 }
-                return true;
             }
         } else {
             $this->withReferenceNumber = false;
             $this->referenceNumber = '';
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -594,7 +600,7 @@ class PaymentSlipData
      * Set if the payment slip's reference number should contain the banking customer ID
      *
      * @param bool $withBankingCustomerId True if successful, else false.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setWithBankingCustomerId($withBankingCustomerId = true)
     {
@@ -605,13 +611,13 @@ class PaymentSlipData
                 if (!$withBankingCustomerId) {
                     $this->bankingCustomerId = '';
                 }
-                return true;
             }
         } else {
             $this->withBankingCustomerId = false;
             $this->bankingCustomerId = '';
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -628,7 +634,7 @@ class PaymentSlipData
      * Set if payment slip has a payer specified
      *
      * @param bool $withPayer True if yes, false if no.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setWithPayer($withPayer = true)
     {
@@ -641,9 +647,9 @@ class PaymentSlipData
                 $this->payerLine3 = '';
                 $this->payerLine4 = '';
             }
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -661,7 +667,7 @@ class PaymentSlipData
      * Only available for red payment slips
      *
      * @param bool $withIban True if yes, false if no.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setWithIban($withIban = false)
     {
@@ -672,13 +678,13 @@ class PaymentSlipData
                 if (!$withIban) {
                     $this->iban = '';
                 }
-                return true;
             }
         } else {
             $this->withIban = false;
             $this->iban = '';
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -696,7 +702,7 @@ class PaymentSlipData
      * Only available for red payment slips
      *
      * @param bool $withPaymentReason True if yes, false if no.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setWithPaymentReason($withPaymentReason = false)
     {
@@ -710,7 +716,6 @@ class PaymentSlipData
                     $this->paymentReasonLine3 = '';
                     $this->paymentReasonLine4 = '';
                 }
-                return true;
             }
         } else {
             $this->withPaymentReason = false;
@@ -719,7 +724,8 @@ class PaymentSlipData
             $this->paymentReasonLine3 = '';
             $this->paymentReasonLine4 = '';
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -737,25 +743,21 @@ class PaymentSlipData
      *
      * @param string $bankName Name of the bank.
      * @param string $bankCity City of the bank.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setBankData($bankName, $bankCity)
     {
-        if (!$this->setBankName($bankName)) {
-            return false;
-        }
-        if (!$this->setBankCity($bankCity)) {
-            return false;
-        }
+        $this->setBankName($bankName);
+        $this->setBankCity($bankCity);
 
-        return true;
+        return $this;
     }
 
     /**
      * Set the name of the bank
      *
      * @param string $bankName The name of the bank.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      *
      * @todo Implement max length check
      */
@@ -763,9 +765,9 @@ class PaymentSlipData
     {
         if ($this->getWithBank()) {
             $this->bankName = $bankName;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -785,7 +787,7 @@ class PaymentSlipData
      * Set the postal code and city of the bank
      *
      * @param string $bankCity The postal code and city of the bank
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      *
      * @todo Implement max length check
      */
@@ -793,9 +795,9 @@ class PaymentSlipData
     {
         if ($this->getWithBank()) {
             $this->bankCity = $bankCity;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -815,7 +817,7 @@ class PaymentSlipData
      * Set the bank or post cheque account where the money will be transferred to
      *
      * @param string $accountNumber The bank or post cheque account.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      *
      * @todo Implement parameter validation (two hyphens, min & max length)
      */
@@ -823,9 +825,9 @@ class PaymentSlipData
     {
         if ($this->getWithAccountNumber()) {
             $this->accountNumber = $accountNumber;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -848,33 +850,31 @@ class PaymentSlipData
      * @param string $recipientLine2 The second line of the recipient, e.g. "Examplestreet 61".
      * @param string $recipientLine3 The third line of the recipient, e.g. "8000 Zürich".
      * @param string $recipientLine4 The fourth line of the recipient, if needed.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setRecipientData($recipientLine1, $recipientLine2, $recipientLine3 = '', $recipientLine4 = '')
     {
-        if (!$this->setRecipientLine1($recipientLine1) ||
-            !$this->setRecipientLine2($recipientLine2) ||
-            !$this->setRecipientLine3($recipientLine3) ||
-            !$this->setRecipientLine4($recipientLine4)
-        ) {
-            return false;
-        }
-        return true;
+        $this->setRecipientLine1($recipientLine1);
+        $this->setRecipientLine2($recipientLine2);
+        $this->setRecipientLine3($recipientLine3);
+        $this->setRecipientLine4($recipientLine4);
+
+        return $this;
     }
 
     /**
      * Set the first line of the recipient
      *
      * @param string $recipientLine1 The first line of the recipient, e.g. "My Company Ltd.".
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     protected function setRecipientLine1($recipientLine1)
     {
         if ($this->getWithRecipient()) {
             $this->recipientLine1 = $recipientLine1;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -894,15 +894,15 @@ class PaymentSlipData
      * Set the second line of the recipient
      *
      * @param string $recipientLine2 The second line of the recipient, e.g. "Examplestreet 61".
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     protected function setRecipientLine2($recipientLine2)
     {
         if ($this->getWithRecipient()) {
             $this->recipientLine2 = $recipientLine2;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -922,15 +922,15 @@ class PaymentSlipData
      * Set the third line of the recipient
      *
      * @param string $recipientLine3 The third line of the recipient, e.g. "8000 Zürich".
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     protected function setRecipientLine3($recipientLine3)
     {
         if ($this->getWithRecipient()) {
             $this->recipientLine3 = $recipientLine3;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -950,15 +950,15 @@ class PaymentSlipData
      * Set the fourth line of the recipient
      *
      * @param string $recipientLine4 The fourth line of the recipient, if needed.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     protected function setRecipientLine4($recipientLine4)
     {
         if ($this->getWithRecipient()) {
             $this->recipientLine4 = $recipientLine4;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -978,15 +978,15 @@ class PaymentSlipData
      * Set the amount of the payment slip. Only possible if it's not a ESR+.
      *
      * @param float $amount The amount to be payed into
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setAmount($amount = 0.0)
     {
         if ($this->getWithAmount()) {
             $this->amount = $amount;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -1006,16 +1006,16 @@ class PaymentSlipData
      * Set the reference number
      *
      * @param string $referenceNumber The reference number.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setReferenceNumber($referenceNumber)
     {
         if ($this->getWithReferenceNumber()) {
             // TODO validate reference number
             $this->referenceNumber = $referenceNumber;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -1035,16 +1035,16 @@ class PaymentSlipData
      * Set the banking customer ID
      *
      * @param string $bankingCustomerId The banking customer ID.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setBankingCustomerId($bankingCustomerId)
     {
         if ($this->getWithBankingCustomerId()) {
             // TODO check length (exactly 6)
             $this->bankingCustomerId = $bankingCustomerId;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -1067,32 +1067,31 @@ class PaymentSlipData
      * @param string $payerLine2 The second line of the payer, e.g. "Main Street 11".
      * @param string $payerLine3 The third line of the payer, e.g. "4052 Basel".
      * @param string $payerLine4 The fourth line of the payer, if needed.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setPayerData($payerLine1, $payerLine2, $payerLine3 = '', $payerLine4 = '')
     {
-        if (!$this->setPayerLine1($payerLine1) ||
-        !$this->setPayerLine2($payerLine2) ||
-        !$this->setPayerLine3($payerLine3) ||
-        !$this->setPayerLine4($payerLine4)) {
-            return false;
-        }
-        return true;
+        $this->setPayerLine1($payerLine1);
+        $this->setPayerLine2($payerLine2);
+        $this->setPayerLine3($payerLine3);
+        $this->setPayerLine4($payerLine4);
+
+        return $this;
     }
 
     /**
      * Set the first line of the payer
      *
      * @param string $payerLine1 The first line of the payer, e.g. "Hans Mustermann".
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     protected function setPayerLine1($payerLine1)
     {
         if ($this->getWithPayer()) {
             $this->payerLine1 = $payerLine1;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -1112,15 +1111,15 @@ class PaymentSlipData
      * Set the second line of the payer
      *
      * @param string $payerLine2 The second line of the payer, e.g. "Main Street 11".
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     protected function setPayerLine2($payerLine2)
     {
         if ($this->getWithPayer()) {
             $this->payerLine2 = $payerLine2;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -1140,15 +1139,15 @@ class PaymentSlipData
      * Set the third line of the payer
      *
      * @param string $payerLine3 The third line of the payer, e.g. "4052 Basel".
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     protected function setPayerLine3($payerLine3)
     {
         if ($this->getWithPayer()) {
             $this->payerLine3 = $payerLine3;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -1168,15 +1167,15 @@ class PaymentSlipData
      * Set the fourth line of the payer
      *
      * @param string $payerLine4 The fourth line of the payer, if needed.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     protected function setPayerLine4($payerLine4)
     {
         if ($this->getWithPayer()) {
             $this->payerLine4 = $payerLine4;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -1196,7 +1195,7 @@ class PaymentSlipData
      * Set the IBAN
      *
      * @param string $iban The IBAN.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      *
      * @todo Consider stripping spaces (may be optionally)
      * @todo Implement validation of the IBAN
@@ -1208,9 +1207,9 @@ class PaymentSlipData
     {
         if ($this->getWithIban()) {
             $this->iban = $iban;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -1233,7 +1232,7 @@ class PaymentSlipData
      * @param string $paymentReasonLine2 The second line of the payment reason.
      * @param string $paymentReasonLine3 The third line of the payment reason.
      * @param string $paymentReasonLine4 The fourth line of the payment reason.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setPaymentReasonData(
         $paymentReasonLine1 = '',
@@ -1241,28 +1240,27 @@ class PaymentSlipData
         $paymentReasonLine3 = '',
         $paymentReasonLine4 = ''
     ) {
-        if (!$this->setPaymentReasonLine1($paymentReasonLine1) ||
-        !$this->setPaymentReasonLine2($paymentReasonLine2) ||
-        !$this->setPaymentReasonLine3($paymentReasonLine3) ||
-        !$this->setPaymentReasonLine4($paymentReasonLine4)) {
-            return false;
-        }
-        return true;
+        $this->setPaymentReasonLine1($paymentReasonLine1);
+        $this->setPaymentReasonLine2($paymentReasonLine2);
+        $this->setPaymentReasonLine3($paymentReasonLine3);
+        $this->setPaymentReasonLine4($paymentReasonLine4);
+
+        return $this;
     }
 
     /**
      * Set the first line of the payment reason
      *
      * @param string $paymentReasonLine1 The first line of the payment reason.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     protected function setPaymentReasonLine1($paymentReasonLine1)
     {
         if ($this->getWithPaymentReason()) {
             $this->paymentReasonLine1 = $paymentReasonLine1;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -1282,15 +1280,15 @@ class PaymentSlipData
      * Set the second line of the payment reason
      *
      * @param string $paymentReasonLine2 The second line of the payment reason.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     protected function setPaymentReasonLine2($paymentReasonLine2)
     {
         if ($this->getWithPaymentReason()) {
             $this->paymentReasonLine2 = $paymentReasonLine2;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -1310,15 +1308,15 @@ class PaymentSlipData
      * Set the third line of the payment reason
      *
      * @param string $paymentReasonLine3 The third line of the payment reason.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     protected function setPaymentReasonLine3($paymentReasonLine3)
     {
         if ($this->getWithPaymentReason()) {
             $this->paymentReasonLine3 = $paymentReasonLine3;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -1338,15 +1336,15 @@ class PaymentSlipData
      * Set the fourth line of the payment reason
      *
      * @param string $paymentReasonLine4 The fourth line of the payment reason.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     protected function setPaymentReasonLine4($paymentReasonLine4)
     {
         if ($this->getWithPaymentReason()) {
             $this->paymentReasonLine4 = $paymentReasonLine4;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
