@@ -10,11 +10,11 @@
  * @link https://github.com/sprain/class.Einzahlungsschein.php
  */
 
-namespace SwissPaymentSlip\SwissPaymentSlip\Tests\SwissPaymentSlip;
+namespace SwissPaymentSlip\SwissPaymentSlip\Tests;
 
 use SwissPaymentSlip\SwissPaymentSlip\PaymentSlipData;
 
-require __DIR__.'/../../../vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
 /**
  * Tests for the PaymentSlipData class

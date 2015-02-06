@@ -5,13 +5,13 @@
     verbose="false">
     <testsuites>
         <testsuite name="All SwissPaymentSlip tests">
-            <file>./src/Tests/SwissPaymentSlip/PaymentSlipDataTest.php</file>
-            <file>./src/Tests/SwissPaymentSlip/PaymentSlipTest.php</file>
+            <file>./tests/PaymentSlipDataTest.php</file>
+            <file>./tests/PaymentSlipTest.php</file>
         </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./src/SwissPaymentSlip</directory>
+            <directory suffix=".php">./src/</directory>
         </whitelist>
     </filter>
     <logging>
