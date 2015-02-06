@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/ravage84/SwissPaymentSlip/compare/0.7.0...master)
 ### Added
+- Packagist Download & Latest badges to the README
 
 ### Changed
 
