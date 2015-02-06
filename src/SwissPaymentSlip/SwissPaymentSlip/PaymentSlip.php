@@ -15,7 +15,7 @@ namespace SwissPaymentSlip\SwissPaymentSlip;
 /**
  * Swiss Payment Slip
  *
- * A general purpose class for swiss payment slips. Data is organized by its sister class SwissPaymentSlipData.
+ * A general purpose class for swiss payment slips. Data is organized by its sister class PaymentSlipData.
  *
  * @todo Include CHF boxed slip image (609, ESR+)
  * @todo Include EUR framed slip image (701) --> back side!
@@ -30,12 +30,12 @@ namespace SwissPaymentSlip\SwissPaymentSlip;
  * @todo Rename to Slip
  * @todo Consider extracting the attributes as separate class
  */
-class SwissPaymentSlip
+class PaymentSlip
 {
     /**
      * The payment slip value object, which contains the payment slip data
      *
-     * @var SwissPaymentSlipData The payment slip value object
+     * @var PaymentSlipData The payment slip value object
      */
     protected $paymentSlipData = null;
 
@@ -282,11 +282,11 @@ class SwissPaymentSlip
     /**
      * Create a new payment slip
      *
-     * @param SwissPaymentSlipData $paymentSlipData The payment slip data.
+     * @param PaymentSlipData $paymentSlipData The payment slip data.
      * @param float|null $slipPosX The optional X position of the slip.
      * @param float|null $slipPosY The optional Y position of the slip.
      */
-    public function __construct(SwissPaymentSlipData $paymentSlipData, $slipPosX = null, $slipPosY = null)
+    public function __construct(PaymentSlipData $paymentSlipData, $slipPosX = null, $slipPosY = null)
     {
         $this->paymentSlipData = $paymentSlipData;
 
@@ -349,7 +349,7 @@ class SwissPaymentSlip
     /**
      * Get the slip data object of the slip
      *
-     * @return SwissPaymentSlipData The data object of the slip.
+     * @return PaymentSlipData The data object of the slip.
      */
     public function getPaymentSlipData()
     {

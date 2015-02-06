@@ -5,8 +5,8 @@
     verbose="false">
     <testsuites>
         <testsuite name="All SwissPaymentSlip tests">
-            <file>./src/Tests/SwissPaymentSlip/SwissPaymentSlipDataTest.php</file>
-            <file>./src/Tests/SwissPaymentSlip/SwissPaymentSlipTest.php</file>
+            <file>./src/Tests/SwissPaymentSlip/PaymentSlipDataTest.php</file>
+            <file>./src/Tests/SwissPaymentSlip/PaymentSlipTest.php</file>
         </testsuite>
     </testsuites>
 </phpunit>

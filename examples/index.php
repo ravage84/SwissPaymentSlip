@@ -20,10 +20,10 @@
 <h1>Examples for SwissPaymentSlip</h1>
 <p>Learn how to use the SwissPaymentSlip classes wit the following examples:</p>
 <ul>
-	<li><a href="SwissPaymentSlipData_Basic_Usage.php">01-01 Basic Usage of SwissPaymentSlipData</a></li>
-	<li><a href="SwissPaymentSlipData_Red_Slip.php">01-02 Creating a red payment slip with SwissPaymentSlipData</a></li>
-	<li><a href="SwissPaymentSlipData_Advanced_Usage.php">01-03 Advanced Usage of SwissPaymentSlipData</a></li>
-	<li><a href="SwissPaymentSlip_Basic_Usage.php">02-01 Basic Usage of SwissPaymentSlip</a></li>
+	<li><a href="PaymentSlipData_Basic_Usage.php">01-01 Basic Usage of PaymentSlipData</a></li>
+	<li><a href="PaymentSlipData_Red_Slip.php">01-02 Creating a red payment slip with PaymentSlipData</a></li>
+	<li><a href="PaymentSlipData_Advanced_Usage.php">01-03 Advanced Usage of PaymentSlipData</a></li>
+	<li><a href="PaymentSlip_Basic_Usage.php">02-01 Basic Usage of PaymentSlip</a></li>
 </ul>
 </body>
 </html>

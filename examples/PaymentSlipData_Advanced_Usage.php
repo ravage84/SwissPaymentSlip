@@ -14,19 +14,19 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>SwissPaymentSlip Example 01-03: SwissPaymentSlipData advanced usage</title>
+    <title>SwissPaymentSlip Example 01-03: PaymentSlipData advanced usage</title>
 </head>
 <body>
-<h1>SwissPaymentSlip Example 01-03: SwissPaymentSlipData advanced usage</h1>
+<h1>SwissPaymentSlip Example 01-03: PaymentSlipData advanced usage</h1>
 <?php
 // Make sure the classes get auto-loaded
 require __DIR__.'/../vendor/autoload.php';
 
 // Import necessary classes
-use SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData;
+use SwissPaymentSlip\SwissPaymentSlip\PaymentSlipData;
 
 // Create an payment slip data container (value object)
-$paymentSlipData = new SwissPaymentSlipData('red');
+$paymentSlipData = new PaymentSlipData('red');
 
 // Fill some red slip data
 $paymentSlipData->setIban('CH3808888123456789012');

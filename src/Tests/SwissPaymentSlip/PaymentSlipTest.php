@@ -12,22 +12,22 @@
 
 namespace SwissPaymentSlip\SwissPaymentSlip\Tests\SwissPaymentSlip;
 
-use SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip;
-use SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData;
+use SwissPaymentSlip\SwissPaymentSlip\PaymentSlip;
+use SwissPaymentSlip\SwissPaymentSlip\PaymentSlipData;
 
 require __DIR__.'/../../../vendor/autoload.php';
 
 /**
- * Tests for the SwissPaymentSlip class
+ * Tests for the PaymentSlip class
  *
- * @coversDefaultClass SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip
+ * @coversDefaultClass SwissPaymentSlip\SwissPaymentSlip\PaymentSlip
  */
-class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
+class PaymentSlipTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * The object under test
      *
-     * @var SwissPaymentSlip
+     * @var PaymentSlip
      */
     protected $paymentSlip;
 
@@ -52,8 +52,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $slipData = new SwissPaymentSlipData();
-        $this->paymentSlip = new SwissPaymentSlip($slipData);
+        $slipData = new PaymentSlipData();
+        $this->paymentSlip = new PaymentSlip($slipData);
 
         $attributes = array();
         $attributes['PosX'] = 0;
@@ -90,11 +90,11 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::__construct
      * @expectedException \PHPUnit_Framework_Error
-     * @expectedExceptionMessage Argument 1 passed to SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::__construct() must be an instance of SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData, null given
+     * @expectedExceptionMessage Argument 1 passed to SwissPaymentSlip\SwissPaymentSlip\PaymentSlip::__construct() must be an instance of SwissPaymentSlip\SwissPaymentSlip\PaymentSlipData, null given
      */
     public function testNullSlipDataParameter()
     {
-        new SwissPaymentSlip(null);
+        new PaymentSlip(null);
     }
 
     /**
@@ -103,11 +103,11 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::__construct
      * @expectedException \PHPUnit_Framework_Error
-     * @expectedExceptionMessage Argument 1 passed to SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlip::__construct() must be an instance of SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData, instance of ArrayObject given
+     * @expectedExceptionMessage Argument 1 passed to SwissPaymentSlip\SwissPaymentSlip\PaymentSlip::__construct() must be an instance of SwissPaymentSlip\SwissPaymentSlip\PaymentSlipData, instance of ArrayObject given
      */
     public function testInvalidSlipDataParameter()
     {
-        new SwissPaymentSlip(new \ArrayObject());
+        new PaymentSlip(new \ArrayObject());
     }
 
     /**
@@ -119,7 +119,7 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
     public function testGetPaymentSlipDataIsInstanceOf()
     {
         $this->assertInstanceOf(
-            'SwissPaymentSlip\SwissPaymentSlip\SwissPaymentSlipData',
+            'SwissPaymentSlip\SwissPaymentSlip\PaymentSlipData',
             $this->paymentSlip->getPaymentSlipData()
         );
     }
@@ -725,8 +725,8 @@ class SwissPaymentSlipTest extends \PHPUnit_Framework_TestCase
      */
     public function testSlipBackgroundDefaultValuesRedType()
     {
-        $slipData = new SwissPaymentSlipData('red');
-        $this->paymentSlip = new SwissPaymentSlip($slipData);
+        $slipData = new PaymentSlipData('red');
+        $this->paymentSlip = new PaymentSlip($slipData);
 
         $this->assertEquals('ezs_red.gif', basename($this->paymentSlip->getSlipBackground()));
     }

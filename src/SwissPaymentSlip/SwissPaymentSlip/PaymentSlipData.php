@@ -56,7 +56,7 @@ use InvalidArgumentException;
  * @todo Consider sub classing the orange and red payment slip data
  * @todo Rename to SlipData
  */
-class SwissPaymentSlipData
+class PaymentSlipData
 {
     /**
      * Constant for orange payment slips
