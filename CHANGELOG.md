@@ -12,6 +12,8 @@ All notable changes to this project are documented in this file.
 ### Changed
 - Fully adopted the PSR2 Code Style
 - Various CS and DocBlock improvements and other code clean up
+- Renamed SwissPaymentSlip to PaymentSlip and SwissPaymentSlipData to PaymentSlipData
+- Improved documentation
 
 ### Fixed
 - Some minor issues reported by Scrutinizer CI
