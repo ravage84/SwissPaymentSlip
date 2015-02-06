@@ -96,6 +96,3 @@ Thanks to
 
 - <http://www.smoke8.net/> for public designs of Einzahlungsscheinen
 - <http://www.developers-guide.net/forums/5431,modulo10-rekursiv> for Modulo10 function
-- <http://ansuz.sooke.bc.ca/software/ocrb.php> for OCRB font
-- <http://blog.fruit-lab.de/fpdf-font-converter/> for FPDF font converter
-- <http://www.fpdf.de/> for the pdf class
