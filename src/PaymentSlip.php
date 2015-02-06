@@ -301,7 +301,7 @@ class PaymentSlip
     /**
      * Sets the default attributes of the elements according to the type
      *
-     * @return void
+     * @return $this The current instance for a fluent interface.
      */
     protected function setDefaults()
     {
@@ -343,6 +343,8 @@ class PaymentSlip
 
             $this->setSlipBackground(__DIR__.'/Resources/img/ezs_red.gif');
         }
+
+        return $this;
     }
 
     /**
@@ -360,45 +362,44 @@ class PaymentSlip
      *
      * @param float $slipPosX The starting X position of the slip.
      * @param float $slipPosY The starting Y position of the slip
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setSlipPosition($slipPosX, $slipPosY)
     {
-        if ($this->setSlipPosX($slipPosX) &&
-        $this->setSlipPosY($slipPosY)) {
-            return true;
-        }
-        return false;
+        $this->setSlipPosX($slipPosX);
+        $this->setSlipPosY($slipPosY);
+
+        return $this;
     }
 
     /**
      * Set the starting X position of the slip
      *
      * @param float $slipPosX The starting X position of the slip.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     protected function setSlipPosX($slipPosX)
     {
         if (is_int($slipPosX) || is_float($slipPosX)) {
             $this->slipPosX = $slipPosX;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
      * Set the starting Y position of the slip
      *
      * @param float $slipPosY The starting Y position of the slip.
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     protected function setSlipPosY($slipPosY)
     {
         if (is_int($slipPosY) || is_float($slipPosY)) {
             $this->slipPosY = $slipPosY;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -406,45 +407,44 @@ class PaymentSlip
      *
      * @param float $slipWidth The width of the slip
      * @param float $slipHeight The height of the slip
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setSlipSize($slipWidth, $slipHeight)
     {
-        if ($this->setSlipHeight($slipHeight) &&
-        $this->setSlipWidth($slipWidth)) {
-            return true;
-        }
-        return false;
+        $this->setSlipHeight($slipHeight);
+        $this->setSlipWidth($slipWidth);
+
+        return $this;
     }
 
     /**
      * Set the width of the slip
      *
      * @param float $slipWidth The width of the slip
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     protected function setSlipWidth($slipWidth)
     {
         if (is_int($slipWidth) || is_float($slipWidth)) {
             $this->slipWidth = $slipWidth;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
      * Set the height of the slip
      *
      * @param float $slipHeight The height of the slip
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     protected function setSlipHeight($slipHeight)
     {
         if (is_int($slipHeight) || is_float($slipHeight)) {
             $this->slipHeight = $slipHeight;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -453,7 +453,7 @@ class PaymentSlip
      * Can be either 'transparent', a color or an image
      *
      * @param string $slipBackground The background of the slip.
-     * @return bool Always true.
+     * @return $this The current instance for a fluent interface.
      *
      * @todo Implement sanity checks on parameter (filename or color)
      */
@@ -461,7 +461,7 @@ class PaymentSlip
     {
         $this->slipBackground = $slipBackground;
 
-        return true;
+        return $this;
     }
 
     /**
@@ -478,7 +478,7 @@ class PaymentSlip
      * @param string|null $fontColor The font color.
      * @param float|null $lineHeight The line height.
      * @param string|null $textAlign The text alignment.
-     * @return bool Always true.
+     * @return $this The current instance for a fluent interface.
      */
     protected function setAttributes(
         &$element,
@@ -543,7 +543,8 @@ class PaymentSlip
         } elseif (!isset($element['TextAlign'])) {
             $element['TextAlign'] = $this->defaultTextAlign;
         }
-        return true;
+
+        return $this;
 
     }
 
@@ -560,7 +561,7 @@ class PaymentSlip
      * @param string|null $fontColor The font color.
      * @param float|null $lineHeight The line height.
      * @param string|null $textAlign The text alignment.
-     * @return bool Always true.
+     * @return $this The current instance for a fluent interface.
      */
     public function setBankLeftAttr(
         $posX = null,
@@ -574,7 +575,7 @@ class PaymentSlip
         $lineHeight = null,
         $textAlign = null
     ) {
-        return $this->setAttributes(
+        $this->setAttributes(
             $this->bankLeftAttr,
             $posX,
             $posY,
@@ -587,6 +588,8 @@ class PaymentSlip
             $lineHeight,
             $textAlign
         );
+
+        return $this;
     }
 
     /**
@@ -602,7 +605,7 @@ class PaymentSlip
      * @param string|null $fontColor The font color.
      * @param float|null $lineHeight The line height.
      * @param string|null $textAlign The text alignment.
-     * @return bool Always true.
+     * @return $this The current instance for a fluent interface.
      */
     public function setBankRightAttr(
         $posX = null,
@@ -616,7 +619,7 @@ class PaymentSlip
         $lineHeight = null,
         $textAlign = null
     ) {
-        return $this->setAttributes(
+        $this->setAttributes(
             $this->bankRightAttr,
             $posX,
             $posY,
@@ -629,6 +632,8 @@ class PaymentSlip
             $lineHeight,
             $textAlign
         );
+
+        return $this;
     }
 
     /**
@@ -644,7 +649,7 @@ class PaymentSlip
      * @param string|null $fontColor The font color.
      * @param float|null $lineHeight The line height.
      * @param string|null $textAlign The text alignment.
-     * @return bool Always true.
+     * @return $this The current instance for a fluent interface.
      */
     public function setRecipientLeftAttr(
         $posX = null,
@@ -658,7 +663,7 @@ class PaymentSlip
         $lineHeight = null,
         $textAlign = null
     ) {
-        return $this->setAttributes(
+        $this->setAttributes(
             $this->recipientLeftAttr,
             $posX,
             $posY,
@@ -671,6 +676,8 @@ class PaymentSlip
             $lineHeight,
             $textAlign
         );
+
+        return $this;
     }
 
     /**
@@ -686,7 +693,7 @@ class PaymentSlip
      * @param string|null $fontColor The font color.
      * @param float|null $lineHeight The line height.
      * @param string|null $textAlign The text alignment.
-     * @return bool Always true.
+     * @return $this The current instance for a fluent interface.
      */
     public function setRecipientRightAttr(
         $posX = null,
@@ -700,7 +707,7 @@ class PaymentSlip
         $lineHeight = null,
         $textAlign = null
     ) {
-        return $this->setAttributes(
+        $this->setAttributes(
             $this->recipientRightAttr,
             $posX,
             $posY,
@@ -713,6 +720,8 @@ class PaymentSlip
             $lineHeight,
             $textAlign
         );
+
+        return $this;
     }
 
     /**
@@ -728,7 +737,7 @@ class PaymentSlip
      * @param string|null $fontColor The font color.
      * @param float|null $lineHeight The line height.
      * @param string|null $textAlign The text alignment.
-     * @return bool Always true.
+     * @return $this The current instance for a fluent interface.
      */
     public function setAccountLeftAttr(
         $posX = null,
@@ -742,7 +751,7 @@ class PaymentSlip
         $lineHeight = null,
         $textAlign = null
     ) {
-        return $this->setAttributes(
+        $this->setAttributes(
             $this->accountLeftAttr,
             $posX,
             $posY,
@@ -755,6 +764,8 @@ class PaymentSlip
             $lineHeight,
             $textAlign
         );
+
+        return $this;
     }
 
     /**
@@ -770,7 +781,7 @@ class PaymentSlip
      * @param string|null $fontColor The font color.
      * @param float|null $lineHeight The line height.
      * @param string|null $textAlign The text alignment.
-     * @return bool Always true.
+     * @return $this The current instance for a fluent interface.
      */
     public function setAccountRightAttr(
         $posX = null,
@@ -784,7 +795,7 @@ class PaymentSlip
         $lineHeight = null,
         $textAlign = null
     ) {
-        return $this->setAttributes(
+        $this->setAttributes(
             $this->accountRightAttr,
             $posX,
             $posY,
@@ -797,6 +808,8 @@ class PaymentSlip
             $lineHeight,
             $textAlign
         );
+
+        return $this;
     }
 
     /**
@@ -812,7 +825,7 @@ class PaymentSlip
      * @param string|null $fontColor The font color.
      * @param float|null $lineHeight The line height.
      * @param string|null $textAlign The text alignment.
-     * @return bool Always true.
+     * @return $this The current instance for a fluent interface.
      */
     public function setAmountFrancsLeftAttr(
         $posX = null,
@@ -830,7 +843,7 @@ class PaymentSlip
             $textAlign = 'R';
         }
 
-        return $this->setAttributes(
+        $this->setAttributes(
             $this->amountFrancsLeftAttr,
             $posX,
             $posY,
@@ -843,6 +856,8 @@ class PaymentSlip
             $lineHeight,
             $textAlign
         );
+
+        return $this;
     }
 
     /**
@@ -858,7 +873,7 @@ class PaymentSlip
      * @param string|null $fontColor The font color.
      * @param float|null $lineHeight The line height.
      * @param string|null $textAlign The text alignment.
-     * @return bool Always true.
+     * @return $this The current instance for a fluent interface.
      */
     public function setAmountFrancsRightAttr(
         $posX = null,
@@ -876,7 +891,7 @@ class PaymentSlip
             $textAlign = 'R';
         }
 
-        return $this->setAttributes(
+        $this->setAttributes(
             $this->amountFrancsRightAttr,
             $posX,
             $posY,
@@ -889,6 +904,8 @@ class PaymentSlip
             $lineHeight,
             $textAlign
         );
+
+        return $this;
     }
 
     /**
@@ -904,7 +921,7 @@ class PaymentSlip
      * @param string|null $fontColor The font color.
      * @param float|null $lineHeight The line height.
      * @param string|null $textAlign The text alignment.
-     * @return bool Always true.
+     * @return $this The current instance for a fluent interface.
      */
     public function setAmountCentsLeftAttr(
         $posX = null,
@@ -918,7 +935,7 @@ class PaymentSlip
         $lineHeight = null,
         $textAlign = null
     ) {
-        return $this->setAttributes(
+        $this->setAttributes(
             $this->amountCentsLeftAttr,
             $posX,
             $posY,
@@ -931,6 +948,8 @@ class PaymentSlip
             $lineHeight,
             $textAlign
         );
+
+        return $this;
     }
 
     /**
@@ -946,7 +965,7 @@ class PaymentSlip
      * @param string|null $fontColor The font color.
      * @param float|null $lineHeight The line height.
      * @param string|null $textAlign The text alignment.
-     * @return bool Always true.
+     * @return $this The current instance for a fluent interface.
      */
     public function setAmountCentsRightAttr(
         $posX = null,
@@ -960,7 +979,7 @@ class PaymentSlip
         $lineHeight = null,
         $textAlign = null
     ) {
-        return $this->setAttributes(
+        $this->setAttributes(
             $this->amountCentsRightAttr,
             $posX,
             $posY,
@@ -973,6 +992,8 @@ class PaymentSlip
             $lineHeight,
             $textAlign
         );
+
+        return $this;
     }
 
     /**
@@ -988,7 +1009,7 @@ class PaymentSlip
      * @param string|null $fontColor The font color.
      * @param float|null $lineHeight The line height.
      * @param string|null $textAlign The text alignment.
-     * @return bool Always true.
+     * @return $this The current instance for a fluent interface.
      */
     public function setReferenceNumberLeftAttr(
         $posX = null,
@@ -1002,7 +1023,7 @@ class PaymentSlip
         $lineHeight = null,
         $textAlign = null
     ) {
-        return $this->setAttributes(
+        $this->setAttributes(
             $this->referenceNumberLeftAttr,
             $posX,
             $posY,
@@ -1015,6 +1036,8 @@ class PaymentSlip
             $lineHeight,
             $textAlign
         );
+
+        return $this;
     }
 
     /**
@@ -1030,7 +1053,7 @@ class PaymentSlip
      * @param string|null $fontColor The font color.
      * @param float|null $lineHeight The line height.
      * @param string|null $textAlign The text alignment.
-     * @return bool Always true.
+     * @return $this The current instance for a fluent interface.
      */
     public function setReferenceNumberRightAttr(
         $posX = null,
@@ -1048,7 +1071,7 @@ class PaymentSlip
             $textAlign = 'R';
         }
 
-        return $this->setAttributes(
+        $this->setAttributes(
             $this->referenceNumberRightAttr,
             $posX,
             $posY,
@@ -1061,6 +1084,8 @@ class PaymentSlip
             $lineHeight,
             $textAlign
         );
+
+        return $this;
     }
 
     /**
@@ -1076,7 +1101,7 @@ class PaymentSlip
      * @param string|null $fontColor The font color.
      * @param float|null $lineHeight The line height.
      * @param string|null $textAlign The text alignment.
-     * @return bool Always true.
+     * @return $this The current instance for a fluent interface.
      */
     public function setPayerLeftAttr(
         $posX = null,
@@ -1090,7 +1115,7 @@ class PaymentSlip
         $lineHeight = null,
         $textAlign = null
     ) {
-        return $this->setAttributes(
+        $this->setAttributes(
             $this->payerLeftAttr,
             $posX,
             $posY,
@@ -1103,6 +1128,8 @@ class PaymentSlip
             $lineHeight,
             $textAlign
         );
+
+        return $this;
     }
 
     /**
@@ -1118,7 +1145,7 @@ class PaymentSlip
      * @param string|null $fontColor The font color.
      * @param float|null $lineHeight The line height.
      * @param string|null $textAlign The text alignment.
-     * @return bool Always true.
+     * @return $this The current instance for a fluent interface.
      */
     public function setPayerRightAttr(
         $posX = null,
@@ -1132,7 +1159,7 @@ class PaymentSlip
         $lineHeight = null,
         $textAlign = null
     ) {
-        return $this->setAttributes(
+        $this->setAttributes(
             $this->payerRightAttr,
             $posX,
             $posY,
@@ -1145,6 +1172,8 @@ class PaymentSlip
             $lineHeight,
             $textAlign
         );
+
+        return $this;
     }
 
     /**
@@ -1160,7 +1189,7 @@ class PaymentSlip
      * @param string|null $fontColor The font color.
      * @param float|null $lineHeight The line height.
      * @param string|null $textAlign The text alignment.
-     * @return bool Always true.
+     * @return $this The current instance for a fluent interface.
      */
     public function setCodeLineAttr(
         $posX = null,
@@ -1178,7 +1207,7 @@ class PaymentSlip
             $textAlign = 'R';
         }
 
-        return $this->setAttributes(
+        $this->setAttributes(
             $this->codeLineAttr,
             $posX,
             $posY,
@@ -1191,6 +1220,8 @@ class PaymentSlip
             $lineHeight,
             $textAlign
         );
+
+        return $this;
     }
 
     /**
@@ -1399,15 +1430,15 @@ class PaymentSlip
      * Set whether or not to display the account
      *
      * @param bool $displayAccount True if yes, false if no.
-     * @return bool True if successful, else false..
+     * @return $this The current instance for a fluent interface..
      */
     public function setDisplayAccount($displayAccount = true)
     {
         if (is_bool($displayAccount)) {
             $this->displayAccount = $displayAccount;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -1424,15 +1455,15 @@ class PaymentSlip
      * Set whether or not to display the amount
      *
      * @param bool $displayAmount True if yes, false if no
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setDisplayAmount($displayAmount = true)
     {
         if (is_bool($displayAmount)) {
             $this->displayAmount = $displayAmount;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -1449,15 +1480,15 @@ class PaymentSlip
      * Set whether or not to display the bank
      *
      * @param bool $displayBank True if yes, false if no
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setDisplayBank($displayBank = true)
     {
         if (is_bool($displayBank)) {
             $this->displayBank = $displayBank;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -1474,15 +1505,15 @@ class PaymentSlip
      * Set whether or not to display the payer
      *
      * @param bool $displayPayer True if yes, false if no
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setDisplayPayer($displayPayer = true)
     {
         if (is_bool($displayPayer)) {
             $this->displayPayer = $displayPayer;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -1499,15 +1530,15 @@ class PaymentSlip
      * Set whether or not to display the recipient
      *
      * @param bool $displayRecipient True if yes, false if no
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setDisplayRecipient($displayRecipient = true)
     {
         if (is_bool($displayRecipient)) {
             $this->displayRecipient = $displayRecipient;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -1524,15 +1555,15 @@ class PaymentSlip
      * Set whether or not to display the reference number
      *
      * @param bool $displayReferenceNr True if yes, false if no
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setDisplayReferenceNr($displayReferenceNr = true)
     {
         if (is_bool($displayReferenceNr)) {
             $this->displayReferenceNr = $displayReferenceNr;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -1549,15 +1580,15 @@ class PaymentSlip
      * Set whether or not to display the IBAN
      *
      * @param bool $displayIban True if yes, false if no
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setDisplayIban($displayIban = true)
     {
         if (is_bool($displayIban)) {
             $this->displayIban = $displayIban;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -1574,15 +1605,15 @@ class PaymentSlip
      * Set whether or not to display the payment reason lines
      *
      * @param bool $displayPaymentReason True if yes, false if no
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setDisplayPaymentReason($displayPaymentReason = true)
     {
         if (is_bool($displayPaymentReason)) {
             $this->displayPaymentReason = $displayPaymentReason;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
@@ -1599,15 +1630,15 @@ class PaymentSlip
      * Set whether or not to display the code line at the bottom
      *
      * @param bool $displayCodeLine True if yes, false if no
-     * @return bool True if successful, else false.
+     * @return $this The current instance for a fluent interface.
      */
     public function setDisplayCodeLine($displayCodeLine = true)
     {
         if (is_bool($displayCodeLine)) {
             $this->displayCodeLine = $displayCodeLine;
-            return true;
         }
-        return false;
+
+        return $this;
     }
 
     /**
