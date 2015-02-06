@@ -25,7 +25,7 @@ use InvalidArgumentException;
  *
  * Glossary:
  * ESR = Einzahlungsschein mit Referenznummer
- *         Payment slip with reference number
+ *         ISR, (In-)Payment slip with reference number
  *         Summary term for orange payment slips in Switzerland
  * BESR = Banken-Einzahlungsschein mit Referenznummer
  *         Banking payment slip with reference number
@@ -37,9 +37,9 @@ use InvalidArgumentException;
  *         Payment slip with reference number without amount specification
  *         An payment slip can be issued without a predefined payment amount
  * ES = Einzahlungsschein
- *         Payment slip
- *         Summary term for all payment slips.
- *         Red payment slip for paying into a post cheque or bank account without reference number but message box
+ *         IS, (In-)Payment slip
+ *         Also summary term for all payment slips.
+ *         Red payment slip for paying into a post cheque or bank account without reference number, with message box
  *
  * @link https://www.postfinance.ch/content/dam/pf/de/doc/consult/manual/dlserv/inpayslip_isr_man_de.pdf German manual
  * @link http://www.six-interbank-clearing.com/en/home/standardization/dta.html
