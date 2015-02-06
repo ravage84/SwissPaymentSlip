@@ -696,7 +696,7 @@ class SwissPaymentSlipData
      * Set if payment slip has a payment reason specified.
      * Only available for red payment slips
      *
-     * @param bool $withPaymentReason.
+     * @param bool $withPaymentReason True if yes, false if no.
      * @return bool True if successful, else false.
      */
     public function setWithPaymentReason($withPaymentReason = false)
