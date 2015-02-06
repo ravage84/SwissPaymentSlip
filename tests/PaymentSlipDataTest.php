@@ -120,7 +120,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetTypeOrangeType()
     {
-        $this->assertTrue($this->slipData->setType('orange'));
+        $this->slipData->setType('orange');
         $this->assertEquals('orange', $this->slipData->getType());
 
         $this->assertTrue($this->slipData->getWithBank());
@@ -144,7 +144,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetTypeRedType()
     {
-        $this->assertTrue($this->slipData->setType('red'));
+        $this->slipData->setType('red');
         $this->assertEquals('red', $this->slipData->getType());
 
         $this->assertTrue($this->slipData->getWithBank());
@@ -176,7 +176,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData->setWithIban(true); // Shouldn't set to true
         $this->slipData->setWithPaymentReason(true); // Shouldn't set to true
 
-        $this->assertTrue($this->slipData->setType('orange'));
+        $this->slipData->setType('orange');
 
         $this->assertFalse($this->slipData->getWithBank());
         $this->assertFalse($this->slipData->getWithAccountNumber());
@@ -209,7 +209,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData->setWithIban(false);
         $this->slipData->setWithPaymentReason(false);
 
-        $this->assertTrue($this->slipData->setType('red'));
+        $this->slipData->setType('red');
 
         $this->assertFalse($this->slipData->getWithBank());
         $this->assertFalse($this->slipData->getWithAccountNumber());
@@ -241,7 +241,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData->setWithIban(true);
         $this->slipData->setWithPaymentReason(true);
 
-        $this->assertTrue($this->slipData->setType('orange', true));
+        $this->slipData->setType('orange', true);
 
         $this->assertTrue($this->slipData->getWithBank());
         $this->assertTrue($this->slipData->getWithAccountNumber());
@@ -273,7 +273,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData->setWithIban(false);
         $this->slipData->setWithPaymentReason(false);
 
-        $this->assertTrue($this->slipData->setType('red', true));
+        $this->slipData->setType('red', true);
 
         $this->assertTrue($this->slipData->getWithBank());
         $this->assertTrue($this->slipData->getWithAccountNumber());
@@ -370,17 +370,17 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData = new PaymentSlipData('orange');
         $this->slipData->setBankData('Seldwyla Bank', '8001 Zürich');
 
-        $this->assertTrue($this->slipData->setWithBank());
+        $this->slipData->setWithBank();
         $this->assertTrue($this->slipData->getWithBank());
         $this->assertEquals('Seldwyla Bank', $this->slipData->getBankName());
         $this->assertEquals('8001 Zürich', $this->slipData->getBankCity());
 
-        $this->assertTrue($this->slipData->setWithBank(true));
+        $this->slipData->setWithBank(true);
         $this->assertTrue($this->slipData->getWithBank());
         $this->assertEquals('Seldwyla Bank', $this->slipData->getBankName());
         $this->assertEquals('8001 Zürich', $this->slipData->getBankCity());
 
-        $this->assertTrue($this->slipData->setWithBank(false));
+        $this->slipData->setWithBank(false);
         $this->assertFalse($this->slipData->getWithBank());
         $this->assertEquals(false, $this->slipData->getBankName());
         $this->assertEquals(false, $this->slipData->getBankCity());
@@ -398,17 +398,17 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData = new PaymentSlipData('red');
         $this->slipData->setBankData('Seldwyla Bank', '8001 Zürich');
 
-        $this->assertTrue($this->slipData->setWithBank());
+        $this->slipData->setWithBank();
         $this->assertTrue($this->slipData->getWithBank());
         $this->assertEquals('Seldwyla Bank', $this->slipData->getBankName());
         $this->assertEquals('8001 Zürich', $this->slipData->getBankCity());
 
-        $this->assertTrue($this->slipData->setWithBank(true));
+        $this->slipData->setWithBank(true);
         $this->assertTrue($this->slipData->getWithBank());
         $this->assertEquals('Seldwyla Bank', $this->slipData->getBankName());
         $this->assertEquals('8001 Zürich', $this->slipData->getBankCity());
 
-        $this->assertTrue($this->slipData->setWithBank(false));
+        $this->slipData->setWithBank(false);
         $this->assertFalse($this->slipData->getWithBank());
         $this->assertEquals(false, $this->slipData->getBankName());
         $this->assertEquals(false, $this->slipData->getBankCity());
@@ -425,26 +425,26 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     {
         $this->slipData->setBankData('Seldwyla Bank', '8001 Zürich');
 
-        $this->assertFalse($this->slipData->setWithBank(1));
+        $this->slipData->setWithBank(1);
         $this->assertTrue($this->slipData->getWithBank());
         $this->assertEquals('Seldwyla Bank', $this->slipData->getBankName());
         $this->assertEquals('8001 Zürich', $this->slipData->getBankCity());
 
-        $this->assertFalse($this->slipData->setWithBank(0));
+        $this->slipData->setWithBank(0);
         $this->assertTrue($this->slipData->getWithBank());
         $this->assertEquals('Seldwyla Bank', $this->slipData->getBankName());
         $this->assertEquals('8001 Zürich', $this->slipData->getBankCity());
 
-        $this->assertFalse($this->slipData->setWithBank('foo'));
+        $this->slipData->setWithBank('foo');
         $this->assertTrue($this->slipData->getWithBank());
 
-        $this->assertFalse($this->slipData->setWithBank(123));
+        $this->slipData->setWithBank(123);
         $this->assertTrue($this->slipData->getWithBank());
 
-        $this->assertFalse($this->slipData->setWithBank(123.456));
+        $this->slipData->setWithBank(123.456);
         $this->assertTrue($this->slipData->getWithBank());
 
-        $this->assertFalse($this->slipData->setWithBank(array(true)));
+        $this->slipData->setWithBank(array(true));
         $this->assertTrue($this->slipData->getWithBank());
     }
 
@@ -460,15 +460,15 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData = new PaymentSlipData('orange');
         $this->slipData->setAccountNumber('01-2345-6');
 
-        $this->assertTrue($this->slipData->setWithAccountNumber());
+        $this->slipData->setWithAccountNumber();
         $this->assertTrue($this->slipData->getWithAccountNumber());
         $this->assertEquals('01-2345-6', $this->slipData->getAccountNumber());
 
-        $this->assertTrue($this->slipData->setWithAccountNumber(true));
+        $this->slipData->setWithAccountNumber(true);
         $this->assertTrue($this->slipData->getWithAccountNumber());
         $this->assertEquals('01-2345-6', $this->slipData->getAccountNumber());
 
-        $this->assertTrue($this->slipData->setWithAccountNumber(false));
+        $this->slipData->setWithAccountNumber(false);
         $this->assertFalse($this->slipData->getWithAccountNumber());
         $this->assertEquals(false, $this->slipData->getAccountNumber());
     }
@@ -485,15 +485,15 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData = new PaymentSlipData('red');
         $this->slipData->setAccountNumber('01-2345-6');
 
-        $this->assertTrue($this->slipData->setWithAccountNumber());
+        $this->slipData->setWithAccountNumber();
         $this->assertTrue($this->slipData->getWithAccountNumber());
         $this->assertEquals('01-2345-6', $this->slipData->getAccountNumber());
 
-        $this->assertTrue($this->slipData->setWithAccountNumber(true));
+        $this->slipData->setWithAccountNumber(true);
         $this->assertTrue($this->slipData->getWithAccountNumber());
         $this->assertEquals('01-2345-6', $this->slipData->getAccountNumber());
 
-        $this->assertTrue($this->slipData->setWithAccountNumber(false));
+        $this->slipData->setWithAccountNumber(false);
         $this->assertFalse($this->slipData->getWithAccountNumber());
         $this->assertEquals(false, $this->slipData->getAccountNumber());
     }
@@ -509,24 +509,24 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     {
         $this->slipData->setAccountNumber('01-2345-6');
 
-        $this->assertFalse($this->slipData->setWithAccountNumber(1));
+        $this->slipData->setWithAccountNumber(1);
         $this->assertTrue($this->slipData->getWithAccountNumber());
         $this->assertEquals('01-2345-6', $this->slipData->getAccountNumber());
 
-        $this->assertFalse($this->slipData->setWithAccountNumber(0));
+        $this->slipData->setWithAccountNumber(0);
         $this->assertTrue($this->slipData->getWithAccountNumber());
         $this->assertEquals('01-2345-6', $this->slipData->getAccountNumber());
 
-        $this->assertFalse($this->slipData->setWithAccountNumber('foo'));
+        $this->slipData->setWithAccountNumber('foo');
         $this->assertTrue($this->slipData->getWithAccountNumber());
 
-        $this->assertFalse($this->slipData->setWithAccountNumber(123));
+        $this->slipData->setWithAccountNumber(123);
         $this->assertTrue($this->slipData->getWithAccountNumber());
 
-        $this->assertFalse($this->slipData->setWithAccountNumber(123.456));
+        $this->slipData->setWithAccountNumber(123.456);
         $this->assertTrue($this->slipData->getWithAccountNumber());
 
-        $this->assertFalse($this->slipData->setWithAccountNumber(array(true)));
+        $this->slipData->setWithAccountNumber(array(true));
         $this->assertTrue($this->slipData->getWithAccountNumber());
     }
 
@@ -542,21 +542,21 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData = new PaymentSlipData('orange');
         $this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
-        $this->assertTrue($this->slipData->setWithRecipient());
+        $this->slipData->setWithRecipient();
         $this->assertTrue($this->slipData->getWithRecipient());
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getRecipientLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getRecipientLine2());
         $this->assertEquals('CCCCCCCCCC', $this->slipData->getRecipientLine3());
         $this->assertEquals('DDDDDDDDDD', $this->slipData->getRecipientLine4());
 
-        $this->assertTrue($this->slipData->setWithRecipient(true));
+        $this->slipData->setWithRecipient(true);
         $this->assertTrue($this->slipData->getWithRecipient());
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getRecipientLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getRecipientLine2());
         $this->assertEquals('CCCCCCCCCC', $this->slipData->getRecipientLine3());
         $this->assertEquals('DDDDDDDDDD', $this->slipData->getRecipientLine4());
 
-        $this->assertTrue($this->slipData->setWithRecipient(false));
+        $this->slipData->setWithRecipient(false);
         $this->assertFalse($this->slipData->getWithRecipient());
         $this->assertEquals(false, $this->slipData->getRecipientLine1());
         $this->assertEquals(false, $this->slipData->getRecipientLine2());
@@ -576,21 +576,21 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData = new PaymentSlipData('red');
         $this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
-        $this->assertTrue($this->slipData->setWithRecipient());
+        $this->slipData->setWithRecipient();
         $this->assertTrue($this->slipData->getWithRecipient());
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getRecipientLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getRecipientLine2());
         $this->assertEquals('CCCCCCCCCC', $this->slipData->getRecipientLine3());
         $this->assertEquals('DDDDDDDDDD', $this->slipData->getRecipientLine4());
 
-        $this->assertTrue($this->slipData->setWithRecipient(true));
+        $this->slipData->setWithRecipient(true);
         $this->assertTrue($this->slipData->getWithRecipient());
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getRecipientLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getRecipientLine2());
         $this->assertEquals('CCCCCCCCCC', $this->slipData->getRecipientLine3());
         $this->assertEquals('DDDDDDDDDD', $this->slipData->getRecipientLine4());
 
-        $this->assertTrue($this->slipData->setWithRecipient(false));
+        $this->slipData->setWithRecipient(false);
         $this->assertFalse($this->slipData->getWithRecipient());
         $this->assertEquals(false, $this->slipData->getRecipientLine1());
         $this->assertEquals(false, $this->slipData->getRecipientLine2());
@@ -609,30 +609,30 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     {
         $this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
-        $this->assertFalse($this->slipData->setWithRecipient(1));
+        $this->slipData->setWithRecipient(1);
         $this->assertTrue($this->slipData->getWithRecipient());
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getRecipientLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getRecipientLine2());
         $this->assertEquals('CCCCCCCCCC', $this->slipData->getRecipientLine3());
         $this->assertEquals('DDDDDDDDDD', $this->slipData->getRecipientLine4());
 
-        $this->assertFalse($this->slipData->setWithRecipient(0));
+        $this->slipData->setWithRecipient(0);
         $this->assertTrue($this->slipData->getWithRecipient());
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getRecipientLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getRecipientLine2());
         $this->assertEquals('CCCCCCCCCC', $this->slipData->getRecipientLine3());
         $this->assertEquals('DDDDDDDDDD', $this->slipData->getRecipientLine4());
 
-        $this->assertFalse($this->slipData->setWithRecipient('foo'));
+        $this->slipData->setWithRecipient('foo');
         $this->assertTrue($this->slipData->getWithRecipient());
 
-        $this->assertFalse($this->slipData->setWithRecipient(123));
+        $this->slipData->setWithRecipient(123);
         $this->assertTrue($this->slipData->getWithRecipient());
 
-        $this->assertFalse($this->slipData->setWithRecipient(123.456));
+        $this->slipData->setWithRecipient(123.456);
         $this->assertTrue($this->slipData->getWithRecipient());
 
-        $this->assertFalse($this->slipData->setWithRecipient(array(true)));
+        $this->slipData->setWithRecipient(array(true));
         $this->assertTrue($this->slipData->getWithRecipient());
     }
 
@@ -648,15 +648,15 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData = new PaymentSlipData('orange');
         $this->slipData->setAmount(1234567.89);
 
-        $this->assertTrue($this->slipData->setWithAmount());
+        $this->slipData->setWithAmount();
         $this->assertTrue($this->slipData->getWithAmount());
         $this->assertEquals(1234567.89, $this->slipData->getAmount());
 
-        $this->assertTrue($this->slipData->setWithAmount(true));
+        $this->slipData->setWithAmount(true);
         $this->assertTrue($this->slipData->getWithAmount());
         $this->assertEquals(1234567.89, $this->slipData->getAmount());
 
-        $this->assertTrue($this->slipData->setWithAmount(false));
+        $this->slipData->setWithAmount(false);
         $this->assertFalse($this->slipData->getWithAmount());
         $this->assertEquals(false, $this->slipData->getAmount());
     }
@@ -673,15 +673,15 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData = new PaymentSlipData('red');
         $this->slipData->setAmount(1234567.89);
 
-        $this->assertTrue($this->slipData->setWithAmount());
+        $this->slipData->setWithAmount();
         $this->assertTrue($this->slipData->getWithAmount());
         $this->assertEquals(1234567.89, $this->slipData->getAmount());
 
-        $this->assertTrue($this->slipData->setWithAmount(true));
+        $this->slipData->setWithAmount(true);
         $this->assertTrue($this->slipData->getWithAmount());
         $this->assertEquals(1234567.89, $this->slipData->getAmount());
 
-        $this->assertTrue($this->slipData->setWithAmount(false));
+        $this->slipData->setWithAmount(false);
         $this->assertFalse($this->slipData->getWithAmount());
         $this->assertEquals(false, $this->slipData->getAmount());
     }
@@ -697,24 +697,24 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     {
         $this->slipData->setAmount(1234567.89);
 
-        $this->assertFalse($this->slipData->setWithAmount(1));
+        $this->slipData->setWithAmount(1);
         $this->assertTrue($this->slipData->getWithAmount());
         $this->assertEquals(1234567.89, $this->slipData->getAmount());
 
-        $this->assertFalse($this->slipData->setWithAmount(0));
+        $this->slipData->setWithAmount(0);
         $this->assertTrue($this->slipData->getWithAmount());
         $this->assertEquals(1234567.89, $this->slipData->getAmount());
 
-        $this->assertFalse($this->slipData->setWithAmount('foo'));
+        $this->slipData->setWithAmount('foo');
         $this->assertTrue($this->slipData->getWithAmount());
 
-        $this->assertFalse($this->slipData->setWithAmount(123));
+        $this->slipData->setWithAmount(123);
         $this->assertTrue($this->slipData->getWithAmount());
 
-        $this->assertFalse($this->slipData->setWithAmount(123.456));
+        $this->slipData->setWithAmount(123.456);
         $this->assertTrue($this->slipData->getWithAmount());
 
-        $this->assertFalse($this->slipData->setWithAmount(array(true)));
+        $this->slipData->setWithAmount(array(true));
         $this->assertTrue($this->slipData->getWithAmount());
     }
 
@@ -730,15 +730,15 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData = new PaymentSlipData('orange');
         $this->slipData->setReferenceNumber('0123456789');
 
-        $this->assertTrue($this->slipData->setWithReferenceNumber());
+        $this->slipData->setWithReferenceNumber();
         $this->assertTrue($this->slipData->getWithReferenceNumber());
         $this->assertEquals('0123456789', $this->slipData->getReferenceNumber());
 
-        $this->assertTrue($this->slipData->setWithReferenceNumber(true));
+        $this->slipData->setWithReferenceNumber(true);
         $this->assertTrue($this->slipData->getWithReferenceNumber());
         $this->assertEquals('0123456789', $this->slipData->getReferenceNumber());
 
-        $this->assertTrue($this->slipData->setWithReferenceNumber(false));
+        $this->slipData->setWithReferenceNumber(false);
         $this->assertFalse($this->slipData->getWithReferenceNumber());
         $this->assertEquals(false, $this->slipData->getReferenceNumber());
     }
@@ -755,15 +755,15 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData = new PaymentSlipData('red');
         $this->slipData->setReferenceNumber('0123456789');
 
-        $this->assertFalse($this->slipData->setWithReferenceNumber());
+        $this->slipData->setWithReferenceNumber();
         $this->assertFalse($this->slipData->getWithReferenceNumber());
         $this->assertEquals(false, $this->slipData->getReferenceNumber());
 
-        $this->assertFalse($this->slipData->setWithReferenceNumber(true));
+        $this->slipData->setWithReferenceNumber(true);
         $this->assertFalse($this->slipData->getWithReferenceNumber());
         $this->assertEquals(false, $this->slipData->getReferenceNumber());
 
-        $this->assertFalse($this->slipData->setWithReferenceNumber(false));
+        $this->slipData->setWithReferenceNumber(false);
         $this->assertFalse($this->slipData->getWithReferenceNumber());
         $this->assertEquals(false, $this->slipData->getReferenceNumber());
     }
@@ -779,24 +779,24 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     {
         $this->slipData->setReferenceNumber('0123456789');
 
-        $this->assertFalse($this->slipData->setWithReferenceNumber(1));
+        $this->slipData->setWithReferenceNumber(1);
         $this->assertTrue($this->slipData->getWithReferenceNumber());
         $this->assertEquals('0123456789', $this->slipData->getReferenceNumber());
 
-        $this->assertFalse($this->slipData->setWithReferenceNumber(0));
+        $this->slipData->setWithReferenceNumber(0);
         $this->assertTrue($this->slipData->getWithReferenceNumber());
         $this->assertEquals('0123456789', $this->slipData->getReferenceNumber());
 
-        $this->assertFalse($this->slipData->setWithReferenceNumber('foo'));
+        $this->slipData->setWithReferenceNumber('foo');
         $this->assertTrue($this->slipData->getWithReferenceNumber());
 
-        $this->assertFalse($this->slipData->setWithReferenceNumber(123));
+        $this->slipData->setWithReferenceNumber(123);
         $this->assertTrue($this->slipData->getWithReferenceNumber());
 
-        $this->assertFalse($this->slipData->setWithReferenceNumber(123.456));
+        $this->slipData->setWithReferenceNumber(123.456);
         $this->assertTrue($this->slipData->getWithReferenceNumber());
 
-        $this->assertFalse($this->slipData->setWithReferenceNumber(array(true)));
+        $this->slipData->setWithReferenceNumber(array(true));
         $this->assertTrue($this->slipData->getWithReferenceNumber());
     }
 
@@ -812,15 +812,15 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData = new PaymentSlipData('orange');
         $this->slipData->setBankingCustomerId('012345');
 
-        $this->assertTrue($this->slipData->setWithBankingCustomerId());
+        $this->slipData->setWithBankingCustomerId();
         $this->assertTrue($this->slipData->getWithBankingCustomerId());
         $this->assertEquals('012345', $this->slipData->getBankingCustomerId());
 
-        $this->assertTrue($this->slipData->setWithBankingCustomerId(true));
+        $this->slipData->setWithBankingCustomerId(true);
         $this->assertTrue($this->slipData->getWithBankingCustomerId());
         $this->assertEquals('012345', $this->slipData->getBankingCustomerId());
 
-        $this->assertTrue($this->slipData->setWithBankingCustomerId(false));
+        $this->slipData->setWithBankingCustomerId(false);
         $this->assertFalse($this->slipData->getWithBankingCustomerId());
         $this->assertEquals(false, $this->slipData->getBankingCustomerId());
     }
@@ -837,15 +837,15 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData = new PaymentSlipData('red');
         $this->slipData->setBankingCustomerId('012345');
 
-        $this->assertFalse($this->slipData->setWithBankingCustomerId());
+        $this->slipData->setWithBankingCustomerId();
         $this->assertFalse($this->slipData->getWithBankingCustomerId());
         $this->assertEquals(false, $this->slipData->getBankingCustomerId());
 
-        $this->assertFalse($this->slipData->setWithBankingCustomerId(true));
+        $this->slipData->setWithBankingCustomerId(true);
         $this->assertFalse($this->slipData->getWithBankingCustomerId());
         $this->assertEquals(false, $this->slipData->getBankingCustomerId());
 
-        $this->assertFalse($this->slipData->setWithBankingCustomerId(false));
+        $this->slipData->setWithBankingCustomerId(false);
         $this->assertFalse($this->slipData->getWithBankingCustomerId());
         $this->assertEquals(false, $this->slipData->getBankingCustomerId());
     }
@@ -861,24 +861,24 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     {
         $this->slipData->setBankingCustomerId('012345');
 
-        $this->assertFalse($this->slipData->setWithBankingCustomerId(1));
+        $this->slipData->setWithBankingCustomerId(1);
         $this->assertTrue($this->slipData->getWithBankingCustomerId());
         $this->assertEquals('012345', $this->slipData->getBankingCustomerId());
 
-        $this->assertFalse($this->slipData->setWithBankingCustomerId(0));
+        $this->slipData->setWithBankingCustomerId(0);
         $this->assertTrue($this->slipData->getWithBankingCustomerId());
         $this->assertEquals('012345', $this->slipData->getBankingCustomerId());
 
-        $this->assertFalse($this->slipData->setWithBankingCustomerId('foo'));
+        $this->slipData->setWithBankingCustomerId('foo');
         $this->assertTrue($this->slipData->getWithBankingCustomerId());
 
-        $this->assertFalse($this->slipData->setWithBankingCustomerId(123));
+        $this->slipData->setWithBankingCustomerId(123);
         $this->assertTrue($this->slipData->getWithBankingCustomerId());
 
-        $this->assertFalse($this->slipData->setWithBankingCustomerId(123.456));
+        $this->slipData->setWithBankingCustomerId(123.456);
         $this->assertTrue($this->slipData->getWithBankingCustomerId());
 
-        $this->assertFalse($this->slipData->setWithBankingCustomerId(array(true)));
+        $this->slipData->setWithBankingCustomerId(array(true));
         $this->assertTrue($this->slipData->getWithBankingCustomerId());
     }
 
@@ -894,21 +894,21 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData = new PaymentSlipData('orange');
         $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
-        $this->assertTrue($this->slipData->setWithPayer());
+        $this->slipData->setWithPayer();
         $this->assertTrue($this->slipData->getWithPayer());
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getPayerLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getPayerLine2());
         $this->assertEquals('CCCCCCCCCC', $this->slipData->getPayerLine3());
         $this->assertEquals('DDDDDDDDDD', $this->slipData->getPayerLine4());
 
-        $this->assertTrue($this->slipData->setWithPayer(true));
+        $this->slipData->setWithPayer(true);
         $this->assertTrue($this->slipData->getWithPayer());
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getPayerLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getPayerLine2());
         $this->assertEquals('CCCCCCCCCC', $this->slipData->getPayerLine3());
         $this->assertEquals('DDDDDDDDDD', $this->slipData->getPayerLine4());
 
-        $this->assertTrue($this->slipData->setWithPayer(false));
+        $this->slipData->setWithPayer(false);
         $this->assertFalse($this->slipData->getWithPayer());
         $this->assertEquals(false, $this->slipData->getPayerLine1());
         $this->assertEquals(false, $this->slipData->getPayerLine2());
@@ -928,21 +928,21 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData = new PaymentSlipData('red');
         $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
-        $this->assertTrue($this->slipData->setWithPayer());
+        $this->slipData->setWithPayer();
         $this->assertTrue($this->slipData->getWithPayer());
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getPayerLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getPayerLine2());
         $this->assertEquals('CCCCCCCCCC', $this->slipData->getPayerLine3());
         $this->assertEquals('DDDDDDDDDD', $this->slipData->getPayerLine4());
 
-        $this->assertTrue($this->slipData->setWithPayer(true));
+        $this->slipData->setWithPayer(true);
         $this->assertTrue($this->slipData->getWithPayer());
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getPayerLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getPayerLine2());
         $this->assertEquals('CCCCCCCCCC', $this->slipData->getPayerLine3());
         $this->assertEquals('DDDDDDDDDD', $this->slipData->getPayerLine4());
 
-        $this->assertTrue($this->slipData->setWithPayer(false));
+        $this->slipData->setWithPayer(false);
         $this->assertFalse($this->slipData->getWithPayer());
         $this->assertEquals(false, $this->slipData->getPayerLine1());
         $this->assertEquals(false, $this->slipData->getPayerLine2());
@@ -961,30 +961,30 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     {
         $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
-        $this->assertFalse($this->slipData->setWithPayer(1));
+        $this->slipData->setWithPayer(1);
         $this->assertTrue($this->slipData->getWithPayer());
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getPayerLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getPayerLine2());
         $this->assertEquals('CCCCCCCCCC', $this->slipData->getPayerLine3());
         $this->assertEquals('DDDDDDDDDD', $this->slipData->getPayerLine4());
 
-        $this->assertFalse($this->slipData->setWithPayer(0));
+        $this->slipData->setWithPayer(0);
         $this->assertTrue($this->slipData->getWithPayer());
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getPayerLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getPayerLine2());
         $this->assertEquals('CCCCCCCCCC', $this->slipData->getPayerLine3());
         $this->assertEquals('DDDDDDDDDD', $this->slipData->getPayerLine4());
 
-        $this->assertFalse($this->slipData->setWithPayer('foo'));
+        $this->slipData->setWithPayer('foo');
         $this->assertTrue($this->slipData->getWithPayer());
 
-        $this->assertFalse($this->slipData->setWithPayer(123));
+        $this->slipData->setWithPayer(123);
         $this->assertTrue($this->slipData->getWithPayer());
 
-        $this->assertFalse($this->slipData->setWithPayer(123.456));
+        $this->slipData->setWithPayer(123.456);
         $this->assertTrue($this->slipData->getWithPayer());
 
-        $this->assertFalse($this->slipData->setWithPayer(array(true)));
+        $this->slipData->setWithPayer(array(true));
         $this->assertTrue($this->slipData->getWithPayer());
     }
 
@@ -1000,15 +1000,15 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData = new PaymentSlipData('orange');
         $this->slipData->setIban('CH380123456789');
 
-        $this->assertFalse($this->slipData->setWithIban());
+        $this->slipData->setWithIban();
         $this->assertFalse($this->slipData->getWithIban());
         $this->assertEquals(false, $this->slipData->getIban());
 
-        $this->assertFalse($this->slipData->setWithIban(true));
+        $this->slipData->setWithIban(true);
         $this->assertFalse($this->slipData->getWithIban());
         $this->assertEquals(false, $this->slipData->getIban());
 
-        $this->assertFalse($this->slipData->setWithIban(false));
+        $this->slipData->setWithIban(false);
         $this->assertFalse($this->slipData->getWithIban());
         $this->assertEquals(false, $this->slipData->getIban());
     }
@@ -1025,15 +1025,15 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData = new PaymentSlipData('red');
         $this->slipData->setIban('CH380123456789');
 
-        $this->assertTrue($this->slipData->setWithIban(true));
+        $this->slipData->setWithIban(true);
         $this->assertTrue($this->slipData->getWithIban());
         $this->assertEquals('CH380123456789', $this->slipData->getIban());
 
-        $this->assertTrue($this->slipData->setWithIban());
+        $this->slipData->setWithIban();
         $this->assertFalse($this->slipData->getWithIban());
         $this->assertEquals(false, $this->slipData->getIban());
 
-        $this->assertTrue($this->slipData->setWithIban(false));
+        $this->slipData->setWithIban(false);
         $this->assertFalse($this->slipData->getWithIban());
         $this->assertEquals(false, $this->slipData->getIban());
     }
@@ -1050,24 +1050,24 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData = new PaymentSlipData('red');
         $this->slipData->setIban('CH380123456789');
 
-        $this->assertFalse($this->slipData->setWithIban(1));
+        $this->slipData->setWithIban(1);
         $this->assertTrue($this->slipData->getWithIban());
         $this->assertEquals('CH380123456789', $this->slipData->getIban());
 
-        $this->assertFalse($this->slipData->setWithIban(0));
+        $this->slipData->setWithIban(0);
         $this->assertTrue($this->slipData->getWithIban());
         $this->assertEquals('CH380123456789', $this->slipData->getIban());
 
-        $this->assertFalse($this->slipData->setWithIban('foo'));
+        $this->slipData->setWithIban('foo');
         $this->assertTrue($this->slipData->getWithIban());
 
-        $this->assertFalse($this->slipData->setWithIban(123));
+        $this->slipData->setWithIban(123);
         $this->assertTrue($this->slipData->getWithIban());
 
-        $this->assertFalse($this->slipData->setWithIban(123.456));
+        $this->slipData->setWithIban(123.456);
         $this->assertTrue($this->slipData->getWithIban());
 
-        $this->assertFalse($this->slipData->setWithIban(array(true)));
+        $this->slipData->setWithIban(array(true));
         $this->assertTrue($this->slipData->getWithIban());
     }
 
@@ -1083,21 +1083,21 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData = new PaymentSlipData('orange');
         $this->slipData->setPaymentReasonData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
-        $this->assertFalse($this->slipData->setWithPaymentReason());
+        $this->slipData->setWithPaymentReason();
         $this->assertFalse($this->slipData->getWithPaymentReason());
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine1());
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine2());
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine3());
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine4());
 
-        $this->assertFalse($this->slipData->setWithPaymentReason(true));
+        $this->slipData->setWithPaymentReason(true);
         $this->assertFalse($this->slipData->getWithPaymentReason());
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine1());
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine2());
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine3());
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine4());
 
-        $this->assertFalse($this->slipData->setWithPaymentReason(false));
+        $this->slipData->setWithPaymentReason(false);
         $this->assertFalse($this->slipData->getWithPaymentReason());
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine1());
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine2());
@@ -1117,21 +1117,21 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData = new PaymentSlipData('red');
         $this->slipData->setPaymentReasonData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
-        $this->assertTrue($this->slipData->setWithPaymentReason(true));
+        $this->slipData->setWithPaymentReason(true);
         $this->assertTrue($this->slipData->getWithPaymentReason());
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getPaymentReasonLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getPaymentReasonLine2());
         $this->assertEquals('CCCCCCCCCC', $this->slipData->getPaymentReasonLine3());
         $this->assertEquals('DDDDDDDDDD', $this->slipData->getPaymentReasonLine4());
 
-        $this->assertTrue($this->slipData->setWithPaymentReason());
+        $this->slipData->setWithPaymentReason();
         $this->assertFalse($this->slipData->getWithPaymentReason());
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine1());
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine2());
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine3());
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine4());
 
-        $this->assertTrue($this->slipData->setWithPaymentReason(false));
+        $this->slipData->setWithPaymentReason(false);
         $this->assertFalse($this->slipData->getWithPaymentReason());
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine1());
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine2());
@@ -1151,30 +1151,30 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData = new PaymentSlipData('red');
         $this->slipData->setPaymentReasonData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
-        $this->assertFalse($this->slipData->setWithPaymentReason(1));
+        $this->slipData->setWithPaymentReason(1);
         $this->assertTrue($this->slipData->getWithPaymentReason());
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getPaymentReasonLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getPaymentReasonLine2());
         $this->assertEquals('CCCCCCCCCC', $this->slipData->getPaymentReasonLine3());
         $this->assertEquals('DDDDDDDDDD', $this->slipData->getPaymentReasonLine4());
 
-        $this->assertFalse($this->slipData->setWithPaymentReason(0));
+        $this->slipData->setWithPaymentReason(0);
         $this->assertTrue($this->slipData->getWithPaymentReason());
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getPaymentReasonLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getPaymentReasonLine2());
         $this->assertEquals('CCCCCCCCCC', $this->slipData->getPaymentReasonLine3());
         $this->assertEquals('DDDDDDDDDD', $this->slipData->getPaymentReasonLine4());
 
-        $this->assertFalse($this->slipData->setWithPaymentReason('foo'));
+        $this->slipData->setWithPaymentReason('foo');
         $this->assertTrue($this->slipData->getWithPaymentReason());
 
-        $this->assertFalse($this->slipData->setWithPaymentReason(123));
+        $this->slipData->setWithPaymentReason(123);
         $this->assertTrue($this->slipData->getWithPaymentReason());
 
-        $this->assertFalse($this->slipData->setWithPaymentReason(123.456));
+        $this->slipData->setWithPaymentReason(123.456);
         $this->assertTrue($this->slipData->getWithPaymentReason());
 
-        $this->assertFalse($this->slipData->setWithPaymentReason(array(true)));
+        $this->slipData->setWithPaymentReason(array(true));
         $this->assertTrue($this->slipData->getWithPaymentReason());
     }
 
@@ -1191,13 +1191,13 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     public function testSetBankData()
     {
         $this->slipData = new PaymentSlipData('orange');
-        $this->assertTrue($this->slipData->setBankData('Seldwyla Bank', '8001 Zürich'));
+        $this->slipData->setBankData('Seldwyla Bank', '8001 Zürich');
 
         $this->assertEquals('Seldwyla Bank', $this->slipData->getBankName());
         $this->assertEquals('8001 Zürich', $this->slipData->getBankCity());
 
         $this->slipData->setWithBank(false);
-        $this->assertFalse($this->slipData->setBankData('Seldwyla Bank', '8001 Zürich'));
+        $this->slipData->setBankData('Seldwyla Bank', '8001 Zürich');
 
         $this->assertEquals(false, $this->slipData->getBankName());
         $this->assertEquals(false, $this->slipData->getBankCity());
@@ -1213,12 +1213,12 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     public function testSetAccountNumber()
     {
         $this->slipData = new PaymentSlipData('orange');
-        $this->assertTrue($this->slipData->setAccountNumber('01-2345-6'));
+        $this->slipData->setAccountNumber('01-2345-6');
 
         $this->assertEquals('01-2345-6', $this->slipData->getAccountNumber());
 
         $this->slipData->setWithAccountNumber(false);
-        $this->assertFalse($this->slipData->setAccountNumber('01-2345-6'));
+        $this->slipData->setAccountNumber('01-2345-6');
 
         $this->assertEquals(false, $this->slipData->getAccountNumber());
     }
@@ -1240,7 +1240,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     public function testSetRecipientData()
     {
         $this->slipData = new PaymentSlipData('orange');
-        $this->assertTrue($this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD'));
+        $this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getRecipientLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getRecipientLine2());
@@ -1248,7 +1248,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('DDDDDDDDDD', $this->slipData->getRecipientLine4());
 
         $this->slipData->setWithRecipient(false);
-        $this->assertFalse($this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD'));
+        $this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->assertEquals(false, $this->slipData->getRecipientLine1());
         $this->assertEquals(false, $this->slipData->getRecipientLine2());
@@ -1266,12 +1266,12 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     public function testSetAmount()
     {
         $this->slipData = new PaymentSlipData('orange');
-        $this->assertTrue($this->slipData->setAmount(1234567.89));
+        $this->slipData->setAmount(1234567.89);
 
         $this->assertEquals(1234567.89, $this->slipData->getAmount());
 
         $this->slipData->setWithAmount(false);
-        $this->assertFalse($this->slipData->setAmount(1234567.89));
+        $this->slipData->setAmount(1234567.89);
 
         $this->assertEquals(false, $this->slipData->getAmount());
     }
@@ -1286,12 +1286,12 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     public function testSetReferenceNumber()
     {
         $this->slipData = new PaymentSlipData('orange');
-        $this->assertTrue($this->slipData->setReferenceNumber('0123456789'));
+        $this->slipData->setReferenceNumber('0123456789');
 
         $this->assertEquals('0123456789', $this->slipData->getReferenceNumber());
 
         $this->slipData->setWithReferenceNumber(false);
-        $this->assertFalse($this->slipData->setReferenceNumber('0123456789'));
+        $this->slipData->setReferenceNumber('0123456789');
 
         $this->assertEquals(false, $this->slipData->getReferenceNumber());
     }
@@ -1306,12 +1306,12 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     public function testSetBankingCustomerId()
     {
         $this->slipData = new PaymentSlipData('orange');
-        $this->assertTrue($this->slipData->setBankingCustomerId('123456'));
+        $this->slipData->setBankingCustomerId('123456');
 
         $this->assertEquals('123456', $this->slipData->getBankingCustomerId());
 
         $this->slipData->setWithBankingCustomerId(false);
-        $this->assertFalse($this->slipData->setBankingCustomerId('123456'));
+        $this->slipData->setBankingCustomerId('123456');
 
         $this->assertEquals(false, $this->slipData->getBankingCustomerId());
     }
@@ -1333,7 +1333,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     public function testSetPayerData()
     {
         $this->slipData = new PaymentSlipData('orange');
-        $this->assertTrue($this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD'));
+        $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getPayerLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getPayerLine2());
@@ -1341,7 +1341,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('DDDDDDDDDD', $this->slipData->getPayerLine4());
 
         $this->slipData->setWithPayer(false);
-        $this->assertFalse($this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD'));
+        $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->assertEquals(false, $this->slipData->getPayerLine1());
         $this->assertEquals(false, $this->slipData->getPayerLine2());
@@ -1359,12 +1359,12 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     public function testSetIban()
     {
         $this->slipData = new PaymentSlipData('red');
-        $this->assertTrue($this->slipData->setIban('CH380123456789'));
+        $this->slipData->setIban('CH380123456789');
 
         $this->assertEquals('CH380123456789', $this->slipData->getIban());
 
         $this->slipData->setWithIban(false);
-        $this->assertFalse($this->slipData->setIban('CH380123456789'));
+        $this->slipData->setIban('CH380123456789');
 
         $this->assertEquals(false, $this->slipData->getIban());
     }
@@ -1386,9 +1386,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     public function testSetPaymentReasonData()
     {
         $this->slipData = new PaymentSlipData('red');
-        $this->assertTrue(
-            $this->slipData->setPaymentReasonData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD')
-        );
+        $this->slipData->setPaymentReasonData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getPaymentReasonLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getPaymentReasonLine2());
@@ -1396,9 +1394,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('DDDDDDDDDD', $this->slipData->getPaymentReasonLine4());
 
         $this->slipData->setWithPaymentReason(false);
-        $this->assertFalse(
-            $this->slipData->setPaymentReasonData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD')
-        );
+        $this->slipData->setPaymentReasonData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine1());
         $this->assertEquals(false, $this->slipData->getPaymentReasonLine2());
@@ -1598,10 +1594,10 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetAmountFrancs()
     {
-        $this->assertTrue($this->slipData->setAmount(1234567.89));
+        $this->slipData->setAmount(1234567.89);
         $this->assertEquals(1234567, $this->slipData->getAmountFrancs());
 
-        $this->assertTrue($this->slipData->setAmount(0.0));
+        $this->slipData->setAmount(0.0);
         $this->assertEquals(0, $this->slipData->getAmountFrancs());
 
         $this->slipData->setWithAmount(false);
@@ -1616,10 +1612,10 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetAmountCents()
     {
-        $this->assertTrue($this->slipData->setAmount(1234567.89));
+        $this->slipData->setAmount(1234567.89);
         $this->assertEquals(89, $this->slipData->getAmountCents());
 
-        $this->assertTrue($this->slipData->setAmount(0.0));
+        $this->slipData->setAmount(0.0);
         $this->assertEquals(0, $this->slipData->getAmountCents());
 
         $this->slipData->setWithAmount(false);
