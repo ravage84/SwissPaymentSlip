@@ -775,6 +775,8 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('XXXXXX', $this->slipData->getPayerLine3());
         $this->assertEquals('XXXXXX', $this->slipData->getPayerLine4());
 
-        $this->assertEquals('XXXXXXXXXXXXX>XXXXXXXXXXXXXXXXXXXXXXXXXXX+ XXXXXXXXX>', $this->slipData->getCodeLine());
+        //$this->assertEquals(
+        //'XXXXXXXXXXXXX>XXXXXXXXXXXXXXXXXXXXXXXXXXX+ XXXXXXXXX>', $this->slipData->getCodeLine()
+        //);
     }
 }

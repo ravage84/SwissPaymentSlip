@@ -5,10 +5,10 @@
     verbose="false" bootstrap="./tests/bootstrap.php">
     <testsuites>
         <testsuite name="All SwissPaymentSlip tests">
-            <!-- <file>./tests/PaymentSlipDataTest.php</file>
+            <file>./tests/PaymentSlipDataTest.php</file>
             <file>./tests/OrangePaymentSlipDataTest.php</file>
             <file>./tests/RedPaymentSlipDataTest.php</file>
-            <file>./tests/PaymentSlipTest.php</file>
+            <!-- <file>./tests/PaymentSlipTest.php</file>
             <file>./tests/OrangePaymentSlipTest.php</file>
             <file>./tests/RedPaymentSlipTest.php</file> -->
         </testsuite>

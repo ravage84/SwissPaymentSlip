@@ -12,10 +12,8 @@
 
 namespace SwissPaymentSlip\SwissPaymentSlip;
 
-use InvalidArgumentException;
-
 /**
- * Swiss Payment SLip Data
+ * Swiss Payment Slip Data
  *
  * Creates data containers for standard Swiss payment slips with or without reference number.
  * It doesn't actually do much. It's mostly a data container class to keep
@@ -204,7 +202,6 @@ abstract class PaymentSlipData
             $this->setAccountNumber('XXXXXX');
             $this->setRecipientData('XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX');
             $this->setPayerData('XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX');
-
             $this->setAmount('XXXXXXXX.XX');
         }
 
@@ -853,7 +850,7 @@ abstract class PaymentSlipData
      * @param bool $alignFromRight Right aligned, blocks are build from right.
      * @return string Given string divided in blocks of given block size separated by one space.
      */
-    private function breakStringIntoBlocks($string, $blockSize = 5, $alignFromRight = true)
+    protected function breakStringIntoBlocks($string, $blockSize = 5, $alignFromRight = true)
     {
      // Lets reverse the string (because we want the block to be aligned from the right)
         if ($alignFromRight) {
