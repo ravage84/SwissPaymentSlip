@@ -15,11 +15,14 @@ namespace SwissPaymentSlip\SwissPaymentSlip;
 /**
  * Swiss Payment Slip
  *
- * A general purpose class for swiss payment slips. Data is organized by its sister class PaymentSlipData.
+ * A general purpose class for swiss payment slips.
+ * Data is organized by its sister class PaymentSlipData.
  *
- * @todo Include CHF boxed slip image (609, ESR+)
+ * @uses PaymentSlipData To store the slip data.
+ *
  * @todo Include EUR framed slip image (701) --> back side!
  * @todo Include EUR boxed slip image (701) --> back side!
+ * @todo Include CHF boxed slip image (609, ESR+)
  * @todo Implement cash on delivery (Nachnahme)
  * @todo Include cash on delivery (Nachnahme) slip image
  * @todo Create constants for the attribute keys
@@ -137,13 +140,6 @@ abstract class PaymentSlip
     protected $displayAmount = true;
 
     /**
-     * Determines whether the reference number should be displayed
-     *
-     * @var bool True if yes, false if no
-     */
-    protected $displayReferenceNr = true;
-
-    /**
      * Determines whether the payer details should be displayed
      *
      * @var bool True if yes, false if no
@@ -228,20 +224,6 @@ abstract class PaymentSlip
     protected $amountCentsRightAttr = array();
 
     /**
-     * Attributes of the left reference number element
-     *
-     * @var array
-     */
-    protected $referenceNumberLeftAttr = array();
-
-    /**
-     * Attributes of the right reference number element
-     *
-     * @var array
-     */
-    protected $referenceNumberRightAttr = array();
-
-    /**
      * Attributes of the left payer element
      *
      * @var array
@@ -279,6 +261,32 @@ abstract class PaymentSlip
         if (!is_null($slipPosY)) {
             $this->setSlipPosY($slipPosY);
         }
+
+        $this->setDefaults();
+    }
+
+    /**
+     * Sets the common default attributes of the elements
+     *
+     * @return $this The current instance for a fluent interface.
+     */
+    protected function setDefaults()
+    {
+        $this->setBankLeftAttr(3, 8, 50, 4);
+        $this->setBankRightAttr(66, 8, 50, 4);
+        $this->setRecipientLeftAttr(3, 23, 50, 4);
+        $this->setRecipientRightAttr(66, 23, 50, 4);
+        $this->setAccountLeftAttr(27, 43, 30, 4);
+        $this->setAccountRightAttr(90, 43, 30, 4);
+        $this->setAmountFrancsLeftAttr(5, 50.5, 35, 4);
+        $this->setAmountFrancsRightAttr(66, 50.5, 35, 4);
+        $this->setAmountCentsLeftAttr(50, 50.5, 6, 4);
+        $this->setAmountCentsRightAttr(111, 50.5, 6, 4);
+        $this->setPayerLeftAttr(3, 65, 50, 4);
+        $this->setPayerRightAttr(125, 48, 50, 4);
+        $this->setCodeLineAttr(64, 85, 140, 4, null, 'OCRB10');
+
+        return $this;
     }
 
     /**
@@ -931,98 +939,6 @@ abstract class PaymentSlip
     }
 
     /**
-     * Set the left reference number attributes
-     *
-     * @param float|null $posX The X position.
-     * @param float|null $posY The Y Position.
-     * @param float|null $width The width.
-     * @param float|null $height The height.
-     * @param string|null $background The background.
-     * @param string|null $fontFamily The font family.
-     * @param float|null $fontSize The font size.
-     * @param string|null $fontColor The font color.
-     * @param float|null $lineHeight The line height.
-     * @param string|null $textAlign The text alignment.
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setReferenceNumberLeftAttr(
-        $posX = null,
-        $posY = null,
-        $width = null,
-        $height = null,
-        $background = null,
-        $fontFamily = null,
-        $fontSize = null,
-        $fontColor = null,
-        $lineHeight = null,
-        $textAlign = null
-    ) {
-        $this->setAttributes(
-            $this->referenceNumberLeftAttr,
-            $posX,
-            $posY,
-            $width,
-            $height,
-            $background,
-            $fontFamily,
-            $fontSize,
-            $fontColor,
-            $lineHeight,
-            $textAlign
-        );
-
-        return $this;
-    }
-
-    /**
-     * Set the right reference number attributes
-     *
-     * @param float|null $posX The X position.
-     * @param float|null $posY The Y Position.
-     * @param float|null $width The width.
-     * @param float|null $height The height.
-     * @param string|null $background The background.
-     * @param string|null $fontFamily The font family.
-     * @param float|null $fontSize The font size.
-     * @param string|null $fontColor The font color.
-     * @param float|null $lineHeight The line height.
-     * @param string|null $textAlign The text alignment.
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setReferenceNumberRightAttr(
-        $posX = null,
-        $posY = null,
-        $width = null,
-        $height = null,
-        $background = null,
-        $fontFamily = null,
-        $fontSize = null,
-        $fontColor = null,
-        $lineHeight = null,
-        $textAlign = null
-    ) {
-        if (!$textAlign) {
-            $textAlign = 'R';
-        }
-
-        $this->setAttributes(
-            $this->referenceNumberRightAttr,
-            $posX,
-            $posY,
-            $width,
-            $height,
-            $background,
-            $fontFamily,
-            $fontSize,
-            $fontColor,
-            $lineHeight,
-            $textAlign
-        );
-
-        return $this;
-    }
-
-    /**
      * Set the left payer attributes
      *
      * @param float|null $posX The X position.
@@ -1289,26 +1205,6 @@ abstract class PaymentSlip
     }
 
     /**
-     * Get the attributes of the left reference number element
-     *
-     * @return array The attributes of the left reference number element.
-     */
-    public function getReferenceNumberLeftAttr()
-    {
-        return $this->referenceNumberLeftAttr;
-    }
-
-    /**
-     * Get the attributes of the right reference umber element
-     *
-     * @return array The attributes of the right reference umber element.
-     */
-    public function getReferenceNumberRightAttr()
-    {
-        return $this->referenceNumberRightAttr;
-    }
-
-    /**
      * Get the background of the slip
      *
      * Can be either 'transparent', a color or an image
@@ -1486,31 +1382,6 @@ abstract class PaymentSlip
     }
 
     /**
-     * Set whether or not to display the reference number
-     *
-     * @param bool $displayReferenceNr True if yes, false if no
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setDisplayReferenceNr($displayReferenceNr = true)
-    {
-        if (is_bool($displayReferenceNr)) {
-            $this->displayReferenceNr = $displayReferenceNr;
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get whether or not to display the reference number
-     *
-     * @return bool True if yes, false if no.
-     */
-    public function getDisplayReferenceNr()
-    {
-        return $this->displayReferenceNr;
-    }
-
-    /**
      * Set whether or not to display the code line at the bottom
      *
      * @param bool $displayCodeLine True if yes, false if no
@@ -1541,6 +1412,136 @@ abstract class PaymentSlip
      * @param bool $formatted Whether to return the reference number formatted or not.
      * @param bool $fillZeroes Whether to return the reference number filled with zeros or not.
      * @return array All elements with their lines and attributes.
+     * @todo Consider extracting the parameters as settable properties, e.g. $displayFormatted, $fillWithZeros
      */
-    abstract public function getAllElements($formatted = true, $fillZeroes = true);
+    public function getAllElements($formatted = true, $fillZeroes = true)
+    {
+        $paymentSlipData = $this->paymentSlipData;
+
+        $elements = array();
+        // Place left bank lines
+        if ($this->getDisplayBank()) {
+            $lines = array(
+                $paymentSlipData->getBankName(),
+                $paymentSlipData->getBankCity()
+            );
+            $elements['bankLeft'] = array(
+                'lines' => $lines,
+                'attributes' => $this->getBankLeftAttr()
+            );
+
+            // Place right bank lines
+            // Reuse lines from above
+            $elements['bankRight'] = array(
+                'lines' => $lines,
+                'attributes' => $this->getBankRightAttr()
+            );
+        }
+
+        // Place left recipient lines
+        if ($this->getDisplayRecipient()) {
+            $lines = array(
+                $paymentSlipData->getRecipientLine1(),
+                $paymentSlipData->getRecipientLine2(),
+                $paymentSlipData->getRecipientLine3(),
+                $paymentSlipData->getRecipientLine4()
+            );
+            $elements['recipientLeft'] = array(
+                'lines' => $lines,
+                'attributes' => $this->getRecipientLeftAttr()
+            );
+
+            // Place right recipient lines
+            // Reuse lines from above
+            $elements['recipientRight'] = array(
+                'lines' => $lines,
+                'attributes' => $this->getRecipientRightAttr()
+            );
+        }
+
+        // Place left account number
+        if ($this->getDisplayAccount()) {
+            $lines = array(
+                $paymentSlipData->getAccountNumber()
+            );
+            $elements['accountLeft'] = array(
+                'lines' => $lines,
+                'attributes' => $this->getAccountLeftAttr()
+            );
+
+            // Place right account number
+            // Reuse lines from above
+            $elements['accountRight'] = array(
+                'lines' => $lines,
+                'attributes' => $this->getAccountRightAttr()
+            );
+        }
+
+        // Place left amount in francs
+        if ($this->getDisplayAmount()) {
+            $lines = array(
+                $paymentSlipData->getAmountFrancs()
+            );
+            $elements['amountFrancsLeft'] = array(
+                'lines' => $lines,
+                'attributes' => $this->getAmountFrancsLeftAttr()
+            );
+
+            // Place right amount in francs
+            // Reuse lines from above
+            $elements['amountFrancsRight'] = array(
+                'lines' => $lines,
+                'attributes' => $this->getAmountFrancsRightAttr()
+            );
+
+            // Place left amount in cents
+            $lines = array(
+                $paymentSlipData->getAmountCents()
+            );
+            $elements['amountCentsLeft'] = array(
+                'lines' => $lines,
+                'attributes' => $this->getAmountCentsLeftAttr()
+            );
+
+            // Place right amount in cents
+            // Reuse lines from above
+            $elements['amountCentsRight'] = array(
+                'lines' => $lines,
+                'attributes' => $this->getAmountCentsRightAttr()
+            );
+        }
+
+        // Place left payer lines
+        if ($this->getDisplayPayer()) {
+            $lines = array(
+                $paymentSlipData->getPayerLine1(),
+                $paymentSlipData->getPayerLine2(),
+                $paymentSlipData->getPayerLine3(),
+                $paymentSlipData->getPayerLine4()
+            );
+            $elements['payerLeft'] = array(
+                'lines' => $lines,
+                'attributes' => $this->getPayerLeftAttr()
+            );
+
+            // Place right payer lines
+            // Reuse lines from above
+            $elements['payerRight'] = array(
+                'lines' => $lines,
+                'attributes' => $this->getPayerRightAttr()
+            );
+        }
+
+        // Place code line
+        if ($this->getDisplayCodeLine()) {
+            $lines = array(
+                $paymentSlipData->getCodeLine($fillZeroes));
+            $elements['codeLine'] = array(
+                'lines' => $lines,
+                'attributes' => $this->getCodeLineAttr()
+            );
+        }
+
+        return $elements;
+    }
 }

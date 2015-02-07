@@ -193,7 +193,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testBankLeftAttrDefaultValuesOrangeType()
+    public function testBankLeftAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getBankLeftAttr();
 
@@ -213,7 +213,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testBankRightAttrDefaultValuesOrangeType()
+    public function testBankRightAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getBankRightAttr();
 
@@ -233,7 +233,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testRecipientLeftAttrDefaultValuesOrangeType()
+    public function testRecipientLeftAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getRecipientLeftAttr();
 
@@ -253,7 +253,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testRecipientRightAttrDefaultValuesOrangeType()
+    public function testRecipientRightAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getRecipientRightAttr();
 
@@ -273,7 +273,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testAccountLeftAttrDefaultValuesOrangeType()
+    public function testAccountLeftAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getAccountLeftAttr();
 
@@ -293,7 +293,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testAccountRightAttrDefaultValuesOrangeType()
+    public function testAccountRightAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getAccountRightAttr();
 
@@ -313,7 +313,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testAmountFrancsLeftAttrDefaultValuesOrangeType()
+    public function testAmountFrancsLeftAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getAmountFrancsLeftAttr();
 
@@ -334,7 +334,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testAmountFrancsRightAttrDefaultValuesOrangeType()
+    public function testAmountFrancsRightAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getAmountFrancsRightAttr();
 
@@ -355,7 +355,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testAmountCentsLeftAttrDefaultValuesOrangeType()
+    public function testAmountCentsLeftAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getAmountCentsLeftAttr();
 
@@ -375,7 +375,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testAmountCentsRightAttrDefaultValuesOrangeType()
+    public function testAmountCentsRightAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getAmountCentsRightAttr();
 
@@ -390,54 +390,12 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the default attributes of the left reference number element for an orange slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     */
-    public function testReferenceNumberLeftAttrDefaultValuesOrangeType()
-    {
-        $attributes = $this->paymentSlip->getReferenceNumberLeftAttr();
-
-        $expectedAttributes = $this->defaultAttributes;
-
-        $expectedAttributes['PosX'] = 3;
-        $expectedAttributes['PosY'] = 60;
-        $expectedAttributes['Width'] = 50;
-        $expectedAttributes['Height'] = 4;
-        $expectedAttributes['FontSize'] = 8;
-
-        $this->assertEquals($expectedAttributes, $attributes);
-    }
-
-    /**
-     * Tests the default attributes of the right reference number element for an orange slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     */
-    public function testReferenceNumberRightAttrDefaultValuesOrangeType()
-    {
-        $attributes = $this->paymentSlip->getReferenceNumberRightAttr();
-
-        $expectedAttributes = $this->defaultAttributes;
-
-        $expectedAttributes['PosX'] = 125;
-        $expectedAttributes['PosY'] = 33.5;
-        $expectedAttributes['Width'] = 80;
-        $expectedAttributes['Height'] = 4;
-        $expectedAttributes['TextAlign'] = 'R';
-
-        $this->assertEquals($expectedAttributes, $attributes);
-    }
-
-    /**
      * Tests the default attributes of the left payer element for an orange slip
      *
      * @return void
      * @covers ::setDefaults
      */
-    public function testPayerLeftAttrDefaultValuesOrangeType()
+    public function testPayerLeftAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getPayerLeftAttr();
 
@@ -457,7 +415,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testPayerRightAttrDefaultValuesOrangeType()
+    public function testPayerRightAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getPayerRightAttr();
 
@@ -477,7 +435,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testCodeLineAttrDefaultValuesOrangeType()
+    public function testCodeLineAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getCodeLineAttr();
 
@@ -499,233 +457,9 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testSlipBackgroundDefaultValuesOrangeType()
+    public function testSlipBackgroundDefaultValues()
     {
-        $this->assertEquals('ezs_orange.gif', basename($this->paymentSlip->getSlipBackground()));
-    }
-
-    /**
-     * Tests the default attributes of the left bank element for an red slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     * @todo Implement testBankLeftAttrDefaultValuesRedType
-     */
-    public function testBankLeftAttrDefaultValuesRedType()
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * Tests the default attributes of the right bank element for an red slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     * @todo Implement testBankRightAttrDefaultValuesRedType
-     */
-    public function testBankRightAttrDefaultValuesRedType()
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * Tests the default attributes of the left recipient element for a red slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     * @todo Implement testRecipientLeftAttrDefaultValuesRedType
-     */
-    public function testRecipientLeftAttrDefaultValuesRedType()
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * Tests the default attributes of the right recipient element for a red slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     * @todo Implement testRecipientRightAttrDefaultValuesRedType
-     */
-    public function testRecipientRightAttrDefaultValuesRedType()
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * Tests the default attributes of the left account element for a red slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     * @todo Implement testAccountLeftAttrDefaultValuesRedType
-     */
-    public function testAccountLeftAttrDefaultValuesRedType()
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * Tests the default attributes of the right account element for a red slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     * @todo Implement testAccountRightAttrDefaultValuesRedType
-     */
-    public function testAccountRightAttrDefaultValuesRedType()
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * Tests the default attributes of the left francs amount element for a red slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     * @todo Implement testAmountFrancsLeftAttrDefaultValuesRedType
-     */
-    public function testAmountFrancsLeftAttrDefaultValuesRedType()
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * Tests the default attributes of the right francs amount element for a red slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     * @todo Implement testAmountFrancsRightAttrDefaultValuesRedType
-     */
-    public function testAmountFrancsRightAttrDefaultValuesRedType()
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * Tests the default attributes of the left cents amount element for a red slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     * @todo Implement testAmountCentsLeftAttrDefaultValuesRedType
-     */
-    public function testAmountCentsLeftAttrDefaultValuesRedType()
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * Tests the default attributes of the right cents amount element for a red slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     * @todo Implement testAmountCentsRightAttrDefaultValuesRedType
-     */
-    public function testAmountCentsRightAttrDefaultValuesRedType()
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * Tests the default attributes of the left reference number element for a red slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     * @todo Implement testReferenceNumberLeftAttrDefaultValuesRedType
-     */
-    public function testReferenceNumberLeftAttrDefaultValuesRedType()
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * Tests the default attributes of the right reference number element for a red slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     * @todo Implement testReferenceNumberRightAttrDefaultValuesRedType
-     */
-    public function testReferenceNumberRightAttrDefaultValuesRedType()
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * Tests the default attributes of the left payer element for a red slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     * @todo Implement testPayerLeftAttrDefaultValuesRedType
-     */
-    public function testPayerLeftAttrDefaultValuesRedType()
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * Tests the default attributes of the right payer element for a red slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     * @todo Implement testPayerRightAttrDefaultValuesRedType
-     */
-    public function testPayerRightAttrDefaultValuesRedType()
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * Tests the default attributes of the code line element for a red slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     * @todo Implement testCodeLineAttrDefaultValuesRedType
-     */
-    public function testCodeLineAttrDefaultValuesRedType()
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * Tests the default background for a red slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     */
-    public function testSlipBackgroundDefaultValuesRedType()
-    {
-        $slipData = new TestablePaymentSlipData('red');
-        $this->paymentSlip = new TestablePaymentSlip($slipData);
-
-        $this->assertEquals('ezs_red.gif', basename($this->paymentSlip->getSlipBackground()));
+        $this->assertEquals(null, basename($this->paymentSlip->getSlipBackground()));
     }
 
     /**
@@ -869,34 +603,6 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the setReferenceNumberLeftAttr method
-     *
-     * @return void
-     * @covers ::setReferenceNumberLeftAttr
-     * @covers ::setAttributes
-     * @covers ::getReferenceNumberLeftAttr
-     */
-    public function testSetReferenceNumberLeftAttr()
-    {
-        $this->paymentSlip->setReferenceNumberLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
-        $this->assertEquals($this->setAttributes, $this->paymentSlip->getReferenceNumberLeftAttr());
-    }
-
-    /**
-     * Tests the setReferenceNumberRightAttr method
-     *
-     * @return void
-     * @covers ::setReferenceNumberRightAttr
-     * @covers ::setAttributes
-     * @covers ::getReferenceNumberRightAttr
-     */
-    public function testSetReferenceNumberRightAttr()
-    {
-        $this->paymentSlip->setReferenceNumberRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
-        $this->assertEquals($this->setAttributes, $this->paymentSlip->getReferenceNumberRightAttr());
-    }
-
-    /**
      * Tests the setPayerLeftAttr method
      *
      * @return void
@@ -1023,27 +729,6 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the setDisplayReferenceNr method
-     *
-     * @return void
-     * @covers ::setDisplayReferenceNr
-     * @covers ::getDisplayReferenceNr
-     */
-    public function testSetDisplayReferenceNr()
-    {
-        $this->paymentSlip->setDisplayReferenceNr();
-        $this->assertEquals(true, $this->paymentSlip->getDisplayReferenceNr());
-
-        $this->paymentSlip->setDisplayReferenceNr(true);
-        $this->assertEquals(true, $this->paymentSlip->getDisplayReferenceNr());
-
-        $this->paymentSlip->setDisplayReferenceNr(false);
-        $this->assertEquals(false, $this->paymentSlip->getDisplayReferenceNr());
-
-        $this->paymentSlip->setDisplayReferenceNr('XXX');
-    }
-
-    /**
      * Tests the setDisplayPayer method
      *
      * @return void
@@ -1086,31 +771,29 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getAllElements method for an orange slip
+     * Tests the getAllElements method
      *
      * @return void
      * @covers ::getAllElements
      */
-    public function testGetAllElementsOrangeType()
+    public function testGetAllElements()
     {
         $elements = $this->paymentSlip->getAllElements();
 
         $expectedElementsArray = array(
-        'bankLeft',
-        'bankRight',
-        'recipientLeft',
-        'recipientRight',
-        'accountLeft',
-        'accountRight',
-        'amountFrancsLeft',
-        'amountFrancsRight',
-        'amountCentsLeft',
-        'amountCentsRight',
-        'referenceNumberLeft',
-        'referenceNumberRight',
-        'payerLeft',
-        'payerRight',
-        'codeLine'
+            'bankLeft',
+            'bankRight',
+            'recipientLeft',
+            'recipientRight',
+            'accountLeft',
+            'accountRight',
+            'amountFrancsLeft',
+            'amountFrancsRight',
+            'amountCentsLeft',
+            'amountCentsRight',
+            'payerLeft',
+            'payerRight',
+            'codeLine'
         );
 
         foreach ($expectedElementsArray as $elementNr => $element) {
@@ -1119,19 +802,5 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
             $this->assertArrayHasKey('lines', $elements[$element]);
             $this->assertArrayHasKey('attributes', $elements[$element]);
         }
-    }
-
-    /**
-     * Tests the getAllElements method for a red slip
-     *
-     * @return void
-     * @covers ::getAllElements
-     * @todo Implement testGetAllElementsRedType
-     */
-    public function testGetAllElementsRedType()
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
     }
 }

@@ -88,7 +88,7 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::__construct
      * @expectedException \PHPUnit_Framework_Error
-     * @expectedExceptionMessage Argument 1 passed to SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlip::__construct() must be an instance of SwissPaymentSlip\SwissPaymentSlip\PaymentSlipData, null given
+     * @expectedExceptionMessage Argument 1 passed to SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlip::__construct() must be an instance of SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlipData, null given
      */
     public function testNullSlipDataParameter()
     {
@@ -101,7 +101,7 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::__construct
      * @expectedException \PHPUnit_Framework_Error
-     * @expectedExceptionMessage Argument 1 passed to SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlip::__construct() must be an instance of SwissPaymentSlip\SwissPaymentSlip\PaymentSlipData, instance of ArrayObject given
+     * @expectedExceptionMessage Argument 1 passed to SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlip::__construct() must be an instance of SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlipData, instance of ArrayObject given
      */
     public function testInvalidSlipDataParameter()
     {
@@ -194,7 +194,7 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testBankLeftAttrDefaultValuesOrangeType()
+    public function testBankLeftAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getBankLeftAttr();
 
@@ -214,7 +214,7 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testBankRightAttrDefaultValuesOrangeType()
+    public function testBankRightAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getBankRightAttr();
 
@@ -234,7 +234,7 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testRecipientLeftAttrDefaultValuesOrangeType()
+    public function testRecipientLeftAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getRecipientLeftAttr();
 
@@ -254,7 +254,7 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testRecipientRightAttrDefaultValuesOrangeType()
+    public function testRecipientRightAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getRecipientRightAttr();
 
@@ -274,7 +274,7 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testAccountLeftAttrDefaultValuesOrangeType()
+    public function testAccountLeftAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getAccountLeftAttr();
 
@@ -294,7 +294,7 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testAccountRightAttrDefaultValuesOrangeType()
+    public function testAccountRightAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getAccountRightAttr();
 
@@ -314,7 +314,7 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testAmountFrancsLeftAttrDefaultValuesOrangeType()
+    public function testAmountFrancsLeftAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getAmountFrancsLeftAttr();
 
@@ -335,7 +335,7 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testAmountFrancsRightAttrDefaultValuesOrangeType()
+    public function testAmountFrancsRightAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getAmountFrancsRightAttr();
 
@@ -356,7 +356,7 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testAmountCentsLeftAttrDefaultValuesOrangeType()
+    public function testAmountCentsLeftAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getAmountCentsLeftAttr();
 
@@ -376,7 +376,7 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testAmountCentsRightAttrDefaultValuesOrangeType()
+    public function testAmountCentsRightAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getAmountCentsRightAttr();
 
@@ -396,7 +396,7 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testReferenceNumberLeftAttrDefaultValuesOrangeType()
+    public function testReferenceNumberLeftAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getReferenceNumberLeftAttr();
 
@@ -417,7 +417,7 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testReferenceNumberRightAttrDefaultValuesOrangeType()
+    public function testReferenceNumberRightAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getReferenceNumberRightAttr();
 
@@ -438,7 +438,7 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testPayerLeftAttrDefaultValuesOrangeType()
+    public function testPayerLeftAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getPayerLeftAttr();
 
@@ -458,7 +458,7 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testPayerRightAttrDefaultValuesOrangeType()
+    public function testPayerRightAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getPayerRightAttr();
 
@@ -478,7 +478,7 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testCodeLineAttrDefaultValuesOrangeType()
+    public function testCodeLineAttrDefaultValues()
     {
         $attributes = $this->paymentSlip->getCodeLineAttr();
 
@@ -500,7 +500,7 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setDefaults
      */
-    public function testSlipBackgroundDefaultValuesOrangeType()
+    public function testSlipBackgroundDefaultValues()
     {
         $this->assertEquals('ezs_orange.gif', basename($this->paymentSlip->getSlipBackground()));
     }
@@ -863,12 +863,12 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getAllElements method for an orange slip
+     * Tests the getAllElements method
      *
      * @return void
      * @covers ::getAllElements
      */
-    public function testGetAllElementsOrangeType()
+    public function testGetAllElements()
     {
         $elements = $this->paymentSlip->getAllElements();
 

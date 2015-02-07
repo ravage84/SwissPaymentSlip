@@ -258,7 +258,8 @@ class OrangePaymentSlipData extends PaymentSlipData
      * Get the full code line at the bottom of the ESR
      *
      * @param bool $fillZeros Fill up with leading zeros.
-     * @return string|bool Either the full code line or false if something was wrong.
+     * @return string The full code line.
+     * @todo Throw an exception when something went wrong
      */
     public function getCodeLine($fillZeros = true)
     {
@@ -267,11 +268,11 @@ class OrangePaymentSlipData extends PaymentSlipData
 
         $referenceNumber = $this->getCompleteReferenceNumber(false, $fillZeros);
         if ($referenceNumber === false) {
-            return false;
+            // TODO Throw exception
         }
         $accountNumber = $this->getAccountDigits();
         if ($accountNumber === false) {
-            return false;
+            // TODO Throw exception
         }
 
         if ($this->getWithAmount()) {

@@ -371,7 +371,7 @@ class RedPaymentSlipData extends PaymentSlipData
      * Get the full code line at the bottom of the ES
      *
      * @param bool $fillZeros Fill up with leading zeros.
-     * @return string|bool Either the full code line or false if something was wrong.
+     * @return string The full code line.
      * @throws \Exception When called,not yet implemented
      *
      * @todo Implement red slip support

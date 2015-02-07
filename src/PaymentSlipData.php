@@ -852,19 +852,29 @@ abstract class PaymentSlipData
      */
     protected function breakStringIntoBlocks($string, $blockSize = 5, $alignFromRight = true)
     {
-     // Lets reverse the string (because we want the block to be aligned from the right)
+        // Lets reverse the string (because we want the block to be aligned from the right)
         if ($alignFromRight) {
             $string = strrev($string);
         }
 
-     // Chop it into blocks
+        // Chop it into blocks
         $string = trim(chunk_split($string, $blockSize, ' '));
 
-     // Re-reverse
+        // Re-reverse
         if ($alignFromRight) {
             $string = strrev($string);
         }
 
         return $string;
     }
+
+    /**
+     * Get the full code line at the bottom of the ES
+     *
+     * Needs to be implemented by each slip data sub class.
+     *
+     * @param bool $fillZeros Fill up with leading zeros.
+     * @return string The full code line.
+     */
+    abstract public function getCodeLine($fillZeros = true);
 }

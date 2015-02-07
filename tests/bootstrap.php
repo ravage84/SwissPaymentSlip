@@ -23,6 +23,9 @@ require __DIR__.'/../vendor/autoload.php';
  */
 class TestablePaymentSlipData extends PaymentSlipData
 {
+    public function getCodeLine($fillZeros = true)
+    {
+    }
 }
 
 /**
@@ -30,7 +33,4 @@ class TestablePaymentSlipData extends PaymentSlipData
  */
 class TestablePaymentSlip extends PaymentSlip
 {
-    public function getAllElements($formatted = true, $fillZeroes = true)
-    {
-    }
 }
