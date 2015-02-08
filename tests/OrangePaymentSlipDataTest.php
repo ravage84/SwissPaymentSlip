@@ -48,7 +48,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithBankOrangeType()
     {
-        $this->slipData = new OrangePaymentSlipData('orange');
+        $this->slipData = new OrangePaymentSlipData();
         $this->slipData->setBankData('Seldwyla Bank', '8001 Zürich');
 
         $this->slipData->setWithBank();
@@ -110,7 +110,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithAccountNumberOrangeType()
     {
-        $this->slipData = new OrangePaymentSlipData('orange');
+        $this->slipData = new OrangePaymentSlipData();
         $this->slipData->setAccountNumber('01-2345-6');
 
         $this->slipData->setWithAccountNumber();
@@ -167,7 +167,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithRecipientOrangeType()
     {
-        $this->slipData = new OrangePaymentSlipData('orange');
+        $this->slipData = new OrangePaymentSlipData();
         $this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->slipData->setWithRecipient();
@@ -239,7 +239,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithAmountNumberOrangeType()
     {
-        $this->slipData = new OrangePaymentSlipData('orange');
+        $this->slipData = new OrangePaymentSlipData();
         $this->slipData->setAmount(1234567.89);
 
         $this->slipData->setWithAmount();
@@ -296,7 +296,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithReferenceNumberNumberOrangeType()
     {
-        $this->slipData = new OrangePaymentSlipData('orange');
+        $this->slipData = new OrangePaymentSlipData();
         $this->slipData->setReferenceNumber('0123456789');
 
         $this->slipData->setWithReferenceNumber();
@@ -353,7 +353,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithBankingCustomerIdNumberOrangeType()
     {
-        $this->slipData = new OrangePaymentSlipData('orange');
+        $this->slipData = new OrangePaymentSlipData();
         $this->slipData->setBankingCustomerId('012345');
 
         $this->slipData->setWithBankingCustomerId();
@@ -410,7 +410,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithPayerOrangeType()
     {
-        $this->slipData = new OrangePaymentSlipData('orange');
+        $this->slipData = new OrangePaymentSlipData();
         $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->slipData->setWithPayer();
@@ -485,7 +485,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetBankData()
     {
-        $this->slipData = new OrangePaymentSlipData('orange');
+        $this->slipData = new OrangePaymentSlipData();
         $this->slipData->setBankData('Seldwyla Bank', '8001 Zürich');
 
         $this->assertEquals('Seldwyla Bank', $this->slipData->getBankName());
@@ -507,7 +507,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAccountNumber()
     {
-        $this->slipData = new OrangePaymentSlipData('orange');
+        $this->slipData = new OrangePaymentSlipData();
         $this->slipData->setAccountNumber('01-2345-6');
 
         $this->assertEquals('01-2345-6', $this->slipData->getAccountNumber());
@@ -534,7 +534,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetRecipientData()
     {
-        $this->slipData = new OrangePaymentSlipData('orange');
+        $this->slipData = new OrangePaymentSlipData();
         $this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getRecipientLine1());
@@ -560,7 +560,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAmount()
     {
-        $this->slipData = new OrangePaymentSlipData('orange');
+        $this->slipData = new OrangePaymentSlipData();
         $this->slipData->setAmount(1234567.89);
 
         $this->assertEquals(1234567.89, $this->slipData->getAmount());
@@ -580,7 +580,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetReferenceNumber()
     {
-        $this->slipData = new OrangePaymentSlipData('orange');
+        $this->slipData = new OrangePaymentSlipData();
         $this->slipData->setReferenceNumber('0123456789');
 
         $this->assertEquals('0123456789', $this->slipData->getReferenceNumber());
@@ -600,7 +600,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetBankingCustomerId()
     {
-        $this->slipData = new OrangePaymentSlipData('orange');
+        $this->slipData = new OrangePaymentSlipData();
         $this->slipData->setBankingCustomerId('123456');
 
         $this->assertEquals('123456', $this->slipData->getBankingCustomerId());
@@ -627,7 +627,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetPayerData()
     {
-        $this->slipData = new OrangePaymentSlipData('orange');
+        $this->slipData = new OrangePaymentSlipData();
         $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getPayerLine1());
@@ -684,7 +684,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetCodeLineOrangeType()
     {
-        $this->slipData = new OrangePaymentSlipData('orange');
+        $this->slipData = new OrangePaymentSlipData();
         $this->slipData->setAccountNumber('01-145-6');
         $this->slipData->setAmount(2830.50);
         $this->slipData->setReferenceNumber('7520033455900012');

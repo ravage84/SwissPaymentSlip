@@ -48,7 +48,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithBankRedType()
     {
-        $this->slipData = new RedPaymentSlipData('red');
+        $this->slipData = new RedPaymentSlipData();
         $this->slipData->setBankData('Seldwyla Bank', '8001 Zürich');
 
         $this->slipData->setWithBank();
@@ -110,7 +110,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithAccountNumberRedType()
     {
-        $this->slipData = new RedPaymentSlipData('red');
+        $this->slipData = new RedPaymentSlipData();
         $this->slipData->setAccountNumber('01-2345-6');
 
         $this->slipData->setWithAccountNumber();
@@ -167,7 +167,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithRecipientRedType()
     {
-        $this->slipData = new RedPaymentSlipData('red');
+        $this->slipData = new RedPaymentSlipData();
         $this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->slipData->setWithRecipient();
@@ -239,7 +239,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithAmountNumberRedType()
     {
-        $this->slipData = new RedPaymentSlipData('red');
+        $this->slipData = new RedPaymentSlipData();
         $this->slipData->setAmount(1234567.89);
 
         $this->slipData->setWithAmount();
@@ -296,7 +296,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithPayerRedType()
     {
-        $this->slipData = new RedPaymentSlipData('red');
+        $this->slipData = new RedPaymentSlipData();
         $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->slipData->setWithPayer();
@@ -368,7 +368,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithIbanNumberRedType()
     {
-        $this->slipData = new RedPaymentSlipData('red');
+        $this->slipData = new RedPaymentSlipData();
         $this->slipData->setIban('CH380123456789');
 
         $this->slipData->setWithIban(true);
@@ -393,7 +393,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithIbanNumberParameters()
     {
-        $this->slipData = new RedPaymentSlipData('red');
+        $this->slipData = new RedPaymentSlipData();
         $this->slipData->setIban('CH380123456789');
 
         $this->slipData->setWithIban(1);
@@ -426,7 +426,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithPaymentReasonRedType()
     {
-        $this->slipData = new RedPaymentSlipData('red');
+        $this->slipData = new RedPaymentSlipData();
         $this->slipData->setPaymentReasonData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->slipData->setWithPaymentReason(true);
@@ -460,7 +460,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithPaymentReasonParameters()
     {
-        $this->slipData = new RedPaymentSlipData('red');
+        $this->slipData = new RedPaymentSlipData();
         $this->slipData->setPaymentReasonData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->slipData->setWithPaymentReason(1);
@@ -502,7 +502,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetBankData()
     {
-        $this->slipData = new RedPaymentSlipData('red');
+        $this->slipData = new RedPaymentSlipData();
         $this->slipData->setBankData('Seldwyla Bank', '8001 Zürich');
 
         $this->assertEquals('Seldwyla Bank', $this->slipData->getBankName());
@@ -524,7 +524,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAccountNumber()
     {
-        $this->slipData = new RedPaymentSlipData('red');
+        $this->slipData = new RedPaymentSlipData();
         $this->slipData->setAccountNumber('01-2345-6');
 
         $this->assertEquals('01-2345-6', $this->slipData->getAccountNumber());
@@ -551,7 +551,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetRecipientData()
     {
-        $this->slipData = new RedPaymentSlipData('red');
+        $this->slipData = new RedPaymentSlipData();
         $this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getRecipientLine1());
@@ -577,7 +577,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAmount()
     {
-        $this->slipData = new RedPaymentSlipData('red');
+        $this->slipData = new RedPaymentSlipData();
         $this->slipData->setAmount(1234567.89);
 
         $this->assertEquals(1234567.89, $this->slipData->getAmount());
@@ -604,7 +604,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetPayerData()
     {
-        $this->slipData = new RedPaymentSlipData('red');
+        $this->slipData = new RedPaymentSlipData();
         $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getPayerLine1());
@@ -630,7 +630,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetIban()
     {
-        $this->slipData = new RedPaymentSlipData('red');
+        $this->slipData = new RedPaymentSlipData();
         $this->slipData->setIban('CH380123456789');
 
         $this->assertEquals('CH380123456789', $this->slipData->getIban());
@@ -657,7 +657,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetPaymentReasonData()
     {
-        $this->slipData = new RedPaymentSlipData('red');
+        $this->slipData = new RedPaymentSlipData();
         $this->slipData->setPaymentReasonData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getPaymentReasonLine1());
@@ -682,7 +682,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetFormattedIban()
     {
-        $this->slipData = new RedPaymentSlipData('red');
+        $this->slipData = new RedPaymentSlipData();
         $this->slipData->setIban('CH3808888123456789012');
 
         $this->assertEquals('CH3808888123456789012', $this->slipData->getIban());

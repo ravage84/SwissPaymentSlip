@@ -48,7 +48,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithBankOrangeType()
     {
-        $this->slipData = new TestablePaymentSlipData('orange');
+        $this->slipData = new TestablePaymentSlipData();
         $this->slipData->setBankData('Seldwyla Bank', '8001 Zürich');
 
         $this->slipData->setWithBank();
@@ -76,7 +76,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithBankRedType()
     {
-        $this->slipData = new TestablePaymentSlipData('red');
+        $this->slipData = new TestablePaymentSlipData();
         $this->slipData->setBankData('Seldwyla Bank', '8001 Zürich');
 
         $this->slipData->setWithBank();
@@ -138,7 +138,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithAccountNumberOrangeType()
     {
-        $this->slipData = new TestablePaymentSlipData('orange');
+        $this->slipData = new TestablePaymentSlipData();
         $this->slipData->setAccountNumber('01-2345-6');
 
         $this->slipData->setWithAccountNumber();
@@ -163,7 +163,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithAccountNumberRedType()
     {
-        $this->slipData = new TestablePaymentSlipData('red');
+        $this->slipData = new TestablePaymentSlipData();
         $this->slipData->setAccountNumber('01-2345-6');
 
         $this->slipData->setWithAccountNumber();
@@ -220,7 +220,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithRecipientOrangeType()
     {
-        $this->slipData = new TestablePaymentSlipData('orange');
+        $this->slipData = new TestablePaymentSlipData();
         $this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->slipData->setWithRecipient();
@@ -254,7 +254,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithRecipientRedType()
     {
-        $this->slipData = new TestablePaymentSlipData('red');
+        $this->slipData = new TestablePaymentSlipData();
         $this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->slipData->setWithRecipient();
@@ -326,7 +326,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithAmountNumberOrangeType()
     {
-        $this->slipData = new TestablePaymentSlipData('orange');
+        $this->slipData = new TestablePaymentSlipData();
         $this->slipData->setAmount(1234567.89);
 
         $this->slipData->setWithAmount();
@@ -351,7 +351,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithAmountNumberRedType()
     {
-        $this->slipData = new TestablePaymentSlipData('red');
+        $this->slipData = new TestablePaymentSlipData();
         $this->slipData->setAmount(1234567.89);
 
         $this->slipData->setWithAmount();
@@ -408,7 +408,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithPayerOrangeType()
     {
-        $this->slipData = new TestablePaymentSlipData('orange');
+        $this->slipData = new TestablePaymentSlipData();
         $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->slipData->setWithPayer();
@@ -442,7 +442,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetWithPayerRedType()
     {
-        $this->slipData = new TestablePaymentSlipData('red');
+        $this->slipData = new TestablePaymentSlipData();
         $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->slipData->setWithPayer();
@@ -517,7 +517,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetBankData()
     {
-        $this->slipData = new TestablePaymentSlipData('orange');
+        $this->slipData = new TestablePaymentSlipData();
         $this->slipData->setBankData('Seldwyla Bank', '8001 Zürich');
 
         $this->assertEquals('Seldwyla Bank', $this->slipData->getBankName());
@@ -539,7 +539,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAccountNumber()
     {
-        $this->slipData = new TestablePaymentSlipData('orange');
+        $this->slipData = new TestablePaymentSlipData();
         $this->slipData->setAccountNumber('01-2345-6');
 
         $this->assertEquals('01-2345-6', $this->slipData->getAccountNumber());
@@ -566,7 +566,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetRecipientData()
     {
-        $this->slipData = new TestablePaymentSlipData('orange');
+        $this->slipData = new TestablePaymentSlipData();
         $this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getRecipientLine1());
@@ -592,7 +592,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetAmount()
     {
-        $this->slipData = new TestablePaymentSlipData('orange');
+        $this->slipData = new TestablePaymentSlipData();
         $this->slipData->setAmount(1234567.89);
 
         $this->assertEquals(1234567.89, $this->slipData->getAmount());
@@ -619,7 +619,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetPayerData()
     {
-        $this->slipData = new TestablePaymentSlipData('orange');
+        $this->slipData = new TestablePaymentSlipData();
         $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
 
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getPayerLine1());
