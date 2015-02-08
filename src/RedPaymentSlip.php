@@ -34,14 +34,14 @@ class RedPaymentSlip extends PaymentSlip
      *
      * @var int|float
      */
-    protected $slipHeight = 106; // default height of an orange slip
+    protected $slipHeight = 106; // TODO default height of an red slip
 
     /**
      * The width of the slip
      *
      * @var int|float
      */
-    protected $slipWidth = 210; // default width of an orange slip
+    protected $slipWidth = 210; // TODO default width of an red slip
     /**
      * Determines whether the IBAN should be displayed
      *
