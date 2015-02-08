@@ -14,19 +14,19 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>SwissPaymentSlip Example 01-01: PaymentSlipData basic usage</title>
+	<title>SwissPaymentSlip Example 01-01: OrangePaymentSlipData basic usage</title>
 </head>
 <body>
-<h1>SwissPaymentSlip Example 01-01: PaymentSlipData basic usage</h1>
+<h1>SwissPaymentSlip Example 01-01: OrangePaymentSlipData basic usage</h1>
 <?php
 // Make sure the classes get auto-loaded
 require __DIR__.'/../vendor/autoload.php';
 
 // Import necessary classes
-use SwissPaymentSlip\SwissPaymentSlip\PaymentSlipData;
+use SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlipData;
 
-// Create an payment slip data container (value object)
-$paymentSlipData = new PaymentSlipData('orange'); // Parameter is optional for orange
+// Create an orange payment slip data container (value object)
+$paymentSlipData = new OrangePaymentSlipData();
 
 // Fill the data container with your data
 $paymentSlipData->setBankData('Seldwyla Bank', '8001 Zürich');

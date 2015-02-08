@@ -14,28 +14,28 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>SwissPaymentSlip Example 01-02: PaymentSlipData red slip</title>
+	<title>SwissPaymentSlip Example 01-02: RedPaymentSlipData basic usage</title>
 </head>
 <body>
-<h1>SwissPaymentSlip Example 01-02: PaymentSlipData red slip</h1>
+<h1>SwissPaymentSlip Example 01-02: RedPaymentSlipData basic usage</h1>
 <?php
 // Make sure the classes get auto-loaded
 require __DIR__.'/../vendor/autoload.php';
 
 // Import necessary classes
-use SwissPaymentSlip\SwissPaymentSlip\PaymentSlipData;
+use SwissPaymentSlip\SwissPaymentSlip\RedPaymentSlipData;
 
-// Create an payment slip data container (value object)
-$paymentSlipData = new PaymentSlipData('red');
+// Create a red payment slip data container (value object)
+$paymentSlipData = new RedPaymentSlipData();
 
 // Fill the data container with your data
-$paymentSlipData->setBankData('Seldwyla Bank', '8021 Zuerich');
-$paymentSlipData->setAccountNumber('80-939-3');
-$paymentSlipData->setRecipientData('Muster AG', 'Bahnhofstrasse 5', '8001 Zuerich');
-$paymentSlipData->setIban('CH3808888123456789012');
-$paymentSlipData->setPayerData('M. Beispieler', 'Bahnhofstrasse 356', '', '7000 Chur');
-$paymentSlipData->setAmount(8479.25);
-$paymentSlipData->setPaymentReasonData('Rechnung', 'Nr.7496');
+$paymentSlipData->setBankData('Seldwyla Bank', '8021 Zuerich')
+	->setAccountNumber('80-939-3')
+    ->setRecipientData('Muster AG', 'Bahnhofstrasse 5', '8001 Zuerich')
+    ->setIban('CH3808888123456789012')
+    ->setPayerData('M. Beispieler', 'Bahnhofstrasse 356', '', '7000 Chur')
+    ->setAmount(8479.25)
+    ->setPaymentReasonData('Rechnung', 'Nr.7496');
 
 // Output the data fields of the slip
 echo "Bank name: " . $paymentSlipData->getBankName() . "<br>";
@@ -65,8 +65,8 @@ echo "Payment reason line 2: " . $paymentSlipData->getPaymentReasonLine2() . "<b
 echo "Payment reason line 3: " . $paymentSlipData->getPaymentReasonLine3() . "<br>";
 echo "Payment reason line 4: " . $paymentSlipData->getPaymentReasonLine4() . "<br>";
 echo "<br>";
-echo "Code line (at the bottom): " . $paymentSlipData->getCodeLine() . "<br>";
-echo "Second code line (at the bottom): " . $paymentSlipData->getCodeLine() . "<br>"; // TODO To be implemented method
+//echo "Code line (at the bottom): " . $paymentSlipData->getCodeLine() . "<br>";
+//echo "Second code line (at the bottom): " . $paymentSlipData->getCodeLine() . "<br>";
 echo "<br>";
 
 // Dump object to screen

@@ -14,32 +14,32 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>SwissPaymentSlip Example 02-01: PaymentSlip basic usage</title>
+	<title>SwissPaymentSlip Example 02-01: OrangePaymentSlip basic usage</title>
 </head>
 <body>
-<h1>SwissPaymentSlip Example 02-01: PaymentSlip basic usage</h1>
+<h1>SwissPaymentSlip Example 02-01: OrangePaymentSlip basic usage</h1>
 <?php
 // Make sure the classes get auto-loaded
 require __DIR__.'/../vendor/autoload.php';
 
 // Import necessary classes
-use SwissPaymentSlip\SwissPaymentSlip\PaymentSlipData;
-use SwissPaymentSlip\SwissPaymentSlip\PaymentSlip;
+use SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlipData;
+use SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlip;
 
-// Create an payment slip data container (value object)
-$paymentSlipData = new PaymentSlipData();
+// Create an orange payment slip data container (value object)
+$paymentSlipData = new OrangePaymentSlipData();
 
 // Fill the data container with your data
-$paymentSlipData->setBankData('Seldwyla Bank', '8001 Zürich');
-$paymentSlipData->setAccountNumber('01-145-6');
-$paymentSlipData->setRecipientData('H. Muster AG', 'Versandhaus', 'Industriestrasse 88', '8000 Zürich');
-$paymentSlipData->setPayerData('Rutschmann Pia', 'Marktgasse 28', '9400 Rorschach');
-$paymentSlipData->setAmount(2830.50);
-$paymentSlipData->setReferenceNumber('7520033455900012');
-$paymentSlipData->setBankingCustomerId('215703');
+$paymentSlipData->setBankData('Seldwyla Bank', '8001 Zürich')
+    ->setAccountNumber('01-145-6')
+    ->setRecipientData('H. Muster AG', 'Versandhaus', 'Industriestrasse 88', '8000 Zürich')
+    ->setPayerData('Rutschmann Pia', 'Marktgasse 28', '9400 Rorschach')
+    ->setAmount(2830.50)
+    ->setReferenceNumber('7520033455900012')
+    ->setBankingCustomerId('215703');
 
-// Create an payment slip object, pass in the prepared data container
-$paymentSlip = new PaymentSlip($paymentSlipData);
+// Create an orange payment slip object, pass in the prepared data container
+$paymentSlip = new OrangePaymentSlip($paymentSlipData);
 
 // Get all elements (data fields with layout configuration)
 $elements = $paymentSlip->getAllElements();
