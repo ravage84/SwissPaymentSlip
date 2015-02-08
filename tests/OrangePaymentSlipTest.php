@@ -20,7 +20,7 @@ use SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlipData;
  *
  * @coversDefaultClass SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlip
  */
-class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
+class OrangePaymentSlipTest extends PaymentSlipTestCase
 {
     /**
      * The object under test
@@ -28,20 +28,6 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
      * @var OrangePaymentSlip
      */
     protected $paymentSlip;
-
-    /**
-     * The default attributes to test against
-     *
-     * @var array
-     */
-    protected $defaultAttributes;
-
-    /**
-     * The set attributes to test against
-     *
-     * @var array
-     */
-    protected $setAttributes;
 
     /**
      * Setup a slip to test and some default and set attributes to test
@@ -859,29 +845,25 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
     {
         $elements = $this->paymentSlip->getAllElements();
 
-        $expectedElementsArray = array(
-        'bankLeft',
-        'bankRight',
-        'recipientLeft',
-        'recipientRight',
-        'accountLeft',
-        'accountRight',
-        'amountFrancsLeft',
-        'amountFrancsRight',
-        'amountCentsLeft',
-        'amountCentsRight',
-        'referenceNumberLeft',
-        'referenceNumberRight',
-        'payerLeft',
-        'payerRight',
-        'codeLine'
+        $expectedElements = array(
+            'bankLeft',
+            'bankRight',
+            'recipientLeft',
+            'recipientRight',
+            'accountLeft',
+            'accountRight',
+            'amountFrancsLeft',
+            'amountFrancsRight',
+            'amountCentsLeft',
+            'amountCentsRight',
+            'referenceNumberLeft',
+            'referenceNumberRight',
+            'payerLeft',
+            'payerRight',
+            'codeLine'
         );
 
-        foreach ($expectedElementsArray as $elementNr => $element) {
-            $this->assertArrayHasKey($element, $elements);
-
-            $this->assertArrayHasKey('lines', $elements[$element]);
-            $this->assertArrayHasKey('attributes', $elements[$element]);
-        }
+        $this->assertElementsArray($expectedElements, $elements);
     }
+
 }

@@ -19,29 +19,8 @@ use SwissPaymentSlip\SwissPaymentSlip\PaymentSlip;
  *
  * @coversDefaultClass SwissPaymentSlip\SwissPaymentSlip\PaymentSlip
  */
-class PaymentSlipTest extends \PHPUnit_Framework_TestCase
+class PaymentSlipTest extends PaymentSlipTestCase
 {
-    /**
-     * The object under test
-     *
-     * @var PaymentSlip
-     */
-    protected $paymentSlip;
-
-    /**
-     * The default attributes to test against
-     *
-     * @var array
-     */
-    protected $defaultAttributes;
-
-    /**
-     * The set attributes to test against
-     *
-     * @var array
-     */
-    protected $setAttributes;
-
     /**
      * Setup a slip to test and some default and set attributes to test
      *
@@ -783,7 +762,7 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
     {
         $elements = $this->paymentSlip->getAllElements();
 
-        $expectedElementsArray = array(
+        $expectedElements = array(
             'bankLeft',
             'bankRight',
             'recipientLeft',
@@ -799,11 +778,6 @@ class PaymentSlipTest extends \PHPUnit_Framework_TestCase
             'codeLine'
         );
 
-        foreach ($expectedElementsArray as $elementNr => $element) {
-            $this->assertArrayHasKey($element, $elements);
-
-            $this->assertArrayHasKey('lines', $elements[$element]);
-            $this->assertArrayHasKey('attributes', $elements[$element]);
-        }
+        $this->assertElementsArray($expectedElements, $elements);
     }
 }
