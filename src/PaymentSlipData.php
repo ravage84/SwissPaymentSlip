@@ -637,6 +637,8 @@ abstract class PaymentSlipData
     /**
      * Sets the four lines of the payer
      *
+     * At least two lines are necessary.
+     *
      * @param string $payerLine1 The first line of the payer, e.g. "Hans Mustermann".
      * @param string $payerLine2 The second line of the payer, e.g. "Main Street 11".
      * @param string $payerLine3 The third line of the payer, e.g. "4052 Basel".
