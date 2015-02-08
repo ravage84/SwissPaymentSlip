@@ -176,22 +176,6 @@ class OrangePaymentSlipTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests setting the slip background
-     *
-     * @return void
-     * @covers ::setSlipBackground
-     * @covers ::getSlipBackground
-     */
-    public function testSetSlipBackground()
-    {
-        $this->paymentSlip->setSlipBackground('#123456');
-        $this->assertEquals('#123456', $this->paymentSlip->getSlipBackground());
-
-        $this->paymentSlip->setSlipBackground(__DIR__.'/Resources/img/ezs_orange.gif');
-        $this->assertEquals(__DIR__.'/Resources/img/ezs_orange.gif', $this->paymentSlip->getSlipBackground());
-    }
-
-    /**
      * Tests the default attributes of the left bank element for an orange slip
      *
      * @return void
