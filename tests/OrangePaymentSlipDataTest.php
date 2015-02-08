@@ -612,39 +612,6 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the setPayerData method
-     *
-     * @return void
-     * @covers ::setPayerData
-     * @covers ::setPayerLine1
-     * @covers ::setPayerLine2
-     * @covers ::setPayerLine3
-     * @covers ::setPayerLine4
-     * @covers ::getPayerLine1
-     * @covers ::getPayerLine2
-     * @covers ::getPayerLine3
-     * @covers ::getPayerLine4
-     */
-    public function testSetPayerData()
-    {
-        $this->slipData = new OrangePaymentSlipData();
-        $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
-
-        $this->assertEquals('AAAAAAAAAA', $this->slipData->getPayerLine1());
-        $this->assertEquals('BBBBBBBBBB', $this->slipData->getPayerLine2());
-        $this->assertEquals('CCCCCCCCCC', $this->slipData->getPayerLine3());
-        $this->assertEquals('DDDDDDDDDD', $this->slipData->getPayerLine4());
-
-        $this->slipData->setWithPayer(false);
-        $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
-
-        $this->assertEquals(false, $this->slipData->getPayerLine1());
-        $this->assertEquals(false, $this->slipData->getPayerLine2());
-        $this->assertEquals(false, $this->slipData->getPayerLine3());
-        $this->assertEquals(false, $this->slipData->getPayerLine4());
-    }
-
-    /**
      * Tests the getCompleteReferenceNumber method for an orange slip
      *
      * @return void
