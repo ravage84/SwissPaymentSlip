@@ -30,7 +30,7 @@ $paymentSlipData = new RedPaymentSlipData();
 
 // Fill the data container with your data
 $paymentSlipData->setBankData('Seldwyla Bank', '8021 Zuerich')
-	->setAccountNumber('80-939-3')
+    ->setAccountNumber('80-939-3')
     ->setRecipientData('Muster AG', 'Bahnhofstrasse 5', '8001 Zuerich')
     ->setIban('CH3808888123456789012')
     ->setPayerData('M. Beispieler', 'Bahnhofstrasse 356', '', '7000 Chur')
