@@ -361,10 +361,15 @@ class RedPaymentSlipData extends PaymentSlipData
      */
     public function getFormattedIban()
     {
-        if ($this->getWithIban()) {
-            return $this->breakStringIntoBlocks($this->getIban(), 4, false);
+        if (!$this->getWithIban()) {
+            return false;
         }
-        return false;
+        $iban = $this->getIban();
+        if ($iban === false) {
+            return false;
+        }
+        return $this->breakStringIntoBlocks($iban, 4, false);
+
     }
 
     /**
