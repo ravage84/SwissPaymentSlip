@@ -4,9 +4,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/ravage84/SwissPaymentSlip/compare/0.7.0...master)
 ### Added
+- A common class for payment slip (not their data containers) test cases
 - Packagist Download & Latest badges to the README
+- Testing with HHVM for Travis CI
+- A .gitattributes
 
 ### Changed
+- Split the red and orange slips into two sub classes each (for the slip and its data container)
 
 ### Fixed
 - Removed misleading time key, which fooled Packagist
