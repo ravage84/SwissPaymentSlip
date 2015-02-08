@@ -264,7 +264,8 @@ class OrangePaymentSlipData extends PaymentSlipData
      * @param bool $notForPayment Whether the payment slip is not ment for payment.
      * @return string The reference number with the appended check digit.
      */
-    protected function appendCheckDigit($referenceNumber, $notForPayment = false) {
+    protected function appendCheckDigit($referenceNumber, $notForPayment = false)
+    {
         if ($notForPayment === true) {
             return $referenceNumber . 'X';
         }
