@@ -46,8 +46,8 @@ namespace SwissPaymentSlip\SwissPaymentSlip;
  * @todo Implement payment on own account, means different prefixes in code line --> edge case!
  * @todo Implement cash on delivery (Nachnahme), means different prefixes in code line --> do it on demand
  * @todo Implement amount check for unrounded (.05) cents, document why (see manual)
- * @todo Create a getBankData method with formatting parameter
- * @todo Create a getRecipientData with formatting parameter
+ * @todo Create a getBankData method with formatting parameter, e.g. stripping blank lines
+ * @todo Create a getRecipientData with formatting parameter, e.g. stripping blank lines
  */
 abstract class PaymentSlipData
 {

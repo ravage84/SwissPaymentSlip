@@ -43,7 +43,7 @@ namespace SwissPaymentSlip\SwissPaymentSlip;
  * @link http://www.six-interbank-clearing.com/en/home/standardization/dta.html
  *
  * @todo Implement full red slip support (code line + additional code line)
- * @todo Create a getPaymentReason with formatting parameter
+ * @todo Create a getPaymentReason with formatting parameter, e.g. stripping blank lines
  */
 class RedPaymentSlipData extends PaymentSlipData
 {
