@@ -222,36 +222,53 @@ class OrangePaymentSlipData extends PaymentSlipData
      */
     public function getCompleteReferenceNumber($formatted = true, $fillZeros = true)
     {
-        if ($this->getWithReferenceNumber()) {
-            if ($this->getWithBankingCustomerId()) {
-             // Get reference number and fill with zeros
-                $completeReferenceNumber = str_pad($this->getReferenceNumber(), 20, '0', STR_PAD_LEFT);
-             // Add banking customer identification code
-                $completeReferenceNumber = $this->getBankingCustomerId() . $completeReferenceNumber;
-            } else {
-                if ($fillZeros) {
-                 // Get reference number and fill with zeros
-                    $completeReferenceNumber = str_pad($this->getReferenceNumber(), 26, '0', STR_PAD_LEFT);
-                } else {
-                 // Get just reference number
-                    $completeReferenceNumber = $this->getReferenceNumber();
-                }
-            }
-
-         // Add check digit
-            if ($this->getNotForPayment()) {
-                $completeReferenceNumber .= 'X';
-            } else {
-                $completeReferenceNumber .= $this->modulo10($completeReferenceNumber);
-            }
-
-            if ($formatted) {
-                $completeReferenceNumber = $this->breakStringIntoBlocks($completeReferenceNumber);
-            }
-
-            return $completeReferenceNumber;
+        if (!$this->getWithReferenceNumber()) {
+            return false;
         }
-        return false;
+        $referenceNumber = $this->getReferenceNumber();
+        if ($referenceNumber === false) {
+            return false;
+        }
+
+        $notForPayment = $this->getNotForPayment();
+
+        $completeReferenceNumber = $referenceNumber;
+        if ($notForPayment) {
+            $completeReferenceNumber =  str_pad($referenceNumber, 26, 'X', STR_PAD_LEFT);
+        } elseif ($this->getWithBankingCustomerId()) {
+            // Get reference number and fill with zeros
+            $referenceNumber = str_pad($referenceNumber, 20, '0', STR_PAD_LEFT);
+            // Prepend banking customer identification code
+            $completeReferenceNumber = $this->getBankingCustomerId() . $referenceNumber;
+        } elseif ($fillZeros) {
+            // Get reference number and fill with zeros
+            $completeReferenceNumber = str_pad($referenceNumber, 26, '0', STR_PAD_LEFT);
+        }
+
+        // Add check digit
+        $completeReferenceNumber = $this->appendCheckDigit($completeReferenceNumber, $notForPayment);
+
+        if ($formatted) {
+            $completeReferenceNumber = $this->breakStringIntoBlocks($completeReferenceNumber);
+        }
+
+        return $completeReferenceNumber;
+    }
+
+    /**
+     * Append the check digit to the reference number
+     *
+     * Simply appends an 'X' if the slip is not ment for payment.
+     *
+     * @param string $referenceNumber The reference number to calculate the prefix with.
+     * @param bool $notForPayment Whether the payment slip is not ment for payment.
+     * @return string The reference number with the appended check digit.
+     */
+    protected function appendCheckDigit($referenceNumber, $notForPayment = false) {
+        if ($notForPayment === true) {
+            return $referenceNumber . 'X';
+        }
+        return $referenceNumber . $this->modulo10($referenceNumber);
     }
 
     /**

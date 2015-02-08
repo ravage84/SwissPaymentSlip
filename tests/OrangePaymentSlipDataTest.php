@@ -649,6 +649,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      * @covers ::getCompleteReferenceNumber
+     * @covers ::appendCheckDigit
      * @covers ::breakStringIntoBlocks
      * @covers ::modulo10
      */
