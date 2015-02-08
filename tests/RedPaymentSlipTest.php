@@ -20,7 +20,7 @@ use SwissPaymentSlip\SwissPaymentSlip\RedPaymentSlipData;
  *
  * @coversDefaultClass SwissPaymentSlip\SwissPaymentSlip\RedPaymentSlip
  */
-class RedPaymentSlipTest extends \PHPUnit_Framework_TestCase
+class RedPaymentSlipTest extends PaymentSlipTestCase
 {
     /**
      * The object under test
