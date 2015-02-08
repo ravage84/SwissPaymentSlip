@@ -170,7 +170,7 @@ class PaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Tests the default attributes of the left bank element for an orange slip
+     * Tests the default attributes of the left bank element
      *
      * @return void
      * @covers ::setDefaults
@@ -190,7 +190,7 @@ class PaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Tests the default attributes of the right bank element for an orange slip
+     * Tests the default attributes of the right bank element
      *
      * @return void
      * @covers ::setDefaults
@@ -210,7 +210,7 @@ class PaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Tests the default attributes of the left recipient element for an orange slip
+     * Tests the default attributes of the left recipient element
      *
      * @return void
      * @covers ::setDefaults
@@ -230,7 +230,7 @@ class PaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Tests the default attributes of the right recipient element for an orange slip
+     * Tests the default attributes of the right recipient element
      *
      * @return void
      * @covers ::setDefaults
@@ -250,7 +250,7 @@ class PaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Tests the default attributes of the left account element for an orange slip
+     * Tests the default attributes of the left account element
      *
      * @return void
      * @covers ::setDefaults
@@ -270,7 +270,7 @@ class PaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Tests the default attributes of the right account element for an orange slip
+     * Tests the default attributes of the right account element
      *
      * @return void
      * @covers ::setDefaults
@@ -290,7 +290,7 @@ class PaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Tests the default attributes of the left francs amount element for an orange slip
+     * Tests the default attributes of the left francs amount element
      *
      * @return void
      * @covers ::setDefaults
@@ -311,7 +311,7 @@ class PaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Tests the default attributes of the right francs amount element for an orange slip
+     * Tests the default attributes of the right francs amount element
      *
      * @return void
      * @covers ::setDefaults
@@ -332,7 +332,7 @@ class PaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Tests the default attributes of the left cents amount element for an orange slip
+     * Tests the default attributes of the left cents amount element
      *
      * @return void
      * @covers ::setDefaults
@@ -352,7 +352,7 @@ class PaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Tests the default attributes of the right cents amount element for an orange slip
+     * Tests the default attributes of the right cents amount element
      *
      * @return void
      * @covers ::setDefaults
@@ -372,7 +372,7 @@ class PaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Tests the default attributes of the left payer element for an orange slip
+     * Tests the default attributes of the left payer element
      *
      * @return void
      * @covers ::setDefaults
@@ -392,7 +392,7 @@ class PaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Tests the default attributes of the right payer element for an orange slip
+     * Tests the default attributes of the right payer element
      *
      * @return void
      * @covers ::setDefaults
@@ -412,7 +412,7 @@ class PaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Tests the default attributes of the code line element for an orange slip
+     * Tests the default attributes of the code line element
      *
      * @return void
      * @covers ::setDefaults
@@ -434,7 +434,7 @@ class PaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Tests the default background for an orange slip
+     * Tests the default background
      *
      * @return void
      * @covers ::setDefaults
