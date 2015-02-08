@@ -2,11 +2,15 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.0/phpunit.xsd"
     forceCoversAnnotation="false"
-    verbose="false">
+    verbose="false" bootstrap="./tests/bootstrap.php">
     <testsuites>
         <testsuite name="All SwissPaymentSlip tests">
             <file>./tests/PaymentSlipDataTest.php</file>
+            <file>./tests/OrangePaymentSlipDataTest.php</file>
+            <file>./tests/RedPaymentSlipDataTest.php</file>
             <file>./tests/PaymentSlipTest.php</file>
+            <file>./tests/OrangePaymentSlipTest.php</file>
+            <file>./tests/RedPaymentSlipTest.php</file>
         </testsuite>
     </testsuites>
 </phpunit>

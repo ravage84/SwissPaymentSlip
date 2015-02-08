@@ -50,10 +50,6 @@ After that you can install the package using
 
 in your project's root folder.
 
-### Git Submodule
-
-[TODO]
-
 Background Story
 ----------------
 
