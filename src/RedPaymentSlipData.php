@@ -206,7 +206,7 @@ class RedPaymentSlipData extends PaymentSlipData
     /**
      * Get the IBAN
      *
-     * @return string|bool The IBAN or false if withIban is false.
+     * @return string|false The IBAN or false if withIban is false.
      */
     public function getIban()
     {
@@ -257,7 +257,7 @@ class RedPaymentSlipData extends PaymentSlipData
     /**
      * Get the first line of the payment reason
      *
-     * @return string|bool The first line of the payment reason or false if withPaymentReason = false.
+     * @return string|false The first line of the payment reason or false if withPaymentReason = false.
      */
     public function getPaymentReasonLine1()
     {
@@ -285,7 +285,7 @@ class RedPaymentSlipData extends PaymentSlipData
     /**
      * Get the second line of the payment reason
      *
-     * @return string|bool The second line of the payment reason or false if withPaymentReason = false.
+     * @return string|false The second line of the payment reason or false if withPaymentReason = false.
      */
     public function getPaymentReasonLine2()
     {
@@ -313,7 +313,7 @@ class RedPaymentSlipData extends PaymentSlipData
     /**
      * Get the third line of the payment reason
      *
-     * @return string|bool The third line of the payment reason or false if withPaymentReason = false.
+     * @return string|false The third line of the payment reason or false if withPaymentReason = false.
      */
     public function getPaymentReasonLine3()
     {
@@ -341,7 +341,7 @@ class RedPaymentSlipData extends PaymentSlipData
     /**
      * Get the fourth line of the payment reason
      *
-     * @return string|bool The fourth line of the payment reason or false if withPaymentReason = false.
+     * @return string|false The fourth line of the payment reason or false if withPaymentReason = false.
      */
     public function getPaymentReasonLine4()
     {
@@ -356,7 +356,7 @@ class RedPaymentSlipData extends PaymentSlipData
      *
      * Not valid for electronic transactions.
      *
-     * @return string|bool Formatted IBAN or false if withIban is false.
+     * @return string|false Formatted IBAN or false if withIban is false.
      * @link http://en.wikipedia.org/wiki/International_Bank_Account_Number#Practicalities
      */
     public function getFormattedIban()

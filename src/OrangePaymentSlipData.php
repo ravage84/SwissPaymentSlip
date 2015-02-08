@@ -173,7 +173,7 @@ class OrangePaymentSlipData extends PaymentSlipData
     /**
      * Get the reference number
      *
-     * @return string|bool The reference number or false if withReferenceNumber is false.
+     * @return string|false The reference number or false if withReferenceNumber is false.
      */
     public function getReferenceNumber()
     {
@@ -202,7 +202,7 @@ class OrangePaymentSlipData extends PaymentSlipData
     /**
      * Get the banking customer ID
      *
-     * @return string|bool The  banking customer ID or false if withBankingCustomerId is false.
+     * @return string|false The  banking customer ID or false if withBankingCustomerId is false.
      */
     public function getBankingCustomerId()
     {
@@ -217,7 +217,7 @@ class OrangePaymentSlipData extends PaymentSlipData
      *
      * @param bool $formatted Should the returned reference be formatted in blocks of five (for better readability).
      * @param bool $fillZeros Fill up with leading zeros, only applies to the case where no banking customer ID is used.
-     * @return string|bool The complete (with/without bank customer ID), formatted reference number with check digit
+     * @return string|false The complete (with/without bank customer ID), formatted reference number with check digit
      * or false if withReferenceNumber is false.
      */
     public function getCompleteReferenceNumber($formatted = true, $fillZeros = true)
