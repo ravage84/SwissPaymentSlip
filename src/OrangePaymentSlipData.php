@@ -258,7 +258,7 @@ class OrangePaymentSlipData extends PaymentSlipData
     /**
      * Append the check digit to the reference number
      *
-     * Simply appends an 'X' if the slip is not ment for payment.
+     * Simply appends an 'X' if the slip is not meant for payment.
      *
      * @param string $referenceNumber The reference number to calculate the prefix with.
      * @param bool $notForPayment Whether the payment slip is not ment for payment.
