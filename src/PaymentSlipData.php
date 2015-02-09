@@ -188,39 +188,6 @@ abstract class PaymentSlipData
     protected $notForPayment = false;
 
     /**
-     * Set payment slip for not to be used for payment
-     *
-     * XXXes out all fields to prevent people using the payment slip.
-     *
-     * @param boolean $notForPayment True if not for payment, else false.
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setNotForPayment($notForPayment = true)
-    {
-        $this->notForPayment = $notForPayment;
-
-        if ($notForPayment === true) {
-            $this->setBankData('XXXXXX', 'XXXXXX');
-            $this->setAccountNumber('XXXXXX');
-            $this->setRecipientData('XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX');
-            $this->setPayerData('XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX');
-            $this->setAmount('XXXXXXXX.XX');
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get whether this payment slip must not be used for payment
-     *
-     * @return bool True if yes, else false.
-     */
-    public function getNotForPayment()
-    {
-        return $this->notForPayment;
-    }
-
-    /**
      * Set if payment slip has a bank specified
      *
      * @param bool $withBank True for yes, false for no
@@ -826,6 +793,39 @@ abstract class PaymentSlipData
         $francs = intval($amount);
         $cents = round(($amount - $francs) * 100);
         return str_pad($cents, 2, '0', STR_PAD_RIGHT);
+    }
+
+    /**
+     * Set payment slip for not to be used for payment
+     *
+     * XXXes out all fields to prevent people using the payment slip.
+     *
+     * @param boolean $notForPayment True if not for payment, else false.
+     * @return $this The current instance for a fluent interface.
+     */
+    public function setNotForPayment($notForPayment = true)
+    {
+        $this->notForPayment = $notForPayment;
+
+        if ($notForPayment === true) {
+            $this->setBankData('XXXXXX', 'XXXXXX');
+            $this->setAccountNumber('XXXXXX');
+            $this->setRecipientData('XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX');
+            $this->setPayerData('XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX');
+            $this->setAmount('XXXXXXXX.XX');
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get whether this payment slip must not be used for payment
+     *
+     * @return bool True if yes, else false.
+     */
+    public function getNotForPayment()
+    {
+        return $this->notForPayment;
     }
 
     /**
