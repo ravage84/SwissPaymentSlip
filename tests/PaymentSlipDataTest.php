@@ -40,7 +40,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the setWithBank method with an orange slip
+     * Tests the setWithBank method with
      *
      * @return void
      * @covers ::setWithBank
@@ -102,7 +102,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the setWithAccountNumber method with an orange slip
+     * Tests the setWithAccountNumber method with
      *
      * @return void
      * @covers ::setWithAccountNumber
@@ -159,7 +159,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the setWithRecipient method with an orange slip
+     * Tests the setWithRecipient method with
      *
      * @return void
      * @covers ::setWithRecipient
@@ -231,7 +231,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the setWithAmount method with an orange slip
+     * Tests the setWithAmount method with
      *
      * @return void
      * @covers ::setWithAmount
@@ -288,7 +288,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the setWithPayer method with an orange slip
+     * Tests the setWithPayer method with
      *
      * @return void
      * @covers ::setWithPayer
