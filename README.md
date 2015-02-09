@@ -43,7 +43,7 @@ and copy the following into it:
 ```JSON
 {
     "require": {
-        "swiss-payment-slip/swiss-payment-slip": "dev-master"
+        "swiss-payment-slip/swiss-payment-slip": "*"
     }
 }
 ```
