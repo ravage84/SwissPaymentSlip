@@ -104,7 +104,7 @@ class OrangePaymentSlipData extends PaymentSlipData
      */
     public function setWithReferenceNumber($withReferenceNumber = true)
     {
-        if (is_bool($withReferenceNumber)) {
+        if ($this->isBool($withReferenceNumber, 'withReferenceNumber')) {
             $this->withReferenceNumber = $withReferenceNumber;
 
             if (!$withReferenceNumber) {
@@ -133,10 +133,10 @@ class OrangePaymentSlipData extends PaymentSlipData
      */
     public function setWithBankingCustomerId($withBankingCustomerId = true)
     {
-        if (is_bool($withBankingCustomerId)) {
+        if ($this->isBool($withBankingCustomerId, 'withBankingCustomerId')) {
             $this->withBankingCustomerId = $withBankingCustomerId;
 
-            if (!$withBankingCustomerId) {
+            if ($withBankingCustomerId === false) {
                 $this->bankingCustomerId = '';
             }
         }

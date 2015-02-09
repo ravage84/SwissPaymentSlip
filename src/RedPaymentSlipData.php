@@ -128,10 +128,10 @@ class RedPaymentSlipData extends PaymentSlipData
      */
     public function setWithIban($withIban = false)
     {
-        if (is_bool($withIban)) {
+        if ($this->isBool($withIban, 'withIban')) {
             $this->withIban = $withIban;
 
-            if (!$withIban) {
+            if ($withIban === false) {
                 $this->iban = '';
             }
         }
@@ -158,10 +158,10 @@ class RedPaymentSlipData extends PaymentSlipData
      */
     public function setWithPaymentReason($withPaymentReason = false)
     {
-        if (is_bool($withPaymentReason)) {
+        if ($this->isBool($withPaymentReason, 'withPaymentReason')) {
             $this->withPaymentReason = $withPaymentReason;
 
-            if (!$withPaymentReason) {
+            if ($withPaymentReason === false) {
                 $this->paymentReasonLine1 = '';
                 $this->paymentReasonLine2 = '';
                 $this->paymentReasonLine3 = '';

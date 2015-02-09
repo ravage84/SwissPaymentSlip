@@ -213,9 +213,8 @@ class OrangePaymentSlip extends PaymentSlip
      */
     public function setDisplayReferenceNr($displayReferenceNr = true)
     {
-        if (is_bool($displayReferenceNr)) {
-            $this->displayReferenceNr = $displayReferenceNr;
-        }
+        $this->isBool($displayReferenceNr, 'displayReferenceNr');
+        $this->displayReferenceNr = $displayReferenceNr;
 
         return $this;
     }

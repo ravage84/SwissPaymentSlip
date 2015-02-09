@@ -12,6 +12,8 @@
 
 namespace SwissPaymentSlip\SwissPaymentSlip;
 
+use InvalidArgumentException;
+
 /**
  * Swiss Payment Slip Data
  *
@@ -226,7 +228,7 @@ abstract class PaymentSlipData
      */
     public function setWithBank($withBank = true)
     {
-        if (is_bool($withBank)) {
+        if ($this->isBool($withBank, 'withBank')) {
             $this->withBank = $withBank;
 
             if (!$withBank) {
@@ -256,10 +258,10 @@ abstract class PaymentSlipData
      */
     public function setWithAccountNumber($withAccountNumber = true)
     {
-        if (is_bool($withAccountNumber)) {
+        if ($this->isBool($withAccountNumber, 'withAccountNumber')) {
             $this->withAccountNumber = $withAccountNumber;
 
-            if (!$withAccountNumber) {
+            if ($withAccountNumber === false) {
                 $this->accountNumber = '';
             }
         }
@@ -285,10 +287,10 @@ abstract class PaymentSlipData
      */
     public function setWithRecipient($withRecipient = true)
     {
-        if (is_bool($withRecipient)) {
+        if ($this->isBool($withRecipient, 'withRecipient')) {
             $this->withRecipient = $withRecipient;
 
-            if (!$withRecipient) {
+            if ($withRecipient === false) {
                 $this->recipientLine1 = '';
                 $this->recipientLine2 = '';
                 $this->recipientLine3 = '';
@@ -317,10 +319,10 @@ abstract class PaymentSlipData
      */
     public function setWithAmount($withAmount = true)
     {
-        if (is_bool($withAmount)) {
+        if ($this->isBool($withAmount, 'withAmount')) {
             $this->withAmount = $withAmount;
 
-            if (!$withAmount) {
+            if ($withAmount === false) {
                 $this->amount = 0.0;
             }
         }
@@ -346,10 +348,10 @@ abstract class PaymentSlipData
      */
     public function setWithPayer($withPayer = true)
     {
-        if (is_bool($withPayer)) {
+        if ($this->isBool($withPayer, 'withPayer')) {
             $this->withPayer = $withPayer;
 
-            if (!$withPayer) {
+            if ($withPayer === false) {
                 $this->payerLine1 = '';
                 $this->payerLine2 = '';
                 $this->payerLine3 = '';
@@ -779,7 +781,7 @@ abstract class PaymentSlipData
                 return 'XXXXXXXXX';
             }
             $accountNumber = $this->getAccountNumber();
-            if ($accountNumber) {
+            if ($accountNumber !== false) {
                 $accountDigits = str_replace('-', '', $accountNumber, $replacedHyphens);
                 if ($replacedHyphens == 2) {
                     return $accountDigits;
@@ -855,7 +857,7 @@ abstract class PaymentSlipData
     protected function breakStringIntoBlocks($string, $blockSize = 5, $alignFromRight = true)
     {
         // Lets reverse the string (because we want the block to be aligned from the right)
-        if ($alignFromRight) {
+        if ($alignFromRight === true) {
             $string = strrev($string);
         }
 
@@ -863,7 +865,7 @@ abstract class PaymentSlipData
         $string = trim(chunk_split($string, $blockSize, ' '));
 
         // Re-reverse
-        if ($alignFromRight) {
+        if ($alignFromRight === true) {
             $string = strrev($string);
         }
 
@@ -879,4 +881,45 @@ abstract class PaymentSlipData
      * @return string The full code line.
      */
     abstract public function getCodeLine($fillZeros = true);
+
+    /**
+     * Verify that a given parameter is an integer or a float
+     *
+     * @param mixed $parameter The given parameter to validate.
+     * @param string $varName The name of the variable.
+     * @return true If the parameter is either  an integer or a float.
+     * @throws InvalidArgumentException If the parameter is neither an integer nor a float.
+     */
+    protected function isIntOrFloat($parameter, $varName)
+    {
+        if (!is_int($parameter) && is_float($parameter)) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    '$%s is neither an integer nor a float.',
+                    $varName
+                )
+            );
+        }
+    }
+
+    /**
+     * Verify that a given parameter is boolean
+     *
+     * @param mixed $parameter The given parameter to validate.
+     * @param string $varName The name of the variable.
+     * @return true If the parameter is a boolean.
+     * @throws InvalidArgumentException If the parameter is not a boolean.
+     */
+    protected function isBool($parameter, $varName)
+    {
+        if (!is_bool($parameter)) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    '$%s is not a boolean.',
+                    $varName
+                )
+            );
+        }
+        return true;
+    }
 }

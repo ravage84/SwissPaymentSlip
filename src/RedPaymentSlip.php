@@ -278,9 +278,8 @@ class RedPaymentSlip extends PaymentSlip
      */
     public function setDisplayIban($displayIban = true)
     {
-        if (is_bool($displayIban)) {
-            $this->displayIban = $displayIban;
-        }
+        $this->isBool($displayIban, 'displayIban');
+        $this->displayIban = $displayIban;
 
         return $this;
     }
@@ -303,9 +302,8 @@ class RedPaymentSlip extends PaymentSlip
      */
     public function setDisplayPaymentReason($displayPaymentReason = true)
     {
-        if (is_bool($displayPaymentReason)) {
-            $this->displayPaymentReason = $displayPaymentReason;
-        }
+        $this->isBool($displayPaymentReason, 'displayPaymentReason');
+        $this->displayPaymentReason = $displayPaymentReason;
 
         return $this;
     }

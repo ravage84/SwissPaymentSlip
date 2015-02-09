@@ -12,6 +12,8 @@
 
 namespace SwissPaymentSlip\SwissPaymentSlip;
 
+use InvalidArgumentException;
+
 /**
  * Swiss Payment Slip
  *
@@ -322,9 +324,8 @@ abstract class PaymentSlip
      */
     protected function setSlipPosX($slipPosX)
     {
-        if (is_int($slipPosX) || is_float($slipPosX)) {
-            $this->slipPosX = $slipPosX;
-        }
+        $this->isIntOrFloat($slipPosX, 'slipPosX');
+        $this->slipPosX = $slipPosX;
 
         return $this;
     }
@@ -337,9 +338,8 @@ abstract class PaymentSlip
      */
     protected function setSlipPosY($slipPosY)
     {
-        if (is_int($slipPosY) || is_float($slipPosY)) {
-            $this->slipPosY = $slipPosY;
-        }
+        $this->isIntOrFloat($slipPosY, '$slipPosY');
+        $this->slipPosY = $slipPosY;
 
         return $this;
     }
@@ -367,9 +367,8 @@ abstract class PaymentSlip
      */
     protected function setSlipWidth($slipWidth)
     {
-        if (is_int($slipWidth) || is_float($slipWidth)) {
-            $this->slipWidth = $slipWidth;
-        }
+        $this->isIntOrFloat($slipWidth, 'slipWidth');
+        $this->slipWidth = $slipWidth;
 
         return $this;
     }
@@ -382,9 +381,8 @@ abstract class PaymentSlip
      */
     protected function setSlipHeight($slipHeight)
     {
-        if (is_int($slipHeight) || is_float($slipHeight)) {
-            $this->slipHeight = $slipHeight;
-        }
+        $this->isIntOrFloat($slipHeight, 'slipHeight');
+        $this->slipHeight = $slipHeight;
 
         return $this;
     }
@@ -1264,9 +1262,8 @@ abstract class PaymentSlip
      */
     public function setDisplayAccount($displayAccount = true)
     {
-        if (is_bool($displayAccount)) {
-            $this->displayAccount = $displayAccount;
-        }
+        $this->isBool($displayAccount, 'displayAccount');
+        $this->displayAccount = $displayAccount;
 
         return $this;
     }
@@ -1289,9 +1286,8 @@ abstract class PaymentSlip
      */
     public function setDisplayAmount($displayAmount = true)
     {
-        if (is_bool($displayAmount)) {
-            $this->displayAmount = $displayAmount;
-        }
+        $this->isBool($displayAmount, 'displayAmount');
+        $this->displayAmount = $displayAmount;
 
         return $this;
     }
@@ -1314,9 +1310,8 @@ abstract class PaymentSlip
      */
     public function setDisplayBank($displayBank = true)
     {
-        if (is_bool($displayBank)) {
-            $this->displayBank = $displayBank;
-        }
+        $this->isBool($displayBank, 'displayBank');
+        $this->displayBank = $displayBank;
 
         return $this;
     }
@@ -1339,9 +1334,8 @@ abstract class PaymentSlip
      */
     public function setDisplayPayer($displayPayer = true)
     {
-        if (is_bool($displayPayer)) {
-            $this->displayPayer = $displayPayer;
-        }
+        $this->isBool($displayPayer, 'displayPayer');
+        $this->displayPayer = $displayPayer;
 
         return $this;
     }
@@ -1364,9 +1358,8 @@ abstract class PaymentSlip
      */
     public function setDisplayRecipient($displayRecipient = true)
     {
-        if (is_bool($displayRecipient)) {
-            $this->displayRecipient = $displayRecipient;
-        }
+        $this->isBool($displayRecipient, 'displayRecipient');
+        $this->displayRecipient = $displayRecipient;
 
         return $this;
     }
@@ -1389,9 +1382,8 @@ abstract class PaymentSlip
      */
     public function setDisplayCodeLine($displayCodeLine = true)
     {
-        if (is_bool($displayCodeLine)) {
-            $this->displayCodeLine = $displayCodeLine;
-        }
+        $this->isBool($displayCodeLine, 'displayCodeLine');
+        $this->displayCodeLine = $displayCodeLine;
 
         return $this;
     }
@@ -1543,5 +1535,46 @@ abstract class PaymentSlip
         }
 
         return $elements;
+    }
+
+    /**
+     * Verify that a given parameter is an integer or a float
+     *
+     * @param mixed $parameter The given parameter to validate.
+     * @param string $varName The name of the variable.
+     * @return true If the parameter is either  an integer or a float.
+     * @throws InvalidArgumentException If the parameter is neither an integer nor a float.
+     */
+    protected function isIntOrFloat($parameter, $varName)
+    {
+        if (!is_int($parameter) && is_float($parameter)) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    '$%s is neither an integer nor a float.',
+                    $varName
+                )
+            );
+        }
+    }
+
+    /**
+     * Verify that a given parameter is boolean
+     *
+     * @param mixed $parameter The given parameter to validate.
+     * @param string $varName The name of the variable.
+     * @return true If the parameter is a boolean.
+     * @throws InvalidArgumentException If the parameter is not a boolean.
+     */
+    protected function isBool($parameter, $varName)
+    {
+        if (!is_bool($parameter)) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    '$%s is not a boolean.',
+                    $varName
+                )
+            );
+        }
+        return true;
     }
 }
