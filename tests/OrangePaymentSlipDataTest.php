@@ -36,7 +36,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->slipData = new OrangePaymentSlipData;
+        $this->slipData = new OrangePaymentSlipData();
     }
 
     /**
