@@ -62,13 +62,6 @@ abstract class PaymentSlipData
     private $moduloTable = array(0, 9, 4, 6, 8, 2, 7, 1, 3, 5);
 
     /**
-     * Determines if the payment slip must not be used for payment (XXXed out)
-     *
-     * @var bool Normally false, true if not for payment.
-     */
-    protected $notForPayment = false;
-
-    /**
      * Determines if the payment slip has a recipient bank. Can be disabled for pre-printed payment slips
      *
      * @var bool True if yes, false if no.
@@ -186,6 +179,13 @@ abstract class PaymentSlipData
      * @var string The fourth line of the payer.
      */
     protected $payerLine4 = '';
+
+    /**
+     * Determines if the payment slip must not be used for payment (XXXed out)
+     *
+     * @var bool Normally false, true if not for payment.
+     */
+    protected $notForPayment = false;
 
     /**
      * Set payment slip for not to be used for payment
