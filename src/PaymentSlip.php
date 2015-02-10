@@ -1547,7 +1547,7 @@ abstract class PaymentSlip
      */
     protected function isIntOrFloat($parameter, $varName)
     {
-        if (!is_int($parameter) && is_float($parameter)) {
+        if ((!is_int($parameter) && !is_float($parameter))) {
             throw new InvalidArgumentException(
                 sprintf(
                     '$%s is neither an integer nor a float.',
