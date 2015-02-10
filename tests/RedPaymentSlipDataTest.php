@@ -40,7 +40,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the setWithIban method with a red slip
+     * Tests the setWithIban method
      *
      * @return void
      * @covers ::setWithIban
@@ -96,7 +96,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the setWithPaymentReason method with a red slip
+     * Tests the setWithPaymentReason method
      *
      * @return void
      * @covers ::setWithPaymentReason
@@ -235,7 +235,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getCodeLine method with a red slip
+     * Tests the getCodeLine method
      *
      * @return void
      * @covers ::getCodeLine

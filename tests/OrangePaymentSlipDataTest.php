@@ -132,7 +132,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getCompleteReferenceNumber method for an orange slip
+     * Tests the getCompleteReferenceNumber method
      *
      * @return void
      * @covers ::getCompleteReferenceNumber
