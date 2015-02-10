@@ -883,26 +883,6 @@ abstract class PaymentSlipData
     abstract public function getCodeLine($fillZeros = true);
 
     /**
-     * Verify that a given parameter is an integer or a float
-     *
-     * @param mixed $parameter The given parameter to validate.
-     * @param string $varName The name of the variable.
-     * @return true If the parameter is either  an integer or a float.
-     * @throws InvalidArgumentException If the parameter is neither an integer nor a float.
-     */
-    protected function isIntOrFloat($parameter, $varName)
-    {
-        if (!is_int($parameter) && is_float($parameter)) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    '$%s is neither an integer nor a float.',
-                    $varName
-                )
-            );
-        }
-    }
-
-    /**
      * Verify that a given parameter is boolean
      *
      * @param mixed $parameter The given parameter to validate.
