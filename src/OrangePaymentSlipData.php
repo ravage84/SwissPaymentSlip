@@ -75,26 +75,6 @@ class OrangePaymentSlipData extends PaymentSlipData
     protected $bankingCustomerId = '';
 
     /**
-     * Set payment slip for not to be used for payment
-     *
-     * XXXes out all fields to prevent people using the payment slip.
-     *
-     * @param boolean $notForPayment True if not for payment, else false.
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setNotForPayment($notForPayment = true)
-    {
-        parent::setNotForPayment($notForPayment);
-
-        if ($notForPayment === true) {
-            $this->setReferenceNumber('XXXXXXXXXXXXXXXXXXXX');
-            $this->setBankingCustomerId('XXXXXX');
-        }
-
-        return $this;
-    }
-
-    /**
      * Set if payment slip has a reference number specified
      *
      * Resets reference number if disabled
@@ -210,6 +190,26 @@ class OrangePaymentSlipData extends PaymentSlipData
             return $this->bankingCustomerId;
         }
         return false;
+    }
+
+    /**
+     * Set payment slip for not to be used for payment
+     *
+     * XXXes out all fields to prevent people using the payment slip.
+     *
+     * @param boolean $notForPayment True if not for payment, else false.
+     * @return $this The current instance for a fluent interface.
+     */
+    public function setNotForPayment($notForPayment = true)
+    {
+        parent::setNotForPayment($notForPayment);
+
+        if ($notForPayment === true) {
+            $this->setReferenceNumber('XXXXXXXXXXXXXXXXXXXX');
+            $this->setBankingCustomerId('XXXXXX');
+        }
+
+        return $this;
     }
 
     /**
