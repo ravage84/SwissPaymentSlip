@@ -100,26 +100,6 @@ class RedPaymentSlipData extends PaymentSlipData
     protected $paymentReasonLine4 = '';
 
     /**
-     * Set payment slip for not to be used for payment
-     *
-     * XXXes out all fields to prevent people using the payment slip.
-     *
-     * @param boolean $notForPayment True if not for payment, else false.
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setNotForPayment($notForPayment = true)
-    {
-        parent::setNotForPayment($notForPayment);
-
-        if ($notForPayment === true) {
-            $this->setPaymentReasonData('XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX');
-            $this->setIban('XXXXXX');
-        }
-
-        return $this;
-    }
-
-    /**
      * Set if payment slip has an IBAN specified
      *
      * @param bool $withIban True if yes, false if no.
@@ -347,6 +327,26 @@ class RedPaymentSlipData extends PaymentSlipData
             return $this->paymentReasonLine4;
         }
         return false;
+    }
+
+    /**
+     * Set payment slip for not to be used for payment
+     *
+     * XXXes out all fields to prevent people using the payment slip.
+     *
+     * @param boolean $notForPayment True if not for payment, else false.
+     * @return $this The current instance for a fluent interface.
+     */
+    public function setNotForPayment($notForPayment = true)
+    {
+        parent::setNotForPayment($notForPayment);
+
+        if ($notForPayment === true) {
+            $this->setPaymentReasonData('XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX');
+            $this->setIban('XXXXXX');
+        }
+
+        return $this;
     }
 
     /**
