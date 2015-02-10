@@ -12,6 +12,7 @@
 
 namespace SwissPaymentSlip\SwissPaymentSlip\Tests;
 
+use SwissPaymentSlip\SwissPaymentSlip\PaymentSlipData;
 use SwissPaymentSlip\SwissPaymentSlip\PaymentSlip;
 
 /**
@@ -19,6 +20,13 @@ use SwissPaymentSlip\SwissPaymentSlip\PaymentSlip;
  */
 class PaymentSlipTestCase extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * The data container for the object under test
+     *
+     * @var PaymentSlipData
+     */
+    protected $slipData;
+
     /**
      * The object under test
      *

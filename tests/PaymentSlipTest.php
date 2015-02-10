@@ -28,8 +28,8 @@ class PaymentSlipTest extends PaymentSlipTestCase
      */
     protected function setUp()
     {
-        $slipData = new TestablePaymentSlipData();
-        $this->paymentSlip = new TestablePaymentSlip($slipData);
+        $this->slipData = new TestablePaymentSlipData();
+        $this->paymentSlip = new TestablePaymentSlip($this->slipData);
 
         $attributes = array();
         $attributes['PosX'] = 0;
@@ -58,6 +58,35 @@ class PaymentSlipTest extends PaymentSlipTestCase
         $attributes['TextAlign'] = 'C';
 
         $this->setAttributes = $attributes;
+    }
+
+    /**
+     * Tests the constructor when setting the position
+     *
+     * @return void
+     * @covers ::__construct
+     */
+    public function testConstructSetPosition()
+    {
+        // Do not set position explicitly
+        $slip = new TestablePaymentSlip($this->slipData);
+        $this->assertEquals(0, $slip->getSlipPosX());
+        $this->assertEquals(191, $slip->getSlipPosY());
+
+        // Set X and Y position
+        $slip = new TestablePaymentSlip($this->slipData, 100, 200);
+        $this->assertEquals(100, $slip->getSlipPosX());
+        $this->assertEquals(200, $slip->getSlipPosY());
+
+        // Set X position only
+        $slip = new TestablePaymentSlip($this->slipData, 50);
+        $this->assertEquals(50, $slip->getSlipPosX());
+        $this->assertEquals(191, $slip->getSlipPosY());
+
+        // Set X position only
+        $slip = new TestablePaymentSlip($this->slipData, null, 150);
+        $this->assertEquals(0, $slip->getSlipPosX());
+        $this->assertEquals(150, $slip->getSlipPosY());
     }
 
     /**
@@ -115,17 +144,42 @@ class PaymentSlipTest extends PaymentSlipTestCase
      */
     public function testSetSlipPosition()
     {
+        // Test the default values
+        $this->assertEquals(0, $this->paymentSlip->getSlipPosX());
+        $this->assertEquals(191, $this->paymentSlip->getSlipPosY());
+
+        // Set both
         $this->paymentSlip->setSlipPosition(200, 100);
         $this->assertEquals(200, $this->paymentSlip->getSlipPosX());
         $this->assertEquals(100, $this->paymentSlip->getSlipPosY());
+    }
 
+    /**
+     * Tests the setSlipPosition method with an invalid first parameter
+     *
+     * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $slipPosX is neither an integer nor a float.
+     * @covers ::setSlipPosition
+     * @covers ::isIntOrFloat
+     */
+    public function testSetSlipPositionFirstParameterInvalid()
+    {
         $this->paymentSlip->setSlipPosition('A', 150);
-        $this->assertEquals(200, $this->paymentSlip->getSlipPosX());
-        $this->assertEquals(150, $this->paymentSlip->getSlipPosY());
+    }
 
-        $this->paymentSlip->setSlipPosition(225, 'B');
-        $this->assertEquals(225, $this->paymentSlip->getSlipPosX());
-        $this->assertEquals(150, $this->paymentSlip->getSlipPosY());
+    /**
+     * Tests the setSlipPosition method with an invalid second parameter
+     *
+     * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $slipPosY is neither an integer nor a float.
+     * @covers ::setSlipPosition
+     * @covers ::isIntOrFloat
+     */
+    public function testSetSlipPositionSecondParameterInvalid()
+    {
+        $this->paymentSlip->setSlipPosition(150, 'B');
     }
 
     /**
@@ -140,17 +194,41 @@ class PaymentSlipTest extends PaymentSlipTestCase
      */
     public function testSetSlipSize()
     {
+        // Test the default values
+        $this->assertEquals(210, $this->paymentSlip->getSlipWidth());
+        $this->assertEquals(106, $this->paymentSlip->getSlipHeight());
+
         $this->paymentSlip->setSlipSize(250, 150);
         $this->assertEquals(250, $this->paymentSlip->getSlipWidth());
         $this->assertEquals(150, $this->paymentSlip->getSlipHeight());
+    }
 
-        $this->paymentSlip->setSlipSize('A', 175);
-        $this->assertEquals(250, $this->paymentSlip->getSlipWidth());
-        $this->assertEquals(175, $this->paymentSlip->getSlipHeight());
+    /**
+     * Tests the setSlipSize method with an invalid first parameter
+     *
+     * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $slipWidth is neither an integer nor a float.
+     * @covers ::setSlipSize
+     * @covers ::isIntOrFloat
+     */
+    public function testSetSlipSizeFirstParameterInvalid()
+    {
+        $this->paymentSlip->setSlipSize('A', 150);
+    }
 
-        $this->paymentSlip->setSlipSize(225, 'B');
-        $this->assertEquals(225, $this->paymentSlip->getSlipWidth());
-        $this->assertEquals(175, $this->paymentSlip->getSlipHeight());
+    /**
+     * Tests the setSlipSize method with an invalid second parameter
+     *
+     * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $slipHeight is neither an integer nor a float.
+     * @covers ::setSlipSize
+     * @covers ::isIntOrFloat
+     */
+    public function testSetSlipSizeSecondParameterInvalid()
+    {
+        $this->paymentSlip->setSlipSize(150, 'B');
     }
 
     /**
@@ -162,9 +240,11 @@ class PaymentSlipTest extends PaymentSlipTestCase
      */
     public function testSetSlipBackground()
     {
+        // Test with a RGB code
         $this->paymentSlip->setSlipBackground('#123456');
         $this->assertEquals('#123456', $this->paymentSlip->getSlipBackground());
 
+        // Test with an image
         $this->paymentSlip->setSlipBackground(__DIR__.'/Resources/img/ezs_orange.gif');
         $this->assertEquals(__DIR__.'/Resources/img/ezs_orange.gif', $this->paymentSlip->getSlipBackground());
     }
@@ -632,19 +712,34 @@ class PaymentSlipTest extends PaymentSlipTestCase
      * @return void
      * @covers ::setDisplayBank
      * @covers ::getDisplayBank
+     * @covers ::isBool
      */
     public function testSetDisplayBank()
     {
-        $this->paymentSlip->setDisplayBank();
-        $this->assertEquals(true, $this->paymentSlip->getDisplayBank());
+        // Test the default value
+        $this->assertTrue($this->paymentSlip->getDisplayBank());
 
-        $this->paymentSlip->setDisplayBank(true);
-        $this->assertEquals(true, $this->paymentSlip->getDisplayBank());
-
+        // Disable the feature
         $this->paymentSlip->setDisplayBank(false);
-        $this->assertEquals(false, $this->paymentSlip->getDisplayBank());
+        $this->assertFalse($this->paymentSlip->getDisplayBank());
 
-        $this->paymentSlip->setDisplayBank('XXX');
+        // Re-enable the feature
+        $this->paymentSlip->setDisplayBank();
+        $this->assertTrue($this->paymentSlip->getDisplayBank());
+    }
+
+    /**
+     * Tests the setDisplayBank method with an invalid parameter
+     *
+     * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $displayBank is not a boolean.
+     * @covers ::setDisplayBank
+     * @covers ::isBool
+     */
+    public function testSetDisplayBankInvalidParameter()
+    {
+        $this->paymentSlip->setDisplayBank('true');
     }
 
     /**
@@ -653,19 +748,34 @@ class PaymentSlipTest extends PaymentSlipTestCase
      * @return void
      * @covers ::setDisplayAccount
      * @covers ::getDisplayAccount
+     * @covers ::isBool
      */
     public function testSetDisplayAccount()
     {
-        $this->paymentSlip->setDisplayAccount();
-        $this->assertEquals(true, $this->paymentSlip->getDisplayAccount());
+        // Test the default value
+        $this->assertTrue($this->paymentSlip->getDisplayAccount());
 
-        $this->paymentSlip->setDisplayAccount(true);
-        $this->assertEquals(true, $this->paymentSlip->getDisplayAccount());
-
+        // Disable the feature
         $this->paymentSlip->setDisplayAccount(false);
-        $this->assertEquals(false, $this->paymentSlip->getDisplayAccount());
+        $this->assertFalse($this->paymentSlip->getDisplayAccount());
 
-        $this->paymentSlip->setDisplayAccount('XXX');
+        // Re-enable the feature
+        $this->paymentSlip->setDisplayAccount();
+        $this->assertTrue($this->paymentSlip->getDisplayAccount());
+    }
+
+    /**
+     * Tests the setDisplayAccount method with an invalid parameter
+     *
+     * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $displayAccount is not a boolean.
+     * @covers ::setDisplayAccount
+     * @covers ::isBool
+     */
+    public function testSetDisplayAccountInvalidParameter()
+    {
+        $this->paymentSlip->setDisplayAccount('true');
     }
 
     /**
@@ -674,19 +784,34 @@ class PaymentSlipTest extends PaymentSlipTestCase
      * @return void
      * @covers ::setDisplayRecipient
      * @covers ::getDisplayRecipient
+     * @covers ::isBool
      */
     public function testSetDisplayRecipient()
     {
-        $this->paymentSlip->setDisplayRecipient();
-        $this->assertEquals(true, $this->paymentSlip->getDisplayRecipient());
+        // Test the default value
+        $this->assertTrue($this->paymentSlip->getDisplayRecipient());
 
-        $this->paymentSlip->setDisplayRecipient(true);
-        $this->assertEquals(true, $this->paymentSlip->getDisplayRecipient());
-
+        // Disable the feature
         $this->paymentSlip->setDisplayRecipient(false);
-        $this->assertEquals(false, $this->paymentSlip->getDisplayRecipient());
+        $this->assertFalse($this->paymentSlip->getDisplayRecipient());
 
-        $this->paymentSlip->setDisplayRecipient('XXX');
+        // Re-enable the feature
+        $this->paymentSlip->setDisplayRecipient();
+        $this->assertTrue($this->paymentSlip->getDisplayRecipient());
+    }
+
+    /**
+     * Tests the setDisplayRecipient method with an invalid parameter
+     *
+     * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $displayRecipient is not a boolean.
+     * @covers ::setDisplayRecipient
+     * @covers ::isBool
+     */
+    public function testSetDisplayRecipientInvalidParameter()
+    {
+        $this->paymentSlip->setDisplayRecipient('true');
     }
 
     /**
@@ -695,19 +820,34 @@ class PaymentSlipTest extends PaymentSlipTestCase
      * @return void
      * @covers ::setDisplayAmount
      * @covers ::getDisplayAmount
+     * @covers ::isBool
      */
     public function testSetDisplayAmount()
     {
-        $this->paymentSlip->setDisplayAmount();
-        $this->assertEquals(true, $this->paymentSlip->getDisplayAmount());
+        // Test the default value
+        $this->assertTrue($this->paymentSlip->getDisplayAmount());
 
-        $this->paymentSlip->setDisplayAmount(true);
-        $this->assertEquals(true, $this->paymentSlip->getDisplayAmount());
-
+        // Disable the feature
         $this->paymentSlip->setDisplayAmount(false);
-        $this->assertEquals(false, $this->paymentSlip->getDisplayAmount());
+        $this->assertFalse($this->paymentSlip->getDisplayAmount());
 
-        $this->paymentSlip->setDisplayAmount('XXX');
+        // Re-enable the feature
+        $this->paymentSlip->setDisplayAmount();
+        $this->assertTrue($this->paymentSlip->getDisplayAmount());
+    }
+
+    /**
+     * Tests the setDisplayAmount method with an invalid parameter
+     *
+     * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $displayAmount is not a boolean.
+     * @covers ::setDisplayAmount
+     * @covers ::isBool
+     */
+    public function testSetDisplayAmountInvalidParameter()
+    {
+        $this->paymentSlip->setDisplayAmount('true');
     }
 
     /**
@@ -716,19 +856,34 @@ class PaymentSlipTest extends PaymentSlipTestCase
      * @return void
      * @covers ::setDisplayPayer
      * @covers ::getDisplayPayer
+     * @covers ::isBool
      */
     public function testSetDisplayPayer()
     {
-        $this->paymentSlip->setDisplayPayer();
-        $this->assertEquals(true, $this->paymentSlip->getDisplayPayer());
+        // Test the default value
+        $this->assertTrue($this->paymentSlip->getDisplayPayer());
 
-        $this->paymentSlip->setDisplayPayer(true);
-        $this->assertEquals(true, $this->paymentSlip->getDisplayPayer());
-
+        // Disable the feature
         $this->paymentSlip->setDisplayPayer(false);
-        $this->assertEquals(false, $this->paymentSlip->getDisplayPayer());
+        $this->assertFalse($this->paymentSlip->getDisplayPayer());
 
-        $this->paymentSlip->setDisplayPayer('XXX');
+        // Re-enable the feature
+        $this->paymentSlip->setDisplayPayer();
+        $this->assertTrue($this->paymentSlip->getDisplayPayer());
+    }
+
+    /**
+     * Tests the setDisplayPayer method with an invalid parameter
+     *
+     * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $displayPayer is not a boolean.
+     * @covers ::setDisplayPayer
+     * @covers ::isBool
+     */
+    public function testSetDisplayPayerInvalidParameter()
+    {
+        $this->paymentSlip->setDisplayPayer('true');
     }
 
     /**
@@ -737,19 +892,34 @@ class PaymentSlipTest extends PaymentSlipTestCase
      * @return void
      * @covers ::setDisplayCodeLine
      * @covers ::getDisplayCodeLine
+     * @covers ::isBool
      */
     public function testSetDisplayCodeLine()
     {
-        $this->paymentSlip->setDisplayCodeLine();
-        $this->assertEquals(true, $this->paymentSlip->getDisplayCodeLine());
+        // Test the default value
+        $this->assertTrue($this->paymentSlip->getDisplayCodeLine());
 
-        $this->paymentSlip->setDisplayCodeLine(true);
-        $this->assertEquals(true, $this->paymentSlip->getDisplayCodeLine());
-
+        // Disable the feature
         $this->paymentSlip->setDisplayCodeLine(false);
-        $this->assertEquals(false, $this->paymentSlip->getDisplayCodeLine());
+        $this->assertFalse($this->paymentSlip->getDisplayCodeLine());
 
-        $this->paymentSlip->setDisplayCodeLine('XXX');
+        // Re-enable the feature
+        $this->paymentSlip->setDisplayCodeLine();
+        $this->assertTrue($this->paymentSlip->getDisplayCodeLine());
+    }
+
+    /**
+     * Tests the setDisplayCodeLine method with an invalid parameter
+     *
+     * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $displayCodeLine is not a boolean.
+     * @covers ::setDisplayCodeLine
+     * @covers ::isBool
+     */
+    public function testSetDisplayCodeLineInvalidParameter()
+    {
+        $this->paymentSlip->setDisplayCodeLine('true');
     }
 
     /**
