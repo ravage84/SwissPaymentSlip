@@ -150,12 +150,11 @@ class RedPaymentSlipData extends PaymentSlipData
 
     /**
      * Set if payment slip has a payment reason specified.
-     * Only available for red payment slips
      *
      * @param bool $withPaymentReason True if yes, false if no.
      * @return $this The current instance for a fluent interface.
      */
-    public function setWithPaymentReason($withPaymentReason = false)
+    public function setWithPaymentReason($withPaymentReason = true)
     {
         if ($this->isBool($withPaymentReason, 'withPaymentReason')) {
             $this->withPaymentReason = $withPaymentReason;
