@@ -40,367 +40,111 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the setWithBank method with
+     * Tests the getWithBank and setWithBank methods
      *
      * @return void
      * @covers ::setWithBank
      * @covers ::getWithBank
-     */
-    public function testSetWithBank()
-    {
-        $this->slipData->setBankData('Seldwyla Bank', '8001 Zürich');
-
-        $this->slipData->setWithBank();
-        $this->assertTrue($this->slipData->getWithBank());
-        $this->assertEquals('Seldwyla Bank', $this->slipData->getBankName());
-        $this->assertEquals('8001 Zürich', $this->slipData->getBankCity());
-
-        $this->slipData->setWithBank(true);
-        $this->assertTrue($this->slipData->getWithBank());
-        $this->assertEquals('Seldwyla Bank', $this->slipData->getBankName());
-        $this->assertEquals('8001 Zürich', $this->slipData->getBankCity());
-
-        $this->slipData->setWithBank(false);
-        $this->assertFalse($this->slipData->getWithBank());
-        $this->assertEquals(false, $this->slipData->getBankName());
-        $this->assertEquals(false, $this->slipData->getBankCity());
-    }
-
-    /**
-     * Tests the setWithBank method with various parameters
-     *
-     * @return void
-     * @covers ::setWithBank
-     * @covers ::getWithBank
-     */
-    public function testSetWithBankParameters()
-    {
-        $this->slipData->setBankData('Seldwyla Bank', '8001 Zürich');
-
-        $this->slipData->setWithBank(1);
-        $this->assertTrue($this->slipData->getWithBank());
-        $this->assertEquals('Seldwyla Bank', $this->slipData->getBankName());
-        $this->assertEquals('8001 Zürich', $this->slipData->getBankCity());
-
-        $this->slipData->setWithBank(0);
-        $this->assertTrue($this->slipData->getWithBank());
-        $this->assertEquals('Seldwyla Bank', $this->slipData->getBankName());
-        $this->assertEquals('8001 Zürich', $this->slipData->getBankCity());
-
-        $this->slipData->setWithBank('foo');
-        $this->assertTrue($this->slipData->getWithBank());
-
-        $this->slipData->setWithBank(123);
-        $this->assertTrue($this->slipData->getWithBank());
-
-        $this->slipData->setWithBank(123.456);
-        $this->assertTrue($this->slipData->getWithBank());
-
-        $this->slipData->setWithBank(array(true));
-        $this->assertTrue($this->slipData->getWithBank());
-    }
-
-    /**
-     * Tests the setWithAccountNumber method with
-     *
-     * @return void
-     * @covers ::setWithAccountNumber
-     * @covers ::getWithAccountNumber
-     */
-    public function testSetWithAccountNumber()
-    {
-        $this->slipData->setAccountNumber('01-2345-6');
-
-        $this->slipData->setWithAccountNumber();
-        $this->assertTrue($this->slipData->getWithAccountNumber());
-        $this->assertEquals('01-2345-6', $this->slipData->getAccountNumber());
-
-        $this->slipData->setWithAccountNumber(true);
-        $this->assertTrue($this->slipData->getWithAccountNumber());
-        $this->assertEquals('01-2345-6', $this->slipData->getAccountNumber());
-
-        $this->slipData->setWithAccountNumber(false);
-        $this->assertFalse($this->slipData->getWithAccountNumber());
-        $this->assertEquals(false, $this->slipData->getAccountNumber());
-    }
-
-    /**
-     * Tests the setWithAccountNumber method with various parameters
-     *
-     * @return void
-     * @covers ::setWithAccountNumber
-     * @covers ::getWithAccountNumber
-     */
-    public function testSetWithAccountNumberParameters()
-    {
-        $this->slipData->setAccountNumber('01-2345-6');
-
-        $this->slipData->setWithAccountNumber(1);
-        $this->assertTrue($this->slipData->getWithAccountNumber());
-        $this->assertEquals('01-2345-6', $this->slipData->getAccountNumber());
-
-        $this->slipData->setWithAccountNumber(0);
-        $this->assertTrue($this->slipData->getWithAccountNumber());
-        $this->assertEquals('01-2345-6', $this->slipData->getAccountNumber());
-
-        $this->slipData->setWithAccountNumber('foo');
-        $this->assertTrue($this->slipData->getWithAccountNumber());
-
-        $this->slipData->setWithAccountNumber(123);
-        $this->assertTrue($this->slipData->getWithAccountNumber());
-
-        $this->slipData->setWithAccountNumber(123.456);
-        $this->assertTrue($this->slipData->getWithAccountNumber());
-
-        $this->slipData->setWithAccountNumber(array(true));
-        $this->assertTrue($this->slipData->getWithAccountNumber());
-    }
-
-    /**
-     * Tests the setWithRecipient method with
-     *
-     * @return void
-     * @covers ::setWithRecipient
-     * @covers ::getWithRecipient
-     */
-    public function testSetWithRecipient()
-    {
-        $this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
-
-        $this->slipData->setWithRecipient();
-        $this->assertTrue($this->slipData->getWithRecipient());
-        $this->assertEquals('AAAAAAAAAA', $this->slipData->getRecipientLine1());
-        $this->assertEquals('BBBBBBBBBB', $this->slipData->getRecipientLine2());
-        $this->assertEquals('CCCCCCCCCC', $this->slipData->getRecipientLine3());
-        $this->assertEquals('DDDDDDDDDD', $this->slipData->getRecipientLine4());
-
-        $this->slipData->setWithRecipient(true);
-        $this->assertTrue($this->slipData->getWithRecipient());
-        $this->assertEquals('AAAAAAAAAA', $this->slipData->getRecipientLine1());
-        $this->assertEquals('BBBBBBBBBB', $this->slipData->getRecipientLine2());
-        $this->assertEquals('CCCCCCCCCC', $this->slipData->getRecipientLine3());
-        $this->assertEquals('DDDDDDDDDD', $this->slipData->getRecipientLine4());
-
-        $this->slipData->setWithRecipient(false);
-        $this->assertFalse($this->slipData->getWithRecipient());
-        $this->assertEquals(false, $this->slipData->getRecipientLine1());
-        $this->assertEquals(false, $this->slipData->getRecipientLine2());
-        $this->assertEquals(false, $this->slipData->getRecipientLine3());
-        $this->assertEquals(false, $this->slipData->getRecipientLine4());
-    }
-
-    /**
-     * Tests the setWithBank method with various parameters
-     *
-     * @return void
-     * @covers ::setWithRecipient
-     * @covers ::getWithRecipient
-     */
-    public function testSetWithRecipientParameters()
-    {
-        $this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
-
-        $this->slipData->setWithRecipient(1);
-        $this->assertTrue($this->slipData->getWithRecipient());
-        $this->assertEquals('AAAAAAAAAA', $this->slipData->getRecipientLine1());
-        $this->assertEquals('BBBBBBBBBB', $this->slipData->getRecipientLine2());
-        $this->assertEquals('CCCCCCCCCC', $this->slipData->getRecipientLine3());
-        $this->assertEquals('DDDDDDDDDD', $this->slipData->getRecipientLine4());
-
-        $this->slipData->setWithRecipient(0);
-        $this->assertTrue($this->slipData->getWithRecipient());
-        $this->assertEquals('AAAAAAAAAA', $this->slipData->getRecipientLine1());
-        $this->assertEquals('BBBBBBBBBB', $this->slipData->getRecipientLine2());
-        $this->assertEquals('CCCCCCCCCC', $this->slipData->getRecipientLine3());
-        $this->assertEquals('DDDDDDDDDD', $this->slipData->getRecipientLine4());
-
-        $this->slipData->setWithRecipient('foo');
-        $this->assertTrue($this->slipData->getWithRecipient());
-
-        $this->slipData->setWithRecipient(123);
-        $this->assertTrue($this->slipData->getWithRecipient());
-
-        $this->slipData->setWithRecipient(123.456);
-        $this->assertTrue($this->slipData->getWithRecipient());
-
-        $this->slipData->setWithRecipient(array(true));
-        $this->assertTrue($this->slipData->getWithRecipient());
-    }
-
-    /**
-     * Tests the setWithAmount method with
-     *
-     * @return void
-     * @covers ::setWithAmount
-     * @covers ::getWithAmount
-     */
-    public function testSetWithAmountNumber()
-    {
-        $this->slipData->setAmount(1234567.89);
-
-        $this->slipData->setWithAmount();
-        $this->assertTrue($this->slipData->getWithAmount());
-        $this->assertEquals(1234567.89, $this->slipData->getAmount());
-
-        $this->slipData->setWithAmount(true);
-        $this->assertTrue($this->slipData->getWithAmount());
-        $this->assertEquals(1234567.89, $this->slipData->getAmount());
-
-        $this->slipData->setWithAmount(false);
-        $this->assertFalse($this->slipData->getWithAmount());
-        $this->assertEquals(false, $this->slipData->getAmount());
-    }
-
-    /**
-     * Tests the setWithAmount method with various parameters
-     *
-     * @return void
-     * @covers ::setWithAmount
-     * @covers ::getWithAmount
-     */
-    public function testSetWithAmountNumberParameters()
-    {
-        $this->slipData->setAmount(1234567.89);
-
-        $this->slipData->setWithAmount(1);
-        $this->assertTrue($this->slipData->getWithAmount());
-        $this->assertEquals(1234567.89, $this->slipData->getAmount());
-
-        $this->slipData->setWithAmount(0);
-        $this->assertTrue($this->slipData->getWithAmount());
-        $this->assertEquals(1234567.89, $this->slipData->getAmount());
-
-        $this->slipData->setWithAmount('foo');
-        $this->assertTrue($this->slipData->getWithAmount());
-
-        $this->slipData->setWithAmount(123);
-        $this->assertTrue($this->slipData->getWithAmount());
-
-        $this->slipData->setWithAmount(123.456);
-        $this->assertTrue($this->slipData->getWithAmount());
-
-        $this->slipData->setWithAmount(array(true));
-        $this->assertTrue($this->slipData->getWithAmount());
-    }
-
-    /**
-     * Tests the setWithPayer method with
-     *
-     * @return void
-     * @covers ::setWithPayer
-     * @covers ::getWithPayer
-     */
-    public function testSetWithPayer()
-    {
-        $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
-
-        $this->slipData->setWithPayer();
-        $this->assertTrue($this->slipData->getWithPayer());
-        $this->assertEquals('AAAAAAAAAA', $this->slipData->getPayerLine1());
-        $this->assertEquals('BBBBBBBBBB', $this->slipData->getPayerLine2());
-        $this->assertEquals('CCCCCCCCCC', $this->slipData->getPayerLine3());
-        $this->assertEquals('DDDDDDDDDD', $this->slipData->getPayerLine4());
-
-        $this->slipData->setWithPayer(true);
-        $this->assertTrue($this->slipData->getWithPayer());
-        $this->assertEquals('AAAAAAAAAA', $this->slipData->getPayerLine1());
-        $this->assertEquals('BBBBBBBBBB', $this->slipData->getPayerLine2());
-        $this->assertEquals('CCCCCCCCCC', $this->slipData->getPayerLine3());
-        $this->assertEquals('DDDDDDDDDD', $this->slipData->getPayerLine4());
-
-        $this->slipData->setWithPayer(false);
-        $this->assertFalse($this->slipData->getWithPayer());
-        $this->assertEquals(false, $this->slipData->getPayerLine1());
-        $this->assertEquals(false, $this->slipData->getPayerLine2());
-        $this->assertEquals(false, $this->slipData->getPayerLine3());
-        $this->assertEquals(false, $this->slipData->getPayerLine4());
-    }
-
-    /**
-     * Tests the setWithPayer method with various parameters
-     *
-     * @return void
-     * @covers ::setWithPayer
-     * @covers ::getWithPayer
-     */
-    public function testSetWithPayerParameters()
-    {
-        $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
-
-        $this->slipData->setWithPayer(1);
-        $this->assertTrue($this->slipData->getWithPayer());
-        $this->assertEquals('AAAAAAAAAA', $this->slipData->getPayerLine1());
-        $this->assertEquals('BBBBBBBBBB', $this->slipData->getPayerLine2());
-        $this->assertEquals('CCCCCCCCCC', $this->slipData->getPayerLine3());
-        $this->assertEquals('DDDDDDDDDD', $this->slipData->getPayerLine4());
-
-        $this->slipData->setWithPayer(0);
-        $this->assertTrue($this->slipData->getWithPayer());
-        $this->assertEquals('AAAAAAAAAA', $this->slipData->getPayerLine1());
-        $this->assertEquals('BBBBBBBBBB', $this->slipData->getPayerLine2());
-        $this->assertEquals('CCCCCCCCCC', $this->slipData->getPayerLine3());
-        $this->assertEquals('DDDDDDDDDD', $this->slipData->getPayerLine4());
-
-        $this->slipData->setWithPayer('foo');
-        $this->assertTrue($this->slipData->getWithPayer());
-
-        $this->slipData->setWithPayer(123);
-        $this->assertTrue($this->slipData->getWithPayer());
-
-        $this->slipData->setWithPayer(123.456);
-        $this->assertTrue($this->slipData->getWithPayer());
-
-        $this->slipData->setWithPayer(array(true));
-        $this->assertTrue($this->slipData->getWithPayer());
-    }
-
-    /**
-     * Tests the setBankData method
-     *
-     * @return void
+     * @covers ::isBool
      * @covers ::setBankData
      * @covers ::setBankName
      * @covers ::setBankCity
      * @covers ::getBankName
      * @covers ::getBankCity
      */
-    public function testSetBankData()
+    public function testSetWithBank()
     {
-        $this->slipData->setBankData('Seldwyla Bank', '8001 Zürich');
+        // Test default values
+        $this->assertEquals('', $this->slipData->getBankName());
+        $this->assertEquals('', $this->slipData->getBankCity());
+        $this->assertTrue($this->slipData->getWithBank());
 
+        // Set data when enabled
+        $this->slipData->setBankData('Seldwyla Bank', '8001 Zürich');
         $this->assertEquals('Seldwyla Bank', $this->slipData->getBankName());
         $this->assertEquals('8001 Zürich', $this->slipData->getBankCity());
 
-        $this->slipData->setWithBank(false);
-        $this->slipData->setBankData('Seldwyla Bank', '8001 Zürich');
+        // Disable feature, also check for returned instance
+        $returned = $this->slipData->setWithBank(false);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlipData', $returned);
+        $this->assertFalse($this->slipData->getWithBank());
+        $this->assertEquals('', $this->slipData->getBankName());
+        $this->assertEquals('', $this->slipData->getBankCity());
 
-        $this->assertEquals(false, $this->slipData->getBankName());
-        $this->assertEquals(false, $this->slipData->getBankCity());
+        // Re-enable feature, using no parameter
+        $this->slipData->setWithBank();
+        $this->assertTrue($this->slipData->getWithBank());
+        $this->assertEquals('', $this->slipData->getBankName());
+        $this->assertEquals('', $this->slipData->getBankCity());
     }
 
     /**
-     * Tests the setAccountNumber method
+     * Tests the setWithBank method with an invalid parameter
      *
      * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $withBank is not a boolean.
+     * @covers ::setWithBank
+     * @covers ::isBool
+     */
+    public function testSetWithBankInvalidParameter()
+    {
+        $this->slipData->setWithBank(1);
+    }
+
+    /**
+     * Tests the getWithAccountNumber and setWithAccountNumber methods
+     *
+     * @return void
+     * @covers ::setWithAccountNumber
+     * @covers ::getWithAccountNumber
+     * @covers ::isBool
      * @covers ::setAccountNumber
      * @covers ::getAccountNumber
      */
-    public function testSetAccountNumber()
+    public function testSetWithAccountNumber()
     {
-        $this->slipData->setAccountNumber('01-2345-6');
+        // Test default values
+        $this->assertEquals('', $this->slipData->getAccountNumber());
+        $this->assertTrue($this->slipData->getWithAccountNumber());
 
+        // Set data when enabled
+        $this->slipData->setAccountNumber('01-2345-6');
         $this->assertEquals('01-2345-6', $this->slipData->getAccountNumber());
 
-        $this->slipData->setWithAccountNumber(false);
-        $this->slipData->setAccountNumber('01-2345-6');
+        // Disable feature, also check for returned instance
+        $returned = $this->slipData->setWithAccountNumber(false);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlipData', $returned);
+        $this->assertFalse($this->slipData->getWithAccountNumber());
+        $this->assertEquals('', $this->slipData->getAccountNumber());
 
-        $this->assertEquals(false, $this->slipData->getAccountNumber());
+        // Re-enable feature, using no parameter
+        $this->slipData->setWithAccountNumber();
+        $this->assertTrue($this->slipData->getWithAccountNumber());
+        $this->assertEquals('', $this->slipData->getAccountNumber());
     }
 
     /**
-     * Tests the setRecipientData method
+     * Tests the setAccountNumber method with an invalid parameter
      *
      * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $withAccountNumber is not a boolean.
+     * @covers ::setWithAccountNumber
+     * @covers ::isBool
+     */
+    public function testSetWithAccountNumberInvalidParameter()
+    {
+        $this->slipData->setWithAccountNumber(1);
+    }
+
+    /**
+     * Tests the getWithRecipient and setWithRecipient methods
+     *
+     * @return void
+     * @covers ::setWithRecipient
+     * @covers ::getWithRecipient
+     * @covers ::isBool
      * @covers ::setRecipientData
      * @covers ::setRecipientLine1
      * @covers ::setRecipientLine2
@@ -411,47 +155,107 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      * @covers ::getRecipientLine3
      * @covers ::getRecipientLine4
      */
-    public function testSetRecipientData()
+    public function testSetWithRecipient()
     {
-        $this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
+        // Test default values
+        $this->assertEquals('', $this->slipData->getRecipientLine1());
+        $this->assertEquals('', $this->slipData->getRecipientLine2());
+        $this->assertEquals('', $this->slipData->getRecipientLine3());
+        $this->assertEquals('', $this->slipData->getRecipientLine4());
+        $this->assertTrue($this->slipData->getWithRecipient());
 
+        // Set data when enabled
+        $this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getRecipientLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getRecipientLine2());
         $this->assertEquals('CCCCCCCCCC', $this->slipData->getRecipientLine3());
         $this->assertEquals('DDDDDDDDDD', $this->slipData->getRecipientLine4());
 
-        $this->slipData->setWithRecipient(false);
-        $this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
+        // Disable feature, also check for returned instance
+        $returned = $this->slipData->setWithRecipient(false);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlipData', $returned);
+        $this->assertFalse($this->slipData->getWithRecipient());
+        $this->assertEquals('', $this->slipData->getRecipientLine1());
+        $this->assertEquals('', $this->slipData->getRecipientLine2());
+        $this->assertEquals('', $this->slipData->getRecipientLine3());
+        $this->assertEquals('', $this->slipData->getRecipientLine4());
 
-        $this->assertEquals(false, $this->slipData->getRecipientLine1());
-        $this->assertEquals(false, $this->slipData->getRecipientLine2());
-        $this->assertEquals(false, $this->slipData->getRecipientLine3());
-        $this->assertEquals(false, $this->slipData->getRecipientLine4());
+        // Re-enable feature, using no parameter
+        $this->slipData->setWithRecipient();
+        $this->assertTrue($this->slipData->getWithRecipient());
+        $this->assertEquals('', $this->slipData->getRecipientLine1());
+        $this->assertEquals('', $this->slipData->getRecipientLine2());
+        $this->assertEquals('', $this->slipData->getRecipientLine3());
+        $this->assertEquals('', $this->slipData->getRecipientLine4());
     }
 
     /**
-     * Tests the setAmount method
+     * Tests the setWithRecipient method with an invalid parameter
      *
      * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $withRecipient is not a boolean.
+     * @covers ::setWithRecipient
+     * @covers ::isBool
+     */
+    public function testSetWithRecipientInvalidParameter()
+    {
+        $this->slipData->setWithRecipient(1);
+    }
+
+    /**
+     * Tests the getWithAmount and setWithAmount methods
+     *
+     * @return void
+     * @covers ::setWithAmount
+     * @covers ::getWithAmount
+     * @covers ::isBool
      * @covers ::setAmount
      * @covers ::getAmount
      */
-    public function testSetAmount()
+    public function testSetWithAmount()
     {
-        $this->slipData->setAmount(1234567.89);
+        // Test default values
+        $this->assertEquals(0.0, $this->slipData->getAmount());
+        $this->assertTrue($this->slipData->getWithAmount());
 
+        // Set data when enabled
+        $this->slipData->setAmount(1234567.89);
         $this->assertEquals(1234567.89, $this->slipData->getAmount());
 
-        $this->slipData->setWithAmount(false);
-        $this->slipData->setAmount(1234567.89);
+        // Disable feature, also check for returned instance
+        $returned = $this->slipData->setWithAmount(false);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlipData', $returned);
+        $this->assertFalse($this->slipData->getWithAmount());
+        $this->assertEquals(0.0, $this->slipData->getAmount());
 
-        $this->assertEquals(false, $this->slipData->getAmount());
+        // Re-enable feature, using no parameter
+        $this->slipData->setWithAmount();
+        $this->assertTrue($this->slipData->getWithAmount());
+        $this->assertEquals(0.0, $this->slipData->getAmount());
     }
 
     /**
-     * Tests the setPayerData method
+     * Tests the setWithAmount method with an invalid parameter
      *
      * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $withAmount is not a boolean.
+     * @covers ::setWithAmount
+     * @covers ::isBool
+     */
+    public function testSetWithAmountInvalidParameter()
+    {
+        $this->slipData->setWithAmount(1);
+    }
+
+    /**
+     * Tests the getWithPayer and setWithPayer methods
+     *
+     * @return void
+     * @covers ::setWithPayer
+     * @covers ::getWithPayer
+     * @covers ::isBool
      * @covers ::setPayerData
      * @covers ::setPayerLine1
      * @covers ::setPayerLine2
@@ -462,22 +266,52 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      * @covers ::getPayerLine3
      * @covers ::getPayerLine4
      */
-    public function testSetPayerData()
+    public function testSetWithPayer()
     {
-        $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
+        // Test default values
+        $this->assertEquals('', $this->slipData->getPayerLine1());
+        $this->assertEquals('', $this->slipData->getPayerLine2());
+        $this->assertEquals('', $this->slipData->getPayerLine3());
+        $this->assertEquals('', $this->slipData->getPayerLine4());
+        $this->assertTrue($this->slipData->getWithPayer());
 
+        // Set data when enabled
+        $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getPayerLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getPayerLine2());
         $this->assertEquals('CCCCCCCCCC', $this->slipData->getPayerLine3());
         $this->assertEquals('DDDDDDDDDD', $this->slipData->getPayerLine4());
 
-        $this->slipData->setWithPayer(false);
-        $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
+        // Disable feature, also check for returned instance
+        $returned = $this->slipData->setWithPayer(false);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlipData', $returned);
+        $this->assertFalse($this->slipData->getWithPayer());
+        $this->assertEquals('', $this->slipData->getPayerLine1());
+        $this->assertEquals('', $this->slipData->getPayerLine2());
+        $this->assertEquals('', $this->slipData->getPayerLine3());
+        $this->assertEquals('', $this->slipData->getPayerLine4());
 
-        $this->assertEquals(false, $this->slipData->getPayerLine1());
-        $this->assertEquals(false, $this->slipData->getPayerLine2());
-        $this->assertEquals(false, $this->slipData->getPayerLine3());
-        $this->assertEquals(false, $this->slipData->getPayerLine4());
+        // Re-enable feature, using no parameter
+        $this->slipData->setWithPayer();
+        $this->assertTrue($this->slipData->getWithPayer());
+        $this->assertEquals('', $this->slipData->getPayerLine1());
+        $this->assertEquals('', $this->slipData->getPayerLine2());
+        $this->assertEquals('', $this->slipData->getPayerLine3());
+        $this->assertEquals('', $this->slipData->getPayerLine4());
+    }
+
+    /**
+     * Tests the setWithPayer method with an invalid parameter
+     *
+     * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $withPayer is not a boolean.
+     * @covers ::setWithPayer
+     * @covers ::isBool
+     */
+    public function testSetWithPayerInvalidParameter()
+    {
+        $this->slipData->setWithPayer(1);
     }
 
     /**
@@ -488,12 +322,14 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetAmountFrancs()
     {
+        // Test default value
+        $this->assertEquals(0, $this->slipData->getAmountFrancs());
+
+        // Test with set value
         $this->slipData->setAmount(1234567.89);
         $this->assertEquals(1234567, $this->slipData->getAmountFrancs());
 
-        $this->slipData->setAmount(0.0);
-        $this->assertEquals(0, $this->slipData->getAmountFrancs());
-
+        // Test when disabled
         $this->slipData->setWithAmount(false);
         $this->assertFalse($this->slipData->getAmountFrancs());
     }
@@ -506,12 +342,14 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetAmountCents()
     {
+        // Test default value
+        $this->assertEquals(0, $this->slipData->getAmountFrancs());
+
+        // Test with set value
         $this->slipData->setAmount(1234567.89);
         $this->assertEquals(89, $this->slipData->getAmountCents());
 
-        $this->slipData->setAmount(0.0);
-        $this->assertEquals(0, $this->slipData->getAmountCents());
-
+        // Test when disabled
         $this->slipData->setWithAmount(false);
         $this->assertFalse($this->slipData->getAmountCents());
     }
@@ -522,9 +360,33 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::setNotForPayment
      * @covers ::getNotForPayment
+     * @covers ::getAmountFrancs
+     * @covers ::getAmountCents
      */
     public function testSetNotForPayment()
     {
+        // Test default values
+        $this->assertFalse($this->slipData->getNotForPayment());
+
+        $this->assertEquals('', $this->slipData->getBankName());
+        $this->assertEquals('', $this->slipData->getBankCity());
+
+        $this->assertEquals('', $this->slipData->getRecipientLine1());
+        $this->assertEquals('', $this->slipData->getRecipientLine2());
+        $this->assertEquals('', $this->slipData->getRecipientLine3());
+        $this->assertEquals('', $this->slipData->getRecipientLine4());
+
+        $this->assertEquals('', $this->slipData->getAccountNumber());
+
+        $this->assertEquals(0.0, $this->slipData->getAmount());
+        $this->assertEquals(0, $this->slipData->getAmountFrancs());
+        $this->assertEquals(0, $this->slipData->getAmountCents());
+
+        $this->assertEquals('', $this->slipData->getPayerLine1());
+        $this->assertEquals('', $this->slipData->getPayerLine2());
+        $this->assertEquals('', $this->slipData->getPayerLine3());
+        $this->assertEquals('', $this->slipData->getPayerLine4());
+
         $this->slipData->setNotForPayment(true);
         $this->assertTrue($this->slipData->getNotForPayment());
 
