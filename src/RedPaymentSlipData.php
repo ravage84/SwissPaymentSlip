@@ -120,13 +120,12 @@ class RedPaymentSlipData extends PaymentSlipData
     }
 
     /**
-     * Set if payment slip has an IBAN specified.
-     * Only available for red payment slips
+     * Set if payment slip has an IBAN specified
      *
      * @param bool $withIban True if yes, false if no.
      * @return $this The current instance for a fluent interface.
      */
-    public function setWithIban($withIban = false)
+    public function setWithIban($withIban = true)
     {
         if ($this->isBool($withIban, 'withIban')) {
             $this->withIban = $withIban;
