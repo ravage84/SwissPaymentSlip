@@ -740,6 +740,7 @@ abstract class PaymentSlipData
      * Clear the account of the two hyphens
      *
      * @return string|false The account of the two hyphens, 'XXXXXXXXX' if not for payment or else false.
+     * @todo Cover by a test
      */
     protected function getAccountDigits()
     {
@@ -834,6 +835,7 @@ abstract class PaymentSlipData
      * @copyright As found on http://www.developers-guide.net/forums/5431,modulo10-rekursiv (thanks, dude!)
      * @param string $number Number to create recursive check digit off.
      * @return int Recursive check digit.
+     * @todo Cover by a test
      */
     protected function modulo10($number)
     {
@@ -853,6 +855,7 @@ abstract class PaymentSlipData
      * @param int $blockSize Block size of choice.
      * @param bool $alignFromRight Right aligned, blocks are build from right.
      * @return string Given string divided in blocks of given block size separated by one space.
+     * @todo Cover by a test
      */
     protected function breakStringIntoBlocks($string, $blockSize = 5, $alignFromRight = true)
     {
