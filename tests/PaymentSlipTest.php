@@ -719,8 +719,9 @@ class PaymentSlipTest extends PaymentSlipTestCase
         // Test the default value
         $this->assertTrue($this->paymentSlip->getDisplayBank());
 
-        // Disable the feature
-        $this->paymentSlip->setDisplayBank(false);
+        // Disable feature, also check for returned instance
+        $returned = $this->paymentSlip->setDisplayBank(false);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
         $this->assertFalse($this->paymentSlip->getDisplayBank());
 
         // Re-enable the feature
@@ -755,8 +756,9 @@ class PaymentSlipTest extends PaymentSlipTestCase
         // Test the default value
         $this->assertTrue($this->paymentSlip->getDisplayAccount());
 
-        // Disable the feature
-        $this->paymentSlip->setDisplayAccount(false);
+        // Disable feature, also check for returned instance
+        $returned = $this->paymentSlip->setDisplayAccount(false);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
         $this->assertFalse($this->paymentSlip->getDisplayAccount());
 
         // Re-enable the feature
@@ -791,8 +793,9 @@ class PaymentSlipTest extends PaymentSlipTestCase
         // Test the default value
         $this->assertTrue($this->paymentSlip->getDisplayRecipient());
 
-        // Disable the feature
-        $this->paymentSlip->setDisplayRecipient(false);
+        // Disable feature, also check for returned instance
+        $returned = $this->paymentSlip->setDisplayRecipient(false);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
         $this->assertFalse($this->paymentSlip->getDisplayRecipient());
 
         // Re-enable the feature
@@ -827,8 +830,9 @@ class PaymentSlipTest extends PaymentSlipTestCase
         // Test the default value
         $this->assertTrue($this->paymentSlip->getDisplayAmount());
 
-        // Disable the feature
-        $this->paymentSlip->setDisplayAmount(false);
+        // Disable feature, also check for returned instance
+        $returned = $this->paymentSlip->setDisplayAmount(false);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
         $this->assertFalse($this->paymentSlip->getDisplayAmount());
 
         // Re-enable the feature
@@ -863,8 +867,9 @@ class PaymentSlipTest extends PaymentSlipTestCase
         // Test the default value
         $this->assertTrue($this->paymentSlip->getDisplayPayer());
 
-        // Disable the feature
-        $this->paymentSlip->setDisplayPayer(false);
+        // Disable feature, also check for returned instance
+        $returned = $this->paymentSlip->setDisplayPayer(false);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
         $this->assertFalse($this->paymentSlip->getDisplayPayer());
 
         // Re-enable the feature
@@ -899,8 +904,9 @@ class PaymentSlipTest extends PaymentSlipTestCase
         // Test the default value
         $this->assertTrue($this->paymentSlip->getDisplayCodeLine());
 
-        // Disable the feature
-        $this->paymentSlip->setDisplayCodeLine(false);
+        // Disable feature, also check for returned instance
+        $returned = $this->paymentSlip->setDisplayCodeLine(false);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
         $this->assertFalse($this->paymentSlip->getDisplayCodeLine());
 
         // Re-enable the feature
