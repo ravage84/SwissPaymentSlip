@@ -40,153 +40,95 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the setWithReferenceNumber method with an orange slip
+     * Tests the getWithReferenceNumber and setWithReferenceNumber methods
      *
      * @return void
      * @covers ::setWithReferenceNumber
      * @covers ::getWithReferenceNumber
-     */
-    public function testSetWithReferenceNumberNumber()
-    {
-        $this->slipData->setReferenceNumber('0123456789');
-
-        $this->slipData->setWithReferenceNumber();
-        $this->assertTrue($this->slipData->getWithReferenceNumber());
-        $this->assertEquals('0123456789', $this->slipData->getReferenceNumber());
-
-        $this->slipData->setWithReferenceNumber(true);
-        $this->assertTrue($this->slipData->getWithReferenceNumber());
-        $this->assertEquals('0123456789', $this->slipData->getReferenceNumber());
-
-        $this->slipData->setWithReferenceNumber(false);
-        $this->assertFalse($this->slipData->getWithReferenceNumber());
-        $this->assertEquals(false, $this->slipData->getReferenceNumber());
-    }
-
-    /**
-     * Tests the setWithReferenceNumber method with various parameters
-     *
-     * @return void
-     * @covers ::setWithReferenceNumber
-     * @covers ::getWithReferenceNumber
-     */
-    public function testSetWithReferenceNumberNumberParameters()
-    {
-        $this->slipData->setReferenceNumber('0123456789');
-
-        $this->slipData->setWithReferenceNumber(1);
-        $this->assertTrue($this->slipData->getWithReferenceNumber());
-        $this->assertEquals('0123456789', $this->slipData->getReferenceNumber());
-
-        $this->slipData->setWithReferenceNumber(0);
-        $this->assertTrue($this->slipData->getWithReferenceNumber());
-        $this->assertEquals('0123456789', $this->slipData->getReferenceNumber());
-
-        $this->slipData->setWithReferenceNumber('foo');
-        $this->assertTrue($this->slipData->getWithReferenceNumber());
-
-        $this->slipData->setWithReferenceNumber(123);
-        $this->assertTrue($this->slipData->getWithReferenceNumber());
-
-        $this->slipData->setWithReferenceNumber(123.456);
-        $this->assertTrue($this->slipData->getWithReferenceNumber());
-
-        $this->slipData->setWithReferenceNumber(array(true));
-        $this->assertTrue($this->slipData->getWithReferenceNumber());
-    }
-
-    /**
-     * Tests the setWithBankingCustomerId method with an orange slip
-     *
-     * @return void
-     * @covers ::setWithBankingCustomerId
-     * @covers ::getWithBankingCustomerId
-     */
-    public function testSetWithBankingCustomerIdNumber()
-    {
-        $this->slipData->setBankingCustomerId('012345');
-
-        $this->slipData->setWithBankingCustomerId();
-        $this->assertTrue($this->slipData->getWithBankingCustomerId());
-        $this->assertEquals('012345', $this->slipData->getBankingCustomerId());
-
-        $this->slipData->setWithBankingCustomerId(true);
-        $this->assertTrue($this->slipData->getWithBankingCustomerId());
-        $this->assertEquals('012345', $this->slipData->getBankingCustomerId());
-
-        $this->slipData->setWithBankingCustomerId(false);
-        $this->assertFalse($this->slipData->getWithBankingCustomerId());
-        $this->assertEquals(false, $this->slipData->getBankingCustomerId());
-    }
-
-    /**
-     * Tests the setWithBankingCustomerId method with various parameters
-     *
-     * @return void
-     * @covers ::setWithBankingCustomerId
-     * @covers ::getWithBankingCustomerId
-     */
-    public function testSetWithBankingCustomerIdNumberParameters()
-    {
-        $this->slipData->setBankingCustomerId('012345');
-
-        $this->slipData->setWithBankingCustomerId(1);
-        $this->assertTrue($this->slipData->getWithBankingCustomerId());
-        $this->assertEquals('012345', $this->slipData->getBankingCustomerId());
-
-        $this->slipData->setWithBankingCustomerId(0);
-        $this->assertTrue($this->slipData->getWithBankingCustomerId());
-        $this->assertEquals('012345', $this->slipData->getBankingCustomerId());
-
-        $this->slipData->setWithBankingCustomerId('foo');
-        $this->assertTrue($this->slipData->getWithBankingCustomerId());
-
-        $this->slipData->setWithBankingCustomerId(123);
-        $this->assertTrue($this->slipData->getWithBankingCustomerId());
-
-        $this->slipData->setWithBankingCustomerId(123.456);
-        $this->assertTrue($this->slipData->getWithBankingCustomerId());
-
-        $this->slipData->setWithBankingCustomerId(array(true));
-        $this->assertTrue($this->slipData->getWithBankingCustomerId());
-    }
-
-    /**
-     * Tests the setReferenceNumber method
-     *
-     * @return void
+     * @covers ::isBool
      * @covers ::setReferenceNumber
      * @covers ::getReferenceNumber
      */
-    public function testSetReferenceNumber()
+    public function testSetWithReferenceNumber()
     {
-        $this->slipData->setReferenceNumber('0123456789');
+        // Test default values
+        $this->assertEquals('', $this->slipData->getReferenceNumber());
+        $this->assertTrue($this->slipData->getWithReferenceNumber());
 
+        // Set data when enabled
+        $this->slipData->setReferenceNumber('0123456789');
         $this->assertEquals('0123456789', $this->slipData->getReferenceNumber());
 
-        $this->slipData->setWithReferenceNumber(false);
-        $this->slipData->setReferenceNumber('0123456789');
+        // Disable feature, also check for returned instance
+        $returned = $this->slipData->setWithReferenceNumber(false);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlipData', $returned);
+        $this->assertFalse($this->slipData->getWithReferenceNumber());
+        $this->assertEquals('', $this->slipData->getReferenceNumber());
 
-        $this->assertEquals(false, $this->slipData->getReferenceNumber());
+        // Re-enable feature, using no parameter
+        $this->slipData->setWithReferenceNumber();
+        $this->assertTrue($this->slipData->getWithReferenceNumber());
+        $this->assertEquals('', $this->slipData->getReferenceNumber());
     }
 
     /**
-     * Tests the setBankingCustomerId method
+     * Tests the setWithReferenceNumber method with an invalid parameter
      *
      * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $withReferenceNumber is not a boolean.
+     * @covers ::setWithReferenceNumber
+     * @covers ::isBool
+     */
+    public function testSetWithReferenceNumberInvalidParameter()
+    {
+        $this->slipData->setWithReferenceNumber(1);
+    }
+
+    /**
+     * Tests the getWithBankingCustomerId and setWithBankingCustomerId methods
+     *
+     * @return void
+     * @covers ::setWithBankingCustomerId
+     * @covers ::getWithBankingCustomerId
+     * @covers ::isBool
      * @covers ::setBankingCustomerId
      * @covers ::getBankingCustomerId
      */
-    public function testSetBankingCustomerId()
+    public function testSetWithBankingCustomerId()
     {
-        $this->slipData->setBankingCustomerId('123456');
+        // Test default values
+        $this->assertEquals('', $this->slipData->getBankingCustomerId());
+        $this->assertTrue($this->slipData->getWithBankingCustomerId());
 
-        $this->assertEquals('123456', $this->slipData->getBankingCustomerId());
+        // Set data when enabled
+        $this->slipData->setBankingCustomerId('0123456789');
+        $this->assertEquals('0123456789', $this->slipData->getBankingCustomerId());
 
-        $this->slipData->setWithBankingCustomerId(false);
-        $this->slipData->setBankingCustomerId('123456');
+        // Disable feature, also check for returned instance
+        $returned = $this->slipData->setWithBankingCustomerId(false);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlipData', $returned);
+        $this->assertFalse($this->slipData->getWithBankingCustomerId());
+        $this->assertEquals('', $this->slipData->getBankingCustomerId());
 
-        $this->assertEquals(false, $this->slipData->getBankingCustomerId());
+        // Re-enable feature, using no parameter
+        $this->slipData->setWithBankingCustomerId();
+        $this->assertTrue($this->slipData->getWithBankingCustomerId());
+        $this->assertEquals('', $this->slipData->getBankingCustomerId());
+    }
+
+    /**
+     * Tests the setWithBankingCustomerId method with an invalid parameter
+     *
+     * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $withBankingCustomerId is not a boolean.
+     * @covers ::setWithBankingCustomerId
+     * @covers ::isBool
+     */
+    public function testSetWithBankingCustomerIdInvalidParameter()
+    {
+        $this->slipData->setWithBankingCustomerId(1);
     }
 
     /**
@@ -200,19 +142,46 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetCompleteReferenceNumber()
     {
+        // Test with reference number & banking customer ID
         $this->slipData->setReferenceNumber('7520033455900012');
         $this->slipData->setBankingCustomerId('215703');
 
-        $this->assertEquals('21 57030 00075 20033 45590 00126', $this->slipData->getCompleteReferenceNumber());
-        $this->assertEquals('215703000075200334559000126', $this->slipData->getCompleteReferenceNumber(false));
-        $this->assertEquals('21 57030 00075 20033 45590 00126', $this->slipData->getCompleteReferenceNumber(true, false));
+        // Formatted and filled with zeros
+        $this->assertEquals(
+            '21 57030 00075 20033 45590 00126',
+            $this->slipData->getCompleteReferenceNumber()
+        );
+        // Not formatted but filled with zeros
+        $this->assertEquals(
+            '215703000075200334559000126',
+            $this->slipData->getCompleteReferenceNumber(false)
+        );
+        // Formatted but not filled with zeros
+        $this->assertEquals(
+            '21 57030 00075 20033 45590 00126',
+            $this->slipData->getCompleteReferenceNumber(true, false)
+        );
 
+        // Test with reference number but without banking customer ID
         $this->slipData->setWithBankingCustomerId(false);
 
-        $this->assertEquals('00 00000 00075 20033 45590 00129', $this->slipData->getCompleteReferenceNumber());
-        $this->assertEquals('000000000075200334559000129', $this->slipData->getCompleteReferenceNumber(false));
-        $this->assertEquals('75 20033 45590 00129', $this->slipData->getCompleteReferenceNumber(true, false));
+        // Formatted and filled with zeros
+        $this->assertEquals(
+            '00 00000 00075 20033 45590 00129',
+            $this->slipData->getCompleteReferenceNumber()
+        );
+        // Not formatted but filled with zeros
+        $this->assertEquals(
+            '000000000075200334559000129',
+            $this->slipData->getCompleteReferenceNumber(false)
+        );
+        // Formatted but not filled with zeros
+        $this->assertEquals(
+            '75 20033 45590 00129',
+            $this->slipData->getCompleteReferenceNumber(true, false)
+        );
 
+        // Test with reference number & banking customer ID disabled
         $this->slipData->setWithReferenceNumber(false);
 
         $this->assertEquals(false, $this->slipData->getCompleteReferenceNumber());
@@ -221,7 +190,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getCodeLine method with an orange slip
+     * Tests the getCodeLine method
      *
      * @return void
      * @covers ::getCodeLine
@@ -235,10 +204,12 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData->setReferenceNumber('7520033455900012');
         $this->slipData->setBankingCustomerId('215703');
 
+        // Filled with zeros
         $this->assertEquals(
             '0100002830509>215703000075200334559000126+ 010001456>',
             $this->slipData->getCodeLine()
         );
+        // Not filled with zeros
         $this->assertEquals(
             '0100002830509>215703000075200334559000126+ 010001456>',
             $this->slipData->getCodeLine(false)
@@ -247,10 +218,12 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData->setReferenceNumber('123456789');
         $this->slipData->setBankingCustomerId('1234');
 
+        // Filled with zeros
         $this->assertEquals(
             '0100002830509>001234000000000001234567892+ 010001456>',
             $this->slipData->getCodeLine()
         );
+        // Not filled with zeros
         $this->assertEquals(
             '0100002830509>1234000000000001234567892+ 010001456>',
             $this->slipData->getCodeLine(false)
@@ -258,10 +231,12 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
 
         $this->slipData->setWithBankingCustomerId(false);
 
+        // Filled with zeros
         $this->assertEquals(
             '0100002830509>000000000000000001234567894+ 010001456>',
             $this->slipData->getCodeLine()
         );
+        // Not filled with zeros
         $this->assertEquals(
             '0100002830509>1234567894+ 010001456>',
             $this->slipData->getCodeLine(false)
@@ -269,10 +244,12 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
 
         $this->slipData->setAmount(0.0);
 
+        // Filled with zeros
         $this->assertEquals(
             '0100000000005>000000000000000001234567894+ 010001456>',
             $this->slipData->getCodeLine()
         );
+        // Not filled with zeros
         $this->assertEquals(
             '0100000000005>1234567894+ 010001456>',
             $this->slipData->getCodeLine(false)
@@ -280,10 +257,12 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
 
         $this->slipData->setWithAmount(false);
 
+        // Filled with zeros
         $this->assertEquals(
             '042>000000000000000001234567894+ 010001456>',
             $this->slipData->getCodeLine()
         );
+        // Not filled with zeros
         $this->assertEquals(
             '042>1234567894+ 010001456>',
             $this->slipData->getCodeLine(false)
@@ -291,73 +270,23 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getCodeLine method with invalid preconditions
-     *
-     * @return void
-     * @covers ::getCodeLine
-     * @covers ::modulo10
-     * @covers ::getAccountDigits
-     * @todo The tested method will throw exceptions in the future, adjust the test
-     */
-    public function testGetCodeLineWithInvalidPreconditions()
-    {
-        $this->slipData->setAmount(2830.50);
-        $this->slipData->setReferenceNumber('7520033455900012');
-        $this->slipData->setBankingCustomerId('215703');
-
-        $this->slipData->setAccountNumber('123456789');
-
-        //$this->assertEquals(false, $this->slipData->getCodeLine());
-        //$this->assertEquals(false, $this->slipData->getCodeLine(false));
-
-        $this->slipData->setAccountNumber('01-145-6');
-        $this->slipData->setWithAccountNumber(false);
-
-        //$this->assertEquals(false, $this->slipData->getCodeLine());
-        //$this->assertEquals(false, $this->slipData->getCodeLine(false));
-
-        $this->slipData->setWithAccountNumber(true);
-        $this->slipData->setAccountNumber('01-145-6');
-        $this->slipData->setWithReferenceNumber(false);
-
-        //$this->assertEquals(false, $this->slipData->getCodeLine());
-        //$this->assertEquals(false, $this->slipData->getCodeLine(false));
-    }
-
-    /**
      * Tests the setNotForPayment method
      *
      * @return void
      * @covers ::setNotForPayment
-     * @covers ::getNotForPayment
+     * @covers ::appendCheckDigit
+     * @covers ::getCompleteReferenceNumber
+     * @covers ::getCodeLine
+     * @covers ::getAccountDigits
      */
     public function testSetNotForPayment()
     {
         $this->slipData->setNotForPayment(true);
         $this->assertTrue($this->slipData->getNotForPayment());
 
-        $this->assertEquals('XXXXXX', $this->slipData->getBankName());
-        $this->assertEquals('XXXXXX', $this->slipData->getBankCity());
-
-        $this->assertEquals('XXXXXX', $this->slipData->getRecipientLine1());
-        $this->assertEquals('XXXXXX', $this->slipData->getRecipientLine2());
-        $this->assertEquals('XXXXXX', $this->slipData->getRecipientLine3());
-        $this->assertEquals('XXXXXX', $this->slipData->getRecipientLine4());
-
-        $this->assertEquals('XXXXXX', $this->slipData->getAccountNumber());
-
-        $this->assertEquals('XXXXXXXX.XX', $this->slipData->getAmount());
-        $this->assertEquals('XXXXXXXX', $this->slipData->getAmountFrancs());
-        $this->assertEquals('XX', $this->slipData->getAmountCents());
-
         $this->assertEquals('XXXXXXXXXXXXXXXXXXXX', $this->slipData->getReferenceNumber());
         $this->assertEquals('XXXXXXXXXXXXXXXXXXXXXXXXXXX', $this->slipData->getCompleteReferenceNumber(false));
         $this->assertEquals('XX XXXXX XXXXX XXXXX XXXXX XXXXX', $this->slipData->getCompleteReferenceNumber());
-
-        $this->assertEquals('XXXXXX', $this->slipData->getPayerLine1());
-        $this->assertEquals('XXXXXX', $this->slipData->getPayerLine2());
-        $this->assertEquals('XXXXXX', $this->slipData->getPayerLine3());
-        $this->assertEquals('XXXXXX', $this->slipData->getPayerLine4());
 
         $this->assertEquals('XXXXXXXXXXXXX>XXXXXXXXXXXXXXXXXXXXXXXXXXX+ XXXXXXXXX>', $this->slipData->getCodeLine());
     }
