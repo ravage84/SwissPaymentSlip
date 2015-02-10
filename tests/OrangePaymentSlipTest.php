@@ -112,208 +112,6 @@ class OrangePaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Tests the default attributes of the left bank element for an orange slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     */
-    public function testBankLeftAttrDefaultValues()
-    {
-        $attributes = $this->paymentSlip->getBankLeftAttr();
-
-        $expectedAttributes = $this->defaultAttributes;
-
-        $expectedAttributes['PosX'] = 3;
-        $expectedAttributes['PosY'] = 8;
-        $expectedAttributes['Width'] = 50;
-        $expectedAttributes['Height'] = 4;
-
-        $this->assertEquals($expectedAttributes, $attributes);
-    }
-
-    /**
-     * Tests the default attributes of the right bank element for an orange slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     */
-    public function testBankRightAttrDefaultValues()
-    {
-        $attributes = $this->paymentSlip->getBankRightAttr();
-
-        $expectedAttributes = $this->defaultAttributes;
-
-        $expectedAttributes['PosX'] = 66;
-        $expectedAttributes['PosY'] = 8;
-        $expectedAttributes['Width'] = 50;
-        $expectedAttributes['Height'] = 4;
-
-        $this->assertEquals($expectedAttributes, $attributes);
-    }
-
-    /**
-     * Tests the default attributes of the left recipient element for an orange slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     */
-    public function testRecipientLeftAttrDefaultValues()
-    {
-        $attributes = $this->paymentSlip->getRecipientLeftAttr();
-
-        $expectedAttributes = $this->defaultAttributes;
-
-        $expectedAttributes['PosX'] = 3;
-        $expectedAttributes['PosY'] = 23;
-        $expectedAttributes['Width'] = 50;
-        $expectedAttributes['Height'] = 4;
-
-        $this->assertEquals($expectedAttributes, $attributes);
-    }
-
-    /**
-     * Tests the default attributes of the right recipient element for an orange slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     */
-    public function testRecipientRightAttrDefaultValues()
-    {
-        $attributes = $this->paymentSlip->getRecipientRightAttr();
-
-        $expectedAttributes = $this->defaultAttributes;
-
-        $expectedAttributes['PosX'] = 66;
-        $expectedAttributes['PosY'] = 23;
-        $expectedAttributes['Width'] = 50;
-        $expectedAttributes['Height'] = 4;
-
-        $this->assertEquals($expectedAttributes, $attributes);
-    }
-
-    /**
-     * Tests the default attributes of the left account element for an orange slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     */
-    public function testAccountLeftAttrDefaultValues()
-    {
-        $attributes = $this->paymentSlip->getAccountLeftAttr();
-
-        $expectedAttributes = $this->defaultAttributes;
-
-        $expectedAttributes['PosX'] = 27;
-        $expectedAttributes['PosY'] = 43;
-        $expectedAttributes['Width'] = 30;
-        $expectedAttributes['Height'] = 4;
-
-        $this->assertEquals($expectedAttributes, $attributes);
-    }
-
-    /**
-     * Tests the default attributes of the right account element for an orange slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     */
-    public function testAccountRightAttrDefaultValues()
-    {
-        $attributes = $this->paymentSlip->getAccountRightAttr();
-
-        $expectedAttributes = $this->defaultAttributes;
-
-        $expectedAttributes['PosX'] = 90;
-        $expectedAttributes['PosY'] = 43;
-        $expectedAttributes['Width'] = 30;
-        $expectedAttributes['Height'] = 4;
-
-        $this->assertEquals($expectedAttributes, $attributes);
-    }
-
-    /**
-     * Tests the default attributes of the left francs amount element for an orange slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     */
-    public function testAmountFrancsLeftAttrDefaultValues()
-    {
-        $attributes = $this->paymentSlip->getAmountFrancsLeftAttr();
-
-        $expectedAttributes = $this->defaultAttributes;
-
-        $expectedAttributes['PosX'] = 5;
-        $expectedAttributes['PosY'] = 50.5;
-        $expectedAttributes['Width'] = 35;
-        $expectedAttributes['Height'] = 4;
-        $expectedAttributes['TextAlign'] = 'R';
-
-        $this->assertEquals($expectedAttributes, $attributes);
-    }
-
-    /**
-     * Tests the default attributes of the right francs amount element for an orange slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     */
-    public function testAmountFrancsRightAttrDefaultValues()
-    {
-        $attributes = $this->paymentSlip->getAmountFrancsRightAttr();
-
-        $expectedAttributes = $this->defaultAttributes;
-
-        $expectedAttributes['PosX'] = 66;
-        $expectedAttributes['PosY'] = 50.5;
-        $expectedAttributes['Width'] = 35;
-        $expectedAttributes['Height'] = 4;
-        $expectedAttributes['TextAlign'] = 'R';
-
-        $this->assertEquals($expectedAttributes, $attributes);
-    }
-
-    /**
-     * Tests the default attributes of the left cents amount element for an orange slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     */
-    public function testAmountCentsLeftAttrDefaultValues()
-    {
-        $attributes = $this->paymentSlip->getAmountCentsLeftAttr();
-
-        $expectedAttributes = $this->defaultAttributes;
-
-        $expectedAttributes['PosX'] = 50;
-        $expectedAttributes['PosY'] = 50.5;
-        $expectedAttributes['Width'] = 6;
-        $expectedAttributes['Height'] = 4;
-
-        $this->assertEquals($expectedAttributes, $attributes);
-    }
-
-    /**
-     * Tests the default attributes of the right cents amount element for an orange slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     */
-    public function testAmountCentsRightAttrDefaultValues()
-    {
-        $attributes = $this->paymentSlip->getAmountCentsRightAttr();
-
-        $expectedAttributes = $this->defaultAttributes;
-
-        $expectedAttributes['PosX'] = 111;
-        $expectedAttributes['PosY'] = 50.5;
-        $expectedAttributes['Width'] = 6;
-        $expectedAttributes['Height'] = 4;
-
-        $this->assertEquals($expectedAttributes, $attributes);
-    }
-
-    /**
      * Tests the default attributes of the left reference number element for an orange slip
      *
      * @return void
@@ -356,79 +154,6 @@ class OrangePaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Tests the default attributes of the left payer element for an orange slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     */
-    public function testPayerLeftAttrDefaultValues()
-    {
-        $attributes = $this->paymentSlip->getPayerLeftAttr();
-
-        $expectedAttributes = $this->defaultAttributes;
-
-        $expectedAttributes['PosX'] = 3;
-        $expectedAttributes['PosY'] = 65;
-        $expectedAttributes['Width'] = 50;
-        $expectedAttributes['Height'] = 4;
-
-        $this->assertEquals($expectedAttributes, $attributes);
-    }
-
-    /**
-     * Tests the default attributes of the right payer element for an orange slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     */
-    public function testPayerRightAttrDefaultValues()
-    {
-        $attributes = $this->paymentSlip->getPayerRightAttr();
-
-        $expectedAttributes = $this->defaultAttributes;
-
-        $expectedAttributes['PosX'] = 125;
-        $expectedAttributes['PosY'] = 48;
-        $expectedAttributes['Width'] = 50;
-        $expectedAttributes['Height'] = 4;
-
-        $this->assertEquals($expectedAttributes, $attributes);
-    }
-
-    /**
-     * Tests the default attributes of the code line element for an orange slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     */
-    public function testCodeLineAttrDefaultValues()
-    {
-        $attributes = $this->paymentSlip->getCodeLineAttr();
-
-        $expectedAttributes = $this->defaultAttributes;
-
-        $expectedAttributes['PosX'] = 64;
-        $expectedAttributes['PosY'] = 85;
-        $expectedAttributes['Width'] = 140;
-        $expectedAttributes['Height'] = 4;
-        $expectedAttributes['FontFamily'] = 'OCRB10';
-        $expectedAttributes['TextAlign'] = 'R';
-
-        $this->assertEquals($expectedAttributes, $attributes);
-    }
-
-    /**
-     * Tests the default background for an orange slip
-     *
-     * @return void
-     * @covers ::setDefaults
-     */
-    public function testSlipBackgroundDefaultValues()
-    {
-        $this->assertEquals('ezs_orange.gif', basename($this->paymentSlip->getSlipBackground()));
-    }
-
-    /**
      * Tests the setReferenceNumberLeftAttr method
      *
      * @return void
@@ -462,19 +187,34 @@ class OrangePaymentSlipTest extends PaymentSlipTestCase
      * @return void
      * @covers ::setDisplayReferenceNr
      * @covers ::getDisplayReferenceNr
+     * @covers ::isBool
      */
     public function testSetDisplayReferenceNr()
     {
-        $this->paymentSlip->setDisplayReferenceNr();
-        $this->assertEquals(true, $this->paymentSlip->getDisplayReferenceNr());
+        // Test the default value
+        $this->assertTrue($this->paymentSlip->getDisplayReferenceNr());
 
-        $this->paymentSlip->setDisplayReferenceNr(true);
-        $this->assertEquals(true, $this->paymentSlip->getDisplayReferenceNr());
-
+        // Disable the feature
         $this->paymentSlip->setDisplayReferenceNr(false);
-        $this->assertEquals(false, $this->paymentSlip->getDisplayReferenceNr());
+        $this->assertFalse($this->paymentSlip->getDisplayReferenceNr());
 
-        $this->paymentSlip->setDisplayReferenceNr('XXX');
+        // Re-enable the feature
+        $this->paymentSlip->setDisplayReferenceNr();
+        $this->assertTrue($this->paymentSlip->getDisplayReferenceNr());
+    }
+
+    /**
+     * Tests the setDisplayReferenceNr method with an invalid parameter
+     *
+     * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $displayReferenceNr is not a boolean.
+     * @covers ::setDisplayReferenceNr
+     * @covers ::isBool
+     */
+    public function testSetDisplayReferenceNrInvalidParameter()
+    {
+        $this->paymentSlip->setDisplayReferenceNr('true');
     }
 
     /**
@@ -482,6 +222,7 @@ class OrangePaymentSlipTest extends PaymentSlipTestCase
      *
      * @return void
      * @covers ::getAllElements
+     * @todo Cover the parameters of getAllElements()
      */
     public function testGetAllElements()
     {
