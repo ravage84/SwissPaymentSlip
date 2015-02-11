@@ -123,7 +123,7 @@ class OrangePaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Tests the default attributes of the left reference number element for an orange slip
+     * Tests the default attributes of the left reference number element
      *
      * @return void
      * @covers ::setDefaults
@@ -144,7 +144,7 @@ class OrangePaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Tests the default attributes of the right reference number element for an orange slip
+     * Tests the default attributes of the right reference number element
      *
      * @return void
      * @covers ::setDefaults

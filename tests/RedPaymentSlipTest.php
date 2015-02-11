@@ -30,20 +30,6 @@ class RedPaymentSlipTest extends PaymentSlipTestCase
     protected $paymentSlip;
 
     /**
-     * The default attributes to test against
-     *
-     * @var array
-     */
-    protected $defaultAttributes;
-
-    /**
-     * The set attributes to test against
-     *
-     * @var array
-     */
-    protected $setAttributes;
-
-    /**
      * Setup a slip to test and some default and set attributes to test
      *
      * @return void
@@ -126,7 +112,7 @@ class RedPaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Tests the default background for a red slip
+     * Tests the default background
      *
      * @return void
      * @covers ::setDefaults
