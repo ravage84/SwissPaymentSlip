@@ -1401,12 +1401,11 @@ abstract class PaymentSlip
     /**
      * Get all elements of the slip
      *
-     * @param bool $formatted Whether to return the reference number formatted or not.
-     * @param bool $fillZeroes Whether to return the reference number filled with zeros or not.
+     * @param bool $fillZeroes Whether to return the code line filled with zeros or not.
      * @return array All elements with their lines and attributes.
-     * @todo Consider extracting the parameters as settable properties, e.g. $displayFormatted, $fillWithZeros
+     * @todo Consider extracting the parameter as settable property, e.g. $fillWithZeros
      */
-    public function getAllElements($formatted = true, $fillZeroes = true)
+    public function getAllElements($fillZeroes = true)
     {
         $paymentSlipData = $this->paymentSlipData;
 

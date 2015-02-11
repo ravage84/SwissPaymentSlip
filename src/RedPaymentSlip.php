@@ -321,15 +321,15 @@ class RedPaymentSlip extends PaymentSlip
     /**
      * Get all elements of the slip
      *
-     * @param bool $formatted Whether to return the reference number formatted or not.
-     * @param bool $fillZeroes No functionality for red payment slips.
+     * @param bool $fillZeroes Whether to return the code line filled with zeros or not.
      * @return array All elements with their lines and attributes.
+     * @todo Consider extracting the parameter as settable property, e.g. $fillWithZeros
      */
-    public function getAllElements($formatted = true, $fillZeroes = true)
+    public function getAllElements($fillZeroes = true)
     {
         $paymentSlipData = $this->paymentSlipData;
 
-        $elements = parent::getAllElements($formatted, $fillZeroes);
+        $elements = parent::getAllElements($fillZeroes);
 
         if ($this->getDisplayPaymentReason()) {
             // Place payment reason lines
