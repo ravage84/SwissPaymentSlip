@@ -331,6 +331,23 @@ class RedPaymentSlip extends PaymentSlip
 
         $elements = parent::getAllElements($fillZeroes);
 
+        // Place left IBAN
+        if ($this->getDisplayIban()) {
+            $lines = array(
+                $paymentSlipData->getFormattedIban()
+            );
+            $elements['IbanLeft'] = array('lines' => $lines,
+                'attributes' => $this->getIbanLeftAttr()
+            );
+
+            // Place right IBAN
+            // Reuse lines from above
+            $elements['IbanRight'] = array(
+                'lines' => $lines,
+                'attributes' => $this->getIbanRightAttr()
+            );
+        }
+
         if ($this->getDisplayPaymentReason()) {
             // Place payment reason lines
             $lines = array(
