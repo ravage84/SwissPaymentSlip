@@ -54,8 +54,9 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('', $this->slipData->getIban());
         $this->assertTrue($this->slipData->getWithIban());
 
-        // Set data when enabled
-        $this->slipData->setIban('CH380123456789');
+        // Set data when enabled, also check for returned instance
+        $returned = $this->slipData->setIban('CH380123456789');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\RedPaymentSlipData', $returned);
         $this->assertEquals('CH380123456789', $this->slipData->getIban());
 
         // Disable feature, also check for returned instance
@@ -110,8 +111,9 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('', $this->slipData->getPaymentReasonLine4());
         $this->assertTrue($this->slipData->getWithPaymentReason());
 
-        // Set data when enabled
-        $this->slipData->setPaymentReasonData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
+        // Set data when enabled, also check for returned instance
+        $returned = $this->slipData->setPaymentReasonData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\RedPaymentSlipData', $returned);
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getPaymentReasonLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getPaymentReasonLine2());
         $this->assertEquals('CCCCCCCCCC', $this->slipData->getPaymentReasonLine3());
@@ -193,7 +195,8 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetNotForPayment()
     {
-        $this->slipData->setNotForPayment(true);
+        $returned = $this->slipData->setNotForPayment(true);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\RedPaymentSlipData', $returned);
         $this->assertTrue($this->slipData->getNotForPayment());
 
         $this->assertEquals('XXXXXXXXXXXXXXXXXXXXX', $this->slipData->getIban());

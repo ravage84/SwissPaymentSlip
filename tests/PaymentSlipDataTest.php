@@ -58,8 +58,9 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('', $this->slipData->getBankCity());
         $this->assertTrue($this->slipData->getWithBank());
 
-        // Set data when enabled
-        $this->slipData->setBankData('Seldwyla Bank', '8001 Zürich');
+        // Set data when enabled, also check for returned instance, also check for returned instance
+        $returned = $this->slipData->setBankData('Seldwyla Bank', '8001 Zürich');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlipData', $returned);
         $this->assertEquals('Seldwyla Bank', $this->slipData->getBankName());
         $this->assertEquals('8001 Zürich', $this->slipData->getBankCity());
 
@@ -107,8 +108,9 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('', $this->slipData->getAccountNumber());
         $this->assertTrue($this->slipData->getWithAccountNumber());
 
-        // Set data when enabled
-        $this->slipData->setAccountNumber('01-2345-6');
+        // Set data when enabled, also check for returned instance
+        $returned = $this->slipData->setAccountNumber('01-2345-6');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlipData', $returned);
         $this->assertEquals('01-2345-6', $this->slipData->getAccountNumber());
 
         // Disable feature, also check for returned instance
@@ -163,8 +165,9 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('', $this->slipData->getRecipientLine4());
         $this->assertTrue($this->slipData->getWithRecipient());
 
-        // Set data when enabled
-        $this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
+        // Set data when enabled, also check for returned instance
+        $returned = $this->slipData->setRecipientData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlipData', $returned);
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getRecipientLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getRecipientLine2());
         $this->assertEquals('CCCCCCCCCC', $this->slipData->getRecipientLine3());
@@ -218,8 +221,9 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(0.0, $this->slipData->getAmount());
         $this->assertTrue($this->slipData->getWithAmount());
 
-        // Set data when enabled
-        $this->slipData->setAmount(1234567.89);
+        // Set data when enabled, also check for returned instance
+        $returned = $this->slipData->setAmount(1234567.89);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlipData', $returned);
         $this->assertEquals(1234567.89, $this->slipData->getAmount());
 
         // Disable feature, also check for returned instance
@@ -274,8 +278,9 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('', $this->slipData->getPayerLine4());
         $this->assertTrue($this->slipData->getWithPayer());
 
-        // Set data when enabled
-        $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
+        // Set data when enabled, also check for returned instance
+        $returned = $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlipData', $returned);
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getPayerLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getPayerLine2());
         $this->assertEquals('CCCCCCCCCC', $this->slipData->getPayerLine3());

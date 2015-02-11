@@ -54,8 +54,9 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('', $this->slipData->getReferenceNumber());
         $this->assertTrue($this->slipData->getWithReferenceNumber());
 
-        // Set data when enabled
-        $this->slipData->setReferenceNumber('0123456789');
+        // Set data when enabled, also check for returned instance
+        $returned = $this->slipData->setReferenceNumber('0123456789');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlipData', $returned);
         $this->assertEquals('0123456789', $this->slipData->getReferenceNumber());
 
         // Disable feature, also check for returned instance
@@ -100,8 +101,9 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('', $this->slipData->getBankingCustomerId());
         $this->assertTrue($this->slipData->getWithBankingCustomerId());
 
-        // Set data when enabled
-        $this->slipData->setBankingCustomerId('0123456789');
+        // Set data when enabled, also check for returned instance
+        $returned = $this->slipData->setBankingCustomerId('0123456789');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlipData', $returned);
         $this->assertEquals('0123456789', $this->slipData->getBankingCustomerId());
 
         // Disable feature, also check for returned instance
@@ -280,7 +282,8 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetNotForPayment()
     {
-        $this->slipData->setNotForPayment(true);
+        $returned = $this->slipData->setNotForPayment(true);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlipData', $returned);
         $this->assertTrue($this->slipData->getNotForPayment());
 
         $this->assertEquals('XXXXXXXXXXXXXXXXXXXX', $this->slipData->getReferenceNumber());
