@@ -112,6 +112,17 @@ class OrangePaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
+     * Tests the default background
+     *
+     * @return void
+     * @covers ::setDefaults
+     */
+    public function testSlipBackgroundDefaultValues()
+    {
+        $this->assertEquals('ezs_orange.gif', basename($this->paymentSlip->getSlipBackground()));
+    }
+
+    /**
      * Tests the default attributes of the left reference number element for an orange slip
      *
      * @return void
