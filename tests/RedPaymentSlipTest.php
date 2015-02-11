@@ -123,37 +123,193 @@ class RedPaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
+     * Tests the default attributes of the payment reason element
+     *
+     * @return void
+     * @covers ::setDefaults
+     * @todo Implement once the defaults are set properly in RedPaymentSlip::setDefaults()
+     */
+    public function testPaymentReasonAttrDefaultValues()
+    {
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
+    /**
+     * Tests the default attributes of the left IBAN element
+     *
+     * @return void
+     * @covers ::setDefaults
+     * @todo Implement once the defaults are set properly in RedPaymentSlip::setDefaults()
+     */
+    public function testIbanLeftAttrDefaultValues()
+    {
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
+    /**
+     * Tests the default attributes of the right IBAN element
+     *
+     * @return void
+     * @covers ::setDefaults
+     * @todo Implement once the defaults are set properly in RedPaymentSlip::setDefaults()
+     */
+    public function testIbanRightAttrDefaultValues()
+    {
+        $this->markTestIncomplete(
+            'This test has not been implemented yet.'
+        );
+    }
+
+    /**
+     * Tests the setPaymentReasonAttr method
+     *
+     * @return void
+     * @covers ::setPaymentReasonAttr
+     * @covers ::setAttributes
+     * @covers ::getPaymentReasonAttr
+     */
+    public function testSetPaymentReasonAttr()
+    {
+        $this->paymentSlip->setPaymentReasonAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $this->assertEquals($this->setAttributes, $this->paymentSlip->getPaymentReasonAttr());
+    }
+
+    /**
+     * Tests the setIbanLeftAttr method
+     *
+     * @return void
+     * @covers ::setIbanLeftAttr
+     * @covers ::setAttributes
+     * @covers ::getIbanLeftAttr
+     */
+    public function testSetIbanLeftAttr()
+    {
+        $this->paymentSlip->setIbanLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $this->assertEquals($this->setAttributes, $this->paymentSlip->getIbanLeftAttr());
+    }
+
+    /**
+     * Tests the setIbanRightAttr method
+     *
+     * @return void
+     * @covers ::setIbanRightAttr
+     * @covers ::setAttributes
+     * @covers ::getIbanRightAttr
+     */
+    public function testSetIbanRightAttr()
+    {
+        $this->paymentSlip->setIbanRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $this->assertEquals($this->setAttributes, $this->paymentSlip->getIbanRightAttr());
+    }
+
+    /**
+     * Tests the setDisplayIban method
+     *
+     * @return void
+     * @covers ::setDisplayIban
+     * @covers ::getDisplayIban
+     * @covers ::isBool
+     */
+    public function testSetDisplayIban()
+    {
+        // Test the default value
+        $this->assertTrue($this->paymentSlip->getDisplayIban());
+
+        // Disable the feature
+        $this->paymentSlip->setDisplayIban(false);
+        $this->assertFalse($this->paymentSlip->getDisplayIban());
+
+        // Re-enable the feature
+        $this->paymentSlip->setDisplayIban();
+        $this->assertTrue($this->paymentSlip->getDisplayIban());
+    }
+
+    /**
+     * Tests the setDisplayIban method with an invalid parameter
+     *
+     * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $displayIban is not a boolean.
+     * @covers ::setDisplayIban
+     * @covers ::isBool
+     */
+    public function testSetDisplayIbanInvalidParameter()
+    {
+        $this->paymentSlip->setDisplayIban('true');
+    }
+
+    /**
      * Tests the setDisplayPaymentReason method
      *
      * @return void
      * @covers ::setDisplayPaymentReason
      * @covers ::getDisplayPaymentReason
+     * @covers ::isBool
      */
     public function testSetDisplayPaymentReason()
     {
-        $this->paymentSlip->setDisplayPaymentReason();
-        $this->assertEquals(true, $this->paymentSlip->getDisplayPaymentReason());
+        // Test the default value
+        $this->assertTrue($this->paymentSlip->getDisplayPaymentReason());
 
+        // Disable the feature
         $this->paymentSlip->setDisplayPaymentReason(false);
-        $this->assertEquals(false, $this->paymentSlip->getDisplayPaymentReason());
+        $this->assertFalse($this->paymentSlip->getDisplayPaymentReason());
 
-        $this->paymentSlip->setDisplayPaymentReason(true);
-        $this->assertEquals(true, $this->paymentSlip->getDisplayPaymentReason());
+        // Re-enable the feature
+        $this->paymentSlip->setDisplayPaymentReason();
+        $this->assertTrue($this->paymentSlip->getDisplayPaymentReason());
+    }
 
-        $this->paymentSlip->setDisplayPaymentReason('XXX');
+    /**
+     * Tests the setDisplayPaymentReason method with an invalid parameter
+     *
+     * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $displayPaymentReason is not a boolean.
+     * @covers ::setDisplayPaymentReason
+     * @covers ::isBool
+     */
+    public function testSetDisplayPaymentReasonInvalidParameter()
+    {
+        $this->paymentSlip->setDisplayPaymentReason('true');
     }
 
     /**
      * Tests the getAllElements method
      *
      * @return void
+     * @expectedException \Exception
+     * @expectedExceptionMessage Not yet implemented!
      * @covers ::getAllElements
-     * @todo Implement testGetAllElements
+     * @todo Remove exception expectation once RedPaymentSlipData::getCodeLine() is implemented
      */
     public function testGetAllElements()
     {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
+        $elements = $this->paymentSlip->getAllElements();
+
+        $expectedElements = array(
+            'bankLeft',
+            'bankRight',
+            'recipientLeft',
+            'recipientRight',
+            'accountLeft',
+            'accountRight',
+            'amountFrancsLeft',
+            'amountFrancsRight',
+            'amountCentsLeft',
+            'amountCentsRight',
+            'payerLeft',
+            'payerRight',
+            'codeLine',
+            'IbanLeft',
+            'IbanRight',
+            'paymentReason',
         );
+
+        $this->assertElementsArray($expectedElements, $elements);
     }
 }
