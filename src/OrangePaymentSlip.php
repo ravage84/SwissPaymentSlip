@@ -241,7 +241,7 @@ class OrangePaymentSlip extends PaymentSlip
     {
         $paymentSlipData = $this->paymentSlipData;
 
-        $elements = parent::getAllElements($fillZeroes, $formatted);
+        $elements = parent::getAllElements($fillZeroes);
         // Place left reference number
         if ($this->getDisplayReferenceNr()) {
             $lines = array(
