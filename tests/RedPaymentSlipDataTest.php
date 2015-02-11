@@ -157,7 +157,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      * @return void
      * @covers ::getFormattedIban
      */
-    public function estGetFormattedIban()
+    public function testGetFormattedIban()
     {
         $this->slipData->setIban('CH3808888123456789012');
 
@@ -175,9 +175,9 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      * @covers ::getCodeLine
      * @covers ::modulo10
      * @covers ::getAccountDigits
-     * @todo Implement testGetCodeLine
+     * @todo Implement once RedPaymentSlipData::getCodeLine() is implemented
      */
-    public function estGetCodeLine()
+    public function testGetCodeLine()
     {
         $this->markTestIncomplete(
             'This test has not been implemented yet.'
