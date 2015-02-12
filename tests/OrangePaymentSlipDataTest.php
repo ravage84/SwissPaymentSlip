@@ -63,12 +63,25 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $returned = $this->slipData->setWithReferenceNumber(false);
         $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlipData', $returned);
         $this->assertFalse($this->slipData->getWithReferenceNumber());
-        $this->assertEquals('', $this->slipData->getReferenceNumber());
 
         // Re-enable feature, using no parameter
         $this->slipData->setWithReferenceNumber();
         $this->assertTrue($this->slipData->getWithReferenceNumber());
         $this->assertEquals('', $this->slipData->getReferenceNumber());
+    }
+
+    /**
+     * Tests the getReferenceNumber method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You requested the disabled reference number. You need to re-enable it first.
+     * @covers ::getReferenceNumber
+     */
+    public function testGetReferenceNumberWhenDisabled()
+    {
+        $this->slipData->setWithReferenceNumber(false);
+        $this->slipData->getReferenceNumber();
     }
 
     /**
@@ -110,12 +123,25 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $returned = $this->slipData->setWithBankingCustomerId(false);
         $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlipData', $returned);
         $this->assertFalse($this->slipData->getWithBankingCustomerId());
-        $this->assertEquals('', $this->slipData->getBankingCustomerId());
 
         // Re-enable feature, using no parameter
         $this->slipData->setWithBankingCustomerId();
         $this->assertTrue($this->slipData->getWithBankingCustomerId());
         $this->assertEquals('', $this->slipData->getBankingCustomerId());
+    }
+
+    /**
+     * Tests the getWithBankingCustomerId method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You requested the disabled banking customer ID. You need to re-enable it first.
+     * @covers ::getBankingCustomerId
+     */
+    public function testGetBankingCustomerIdNumberWhenDisabled()
+    {
+        $this->slipData->setWithBankingCustomerId(false);
+        $this->slipData->getBankingCustomerId();
     }
 
     /**
@@ -181,13 +207,21 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
             '75 20033 45590 00129',
             $this->slipData->getCompleteReferenceNumber(true, false)
         );
+    }
 
-        // Test with reference number & banking customer ID disabled
+    /**
+     * Tests the getCompleteReferenceNumber method with the reference number disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You requested the disabled reference number. You need to re-enable it first.
+     * @covers ::getCompleteReferenceNumber
+     * @covers ::getReferenceNumber
+     */
+    public function testGetCompleteReferenceNumberWithReferenceNrDisabled()
+    {
         $this->slipData->setWithReferenceNumber(false);
-
-        $this->assertEquals(false, $this->slipData->getCompleteReferenceNumber());
-        $this->assertEquals(false, $this->slipData->getCompleteReferenceNumber(false));
-        $this->assertEquals(false, $this->slipData->getCompleteReferenceNumber(true, false));
+        $this->slipData->getCompleteReferenceNumber();
     }
 
     /**

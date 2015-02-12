@@ -13,6 +13,8 @@
 namespace SwissPaymentSlip\SwissPaymentSlip;
 
 use InvalidArgumentException;
+use SwissPaymentSlip\SwissPaymentSlip\Exception\PaymentSlipException;
+use SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException;
 
 /**
  * Swiss Payment Slip Data
@@ -374,14 +376,15 @@ abstract class PaymentSlipData
     /**
      * Get the name of the bank
      *
-     * @return string|bool The name of the bank or false if withBank = false.
+     * @return string The name of the bank, if withBank is set to true.
+     * @throws DisabledDataException If the data is disabled.
      */
     public function getBankName()
     {
-        if ($this->getWithBank()) {
-            return $this->bankName;
+        if (!$this->getWithBank()) {
+            throw new DisabledDataException('bank name');
         }
-        return false;
+        return $this->bankName;
     }
 
     /**
@@ -404,14 +407,15 @@ abstract class PaymentSlipData
     /**
      * Get the postal code and city of the bank
      *
-     * @return string|bool The postal code and city of the bank or false if withBank = false.
+     * @return string The postal code and city, if withBank is set to true.
+     * @throws DisabledDataException If the data is disabled.
      */
     public function getBankCity()
     {
-        if ($this->getWithBank()) {
-            return $this->bankCity;
+        if (!$this->getWithBank()) {
+            throw new DisabledDataException('bank city');
         }
-        return false;
+        return $this->bankCity;
     }
 
     /**
@@ -434,14 +438,15 @@ abstract class PaymentSlipData
     /**
      * Get the bank or post cheque account where the money will be transferred to
      *
-     * @return string|bool The bank or post cheque account or false if withAccountNumber = false.
+     * @return string The bank or post cheque account, if withAccountNumber is set to true.
+     * @throws DisabledDataException If the data is disabled.
      */
     public function getAccountNumber()
     {
-        if ($this->getWithAccountNumber()) {
-            return $this->accountNumber;
+        if (!$this->getWithAccountNumber()) {
+            throw new DisabledDataException('account number');
         }
-        return false;
+        return $this->accountNumber;
     }
 
     /**
@@ -481,14 +486,15 @@ abstract class PaymentSlipData
     /**
      * Get the first line of the recipient
      *
-     * @return string|bool The first line of the recipient or false if withRecipient = false.
+     * @return string The first line of the recipient, if withRecipient is set to true.
+     * @throws DisabledDataException If the data is disabled.
      */
     public function getRecipientLine1()
     {
-        if ($this->getWithRecipient()) {
-            return $this->recipientLine1;
+        if (!$this->getWithRecipient()) {
+            throw new DisabledDataException('recipient line 1');
         }
-        return false;
+        return $this->recipientLine1;
     }
 
     /**
@@ -509,14 +515,15 @@ abstract class PaymentSlipData
     /**
      * Get the second line of the recipient
      *
-     * @return string|bool The second line of the recipient or false if withRecipient = false.
+     * @return string The second line of the recipient, if withRecipient is set to true.
+     * @throws DisabledDataException If the data is disabled.
      */
     public function getRecipientLine2()
     {
-        if ($this->getWithRecipient()) {
-            return $this->recipientLine2;
+        if (!$this->getWithRecipient()) {
+            throw new DisabledDataException('recipient line 2');
         }
-        return false;
+        return $this->recipientLine2;
     }
 
     /**
@@ -537,14 +544,15 @@ abstract class PaymentSlipData
     /**
      * Get the third line of the recipient
      *
-     * @return string|bool The third line of the recipient or false if withRecipient = false.
+     * @return string The third line of the recipient, if withRecipient is set to true.
+     * @throws DisabledDataException If the data is disabled.
      */
     public function getRecipientLine3()
     {
-        if ($this->getWithRecipient()) {
-            return $this->recipientLine3;
+        if (!$this->getWithRecipient()) {
+            throw new DisabledDataException('recipient line 3');
         }
-        return false;
+        return $this->recipientLine3;
     }
 
     /**
@@ -565,14 +573,15 @@ abstract class PaymentSlipData
     /**
      * Get the fourth line of the recipient
      *
-     * @return string|bool The fourth line of the recipient or false if withRecipient = false.
+     * @return string The fourth line of the recipient, if withRecipient is set to true.
+     * @throws DisabledDataException If the data is disabled.
      */
     public function getRecipientLine4()
     {
-        if ($this->getWithRecipient()) {
-            return $this->recipientLine4;
+        if (!$this->getWithRecipient()) {
+            throw new DisabledDataException('recipient line 4');
         }
-        return false;
+        return $this->recipientLine4;
     }
 
     /**
@@ -597,10 +606,10 @@ abstract class PaymentSlipData
      */
     public function getAmount()
     {
-        if ($this->getWithAmount()) {
-            return $this->amount;
+        if (!$this->getWithAmount()) {
+            throw new DisabledDataException('amount');
         }
-        return false;
+        return $this->amount;
     }
 
     /**
@@ -642,14 +651,15 @@ abstract class PaymentSlipData
     /**
      * Get the first line of the payer
      *
-     * @return string|bool The first line of the payer or false if withPayer = false.
+     * @return string The first line of the payer, if withPayer is set to true.
+     * @throws DisabledDataException If the data is disabled.
      */
     public function getPayerLine1()
     {
-        if ($this->getWithPayer()) {
-            return $this->payerLine1;
+        if (!$this->getWithPayer()) {
+            throw new DisabledDataException('payer line 1');
         }
-        return false;
+        return $this->payerLine1;
     }
 
     /**
@@ -670,14 +680,15 @@ abstract class PaymentSlipData
     /**
      * Get the second line of the payer
      *
-     * @return string|bool The second line of the payer or false if withPayer = false.
+     * @return string The second line of the payer, if withPayer is set to true.
+     * @throws DisabledDataException If the data is disabled.
      */
     public function getPayerLine2()
     {
-        if ($this->getWithPayer()) {
-            return $this->payerLine2;
+        if (!$this->getWithPayer()) {
+            throw new DisabledDataException('payer line 2');
         }
-        return false;
+        return $this->payerLine2;
     }
 
     /**
@@ -698,14 +709,15 @@ abstract class PaymentSlipData
     /**
      * Get the third line of the payer
      *
-     * @return string|bool The third line of the payer or false if withPayer = false.
+     * @return string The third line of the payer, if withPayer is set to true.
+     * @throws DisabledDataException If the data is disabled.
      */
     public function getPayerLine3()
     {
-        if ($this->getWithPayer()) {
-            return $this->payerLine3;
+        if (!$this->getWithPayer()) {
+            throw new DisabledDataException('payer line 3');
         }
-        return false;
+        return $this->payerLine3;
     }
 
     /**
@@ -726,36 +738,42 @@ abstract class PaymentSlipData
     /**
      * Get the fourth line of the payer
      *
-     * @return string|bool The fourth line of the payer or false if withPayer = false.
+     * @return string The fourth line of the payer, if withPayer is set to true.
+     * @throws DisabledDataException If the data is disabled.
      */
     public function getPayerLine4()
     {
-        if ($this->getWithPayer()) {
-            return $this->payerLine4;
+        if (!$this->getWithPayer()) {
+            throw new DisabledDataException('payer line 4');
         }
-        return false;
+        return $this->payerLine4;
     }
 
     /**
      * Clear the account of the two hyphens
      *
-     * @return string|false The account of the two hyphens, 'XXXXXXXXX' if not for payment or else false.
+     * @return string The account of the two hyphens, 'XXXXXXXXX' if not for payment or else false.
+     * @throws DisabledDataException If the data is disabled.
+     * @throws PaymentSlipException If account number does not contain two hyphens.
+     * @todo Cover the edge cases
      */
     protected function getAccountDigits()
     {
-        if ($this->getWithAccountNumber()) {
-            if ($this->getNotForPayment()) {
-                return 'XXXXXXXXX';
-            }
-            $accountNumber = $this->getAccountNumber();
-            if ($accountNumber !== false) {
-                $accountDigits = str_replace('-', '', $accountNumber, $replacedHyphens);
-                if ($replacedHyphens == 2) {
-                    return $accountDigits;
-                }
-            }
+        if (!$this->getWithAccountNumber()) {
+            throw new DisabledDataException('account number');
         }
-        return false;
+        if ($this->getNotForPayment()) {
+            return 'XXXXXXXXX';
+        }
+        $accountNumber = $this->getAccountNumber();
+        if ($accountNumber === '') {
+            return $accountNumber;
+        }
+        $accountDigits = str_replace('-', '', $accountNumber, $replacedHyphens);
+        if ($replacedHyphens != 2) {
+            throw new PaymentSlipException('Invalid Account number. Does not contain two hyphens.');
+        }
+        return $accountDigits;
     }
 
     /**
@@ -769,9 +787,6 @@ abstract class PaymentSlipData
             return 'XXXXXXXX';
         }
         $amount = $this->getAmount();
-        if ($amount === false) {
-            return false;
-        }
         $francs = intval($amount);
         return $francs;
     }
@@ -787,9 +802,6 @@ abstract class PaymentSlipData
             return 'XX';
         }
         $amount = $this->getAmount();
-        if ($amount === false) {
-            return false;
-        }
         $francs = intval($amount);
         $cents = round(($amount - $francs) * 100);
         return str_pad($cents, 2, '0', STR_PAD_RIGHT);

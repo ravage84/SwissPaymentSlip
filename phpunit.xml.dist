@@ -5,6 +5,7 @@
     verbose="false" bootstrap="./tests/bootstrap.php">
     <testsuites>
         <testsuite name="All SwissPaymentSlip tests">
+            <file>./tests/Exception/DisabledDataExceptionTest.php</file>
             <file>./tests/PaymentSlipDataTest.php</file>
             <file>./tests/OrangePaymentSlipDataTest.php</file>
             <file>./tests/RedPaymentSlipDataTest.php</file>
