@@ -222,9 +222,6 @@ class OrangePaymentSlipData extends PaymentSlipData
      */
     public function getCompleteReferenceNumber($formatted = true, $fillZeros = true)
     {
-        if (!$this->getWithReferenceNumber()) {
-            return false;
-        }
         $referenceNumber = $this->getReferenceNumber();
         if ($referenceNumber === false) {
             return false;
