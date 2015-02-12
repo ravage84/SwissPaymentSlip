@@ -278,9 +278,8 @@ class RedPaymentSlip extends PaymentSlip
      */
     public function setDisplayIban($displayIban = true)
     {
-        if (is_bool($displayIban)) {
-            $this->displayIban = $displayIban;
-        }
+        $this->isBool($displayIban, 'displayIban');
+        $this->displayIban = $displayIban;
 
         return $this;
     }
@@ -303,9 +302,8 @@ class RedPaymentSlip extends PaymentSlip
      */
     public function setDisplayPaymentReason($displayPaymentReason = true)
     {
-        if (is_bool($displayPaymentReason)) {
-            $this->displayPaymentReason = $displayPaymentReason;
-        }
+        $this->isBool($displayPaymentReason, 'displayPaymentReason');
+        $this->displayPaymentReason = $displayPaymentReason;
 
         return $this;
     }
@@ -323,15 +321,32 @@ class RedPaymentSlip extends PaymentSlip
     /**
      * Get all elements of the slip
      *
-     * @param bool $formatted Whether to return the reference number formatted or not.
-     * @param bool $fillZeroes No functionality for red payment slips.
+     * @param bool $fillZeroes Whether to return the code line filled with zeros or not.
      * @return array All elements with their lines and attributes.
+     * @todo Consider extracting the parameter as settable property, e.g. $fillWithZeros
      */
-    public function getAllElements($formatted = true, $fillZeroes = true)
+    public function getAllElements($fillZeroes = true)
     {
         $paymentSlipData = $this->paymentSlipData;
 
-        $elements = parent::getAllElements($formatted, $fillZeroes);
+        $elements = parent::getAllElements($fillZeroes);
+
+        // Place left IBAN
+        if ($this->getDisplayIban()) {
+            $lines = array(
+                $paymentSlipData->getFormattedIban()
+            );
+            $elements['IbanLeft'] = array('lines' => $lines,
+                'attributes' => $this->getIbanLeftAttr()
+            );
+
+            // Place right IBAN
+            // Reuse lines from above
+            $elements['IbanRight'] = array(
+                'lines' => $lines,
+                'attributes' => $this->getIbanRightAttr()
+            );
+        }
 
         if ($this->getDisplayPaymentReason()) {
             // Place payment reason lines

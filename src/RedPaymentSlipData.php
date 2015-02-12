@@ -100,38 +100,17 @@ class RedPaymentSlipData extends PaymentSlipData
     protected $paymentReasonLine4 = '';
 
     /**
-     * Set payment slip for not to be used for payment
-     *
-     * XXXes out all fields to prevent people using the payment slip.
-     *
-     * @param boolean $notForPayment True if not for payment, else false.
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setNotForPayment($notForPayment = true)
-    {
-        parent::setNotForPayment($notForPayment);
-
-        if ($notForPayment === true) {
-            $this->setPaymentReasonData('XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX');
-            $this->setIban('XXXXXX');
-        }
-
-        return $this;
-    }
-
-    /**
-     * Set if payment slip has an IBAN specified.
-     * Only available for red payment slips
+     * Set if payment slip has an IBAN specified
      *
      * @param bool $withIban True if yes, false if no.
      * @return $this The current instance for a fluent interface.
      */
-    public function setWithIban($withIban = false)
+    public function setWithIban($withIban = true)
     {
-        if (is_bool($withIban)) {
+        if ($this->isBool($withIban, 'withIban')) {
             $this->withIban = $withIban;
 
-            if (!$withIban) {
+            if ($withIban === false) {
                 $this->iban = '';
             }
         }
@@ -151,17 +130,16 @@ class RedPaymentSlipData extends PaymentSlipData
 
     /**
      * Set if payment slip has a payment reason specified.
-     * Only available for red payment slips
      *
      * @param bool $withPaymentReason True if yes, false if no.
      * @return $this The current instance for a fluent interface.
      */
-    public function setWithPaymentReason($withPaymentReason = false)
+    public function setWithPaymentReason($withPaymentReason = true)
     {
-        if (is_bool($withPaymentReason)) {
+        if ($this->isBool($withPaymentReason, 'withPaymentReason')) {
             $this->withPaymentReason = $withPaymentReason;
 
-            if (!$withPaymentReason) {
+            if ($withPaymentReason === false) {
                 $this->paymentReasonLine1 = '';
                 $this->paymentReasonLine2 = '';
                 $this->paymentReasonLine3 = '';
@@ -352,6 +330,26 @@ class RedPaymentSlipData extends PaymentSlipData
     }
 
     /**
+     * Set payment slip for not to be used for payment
+     *
+     * XXXes out all fields to prevent people using the payment slip.
+     *
+     * @param boolean $notForPayment True if not for payment, else false.
+     * @return $this The current instance for a fluent interface.
+     */
+    public function setNotForPayment($notForPayment = true)
+    {
+        parent::setNotForPayment($notForPayment);
+
+        if ($notForPayment === true) {
+            $this->setPaymentReasonData('XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX');
+            $this->setIban('XXXXXXXXXXXXXXXXXXXXX');
+        }
+
+        return $this;
+    }
+
+    /**
      * Get the IBAN number in human readable format
      *
      * Not valid for electronic transactions.
@@ -361,9 +359,6 @@ class RedPaymentSlipData extends PaymentSlipData
      */
     public function getFormattedIban()
     {
-        if (!$this->getWithIban()) {
-            return false;
-        }
         $iban = $this->getIban();
         if ($iban === false) {
             return false;

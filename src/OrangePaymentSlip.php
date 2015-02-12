@@ -213,9 +213,8 @@ class OrangePaymentSlip extends PaymentSlip
      */
     public function setDisplayReferenceNr($displayReferenceNr = true)
     {
-        if (is_bool($displayReferenceNr)) {
-            $this->displayReferenceNr = $displayReferenceNr;
-        }
+        $this->isBool($displayReferenceNr, 'displayReferenceNr');
+        $this->displayReferenceNr = $displayReferenceNr;
 
         return $this;
     }
@@ -233,15 +232,16 @@ class OrangePaymentSlip extends PaymentSlip
     /**
      * Get all elements of the slip
      *
-     * @param bool $formatted Whether to return the reference number formatted or not.
      * @param bool $fillZeroes Whether to return the reference number filled with zeros or not.
+     * @param bool $formatted Whether to return the reference number formatted or not.
      * @return array All elements with their lines and attributes.
+     * @todo Consider extracting the parameters as settable properties, e.g. $fillWithZeros & $referenceNrFormatted
      */
-    public function getAllElements($formatted = true, $fillZeroes = true)
+    public function getAllElements($fillZeroes = true, $formatted = true)
     {
         $paymentSlipData = $this->paymentSlipData;
 
-        $elements = parent::getAllElements($formatted, $fillZeroes);
+        $elements = parent::getAllElements($fillZeroes);
         // Place left reference number
         if ($this->getDisplayReferenceNr()) {
             $lines = array(

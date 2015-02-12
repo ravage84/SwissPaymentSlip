@@ -75,26 +75,6 @@ class OrangePaymentSlipData extends PaymentSlipData
     protected $bankingCustomerId = '';
 
     /**
-     * Set payment slip for not to be used for payment
-     *
-     * XXXes out all fields to prevent people using the payment slip.
-     *
-     * @param boolean $notForPayment True if not for payment, else false.
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setNotForPayment($notForPayment = true)
-    {
-        parent::setNotForPayment($notForPayment);
-
-        if ($notForPayment === true) {
-            $this->setReferenceNumber('XXXXXXXXXXXXXXXXXXXX');
-            $this->setBankingCustomerId('XXXXXX');
-        }
-
-        return $this;
-    }
-
-    /**
      * Set if payment slip has a reference number specified
      *
      * Resets reference number if disabled
@@ -104,7 +84,7 @@ class OrangePaymentSlipData extends PaymentSlipData
      */
     public function setWithReferenceNumber($withReferenceNumber = true)
     {
-        if (is_bool($withReferenceNumber)) {
+        if ($this->isBool($withReferenceNumber, 'withReferenceNumber')) {
             $this->withReferenceNumber = $withReferenceNumber;
 
             if (!$withReferenceNumber) {
@@ -133,10 +113,10 @@ class OrangePaymentSlipData extends PaymentSlipData
      */
     public function setWithBankingCustomerId($withBankingCustomerId = true)
     {
-        if (is_bool($withBankingCustomerId)) {
+        if ($this->isBool($withBankingCustomerId, 'withBankingCustomerId')) {
             $this->withBankingCustomerId = $withBankingCustomerId;
 
-            if (!$withBankingCustomerId) {
+            if ($withBankingCustomerId === false) {
                 $this->bankingCustomerId = '';
             }
         }
@@ -213,6 +193,26 @@ class OrangePaymentSlipData extends PaymentSlipData
     }
 
     /**
+     * Set payment slip for not to be used for payment
+     *
+     * XXXes out all fields to prevent people using the payment slip.
+     *
+     * @param boolean $notForPayment True if not for payment, else false.
+     * @return $this The current instance for a fluent interface.
+     */
+    public function setNotForPayment($notForPayment = true)
+    {
+        parent::setNotForPayment($notForPayment);
+
+        if ($notForPayment === true) {
+            $this->setReferenceNumber('XXXXXXXXXXXXXXXXXXXX');
+            $this->setBankingCustomerId('XXXXXX');
+        }
+
+        return $this;
+    }
+
+    /**
      * Get complete reference number
      *
      * @param bool $formatted Should the returned reference be formatted in blocks of five (for better readability).
@@ -222,9 +222,6 @@ class OrangePaymentSlipData extends PaymentSlipData
      */
     public function getCompleteReferenceNumber($formatted = true, $fillZeros = true)
     {
-        if (!$this->getWithReferenceNumber()) {
-            return false;
-        }
         $referenceNumber = $this->getReferenceNumber();
         if ($referenceNumber === false) {
             return false;

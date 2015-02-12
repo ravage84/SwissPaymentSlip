@@ -43,7 +43,7 @@ and copy the following into it:
 ```JSON
 {
     "require": {
-        "swiss-payment-slip/swiss-payment-slip": "dev-master"
+        "swiss-payment-slip/swiss-payment-slip": "*"
     }
 }
 ```
@@ -58,7 +58,7 @@ Background Story
 ----------------
 
 In february 2013 I was looking for a solution to create swiss payment slips for a project I had to do at my work place.
-After a short Google search I came accros Manuel Reinhard's
+After a short Google search I came across Manuel Reinhard's
 [blog post](http://sprain.ch/blog/downloads/class-esr-besr-einzahlungsschein-php/) about the class he made for that.
 On his [Github project's page](https://github.com/sprain/class.Einzahlungsschein.php) I found
 [Peter Siska's](https://github.com/peschee) [pull request](https://github.com/sprain/class.Einzahlungsschein.php/pull/5).
