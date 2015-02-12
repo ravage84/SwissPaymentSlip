@@ -12,8 +12,6 @@
 
 namespace SwissPaymentSlip\SwissPaymentSlip\Tests;
 
-use SwissPaymentSlip\SwissPaymentSlip\PaymentSlip;
-
 /**
  * Tests for the PaymentSlip class
  *
