@@ -766,10 +766,10 @@ abstract class PaymentSlipData
      */
     public function getAmountFrancs()
     {
-        $amount = $this->getAmount();
         if ($this->getNotForPayment()) {
             return 'XXXXXXXX';
         }
+        $amount = $this->getAmount();
         if ($amount === false) {
             return false;
         }
