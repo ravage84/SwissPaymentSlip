@@ -174,7 +174,8 @@ class RedPaymentSlipTest extends PaymentSlipTestCase
      */
     public function testSetPaymentReasonAttr()
     {
-        $this->paymentSlip->setPaymentReasonAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $returned = $this->paymentSlip->setPaymentReasonAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\RedPaymentSlip', $returned);
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getPaymentReasonAttr());
     }
 
@@ -188,7 +189,8 @@ class RedPaymentSlipTest extends PaymentSlipTestCase
      */
     public function testSetIbanLeftAttr()
     {
-        $this->paymentSlip->setIbanLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $returned = $this->paymentSlip->setIbanLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\RedPaymentSlip', $returned);
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getIbanLeftAttr());
     }
 
@@ -202,7 +204,8 @@ class RedPaymentSlipTest extends PaymentSlipTestCase
      */
     public function testSetIbanRightAttr()
     {
-        $this->paymentSlip->setIbanRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $returned = $this->paymentSlip->setIbanRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\RedPaymentSlip', $returned);
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getIbanRightAttr());
     }
 
@@ -219,8 +222,9 @@ class RedPaymentSlipTest extends PaymentSlipTestCase
         // Test the default value
         $this->assertTrue($this->paymentSlip->getDisplayIban());
 
-        // Disable the feature
-        $this->paymentSlip->setDisplayIban(false);
+        // Disable the feature, also assert returned instance
+        $returned = $this->paymentSlip->setDisplayIban(false);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\RedPaymentSlip', $returned);
         $this->assertFalse($this->paymentSlip->getDisplayIban());
 
         // Re-enable the feature
@@ -255,8 +259,9 @@ class RedPaymentSlipTest extends PaymentSlipTestCase
         // Test the default value
         $this->assertTrue($this->paymentSlip->getDisplayPaymentReason());
 
-        // Disable the feature
-        $this->paymentSlip->setDisplayPaymentReason(false);
+        // Disable the feature, also assert returned instance
+        $returned = $this->paymentSlip->setDisplayPaymentReason(false);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\RedPaymentSlip', $returned);
         $this->assertFalse($this->paymentSlip->getDisplayPaymentReason());
 
         // Re-enable the feature

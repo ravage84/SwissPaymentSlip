@@ -174,7 +174,8 @@ class OrangePaymentSlipTest extends PaymentSlipTestCase
      */
     public function testSetReferenceNumberLeftAttr()
     {
-        $this->paymentSlip->setReferenceNumberLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $returned = $this->paymentSlip->setReferenceNumberLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlip', $returned);
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getReferenceNumberLeftAttr());
     }
 
@@ -188,7 +189,8 @@ class OrangePaymentSlipTest extends PaymentSlipTestCase
      */
     public function testSetReferenceNumberRightAttr()
     {
-        $this->paymentSlip->setReferenceNumberRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $returned = $this->paymentSlip->setReferenceNumberRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlip', $returned);
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getReferenceNumberRightAttr());
     }
 
@@ -205,8 +207,9 @@ class OrangePaymentSlipTest extends PaymentSlipTestCase
         // Test the default value
         $this->assertTrue($this->paymentSlip->getDisplayReferenceNr());
 
-        // Disable the feature
-        $this->paymentSlip->setDisplayReferenceNr(false);
+        // Disable the feature, also assert returned instance
+        $returned = $this->paymentSlip->setDisplayReferenceNr(false);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlip', $returned);
         $this->assertFalse($this->paymentSlip->getDisplayReferenceNr());
 
         // Re-enable the feature

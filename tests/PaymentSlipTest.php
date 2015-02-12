@@ -149,7 +149,8 @@ class PaymentSlipTest extends PaymentSlipTestCase
         $this->assertEquals(191, $this->paymentSlip->getSlipPosY());
 
         // Set both
-        $this->paymentSlip->setSlipPosition(200, 100);
+        $returned = $this->paymentSlip->setSlipPosition(200, 100);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
         $this->assertEquals(200, $this->paymentSlip->getSlipPosX());
         $this->assertEquals(100, $this->paymentSlip->getSlipPosY());
     }
@@ -198,7 +199,8 @@ class PaymentSlipTest extends PaymentSlipTestCase
         $this->assertEquals(210, $this->paymentSlip->getSlipWidth());
         $this->assertEquals(106, $this->paymentSlip->getSlipHeight());
 
-        $this->paymentSlip->setSlipSize(250, 150);
+        $returned = $this->paymentSlip->setSlipSize(250, 150);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
         $this->assertEquals(250, $this->paymentSlip->getSlipWidth());
         $this->assertEquals(150, $this->paymentSlip->getSlipHeight());
     }
@@ -241,7 +243,8 @@ class PaymentSlipTest extends PaymentSlipTestCase
     public function testSetSlipBackground()
     {
         // Test with a RGB code
-        $this->paymentSlip->setSlipBackground('#123456');
+        $returned = $this->paymentSlip->setSlipBackground('#123456');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
         $this->assertEquals('#123456', $this->paymentSlip->getSlipBackground());
 
         // Test with an image
@@ -534,7 +537,8 @@ class PaymentSlipTest extends PaymentSlipTestCase
      */
     public function testSetBankLeftAttr()
     {
-        $this->paymentSlip->setBankLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $returned = $this->paymentSlip->setBankLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getBankLeftAttr());
     }
 
@@ -548,7 +552,8 @@ class PaymentSlipTest extends PaymentSlipTestCase
      */
     public function testSetBankRightAttr()
     {
-        $this->paymentSlip->setBankRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $returned = $this->paymentSlip->setBankRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getBankRightAttr());
     }
 
@@ -562,7 +567,8 @@ class PaymentSlipTest extends PaymentSlipTestCase
      */
     public function testSetRecipientLeftAttr()
     {
-        $this->paymentSlip->setRecipientLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $returned = $this->paymentSlip->setRecipientLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getRecipientLeftAttr());
     }
 
@@ -576,7 +582,8 @@ class PaymentSlipTest extends PaymentSlipTestCase
      */
     public function testSetRecipientRightAttr()
     {
-        $this->paymentSlip->setRecipientRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $returned = $this->paymentSlip->setRecipientRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getRecipientRightAttr());
     }
 
@@ -590,7 +597,8 @@ class PaymentSlipTest extends PaymentSlipTestCase
      */
     public function testSetAccountLeftAttr()
     {
-        $this->paymentSlip->setAccountLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $returned = $this->paymentSlip->setAccountLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getAccountLeftAttr());
     }
 
@@ -604,7 +612,8 @@ class PaymentSlipTest extends PaymentSlipTestCase
      */
     public function testSetAccountRightAttr()
     {
-        $this->paymentSlip->setAccountRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $returned = $this->paymentSlip->setAccountRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getAccountRightAttr());
     }
 
@@ -618,7 +627,8 @@ class PaymentSlipTest extends PaymentSlipTestCase
      */
     public function testSetAmountFrancsLeftAttr()
     {
-        $this->paymentSlip->setAmountFrancsLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $returned = $this->paymentSlip->setAmountFrancsLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getAmountFrancsLeftAttr());
     }
 
@@ -632,7 +642,8 @@ class PaymentSlipTest extends PaymentSlipTestCase
      */
     public function testSetAmountCentsLeftAttr()
     {
-        $this->paymentSlip->setAmountCentsLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $returned = $this->paymentSlip->setAmountCentsLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getAmountCentsLeftAttr());
     }
 
@@ -646,7 +657,8 @@ class PaymentSlipTest extends PaymentSlipTestCase
      */
     public function testSetAmountCentsRightAttr()
     {
-        $this->paymentSlip->setAmountCentsRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $returned = $this->paymentSlip->setAmountCentsRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getAmountCentsRightAttr());
     }
 
@@ -660,7 +672,8 @@ class PaymentSlipTest extends PaymentSlipTestCase
      */
     public function testSetAmountFrancsRightAttr()
     {
-        $this->paymentSlip->setAmountFrancsRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $returned = $this->paymentSlip->setAmountFrancsRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getAmountFrancsRightAttr());
     }
 
@@ -674,7 +687,8 @@ class PaymentSlipTest extends PaymentSlipTestCase
      */
     public function testSetPayerLeftAttr()
     {
-        $this->paymentSlip->setPayerLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $returned = $this->paymentSlip->setPayerLeftAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getPayerLeftAttr());
     }
 
@@ -688,7 +702,8 @@ class PaymentSlipTest extends PaymentSlipTestCase
      */
     public function testSetPayerRightAttr()
     {
-        $this->paymentSlip->setPayerRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $returned = $this->paymentSlip->setPayerRightAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getPayerRightAttr());
     }
 
@@ -702,7 +717,8 @@ class PaymentSlipTest extends PaymentSlipTestCase
      */
     public function testSetCodeLineAttr()
     {
-        $this->paymentSlip->setCodeLineAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $returned = $this->paymentSlip->setCodeLineAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
         $this->assertEquals($this->setAttributes, $this->paymentSlip->getCodeLineAttr());
     }
 
