@@ -262,5 +262,4 @@ class OrangePaymentSlipTest extends PaymentSlipTestCase
 
         $this->assertElementsArray($expectedElements, $elements);
     }
-
 }
