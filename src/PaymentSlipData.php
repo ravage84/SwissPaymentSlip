@@ -755,7 +755,7 @@ abstract class PaymentSlipData
      * @return string The account of the two hyphens, 'XXXXXXXXX' if not for payment or else false.
      * @throws DisabledDataException If the data is disabled.
      * @throws PaymentSlipException If account number does not contain two hyphens.
-     * @todo Cover the edge cases
+     * @todo Cover the edge cases with tests
      */
     protected function getAccountDigits()
     {
