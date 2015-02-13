@@ -4,9 +4,9 @@
  *
  * @license http://www.opensource.org/licenses/mit-license.php MIT License
  * @copyright 2012-2015 Some nice Swiss guys
+ * @author Marc Würth ravage@bluewin.ch
  * @author Manuel Reinhard <manu@sprain.ch>
  * @author Peter Siska <pesche@gridonic.ch>
- * @author Marc Würth ravage@bluewin.ch
  * @link https://github.com/ravage84/SwissPaymentSlip/
  */
 ?>
