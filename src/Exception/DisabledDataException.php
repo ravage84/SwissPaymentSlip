@@ -34,7 +34,7 @@ class DisabledDataException extends PaymentSlipException
         $this->dataName = $dataName;
 
         $message = sprintf(
-            'You requested the disabled %s. You need to re-enable it first.',
+            'You are accessing the disabled %s. You need to re-enable it first.',
             $dataName
         );
 

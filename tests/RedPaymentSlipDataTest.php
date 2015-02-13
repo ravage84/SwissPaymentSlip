@@ -75,7 +75,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
-     * @expectedExceptionMessage You requested the disabled IBAN. You need to re-enable it first.
+     * @expectedExceptionMessage You are accessing the disabled IBAN. You need to re-enable it first.
      * @covers ::getIban
      */
     public function testGetIbanWhenDisabled()
@@ -151,7 +151,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
-     * @expectedExceptionMessage You requested the disabled payment reason line 1. You need to re-enable it first.
+     * @expectedExceptionMessage You are accessing the disabled payment reason line 1. You need to re-enable it first.
      * @covers ::getPaymentReasonLine1
      */
     public function testGetPaymentReasonLine1WhenDisabled()
@@ -165,7 +165,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
-     * @expectedExceptionMessage You requested the disabled payment reason line 2. You need to re-enable it first.
+     * @expectedExceptionMessage You are accessing the disabled payment reason line 2. You need to re-enable it first.
      * @covers ::getPaymentReasonLine2
      */
     public function testGetPaymentReasonLine2WhenDisabled()
@@ -179,7 +179,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
-     * @expectedExceptionMessage You requested the disabled payment reason line 3. You need to re-enable it first.
+     * @expectedExceptionMessage You are accessing the disabled payment reason line 3. You need to re-enable it first.
      * @covers ::getPaymentReasonLine3
      */
     public function testGetPaymentReasonLine3WhenDisabled()
@@ -193,7 +193,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
-     * @expectedExceptionMessage You requested the disabled payment reason line 4. You need to re-enable it first.
+     * @expectedExceptionMessage You are accessing the disabled payment reason line 4. You need to re-enable it first.
      * @covers ::getPaymentReasonLine4
      */
     public function testGetPaymentReasonLine4WhenDisabled()

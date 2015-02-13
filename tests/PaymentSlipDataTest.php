@@ -81,7 +81,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
-     * @expectedExceptionMessage You requested the disabled bank name. You need to re-enable it first.
+     * @expectedExceptionMessage You are accessing the disabled bank name. You need to re-enable it first.
      * @covers ::getBankName
      */
     public function testGetBankNameWhenDisabled()
@@ -95,7 +95,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
-     * @expectedExceptionMessage You requested the disabled bank city. You need to re-enable it first.
+     * @expectedExceptionMessage You are accessing the disabled bank city. You need to re-enable it first.
      * @covers ::getBankCity
      */
     public function testGetBankCityWhenDisabled()
@@ -154,7 +154,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
-     * @expectedExceptionMessage You requested the disabled account number. You need to re-enable it first.
+     * @expectedExceptionMessage You are accessing the disabled account number. You need to re-enable it first.
      * @covers ::getAccountNumber
      */
     public function testGetAccountNumberWhenDisabled()
@@ -230,7 +230,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
-     * @expectedExceptionMessage You requested the disabled recipient line 1. You need to re-enable it first.
+     * @expectedExceptionMessage You are accessing the disabled recipient line 1. You need to re-enable it first.
      * @covers ::getRecipientLine1
      */
     public function testGetRecipientLine1WhenDisabled()
@@ -244,7 +244,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
-     * @expectedExceptionMessage You requested the disabled recipient line 2. You need to re-enable it first.
+     * @expectedExceptionMessage You are accessing the disabled recipient line 2. You need to re-enable it first.
      * @covers ::getRecipientLine2
      */
     public function testGetRecipientLine2WhenDisabled()
@@ -258,7 +258,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
-     * @expectedExceptionMessage You requested the disabled recipient line 3. You need to re-enable it first.
+     * @expectedExceptionMessage You are accessing the disabled recipient line 3. You need to re-enable it first.
      * @covers ::getRecipientLine3
      */
     public function testGetRecipientLine3WhenDisabled()
@@ -272,7 +272,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
-     * @expectedExceptionMessage You requested the disabled recipient line 4. You need to re-enable it first.
+     * @expectedExceptionMessage You are accessing the disabled recipient line 4. You need to re-enable it first.
      * @covers ::getRecipientLine4
      */
     public function testGetRecipientLine4WhenDisabled()
@@ -332,7 +332,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
-     * @expectedExceptionMessage You requested the disabled amount. You need to re-enable it first.
+     * @expectedExceptionMessage You are accessing the disabled amount. You need to re-enable it first.
      * @covers ::getAmount
      */
     public function testGetAmountWhenDisabled()
@@ -408,7 +408,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
-     * @expectedExceptionMessage You requested the disabled payer line 1. You need to re-enable it first.
+     * @expectedExceptionMessage You are accessing the disabled payer line 1. You need to re-enable it first.
      * @covers ::getPayerLine1
      */
     public function testGetPayerLine1WhenDisabled()
@@ -422,7 +422,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
-     * @expectedExceptionMessage You requested the disabled payer line 2. You need to re-enable it first.
+     * @expectedExceptionMessage You are accessing the disabled payer line 2. You need to re-enable it first.
      * @covers ::getPayerLine2
      */
     public function testGetPayerLine2WhenDisabled()
@@ -436,7 +436,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
-     * @expectedExceptionMessage You requested the disabled payer line 3. You need to re-enable it first.
+     * @expectedExceptionMessage You are accessing the disabled payer line 3. You need to re-enable it first.
      * @covers ::getPayerLine3
      */
     public function testGetPayerLine3WhenDisabled()
@@ -450,7 +450,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
-     * @expectedExceptionMessage You requested the disabled payer line 4. You need to re-enable it first.
+     * @expectedExceptionMessage You are accessing the disabled payer line 4. You need to re-enable it first.
      * @covers ::getPayerLine4
      */
     public function testGetPayerLine4WhenDisabled()
