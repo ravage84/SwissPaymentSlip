@@ -167,6 +167,7 @@ class RedPaymentSlipData extends PaymentSlipData
      *
      * @param string $iban The IBAN.
      * @return $this The current instance for a fluent interface.
+     * @throws DisabledDataException If the data is disabled.
      *
      * @todo Consider stripping spaces (may be optionally)
      * @todo Implement validation of the IBAN
@@ -176,9 +177,10 @@ class RedPaymentSlipData extends PaymentSlipData
      */
     public function setIban($iban)
     {
-        if ($this->getWithIban()) {
-            $this->iban = $iban;
+        if (!$this->getWithIban()) {
+            throw new DisabledDataException('IBAN');
         }
+        $this->iban = $iban;
 
         return $this;
     }
@@ -225,12 +227,14 @@ class RedPaymentSlipData extends PaymentSlipData
      *
      * @param string $paymentReasonLine1 The first line of the payment reason.
      * @return $this The current instance for a fluent interface.
+     * @throws DisabledDataException If the data is disabled.
      */
-    protected function setPaymentReasonLine1($paymentReasonLine1)
+    public function setPaymentReasonLine1($paymentReasonLine1)
     {
-        if ($this->getWithPaymentReason()) {
-            $this->paymentReasonLine1 = $paymentReasonLine1;
+        if (!$this->getWithPaymentReason()) {
+            throw new DisabledDataException('payment reason line 1');
         }
+        $this->paymentReasonLine1 = $paymentReasonLine1;
 
         return $this;
     }
@@ -254,12 +258,14 @@ class RedPaymentSlipData extends PaymentSlipData
      *
      * @param string $paymentReasonLine2 The second line of the payment reason.
      * @return $this The current instance for a fluent interface.
+     * @throws DisabledDataException If the data is disabled.
      */
-    protected function setPaymentReasonLine2($paymentReasonLine2)
+    public function setPaymentReasonLine2($paymentReasonLine2)
     {
-        if ($this->getWithPaymentReason()) {
-            $this->paymentReasonLine2 = $paymentReasonLine2;
+        if (!$this->getWithPaymentReason()) {
+            throw new DisabledDataException('payment reason line 2');
         }
+        $this->paymentReasonLine2 = $paymentReasonLine2;
 
         return $this;
     }
@@ -283,12 +289,14 @@ class RedPaymentSlipData extends PaymentSlipData
      *
      * @param string $paymentReasonLine3 The third line of the payment reason.
      * @return $this The current instance for a fluent interface.
+     * @throws DisabledDataException If the data is disabled.
      */
-    protected function setPaymentReasonLine3($paymentReasonLine3)
+    public function setPaymentReasonLine3($paymentReasonLine3)
     {
-        if ($this->getWithPaymentReason()) {
-            $this->paymentReasonLine3 = $paymentReasonLine3;
+        if (!$this->getWithPaymentReason()) {
+            throw new DisabledDataException('payment reason line 3');
         }
+        $this->paymentReasonLine3 = $paymentReasonLine3;
 
         return $this;
     }
@@ -312,12 +320,14 @@ class RedPaymentSlipData extends PaymentSlipData
      *
      * @param string $paymentReasonLine4 The fourth line of the payment reason.
      * @return $this The current instance for a fluent interface.
+     * @throws DisabledDataException If the data is disabled.
      */
-    protected function setPaymentReasonLine4($paymentReasonLine4)
+    public function setPaymentReasonLine4($paymentReasonLine4)
     {
-        if ($this->getWithPaymentReason()) {
-            $this->paymentReasonLine4 = $paymentReasonLine4;
+        if (!$this->getWithPaymentReason()) {
+            throw new DisabledDataException('payment reason line 4');
         }
+        $this->paymentReasonLine4 = $paymentReasonLine4;
 
         return $this;
     }

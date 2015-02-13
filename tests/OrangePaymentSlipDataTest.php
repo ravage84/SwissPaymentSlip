@@ -71,11 +71,25 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setReferenceNumber method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You are accessing the disabled reference number. You need to re-enable it first.
+     * @covers ::setReferenceNumber
+     */
+    public function testSetReferenceNumberWhenDisabled()
+    {
+        $this->slipData->setWithReferenceNumber(false);
+        $this->slipData->setReferenceNumber('');
+    }
+
+    /**
      * Tests the getReferenceNumber method when disabled
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
-     * @expectedExceptionMessage You requested the disabled reference number. You need to re-enable it first.
+     * @expectedExceptionMessage You are accessing the disabled reference number. You need to re-enable it first.
      * @covers ::getReferenceNumber
      */
     public function testGetReferenceNumberWhenDisabled()
@@ -131,11 +145,25 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getWithBankingCustomerId method when disabled
+     * Tests the setBankingCustomerId method when disabled
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
-     * @expectedExceptionMessage You requested the disabled banking customer ID. You need to re-enable it first.
+     * @expectedExceptionMessage You are accessing the disabled banking customer ID. You need to re-enable it first.
+     * @covers ::setBankingCustomerId
+     */
+    public function testSetBankingCustomerIdNumberWhenDisabled()
+    {
+        $this->slipData->setWithBankingCustomerId(false);
+        $this->slipData->setBankingCustomerId('');
+    }
+
+    /**
+     * Tests the getBankingCustomerId method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You are accessing the disabled banking customer ID. You need to re-enable it first.
      * @covers ::getBankingCustomerId
      */
     public function testGetBankingCustomerIdNumberWhenDisabled()
@@ -214,7 +242,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
-     * @expectedExceptionMessage You requested the disabled reference number. You need to re-enable it first.
+     * @expectedExceptionMessage You are accessing the disabled reference number. You need to re-enable it first.
      * @covers ::getCompleteReferenceNumber
      * @covers ::getReferenceNumber
      */

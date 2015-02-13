@@ -361,14 +361,16 @@ abstract class PaymentSlipData
      *
      * @param string $bankName The name of the bank.
      * @return $this The current instance for a fluent interface.
+     * @throws DisabledDataException If the data is disabled.
      *
      * @todo Implement max length check
      */
-    protected function setBankName($bankName)
+    public function setBankName($bankName)
     {
-        if ($this->getWithBank()) {
-            $this->bankName = $bankName;
+        if (!$this->getWithBank()) {
+            throw new DisabledDataException('bank name');
         }
+        $this->bankName = $bankName;
 
         return $this;
     }
@@ -392,14 +394,16 @@ abstract class PaymentSlipData
      *
      * @param string $bankCity The postal code and city of the bank
      * @return $this The current instance for a fluent interface.
+     * @throws DisabledDataException If the data is disabled.
      *
      * @todo Implement max length check
      */
-    protected function setBankCity($bankCity)
+    public function setBankCity($bankCity)
     {
-        if ($this->getWithBank()) {
-            $this->bankCity = $bankCity;
+        if (!$this->getWithBank()) {
+            throw new DisabledDataException('bank city');
         }
+        $this->bankCity = $bankCity;
 
         return $this;
     }
@@ -423,14 +427,16 @@ abstract class PaymentSlipData
      *
      * @param string $accountNumber The bank or post cheque account.
      * @return $this The current instance for a fluent interface.
+     * @throws DisabledDataException If the data is disabled.
      *
      * @todo Implement parameter validation (two hyphens, min & max length)
      */
     public function setAccountNumber($accountNumber)
     {
-        if ($this->getWithAccountNumber()) {
-            $this->accountNumber = $accountNumber;
+        if (!$this->getWithAccountNumber()) {
+            throw new DisabledDataException('account number');
         }
+        $this->accountNumber = $accountNumber;
 
         return $this;
     }
@@ -473,12 +479,14 @@ abstract class PaymentSlipData
      *
      * @param string $recipientLine1 The first line of the recipient, e.g. "My Company Ltd.".
      * @return $this The current instance for a fluent interface.
+     * @throws DisabledDataException If the data is disabled.
      */
-    protected function setRecipientLine1($recipientLine1)
+    public function setRecipientLine1($recipientLine1)
     {
-        if ($this->getWithRecipient()) {
-            $this->recipientLine1 = $recipientLine1;
+        if (!$this->getWithRecipient()) {
+            throw new DisabledDataException('recipient line 1');
         }
+        $this->recipientLine1 = $recipientLine1;
 
         return $this;
     }
@@ -502,12 +510,14 @@ abstract class PaymentSlipData
      *
      * @param string $recipientLine2 The second line of the recipient, e.g. "Examplestreet 61".
      * @return $this The current instance for a fluent interface.
+     * @throws DisabledDataException If the data is disabled.
      */
-    protected function setRecipientLine2($recipientLine2)
+    public function setRecipientLine2($recipientLine2)
     {
-        if ($this->getWithRecipient()) {
-            $this->recipientLine2 = $recipientLine2;
+        if (!$this->getWithRecipient()) {
+            throw new DisabledDataException('recipient line 2');
         }
+        $this->recipientLine2 = $recipientLine2;
 
         return $this;
     }
@@ -531,12 +541,14 @@ abstract class PaymentSlipData
      *
      * @param string $recipientLine3 The third line of the recipient, e.g. "8000 Zürich".
      * @return $this The current instance for a fluent interface.
+     * @throws DisabledDataException If the data is disabled.
      */
-    protected function setRecipientLine3($recipientLine3)
+    public function setRecipientLine3($recipientLine3)
     {
-        if ($this->getWithRecipient()) {
-            $this->recipientLine3 = $recipientLine3;
+        if (!$this->getWithRecipient()) {
+            throw new DisabledDataException('recipient line 3');
         }
+        $this->recipientLine3 = $recipientLine3;
 
         return $this;
     }
@@ -560,12 +572,14 @@ abstract class PaymentSlipData
      *
      * @param string $recipientLine4 The fourth line of the recipient, if needed.
      * @return $this The current instance for a fluent interface.
+     * @throws DisabledDataException If the data is disabled.
      */
-    protected function setRecipientLine4($recipientLine4)
+    public function setRecipientLine4($recipientLine4)
     {
-        if ($this->getWithRecipient()) {
-            $this->recipientLine4 = $recipientLine4;
+        if (!$this->getWithRecipient()) {
+            throw new DisabledDataException('recipient line 4');
         }
+        $this->recipientLine4 = $recipientLine4;
 
         return $this;
     }
@@ -589,12 +603,14 @@ abstract class PaymentSlipData
      *
      * @param float $amount The amount to be payed into
      * @return $this The current instance for a fluent interface.
+     * @throws DisabledDataException If the data is disabled.
      */
     public function setAmount($amount = 0.0)
     {
-        if ($this->getWithAmount()) {
-            $this->amount = $amount;
+        if (!$this->getWithAmount()) {
+            throw new DisabledDataException('amount');
         }
+        $this->amount = $amount;
 
         return $this;
     }
@@ -603,6 +619,7 @@ abstract class PaymentSlipData
      * Get the amount to be payed into
      *
      * @return float The amount to be payed into.
+     * @throws DisabledDataException If the data is disabled.
      */
     public function getAmount()
     {
@@ -638,12 +655,14 @@ abstract class PaymentSlipData
      *
      * @param string $payerLine1 The first line of the payer, e.g. "Hans Mustermann".
      * @return $this The current instance for a fluent interface.
+     * @throws DisabledDataException If the data is disabled.
      */
-    protected function setPayerLine1($payerLine1)
+    public function setPayerLine1($payerLine1)
     {
-        if ($this->getWithPayer()) {
-            $this->payerLine1 = $payerLine1;
+        if (!$this->getWithPayer()) {
+            throw new DisabledDataException('payer line 1');
         }
+        $this->payerLine1 = $payerLine1;
 
         return $this;
     }
@@ -667,12 +686,14 @@ abstract class PaymentSlipData
      *
      * @param string $payerLine2 The second line of the payer, e.g. "Main Street 11".
      * @return $this The current instance for a fluent interface.
+     * @throws DisabledDataException If the data is disabled.
      */
-    protected function setPayerLine2($payerLine2)
+    public function setPayerLine2($payerLine2)
     {
-        if ($this->getWithPayer()) {
-            $this->payerLine2 = $payerLine2;
+        if (!$this->getWithPayer()) {
+            throw new DisabledDataException('payer line 2');
         }
+        $this->payerLine2 = $payerLine2;
 
         return $this;
     }
@@ -696,12 +717,14 @@ abstract class PaymentSlipData
      *
      * @param string $payerLine3 The third line of the payer, e.g. "4052 Basel".
      * @return $this The current instance for a fluent interface.
+     * @throws DisabledDataException If the data is disabled.
      */
-    protected function setPayerLine3($payerLine3)
+    public function setPayerLine3($payerLine3)
     {
-        if ($this->getWithPayer()) {
-            $this->payerLine3 = $payerLine3;
+        if (!$this->getWithPayer()) {
+            throw new DisabledDataException('payer line 3');
         }
+        $this->payerLine3 = $payerLine3;
 
         return $this;
     }
@@ -725,12 +748,14 @@ abstract class PaymentSlipData
      *
      * @param string $payerLine4 The fourth line of the payer, if needed.
      * @return $this The current instance for a fluent interface.
+     * @throws DisabledDataException If the data is disabled.
      */
-    protected function setPayerLine4($payerLine4)
+    public function setPayerLine4($payerLine4)
     {
-        if ($this->getWithPayer()) {
-            $this->payerLine4 = $payerLine4;
+        if (!$this->getWithPayer()) {
+            throw new DisabledDataException('payer line 4');
         }
+        $this->payerLine4 = $payerLine4;
 
         return $this;
     }

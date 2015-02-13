@@ -44,7 +44,6 @@ $paymentSlipData->setWithAccountNumber(true)
     ->setWithPayer(true);
 
 // Fill the data container with your data
-$paymentSlipData->setBankData('Seldwyla Bank', '8001 Zürich'); // This won't work now, because it's disabled
 $paymentSlipData->setAccountNumber('01-145-6');
 
 // This won't work, because it's disabled
@@ -56,9 +55,7 @@ $paymentSlipData->setRecipientData(
 );
 
 $paymentSlipData->setPayerData('Rutschmann Pia', 'Marktgasse 28', '9400 Rorschach')
-    ->setAmount(2830.50) // This won't work now, because it's disabled
-    ->setReferenceNumber('7520033455900012')
-    ->setBankingCustomerId('215703'); // This won't work, because it's disabled
+    ->setReferenceNumber('7520033455900012');
 
 // Output the data fields of the slip
 // All fields that are disabled can't be requested, they will throw an exception
