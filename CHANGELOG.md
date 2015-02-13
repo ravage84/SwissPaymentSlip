@@ -2,15 +2,22 @@
 All notable changes to this project are documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/ravage84/SwissPaymentSlip/compare/0.8.0...master)
+## [Unreleased](https://github.com/ravage84/SwissPaymentSlip/compare/0.9.0...master)
+### Added
+
+### Changed
+
+### Fixed
+
+## [0.9.0](https://github.com/ravage84/SwissPaymentSlip/releases/tag/0.9.0) - 2015-02-13
 ### Added
 - A base exception class for library related exceptions
-- An exception class for when disabled data is requested
+- An exception class for when disabled data is accessed
 
 ### Changed
 - An exception will be thrown when disabled data is requested instead of returning false
-
-### Fixed
+- An exception will be thrown when disabled data is tried to be set instead of simply not set it
+- Various data setter methods are now public instead of protected as there was no actual reason
 
 ## [0.8.0](https://github.com/ravage84/SwissPaymentSlip/releases/tag/0.8.0) - 2015-02-12
 ### Added
