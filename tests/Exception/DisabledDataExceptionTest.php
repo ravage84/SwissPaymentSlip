@@ -26,12 +26,12 @@ class DisabledDataExceptionTest extends \PHPUnit_Framework_TestCase
      *
      * @return void
      * @expectedException SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
-     * @expectedExceptionMessage foo
+     * @expectedExceptionMessage You requested the disabled FooBar. You need to re-enable it first
      * @covers ::__construct
      */
     public function testConstructor()
     {
-        throw new DisabledDataException('foo');
+        throw new DisabledDataException('FooBar');
     }
 
     /**
