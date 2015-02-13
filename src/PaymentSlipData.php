@@ -777,7 +777,7 @@ abstract class PaymentSlipData
     }
 
     /**
-     * Returns francs amount without cents
+     * Get the francs amount without cents
      *
      * @return bool|int Francs amount without cents.
      */
@@ -792,7 +792,7 @@ abstract class PaymentSlipData
     }
 
     /**
-     * Returns zero filled, right padded, two digits long cents amount
+     * Get the zero filled, right padded, two digits long cents amount
      *
      * @return bool|string Amount of Cents, zero filled, right padded, two digits long.
      */
