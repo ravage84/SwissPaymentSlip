@@ -4,8 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/ravage84/SwissPaymentSlip/compare/0.8.0...master)
 ### Added
+- A base exception class for library related exceptions
+- An exception class for when disabled data is requested
 
 ### Changed
+- An exception will be thrown when disabled data is requested instead of returning false
 
 ### Fixed
 
