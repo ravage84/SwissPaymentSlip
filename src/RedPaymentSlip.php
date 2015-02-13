@@ -15,8 +15,11 @@ namespace SwissPaymentSlip\SwissPaymentSlip;
 /**
  * Red Swiss Payment Slip
  *
- * A general purpose class for red swiss payment slips.
- * Data is organized by its sister class RedPaymentSlipData.
+ * Describes how a red Swiss payment slip looks like and
+ * how the various data fields of a red payment slip are
+ * placed or displayed respectively.
+ *
+ * The data of the fields is organized by its sister class RedPaymentSlipData.
  *
  * @uses RedPaymentSlipData To store the slip data.
  */

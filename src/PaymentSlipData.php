@@ -19,32 +19,35 @@ use SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException;
 /**
  * Swiss Payment Slip Data
  *
- * Creates data containers for standard Swiss payment slips with or without reference number.
- * It doesn't actually do much. It's mostly a data container class to keep
- * including classes from having to care about how ESR work.
+ * A base class for all Swiss payment slip data classes,
+ * which encapsulate all the common data
+ * of the various Swiss payment slips types.
+ *
+ * It actually doesn't do much. It's mostly a data container class to keep
+ * including classes from having to care about how a particular slip actually works.
+ *
  * But it provides a flexibility of which data it holds, because not always
  * all slip fields are needed in an application.
  *
  * Glossary:
  * ESR = Einzahlungsschein mit Referenznummer
- *         ISR, (In-)Payment slip with reference number
- *         Summary term for orange payment slips in Switzerland
+ *     ISR, (In-)Payment slip with reference number
+ *     Summary term for orange payment slips in Switzerland
  * BESR = Banken-Einzahlungsschein mit Referenznummer
- *         Banking payment slip with reference number
- *         Orange payment slip for paying into a bank account (in contrast to a post cheque account with a VESR)
+ *     Banking payment slip with reference number
+ *     Orange payment slip for paying into a bank account (in contrast to a post cheque account with a VESR)
  * VESR = Verfahren für Einzahlungsschein mit Referenznummer
- *         Procedure for payment slip with reference number
- *         Orange payment slip for paying into a post cheque account (in contrast to a banking account with a BESR)
+ *     Procedure for payment slip with reference number
+ *     Orange payment slip for paying into a post cheque account (in contrast to a banking account with a BESR)
  * (B|V)ESR+ = Einzahlungsschein mit Referenznummer ohne Betragsangabe
- *         Payment slip with reference number without amount specification
- *         An payment slip can be issued without a predefined payment amount
+ *     Payment slip with reference number without amount specification
+ *     An payment slip can be issued without a predefined payment amount
  * ES = Einzahlungsschein
- *         IS, (In-)Payment slip
- *         Also summary term for all payment slips.
- *         Red payment slip for paying into a post cheque or bank account without reference number, with message box
+ *     IS, (In-)Payment slip
+ *     Also summary term for all payment slips.
+ *     Red payment slip for paying into a post cheque or bank account without reference number, with message box
  *
- * @link https://www.postfinance.ch/content/dam/pf/de/doc/consult/manual/dlserv/inpayslip_isr_man_de.pdf German manual
- * @link http://www.six-interbank-clearing.com/en/home/standardization/dta.html
+ * @link http://www.six-interbank-clearing.com/en/home/standardization/dta.html Payments in DTA format
  *
  * @todo Implement currency (CHF, EUR), means different prefixes in code line
  * @todo Implement payment on own account, means different prefixes in code line --> edge case!

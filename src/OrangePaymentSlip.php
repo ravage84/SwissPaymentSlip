@@ -15,8 +15,11 @@ namespace SwissPaymentSlip\SwissPaymentSlip;
 /**
  * Orange Swiss Payment Slip
  *
- * A general purpose class for orange swiss payment slips.
- * Data is organized by its sister class OrangePaymentSlipData.
+ * Describes how an orange Swiss payment slip looks like and
+ * how the various data fields of an orange payment slip are
+ * placed or displayed respectively.
+ *
+ * The data of the fields is organized by its sister class OrangePaymentSlipData.
  *
  * @uses OrangePaymentSlipData To store the slip data.
  */

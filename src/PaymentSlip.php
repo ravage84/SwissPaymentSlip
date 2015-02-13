@@ -17,8 +17,10 @@ use InvalidArgumentException;
 /**
  * Swiss Payment Slip
  *
- * A general purpose class for swiss payment slips.
- * Data is organized by its sister class PaymentSlipData.
+ * A base class to describe the common look and field placement/display
+ * of the various types of Swiss payment slips.
+ *
+ * The data of the fields is organized by its sister class PaymentSlipData.
  *
  * @uses PaymentSlipData To store the slip data.
  *

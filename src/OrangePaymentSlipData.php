@@ -17,32 +17,12 @@ use SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException;
 /**
  * Orange Swiss Payment Slip Data
  *
- * Creates data containers for standard Swiss payment slips with or without reference number.
- * It doesn't actually do much. It's mostly a data container class to keep
- * including classes from having to care about how ESR work.
- * But it provides a flexibility of which data it holds, because not always
- * all slip fields are needed in an application.
+ * A data container class to encapsulate all the necessary data
+ * for an orange Swiss payment slip with reference number.
  *
- * Glossary:
- * ESR = Einzahlungsschein mit Referenznummer
- *         ISR, (In-)Payment slip with reference number
- *         Summary term for orange payment slips in Switzerland
- * BESR = Banken-Einzahlungsschein mit Referenznummer
- *         Banking payment slip with reference number
- *         Orange payment slip for paying into a bank account (in contrast to a post cheque account with a VESR)
- * VESR = Verfahren für Einzahlungsschein mit Referenznummer
- *         Procedure for payment slip with reference number
- *         Orange payment slip for paying into a post cheque account (in contrast to a banking account with a BESR)
- * (B|V)ESR+ = Einzahlungsschein mit Referenznummer ohne Betragsangabe
- *         Payment slip with reference number without amount specification
- *         An payment slip can be issued without a predefined payment amount
- * ES = Einzahlungsschein
- *         IS, (In-)Payment slip
- *         Also summary term for all payment slips.
- *         Red payment slip for paying into a post cheque or bank account without reference number, with message box
- *
+ * @see PaymentSlipData For more information about the various payment slips.
  * @link https://www.postfinance.ch/content/dam/pf/de/doc/consult/manual/dlserv/inpayslip_isr_man_de.pdf German manual
- * @link http://www.six-interbank-clearing.com/en/home/standardization/dta.html
+ * for ISRs.
  */
 class OrangePaymentSlipData extends PaymentSlipData
 {
