@@ -485,7 +485,6 @@ abstract class PaymentSlip
         }
 
         return $this;
-
     }
 
     /**
