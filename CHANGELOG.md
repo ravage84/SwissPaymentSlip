@@ -18,6 +18,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - An exception will be thrown when disabled data is requested instead of returning false
 - An exception will be thrown when disabled data is tried to be set instead of simply not set it
 - Various data setter methods are now public instead of protected as there was no actual reason
+- Various minor improvements to the DocBlocks
 
 ## [0.8.0](https://github.com/ravage84/SwissPaymentSlip/releases/tag/0.8.0) - 2015-02-12
 ### Added
