@@ -71,7 +71,21 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getWithIban method when disabled
+     * Tests the setIban method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You are accessing the disabled IBAN. You need to re-enable it first.
+     * @covers ::setIban
+     */
+    public function testSetIbanWhenDisabled()
+    {
+        $this->slipData->setWithIban(false);
+        $this->slipData->setIban('');
+    }
+
+    /**
+     * Tests the getIban method when disabled
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
@@ -147,7 +161,21 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getWithPaymentReasonLine1 method when disabled
+     * Tests the setPaymentReasonLine1 method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You are accessing the disabled payment reason line 1. You need to re-enable it first.
+     * @covers ::setPaymentReasonLine1
+     */
+    public function testSetPaymentReasonLine1WhenDisabled()
+    {
+        $this->slipData->setWithPaymentReason(false);
+        $this->slipData->setPaymentReasonLine1('');
+    }
+
+    /**
+     * Tests the getPaymentReasonLine1 method when disabled
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
@@ -161,7 +189,21 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getWithPaymentReasonLine2 method when disabled
+     * Tests the setPaymentReasonLine2 method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You are accessing the disabled payment reason line 2. You need to re-enable it first.
+     * @covers ::setPaymentReasonLine2
+     */
+    public function testSetPaymentReasonLine2WhenDisabled()
+    {
+        $this->slipData->setWithPaymentReason(false);
+        $this->slipData->setPaymentReasonLine2('');
+    }
+
+    /**
+     * Tests the getPaymentReasonLine2 method when disabled
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
@@ -175,7 +217,21 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getWithPaymentReasonLine3 method when disabled
+     * Tests the setPaymentReasonLine3 method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You are accessing the disabled payment reason line 3. You need to re-enable it first.
+     * @covers ::setPaymentReasonLine3
+     */
+    public function testSetPaymentReasonLine3WhenDisabled()
+    {
+        $this->slipData->setWithPaymentReason(false);
+        $this->slipData->setPaymentReasonLine3('');
+    }
+
+    /**
+     * Tests the getPaymentReasonLine3 method when disabled
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
@@ -189,7 +245,21 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getWithPaymentReasonLine4 method when disabled
+     * Tests the setPaymentReasonLine4 method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You are accessing the disabled payment reason line 4. You need to re-enable it first.
+     * @covers ::setPaymentReasonLine4
+     */
+    public function testSetPaymentReasonLine4WhenDisabled()
+    {
+        $this->slipData->setWithPaymentReason(false);
+        $this->slipData->setPaymentReasonLine4('');
+    }
+
+    /**
+     * Tests the getPaymentReasonLine4 method when disabled
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException

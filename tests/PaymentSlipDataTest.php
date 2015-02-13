@@ -77,7 +77,21 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getWithBankName method when disabled
+     * Tests the setBankName method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You are accessing the disabled bank name. You need to re-enable it first.
+     * @covers ::setBankName
+     */
+    public function testSetBankNameWhenDisabled()
+    {
+        $this->slipData->setWithBank(false);
+        $this->slipData->setBankName('');
+    }
+
+    /**
+     * Tests the getBankName method when disabled
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
@@ -91,7 +105,21 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getWithBankCity method when disabled
+     * Tests the setBankCity method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You are accessing the disabled bank city. You need to re-enable it first.
+     * @covers ::setBankCity
+     */
+    public function testSetBankCityWhenDisabled()
+    {
+        $this->slipData->setWithBank(false);
+        $this->slipData->setBankCity('');
+    }
+
+    /**
+     * Tests the getBankCity method when disabled
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
@@ -150,7 +178,21 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getWithAccountNumber method when disabled
+     * Tests the setAccountNumber method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You are accessing the disabled account number. You need to re-enable it first.
+     * @covers ::setAccountNumber
+     */
+    public function testSetAccountNumberWhenDisabled()
+    {
+        $this->slipData->setWithAccountNumber(false);
+        $this->slipData->setAccountNumber('');
+    }
+
+    /**
+     * Tests the getAccountNumber method when disabled
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
@@ -226,7 +268,21 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getWithRecipientLine1 method when disabled
+     * Tests the setRecipientLine1 method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You are accessing the disabled recipient line 1. You need to re-enable it first.
+     * @covers ::setRecipientLine1
+     */
+    public function testSetRecipientLine1WhenDisabled()
+    {
+        $this->slipData->setWithRecipient(false);
+        $this->slipData->setRecipientLine1('');
+    }
+
+    /**
+     * Tests the getRecipientLine1 method when disabled
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
@@ -240,7 +296,21 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getWithRecipientLine2 method when disabled
+     * Tests the setRecipientLine2 method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You are accessing the disabled recipient line 2. You need to re-enable it first.
+     * @covers ::setRecipientLine2
+     */
+    public function testSetRecipientLine2WhenDisabled()
+    {
+        $this->slipData->setWithRecipient(false);
+        $this->slipData->setRecipientLine2('');
+    }
+
+    /**
+     * Tests the getRecipientLine2 method when disabled
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
@@ -254,7 +324,21 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getWithRecipientLine3 method when disabled
+     * Tests the setRecipientLine3 method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You are accessing the disabled recipient line 3. You need to re-enable it first.
+     * @covers ::setRecipientLine3
+     */
+    public function testSetRecipientLine3WhenDisabled()
+    {
+        $this->slipData->setWithRecipient(false);
+        $this->slipData->setRecipientLine3('');
+    }
+
+    /**
+     * Tests the getRecipientLine3 method when disabled
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
@@ -268,7 +352,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getWithRecipientLine4 method when disabled
+     * Tests the getRecipientLine4 method when disabled
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
@@ -279,6 +363,20 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     {
         $this->slipData->setWithRecipient(false);
         $this->slipData->getRecipientLine4();
+    }
+
+    /**
+     * Tests the setRecipientLine4 method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You are accessing the disabled recipient line 4. You need to re-enable it first.
+     * @covers ::setRecipientLine4
+     */
+    public function testSetRecipientLine4WhenDisabled()
+    {
+        $this->slipData->setWithRecipient(false);
+        $this->slipData->setRecipientLine4('');
     }
 
     /**
@@ -328,7 +426,21 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getWithAmount method when disabled
+     * Tests the setAmount method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You are accessing the disabled amount. You need to re-enable it first.
+     * @covers ::setAmount
+     */
+    public function testSetAmountWhenDisabled()
+    {
+        $this->slipData->setWithAmount(false);
+        $this->slipData->setAmount('');
+    }
+
+    /**
+     * Tests the getAmount method when disabled
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
@@ -404,7 +516,21 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getWithPayerLine1 method when disabled
+     * Tests the setPayerLine1 method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You are accessing the disabled payer line 1. You need to re-enable it first.
+     * @covers ::setPayerLine1
+     */
+    public function testSetPayerLine1WhenDisabled()
+    {
+        $this->slipData->setWithPayer(false);
+        $this->slipData->setPayerLine1('');
+    }
+
+    /**
+     * Tests the getPayerLine1 method when disabled
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
@@ -418,7 +544,21 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getWithPayerLine2 method when disabled
+     * Tests the setPayerLine2 method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You are accessing the disabled payer line 2. You need to re-enable it first.
+     * @covers ::setPayerLine2
+     */
+    public function testSetPayerLine2WhenDisabled()
+    {
+        $this->slipData->setWithPayer(false);
+        $this->slipData->setPayerLine2('');
+    }
+
+    /**
+     * Tests the getPayerLine2 method when disabled
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
@@ -432,7 +572,21 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getWithPayerLine3 method when disabled
+     * Tests the setPayerLine3 method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You are accessing the disabled payer line 3. You need to re-enable it first.
+     * @covers ::setPayerLine3
+     */
+    public function testSetPayerLine3WhenDisabled()
+    {
+        $this->slipData->setWithPayer(false);
+        $this->slipData->setPayerLine3('');
+    }
+
+    /**
+     * Tests the getPayerLine3 method when disabled
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
@@ -446,7 +600,21 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getWithPayerLine4 method when disabled
+     * Tests the setPayerLine4 method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You are accessing the disabled payer line 4. You need to re-enable it first.
+     * @covers ::setPayerLine4
+     */
+    public function testSetPayerLine4WhenDisabled()
+    {
+        $this->slipData->setWithPayer(false);
+        $this->slipData->setPayerLine4('');
+    }
+
+    /**
+     * Tests the getPayerLine4 method when disabled
      *
      * @return void
      * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
