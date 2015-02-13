@@ -141,13 +141,15 @@ class OrangePaymentSlipData extends PaymentSlipData
      *
      * @param string $referenceNumber The reference number.
      * @return $this The current instance for a fluent interface.
+     * @throws DisabledDataException If the data is disabled.
      */
     public function setReferenceNumber($referenceNumber)
     {
-        if ($this->getWithReferenceNumber()) {
-            // TODO validate reference number
-            $this->referenceNumber = $referenceNumber;
+        if (!$this->getWithReferenceNumber()) {
+            throw new DisabledDataException('reference number');
         }
+        // TODO validate reference number
+        $this->referenceNumber = $referenceNumber;
 
         return $this;
     }
@@ -171,13 +173,15 @@ class OrangePaymentSlipData extends PaymentSlipData
      *
      * @param string $bankingCustomerId The banking customer ID.
      * @return $this The current instance for a fluent interface.
+     * @throws DisabledDataException If the data is disabled.
      */
     public function setBankingCustomerId($bankingCustomerId)
     {
-        if ($this->getWithBankingCustomerId()) {
-            // TODO check length (exactly 6)
-            $this->bankingCustomerId = $bankingCustomerId;
+        if (!$this->getWithBankingCustomerId()) {
+            throw new DisabledDataException('banking customer ID');
         }
+        // TODO check length (exactly 6)
+        $this->bankingCustomerId = $bankingCustomerId;
 
         return $this;
     }
