@@ -68,14 +68,40 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $returned = $this->slipData->setWithBank(false);
         $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlipData', $returned);
         $this->assertFalse($this->slipData->getWithBank());
-        $this->assertEquals('', $this->slipData->getBankName());
-        $this->assertEquals('', $this->slipData->getBankCity());
 
         // Re-enable feature, using no parameter
         $this->slipData->setWithBank();
         $this->assertTrue($this->slipData->getWithBank());
         $this->assertEquals('', $this->slipData->getBankName());
         $this->assertEquals('', $this->slipData->getBankCity());
+    }
+
+    /**
+     * Tests the getWithBankName method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You requested the disabled bank name. You need to re-enable it first.
+     * @covers ::getBankName
+     */
+    public function testGetBankNameWhenDisabled()
+    {
+        $this->slipData->setWithBank(false);
+        $this->slipData->getBankName();
+    }
+
+    /**
+     * Tests the getWithBankCity method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You requested the disabled bank city. You need to re-enable it first.
+     * @covers ::getBankCity
+     */
+    public function testGetBankCityWhenDisabled()
+    {
+        $this->slipData->setWithBank(false);
+        $this->slipData->getBankCity();
     }
 
     /**
@@ -116,13 +142,25 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         // Disable feature, also check for returned instance
         $returned = $this->slipData->setWithAccountNumber(false);
         $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlipData', $returned);
-        $this->assertFalse($this->slipData->getWithAccountNumber());
-        $this->assertEquals('', $this->slipData->getAccountNumber());
 
         // Re-enable feature, using no parameter
         $this->slipData->setWithAccountNumber();
         $this->assertTrue($this->slipData->getWithAccountNumber());
         $this->assertEquals('', $this->slipData->getAccountNumber());
+    }
+
+    /**
+     * Tests the getWithAccountNumber method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You requested the disabled account number. You need to re-enable it first.
+     * @covers ::getAccountNumber
+     */
+    public function testGetAccountNumberWhenDisabled()
+    {
+        $this->slipData->setWithAccountNumber(false);
+        $this->slipData->getAccountNumber();
     }
 
     /**
@@ -177,10 +215,6 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $returned = $this->slipData->setWithRecipient(false);
         $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlipData', $returned);
         $this->assertFalse($this->slipData->getWithRecipient());
-        $this->assertEquals('', $this->slipData->getRecipientLine1());
-        $this->assertEquals('', $this->slipData->getRecipientLine2());
-        $this->assertEquals('', $this->slipData->getRecipientLine3());
-        $this->assertEquals('', $this->slipData->getRecipientLine4());
 
         // Re-enable feature, using no parameter
         $this->slipData->setWithRecipient();
@@ -189,6 +223,62 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('', $this->slipData->getRecipientLine2());
         $this->assertEquals('', $this->slipData->getRecipientLine3());
         $this->assertEquals('', $this->slipData->getRecipientLine4());
+    }
+
+    /**
+     * Tests the getWithRecipientLine1 method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You requested the disabled recipient line 1. You need to re-enable it first.
+     * @covers ::getRecipientLine1
+     */
+    public function testGetRecipientLine1WhenDisabled()
+    {
+        $this->slipData->setWithRecipient(false);
+        $this->slipData->getRecipientLine1();
+    }
+
+    /**
+     * Tests the getWithRecipientLine2 method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You requested the disabled recipient line 2. You need to re-enable it first.
+     * @covers ::getRecipientLine2
+     */
+    public function testGetRecipientLine2WhenDisabled()
+    {
+        $this->slipData->setWithRecipient(false);
+        $this->slipData->getRecipientLine2();
+    }
+
+    /**
+     * Tests the getWithRecipientLine3 method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You requested the disabled recipient line 3. You need to re-enable it first.
+     * @covers ::getRecipientLine3
+     */
+    public function testGetRecipientLine3WhenDisabled()
+    {
+        $this->slipData->setWithRecipient(false);
+        $this->slipData->getRecipientLine3();
+    }
+
+    /**
+     * Tests the getWithRecipientLine4 method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You requested the disabled recipient line 4. You need to re-enable it first.
+     * @covers ::getRecipientLine4
+     */
+    public function testGetRecipientLine4WhenDisabled()
+    {
+        $this->slipData->setWithRecipient(false);
+        $this->slipData->getRecipientLine4();
     }
 
     /**
@@ -230,12 +320,25 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $returned = $this->slipData->setWithAmount(false);
         $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlipData', $returned);
         $this->assertFalse($this->slipData->getWithAmount());
-        $this->assertEquals(0.0, $this->slipData->getAmount());
 
         // Re-enable feature, using no parameter
         $this->slipData->setWithAmount();
         $this->assertTrue($this->slipData->getWithAmount());
         $this->assertEquals(0.0, $this->slipData->getAmount());
+    }
+
+    /**
+     * Tests the getWithAmount method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You requested the disabled amount. You need to re-enable it first.
+     * @covers ::getAmount
+     */
+    public function testGetAmountWhenDisabled()
+    {
+        $this->slipData->setWithAmount(false);
+        $this->slipData->getAmount();
     }
 
     /**
@@ -290,10 +393,6 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $returned = $this->slipData->setWithPayer(false);
         $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlipData', $returned);
         $this->assertFalse($this->slipData->getWithPayer());
-        $this->assertEquals('', $this->slipData->getPayerLine1());
-        $this->assertEquals('', $this->slipData->getPayerLine2());
-        $this->assertEquals('', $this->slipData->getPayerLine3());
-        $this->assertEquals('', $this->slipData->getPayerLine4());
 
         // Re-enable feature, using no parameter
         $this->slipData->setWithPayer();
@@ -302,6 +401,62 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('', $this->slipData->getPayerLine2());
         $this->assertEquals('', $this->slipData->getPayerLine3());
         $this->assertEquals('', $this->slipData->getPayerLine4());
+    }
+
+    /**
+     * Tests the getWithPayerLine1 method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You requested the disabled payer line 1. You need to re-enable it first.
+     * @covers ::getPayerLine1
+     */
+    public function testGetPayerLine1WhenDisabled()
+    {
+        $this->slipData->setWithPayer(false);
+        $this->slipData->getPayerLine1();
+    }
+
+    /**
+     * Tests the getWithPayerLine2 method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You requested the disabled payer line 2. You need to re-enable it first.
+     * @covers ::getPayerLine2
+     */
+    public function testGetPayerLine2WhenDisabled()
+    {
+        $this->slipData->setWithPayer(false);
+        $this->slipData->getPayerLine2();
+    }
+
+    /**
+     * Tests the getWithPayerLine3 method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You requested the disabled payer line 3. You need to re-enable it first.
+     * @covers ::getPayerLine3
+     */
+    public function testGetPayerLine3WhenDisabled()
+    {
+        $this->slipData->setWithPayer(false);
+        $this->slipData->getPayerLine3();
+    }
+
+    /**
+     * Tests the getWithPayerLine4 method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You requested the disabled payer line 4. You need to re-enable it first.
+     * @covers ::getPayerLine4
+     */
+    public function testGetPayerLine4WhenDisabled()
+    {
+        $this->slipData->setWithPayer(false);
+        $this->slipData->getPayerLine4();
     }
 
     /**
@@ -332,10 +487,6 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         // Test with set value
         $this->slipData->setAmount(1234567.89);
         $this->assertEquals(1234567, $this->slipData->getAmountFrancs());
-
-        // Test when disabled
-        $this->slipData->setWithAmount(false);
-        $this->assertFalse($this->slipData->getAmountFrancs());
     }
 
     /**
@@ -352,10 +503,6 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         // Test with set value
         $this->slipData->setAmount(1234567.89);
         $this->assertEquals(89, $this->slipData->getAmountCents());
-
-        // Test when disabled
-        $this->slipData->setWithAmount(false);
-        $this->assertFalse($this->slipData->getAmountCents());
     }
 
     /**

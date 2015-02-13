@@ -12,6 +12,8 @@
 
 namespace SwissPaymentSlip\SwissPaymentSlip;
 
+use SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException;
+
 /**
  * Red Swiss Payment Slip Data
  *
@@ -184,14 +186,15 @@ class RedPaymentSlipData extends PaymentSlipData
     /**
      * Get the IBAN
      *
-     * @return string|false The IBAN or false if withIban is false.
+     * @return string The IBAN, if withIban is set to true.
+     * @throws DisabledDataException If the data is disabled.
      */
     public function getIban()
     {
-        if ($this->getWithIban()) {
-            return $this->iban;
+        if (!$this->getWithIban()) {
+            throw new DisabledDataException('IBAN');
         }
-        return false;
+        return $this->iban;
     }
 
     /**
@@ -235,14 +238,15 @@ class RedPaymentSlipData extends PaymentSlipData
     /**
      * Get the first line of the payment reason
      *
-     * @return string|false The first line of the payment reason or false if withPaymentReason = false.
+     * @return string The first line of the payment reason, if withPaymentReason is set to true.
+     * @throws DisabledDataException If the data is disabled.
      */
     public function getPaymentReasonLine1()
     {
-        if ($this->getWithPaymentReason()) {
-            return $this->paymentReasonLine1;
+        if (!$this->getWithPaymentReason()) {
+            throw new DisabledDataException('payment reason line 1');
         }
-        return false;
+        return $this->paymentReasonLine1;
     }
 
     /**
@@ -263,14 +267,15 @@ class RedPaymentSlipData extends PaymentSlipData
     /**
      * Get the second line of the payment reason
      *
-     * @return string|false The second line of the payment reason or false if withPaymentReason = false.
+     * @return string The second line of the payment reason, if withPaymentReason is set to true.
+     * @throws DisabledDataException If the data is disabled.
      */
     public function getPaymentReasonLine2()
     {
-        if ($this->getWithPaymentReason()) {
-            return $this->paymentReasonLine2;
+        if (!$this->getWithPaymentReason()) {
+            throw new DisabledDataException('payment reason line 2');
         }
-        return false;
+        return $this->paymentReasonLine2;
     }
 
     /**
@@ -291,14 +296,15 @@ class RedPaymentSlipData extends PaymentSlipData
     /**
      * Get the third line of the payment reason
      *
-     * @return string|false The third line of the payment reason or false if withPaymentReason = false.
+     * @return string The third line of the payment reason, if withPaymentReason is set to true.
+     * @throws DisabledDataException If the data is disabled.
      */
     public function getPaymentReasonLine3()
     {
-        if ($this->getWithPaymentReason()) {
-            return $this->paymentReasonLine3;
+        if (!$this->getWithPaymentReason()) {
+            throw new DisabledDataException('payment reason line 3');
         }
-        return false;
+        return $this->paymentReasonLine3;
     }
 
     /**
@@ -319,14 +325,15 @@ class RedPaymentSlipData extends PaymentSlipData
     /**
      * Get the fourth line of the payment reason
      *
-     * @return string|false The fourth line of the payment reason or false if withPaymentReason = false.
+     * @return string The fourth line of the payment reason, if withPaymentReason is set to true.
+     * @throws DisabledDataException If the data is disabled.
      */
     public function getPaymentReasonLine4()
     {
-        if ($this->getWithPaymentReason()) {
-            return $this->paymentReasonLine4;
+        if (!$this->getWithPaymentReason()) {
+            throw new DisabledDataException('payment reason line 4');
         }
-        return false;
+        return $this->paymentReasonLine4;
     }
 
     /**
@@ -354,15 +361,12 @@ class RedPaymentSlipData extends PaymentSlipData
      *
      * Not valid for electronic transactions.
      *
-     * @return string|false Formatted IBAN or false if withIban is false.
+     * @return string Formatted IBAN, if withIban is set to true.
      * @link http://en.wikipedia.org/wiki/International_Bank_Account_Number#Practicalities
      */
     public function getFormattedIban()
     {
         $iban = $this->getIban();
-        if ($iban === false) {
-            return false;
-        }
         return $this->breakStringIntoBlocks($iban, 4, false);
 
     }

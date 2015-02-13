@@ -61,26 +61,13 @@ $paymentSlipData->setPayerData('Rutschmann Pia', 'Marktgasse 28', '9400 Rorschac
     ->setBankingCustomerId('215703'); // This won't work, because it's disabled
 
 // Output the data fields of the slip
-echo "Bank name: " . $paymentSlipData->getBankName() . "<br>"; // Empty, because it's disabled
-echo "Bank city: " . $paymentSlipData->getBankCity() . "<br>"; // Empty, because it's disabled
-echo "<br>";
-echo "Recipient line 1: " . $paymentSlipData->getRecipientLine1() . "<br>"; // Empty, because it's disabled
-echo "Recipient line 2: " . $paymentSlipData->getRecipientLine2() . "<br>"; // Empty, because it's disabled
-echo "Recipient line 3: " . $paymentSlipData->getRecipientLine3() . "<br>"; // Empty, because it's disabled
-echo "Recipient line 4: " . $paymentSlipData->getRecipientLine4() . "<br>"; // Empty, because it's disabled
-echo "<br>";
+// All fields that are disabled can't be requested, they will throw an exception
 echo "Account number: " . $paymentSlipData->getAccountNumber() . "<br>";
-echo "<br>";
-echo "Amount: " . $paymentSlipData->getAmount() . "<br>"; // Empty, because it's disabled
-echo "Amount in francs: " . $paymentSlipData->getAmountFrancs() . "<br>"; // Empty, because it's disabled
-echo "Amount in cents: " . $paymentSlipData->getAmountCents() . "<br>"; // Empty, because it's disabled
 echo "<br>";
 echo "Payer line 1: " . $paymentSlipData->getPayerLine1() . "<br>";
 echo "Payer line 2: " . $paymentSlipData->getPayerLine2() . "<br>";
 echo "Payer line 3: " . $paymentSlipData->getPayerLine3() . "<br>";
 echo "Payer line 4: " . $paymentSlipData->getPayerLine4() . "<br>";
-echo "<br>";
-echo "Banking customer ID: " . $paymentSlipData->getBankingCustomerId() . "<br>"; // Empty, because it's disabled
 echo "<br>";
 echo "Complete reference number (without banking customer ID): " .
     $paymentSlipData->getCompleteReferenceNumber() . "<br>";

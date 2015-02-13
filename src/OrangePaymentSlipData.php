@@ -12,6 +12,8 @@
 
 namespace SwissPaymentSlip\SwissPaymentSlip;
 
+use SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException;
+
 /**
  * Orange Swiss Payment Slip Data
  *
@@ -153,14 +155,15 @@ class OrangePaymentSlipData extends PaymentSlipData
     /**
      * Get the reference number
      *
-     * @return string|false The reference number or false if withReferenceNumber is false.
+     * @return string The reference number, if withReferenceNumber is set to true.
+     * @throws DisabledDataException If the data is disabled.
      */
     public function getReferenceNumber()
     {
-        if ($this->getWithReferenceNumber()) {
-            return $this->referenceNumber;
+        if (!$this->getWithReferenceNumber()) {
+            throw new DisabledDataException('reference number');
         }
-        return false;
+        return $this->referenceNumber;
     }
 
     /**
@@ -182,14 +185,15 @@ class OrangePaymentSlipData extends PaymentSlipData
     /**
      * Get the banking customer ID
      *
-     * @return string|false The  banking customer ID or false if withBankingCustomerId is false.
+     * @return string The  banking customer ID, if withBankingCustomerId is set to true.
+     * @throws DisabledDataException If the data is disabled.
      */
     public function getBankingCustomerId()
     {
-        if ($this->getWithBankingCustomerId()) {
-            return $this->bankingCustomerId;
+        if (!$this->getWithBankingCustomerId()) {
+            throw new DisabledDataException('banking customer ID');
         }
-        return false;
+        return $this->bankingCustomerId;
     }
 
     /**
@@ -217,16 +221,12 @@ class OrangePaymentSlipData extends PaymentSlipData
      *
      * @param bool $formatted Should the returned reference be formatted in blocks of five (for better readability).
      * @param bool $fillZeros Fill up with leading zeros, only applies to the case where no banking customer ID is used.
-     * @return string|false The complete (with/without bank customer ID), formatted reference number with check digit
+     * @return string The complete (with/without bank customer ID), formatted reference number with check digit
      * or false if withReferenceNumber is false.
      */
     public function getCompleteReferenceNumber($formatted = true, $fillZeros = true)
     {
         $referenceNumber = $this->getReferenceNumber();
-        if ($referenceNumber === false) {
-            return false;
-        }
-
         $notForPayment = $this->getNotForPayment();
 
         $completeReferenceNumber = $referenceNumber;
@@ -272,25 +272,17 @@ class OrangePaymentSlipData extends PaymentSlipData
     /**
      * Get the full code line at the bottom of the ESR
      *
-     * @param bool $fillZeros Fill up with leading zeros.
+     * @param bool $fillZeros Whether to fill up the code line with leading zeros.
      * @return string The full code line.
-     * @todo Throw an exception when something went wrong
      */
     public function getCodeLine($fillZeros = true)
     {
-        $francs = $this->getAmountFrancs();
-        $cents = $this->getAmountCents();
-
         $referenceNumber = $this->getCompleteReferenceNumber(false, $fillZeros);
-        if ($referenceNumber === false) {
-            // TODO Throw exception
-        }
         $accountNumber = $this->getAccountDigits();
-        if ($accountNumber === false) {
-            // TODO Throw exception
-        }
 
         if ($this->getWithAmount()) {
+            $francs = $this->getAmountFrancs();
+            $cents = $this->getAmountCents();
             $francs = str_pad($francs, 8, '0', STR_PAD_LEFT);
             $cents = str_pad($cents, 2, '0', STR_PAD_RIGHT);
             $amountPrefix = '01';
