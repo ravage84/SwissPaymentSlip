@@ -79,19 +79,18 @@ class OrangePaymentSlipData extends PaymentSlipData
     /**
      * Set if payment slip has a reference number specified
      *
-     * Resets reference number if disabled
+     * Resets the reference number when disabling.
      *
      * @param bool $withReferenceNumber True if yes, false if no.
      * @return $this The current instance for a fluent interface.
      */
     public function setWithReferenceNumber($withReferenceNumber = true)
     {
-        if ($this->isBool($withReferenceNumber, 'withReferenceNumber')) {
-            $this->withReferenceNumber = $withReferenceNumber;
+        $this->isBool($withReferenceNumber, 'withReferenceNumber');
+        $this->withReferenceNumber = $withReferenceNumber;
 
-            if (!$withReferenceNumber) {
-                $this->referenceNumber = '';
-            }
+        if (!$withReferenceNumber) {
+            $this->referenceNumber = '';
         }
 
         return $this;
@@ -110,17 +109,18 @@ class OrangePaymentSlipData extends PaymentSlipData
     /**
      * Set if the payment slip's reference number should contain the banking customer ID
      *
+     * Resets the banking customer ID when disabling.
+     *
      * @param bool $withBankingCustomerId True if successful, else false.
      * @return $this The current instance for a fluent interface.
      */
     public function setWithBankingCustomerId($withBankingCustomerId = true)
     {
-        if ($this->isBool($withBankingCustomerId, 'withBankingCustomerId')) {
-            $this->withBankingCustomerId = $withBankingCustomerId;
+        $this->isBool($withBankingCustomerId, 'withBankingCustomerId');
+        $this->withBankingCustomerId = $withBankingCustomerId;
 
-            if ($withBankingCustomerId === false) {
-                $this->bankingCustomerId = '';
-            }
+        if ($withBankingCustomerId === false) {
+            $this->bankingCustomerId = '';
         }
 
         return $this;

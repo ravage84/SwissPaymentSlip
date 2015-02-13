@@ -104,17 +104,18 @@ class RedPaymentSlipData extends PaymentSlipData
     /**
      * Set if payment slip has an IBAN specified
      *
+     * Resets the IBAN when disabling.
+     *
      * @param bool $withIban True if yes, false if no.
      * @return $this The current instance for a fluent interface.
      */
     public function setWithIban($withIban = true)
     {
-        if ($this->isBool($withIban, 'withIban')) {
-            $this->withIban = $withIban;
+        $this->isBool($withIban, 'withIban');
+        $this->withIban = $withIban;
 
-            if ($withIban === false) {
-                $this->iban = '';
-            }
+        if ($withIban === false) {
+            $this->iban = '';
         }
 
         return $this;
@@ -133,20 +134,21 @@ class RedPaymentSlipData extends PaymentSlipData
     /**
      * Set if payment slip has a payment reason specified.
      *
+     * Resets the payment reason data when disabling.
+     *
      * @param bool $withPaymentReason True if yes, false if no.
      * @return $this The current instance for a fluent interface.
      */
     public function setWithPaymentReason($withPaymentReason = true)
     {
-        if ($this->isBool($withPaymentReason, 'withPaymentReason')) {
-            $this->withPaymentReason = $withPaymentReason;
+        $this->isBool($withPaymentReason, 'withPaymentReason');
+        $this->withPaymentReason = $withPaymentReason;
 
-            if ($withPaymentReason === false) {
-                $this->paymentReasonLine1 = '';
-                $this->paymentReasonLine2 = '';
-                $this->paymentReasonLine3 = '';
-                $this->paymentReasonLine4 = '';
-            }
+        if ($withPaymentReason === false) {
+            $this->paymentReasonLine1 = '';
+            $this->paymentReasonLine2 = '';
+            $this->paymentReasonLine3 = '';
+            $this->paymentReasonLine4 = '';
         }
 
         return $this;

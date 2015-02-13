@@ -192,18 +192,19 @@ abstract class PaymentSlipData
     /**
      * Set if payment slip has a bank specified
      *
+     * Resets the bank data when disabling.
+     *
      * @param bool $withBank True for yes, false for no
      * @return $this The current instance for a fluent interface.
      */
     public function setWithBank($withBank = true)
     {
-        if ($this->isBool($withBank, 'withBank')) {
-            $this->withBank = $withBank;
+        $this->isBool($withBank, 'withBank');
+        $this->withBank = $withBank;
 
-            if (!$withBank) {
-                $this->bankName = '';
-                $this->bankCity = '';
-            }
+        if (!$withBank) {
+            $this->bankName = '';
+            $this->bankCity = '';
         }
 
         return $this;
@@ -222,17 +223,18 @@ abstract class PaymentSlipData
     /**
      * Set if payment slip has an account number specified
      *
+     * Resets the account number when disabling.
+     *
      * @param bool $withAccountNumber True if yes, false if no.
      * @return $this The current instance for a fluent interface.
      */
     public function setWithAccountNumber($withAccountNumber = true)
     {
-        if ($this->isBool($withAccountNumber, 'withAccountNumber')) {
-            $this->withAccountNumber = $withAccountNumber;
+        $this->isBool($withAccountNumber, 'withAccountNumber');
+        $this->withAccountNumber = $withAccountNumber;
 
-            if ($withAccountNumber === false) {
-                $this->accountNumber = '';
-            }
+        if ($withAccountNumber === false) {
+            $this->accountNumber = '';
         }
 
         return $this;
@@ -251,20 +253,21 @@ abstract class PaymentSlipData
     /**
      * Set if payment slip has a recipient specified
      *
+     * Resets the recipient data when disabling.
+     *
      * @param bool $withRecipient True if yes, false if no.
      * @return $this The current instance for a fluent interface.
      */
     public function setWithRecipient($withRecipient = true)
     {
-        if ($this->isBool($withRecipient, 'withRecipient')) {
-            $this->withRecipient = $withRecipient;
+        $this->isBool($withRecipient, 'withRecipient');
+        $this->withRecipient = $withRecipient;
 
-            if ($withRecipient === false) {
-                $this->recipientLine1 = '';
-                $this->recipientLine2 = '';
-                $this->recipientLine3 = '';
-                $this->recipientLine4 = '';
-            }
+        if ($withRecipient === false) {
+            $this->recipientLine1 = '';
+            $this->recipientLine2 = '';
+            $this->recipientLine3 = '';
+            $this->recipientLine4 = '';
         }
 
         return $this;
@@ -283,17 +286,18 @@ abstract class PaymentSlipData
     /**
      * Set if payment slip has an amount specified
      *
+     * Resets the amount when disabling.
+     *
      * @param bool $withAmount True for yes, false for no.
      * @return $this The current instance for a fluent interface.
      */
     public function setWithAmount($withAmount = true)
     {
-        if ($this->isBool($withAmount, 'withAmount')) {
-            $this->withAmount = $withAmount;
+        $this->isBool($withAmount, 'withAmount');
+        $this->withAmount = $withAmount;
 
-            if ($withAmount === false) {
-                $this->amount = 0.0;
-            }
+        if ($withAmount === false) {
+            $this->amount = 0.0;
         }
 
         return $this;
@@ -312,20 +316,21 @@ abstract class PaymentSlipData
     /**
      * Set if payment slip has a payer specified
      *
+     * Resets the payer data when disabling.
+     *
      * @param bool $withPayer True if yes, false if no.
      * @return $this The current instance for a fluent interface.
      */
     public function setWithPayer($withPayer = true)
     {
-        if ($this->isBool($withPayer, 'withPayer')) {
-            $this->withPayer = $withPayer;
+        $this->isBool($withPayer, 'withPayer');
+        $this->withPayer = $withPayer;
 
-            if ($withPayer === false) {
-                $this->payerLine1 = '';
-                $this->payerLine2 = '';
-                $this->payerLine3 = '';
-                $this->payerLine4 = '';
-            }
+        if ($withPayer === false) {
+            $this->payerLine1 = '';
+            $this->payerLine2 = '';
+            $this->payerLine3 = '';
+            $this->payerLine4 = '';
         }
 
         return $this;
