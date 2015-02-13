@@ -365,7 +365,7 @@ abstract class PaymentSlipData
      *
      * @todo Implement max length check
      */
-    protected function setBankName($bankName)
+    public function setBankName($bankName)
     {
         if (!$this->getWithBank()) {
             throw new DisabledDataException('bank name');
@@ -398,7 +398,7 @@ abstract class PaymentSlipData
      *
      * @todo Implement max length check
      */
-    protected function setBankCity($bankCity)
+    public function setBankCity($bankCity)
     {
         if (!$this->getWithBank()) {
             throw new DisabledDataException('bank city');
@@ -481,7 +481,7 @@ abstract class PaymentSlipData
      * @return $this The current instance for a fluent interface.
      * @throws DisabledDataException If the data is disabled.
      */
-    protected function setRecipientLine1($recipientLine1)
+    public function setRecipientLine1($recipientLine1)
     {
         if (!$this->getWithRecipient()) {
             throw new DisabledDataException('recipient line 1');
@@ -512,7 +512,7 @@ abstract class PaymentSlipData
      * @return $this The current instance for a fluent interface.
      * @throws DisabledDataException If the data is disabled.
      */
-    protected function setRecipientLine2($recipientLine2)
+    public function setRecipientLine2($recipientLine2)
     {
         if (!$this->getWithRecipient()) {
             throw new DisabledDataException('recipient line 2');
@@ -543,7 +543,7 @@ abstract class PaymentSlipData
      * @return $this The current instance for a fluent interface.
      * @throws DisabledDataException If the data is disabled.
      */
-    protected function setRecipientLine3($recipientLine3)
+    public function setRecipientLine3($recipientLine3)
     {
         if (!$this->getWithRecipient()) {
             throw new DisabledDataException('recipient line 3');
@@ -574,7 +574,7 @@ abstract class PaymentSlipData
      * @return $this The current instance for a fluent interface.
      * @throws DisabledDataException If the data is disabled.
      */
-    protected function setRecipientLine4($recipientLine4)
+    public function setRecipientLine4($recipientLine4)
     {
         if (!$this->getWithRecipient()) {
             throw new DisabledDataException('recipient line 4');
@@ -657,7 +657,7 @@ abstract class PaymentSlipData
      * @return $this The current instance for a fluent interface.
      * @throws DisabledDataException If the data is disabled.
      */
-    protected function setPayerLine1($payerLine1)
+    public function setPayerLine1($payerLine1)
     {
         if (!$this->getWithPayer()) {
             throw new DisabledDataException('payer line 1');
@@ -688,7 +688,7 @@ abstract class PaymentSlipData
      * @return $this The current instance for a fluent interface.
      * @throws DisabledDataException If the data is disabled.
      */
-    protected function setPayerLine2($payerLine2)
+    public function setPayerLine2($payerLine2)
     {
         if (!$this->getWithPayer()) {
             throw new DisabledDataException('payer line 2');
@@ -719,7 +719,7 @@ abstract class PaymentSlipData
      * @return $this The current instance for a fluent interface.
      * @throws DisabledDataException If the data is disabled.
      */
-    protected function setPayerLine3($payerLine3)
+    public function setPayerLine3($payerLine3)
     {
         if (!$this->getWithPayer()) {
             throw new DisabledDataException('payer line 3');
@@ -750,7 +750,7 @@ abstract class PaymentSlipData
      * @return $this The current instance for a fluent interface.
      * @throws DisabledDataException If the data is disabled.
      */
-    protected function setPayerLine4($payerLine4)
+    public function setPayerLine4($payerLine4)
     {
         if (!$this->getWithPayer()) {
             throw new DisabledDataException('payer line 4');

@@ -229,7 +229,7 @@ class RedPaymentSlipData extends PaymentSlipData
      * @return $this The current instance for a fluent interface.
      * @throws DisabledDataException If the data is disabled.
      */
-    protected function setPaymentReasonLine1($paymentReasonLine1)
+    public function setPaymentReasonLine1($paymentReasonLine1)
     {
         if (!$this->getWithPaymentReason()) {
             throw new DisabledDataException('payment reason line 1');
@@ -260,7 +260,7 @@ class RedPaymentSlipData extends PaymentSlipData
      * @return $this The current instance for a fluent interface.
      * @throws DisabledDataException If the data is disabled.
      */
-    protected function setPaymentReasonLine2($paymentReasonLine2)
+    public function setPaymentReasonLine2($paymentReasonLine2)
     {
         if (!$this->getWithPaymentReason()) {
             throw new DisabledDataException('payment reason line 2');
@@ -291,7 +291,7 @@ class RedPaymentSlipData extends PaymentSlipData
      * @return $this The current instance for a fluent interface.
      * @throws DisabledDataException If the data is disabled.
      */
-    protected function setPaymentReasonLine3($paymentReasonLine3)
+    public function setPaymentReasonLine3($paymentReasonLine3)
     {
         if (!$this->getWithPaymentReason()) {
             throw new DisabledDataException('payment reason line 3');
@@ -322,7 +322,7 @@ class RedPaymentSlipData extends PaymentSlipData
      * @return $this The current instance for a fluent interface.
      * @throws DisabledDataException If the data is disabled.
      */
-    protected function setPaymentReasonLine4($paymentReasonLine4)
+    public function setPaymentReasonLine4($paymentReasonLine4)
     {
         if (!$this->getWithPaymentReason()) {
             throw new DisabledDataException('payment reason line 4');
