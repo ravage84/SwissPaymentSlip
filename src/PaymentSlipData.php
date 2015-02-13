@@ -858,11 +858,12 @@ abstract class PaymentSlipData
     }
 
     /**
-     * Returns a given string in blocks of a certain size
+     * Get a given string broken down in blocks of a certain size
+     *
      * Example: 000000000000000 becomes more readable 00000 00000 00000
      *
-     * @param string $string To be formatted string.
-     * @param int $blockSize Block size of choice.
+     * @param string $string The to be formatted string.
+     * @param int $blockSize The Block size of choice.
      * @param bool $alignFromRight Right aligned, blocks are build from right.
      * @return string Given string divided in blocks of given block size separated by one space.
      */
