@@ -1405,6 +1405,8 @@ abstract class PaymentSlip
      * @param bool $fillZeroes Whether to return the code line filled with zeros or not.
      * @return array All elements with their lines and attributes.
      * @todo Consider extracting the parameter as settable property, e.g. $fillWithZeros
+     * @todo Make sure getCodeLine method gets only called if the necessary data is enabled
+     * @todo Consider making the getDisplayXXXX methods dependent on the related data setting(s)
      */
     public function getAllElements($fillZeroes = true)
     {
