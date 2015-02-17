@@ -919,16 +919,6 @@ abstract class PaymentSlipData
     }
 
     /**
-     * Get the full code line at the bottom of the ES
-     *
-     * Needs to be implemented by each slip data sub class.
-     *
-     * @param bool $fillZeros Fill up with leading zeros.
-     * @return string The full code line.
-     */
-    abstract public function getCodeLine($fillZeros = true);
-
-    /**
      * Verify that a given parameter is boolean
      *
      * @param mixed $parameter The given parameter to validate.

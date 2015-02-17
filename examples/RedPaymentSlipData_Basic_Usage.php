@@ -65,9 +65,6 @@ echo "Payment reason line 2: " . $paymentSlipData->getPaymentReasonLine2() . "<b
 echo "Payment reason line 3: " . $paymentSlipData->getPaymentReasonLine3() . "<br>";
 echo "Payment reason line 4: " . $paymentSlipData->getPaymentReasonLine4() . "<br>";
 echo "<br>";
-//echo "Code line (at the bottom): " . $paymentSlipData->getCodeLine() . "<br>";
-//echo "Second code line (at the bottom): " . $paymentSlipData->getCodeLine() . "<br>";
-echo "<br>";
 
 // Dump object to screen
 echo "This is how your data container looks now: <br>";

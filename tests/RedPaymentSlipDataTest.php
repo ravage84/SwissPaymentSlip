@@ -301,28 +301,11 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Tests the getCodeLine method
-     *
-     * @return void
-     * @covers ::getCodeLine
-     * @covers ::modulo10
-     * @covers ::getAccountDigits
-     * @todo Implement once RedPaymentSlipData::getCodeLine() is implemented
-     */
-    public function testGetCodeLine()
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
      * Tests the setNotForPayment method
      *
      * @return void
      * @covers ::setNotForPayment
      * @covers ::getNotForPayment
-     * @covers ::getCodeLine
      * @covers ::getFormattedIban
      */
     public function testSetNotForPayment()
@@ -339,9 +322,5 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('XXXXXX', $this->slipData->getPayerLine4());
 
         $this->assertEquals('XXXX XXXX XXXX XXXX XXXX X', $this->slipData->getFormattedIban());
-
-        //$this->assertEquals(
-        //'XXXXXXXXXXXXX>XXXXXXXXXXXXXXXXXXXXXXXXXXX+ XXXXXXXXX>', $this->slipData->getCodeLine()
-        //);
     }
 }

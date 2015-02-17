@@ -287,10 +287,7 @@ class RedPaymentSlipTest extends PaymentSlipTestCase
      * Tests the getAllElements method
      *
      * @return void
-     * @expectedException \Exception
-     * @expectedExceptionMessage Not yet implemented!
      * @covers ::getAllElements
-     * @todo Remove exception expectation once RedPaymentSlipData::getCodeLine() is implemented
      */
     public function testGetAllElements()
     {
@@ -309,7 +306,6 @@ class RedPaymentSlipTest extends PaymentSlipTestCase
             'amountCentsRight',
             'payerLeft',
             'payerRight',
-            'codeLine',
             'IbanLeft',
             'IbanRight',
             'paymentReason',
@@ -331,7 +327,6 @@ class RedPaymentSlipTest extends PaymentSlipTestCase
         $this->paymentSlip->setDisplayBank(false);
         $this->paymentSlip->setDisplayPayer(false);
         $this->paymentSlip->setDisplayRecipient(false);
-        $this->paymentSlip->setDisplayCodeLine(false);
         $this->paymentSlip->setDisplayIban(false);
         $this->paymentSlip->setDisplayPaymentReason(false);
 

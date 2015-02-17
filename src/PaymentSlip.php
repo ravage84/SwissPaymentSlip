@@ -151,13 +151,6 @@ abstract class PaymentSlip
     protected $displayPayer = true;
 
     /**
-     * Determines whether the code line at the bottom should be displayed
-     *
-     * @var bool True if yes, false if no
-     */
-    protected $displayCodeLine = true;
-
-    /**
      * Attributes of the left bank element
      *
      * @var array
@@ -242,13 +235,6 @@ abstract class PaymentSlip
     protected $payerRightAttr = array();
 
     /**
-     * Attributes of the code line element
-     *
-     * @var array
-     */
-    protected $codeLineAttr = array();
-
-    /**
      * Create a new payment slip
      *
      * @param PaymentSlipData $paymentSlipData The payment slip data.
@@ -288,7 +274,6 @@ abstract class PaymentSlip
         $this->setAmountCentsRightAttr(111, 50.5, 6, 4);
         $this->setPayerLeftAttr(3, 65, 50, 4);
         $this->setPayerRightAttr(125, 48, 50, 4);
-        $this->setCodeLineAttr(64, 85, 140, 4, null, 'OCRB10');
 
         return $this;
     }
@@ -1026,54 +1011,6 @@ abstract class PaymentSlip
     }
 
     /**
-     * Set the code line attributes
-     *
-     * @param float|null $posX The X position.
-     * @param float|null $posY The Y Position.
-     * @param float|null $width The width.
-     * @param float|null $height The height.
-     * @param string|null $background The background.
-     * @param string|null $fontFamily The font family.
-     * @param float|null $fontSize The font size.
-     * @param string|null $fontColor The font color.
-     * @param float|null $lineHeight The line height.
-     * @param string|null $textAlign The text alignment.
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setCodeLineAttr(
-        $posX = null,
-        $posY = null,
-        $width = null,
-        $height = null,
-        $background = null,
-        $fontFamily = null,
-        $fontSize = null,
-        $fontColor = null,
-        $lineHeight = null,
-        $textAlign = null
-    ) {
-        if (!$textAlign) {
-            $textAlign = 'R';
-        }
-
-        $this->setAttributes(
-            $this->codeLineAttr,
-            $posX,
-            $posY,
-            $width,
-            $height,
-            $background,
-            $fontFamily,
-            $fontSize,
-            $fontColor,
-            $lineHeight,
-            $textAlign
-        );
-
-        return $this;
-    }
-
-    /**
      * Get the attributes of the left account element
      *
      * @return array The attributes of the left account element.
@@ -1151,16 +1088,6 @@ abstract class PaymentSlip
     public function getBankRightAttr()
     {
         return $this->bankRightAttr;
-    }
-
-    /**
-     * Get the attributes of the code line element
-     *
-     * @return array The attributes of the code line element.
-     */
-    public function getCodeLineAttr()
-    {
-        return $this->codeLineAttr;
     }
 
     /**
@@ -1391,30 +1318,6 @@ abstract class PaymentSlip
     }
 
     /**
-     * Set whether or not to display the code line at the bottom
-     *
-     * @param bool $displayCodeLine True if yes, false if no
-     * @return $this The current instance for a fluent interface.
-     */
-    public function setDisplayCodeLine($displayCodeLine = true)
-    {
-        $this->isBool($displayCodeLine, 'displayCodeLine');
-        $this->displayCodeLine = $displayCodeLine;
-
-        return $this;
-    }
-
-    /**
-     * Get whether or not to display the code line at the bottom
-     *
-     * @return bool True if yes, false if no.
-     */
-    public function getDisplayCodeLine()
-    {
-        return $this->displayCodeLine;
-    }
-
-    /**
      * Get all elements of the slip
      *
      * @param bool $fillZeroes Whether to return the code line filled with zeros or not.
@@ -1536,16 +1439,6 @@ abstract class PaymentSlip
             $elements['payerRight'] = array(
                 'lines' => $lines,
                 'attributes' => $this->getPayerRightAttr()
-            );
-        }
-
-        // Place code line
-        if ($this->getDisplayCodeLine()) {
-            $lines = array(
-                $paymentSlipData->getCodeLine($fillZeroes));
-            $elements['codeLine'] = array(
-                'lines' => $lines,
-                'attributes' => $this->getCodeLineAttr()
             );
         }
 

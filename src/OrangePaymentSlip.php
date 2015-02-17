@@ -54,6 +54,13 @@ class OrangePaymentSlip extends PaymentSlip
     protected $displayReferenceNr = true;
 
     /**
+     * Determines whether the code line at the bottom should be displayed
+     *
+     * @var bool True if yes, false if no
+     */
+    protected $displayCodeLine = true;
+
+    /**
      * Attributes of the left reference number element
      *
      * @var array
@@ -66,6 +73,13 @@ class OrangePaymentSlip extends PaymentSlip
      * @var array
      */
     protected $referenceNumberRightAttr = array();
+
+    /**
+     * Attributes of the code line element
+     *
+     * @var array
+     */
+    protected $codeLineAttr = array();
 
     /**
      * Create a new orange payment slip
@@ -90,6 +104,7 @@ class OrangePaymentSlip extends PaymentSlip
 
         $this->setReferenceNumberLeftAttr(3, 60, 50, 4, null, null, 8);
         $this->setReferenceNumberRightAttr(125, 33.5, 80, 4);
+        $this->setCodeLineAttr(64, 85, 140, 4, null, 'OCRB10');
 
         $this->setSlipBackground(__DIR__.'/Resources/img/ezs_orange.gif');
 
@@ -189,6 +204,54 @@ class OrangePaymentSlip extends PaymentSlip
     }
 
     /**
+     * Set the code line attributes
+     *
+     * @param float|null $posX The X position.
+     * @param float|null $posY The Y Position.
+     * @param float|null $width The width.
+     * @param float|null $height The height.
+     * @param string|null $background The background.
+     * @param string|null $fontFamily The font family.
+     * @param float|null $fontSize The font size.
+     * @param string|null $fontColor The font color.
+     * @param float|null $lineHeight The line height.
+     * @param string|null $textAlign The text alignment.
+     * @return $this The current instance for a fluent interface.
+     */
+    public function setCodeLineAttr(
+        $posX = null,
+        $posY = null,
+        $width = null,
+        $height = null,
+        $background = null,
+        $fontFamily = null,
+        $fontSize = null,
+        $fontColor = null,
+        $lineHeight = null,
+        $textAlign = null
+    ) {
+        if (!$textAlign) {
+            $textAlign = 'R';
+        }
+
+        $this->setAttributes(
+            $this->codeLineAttr,
+            $posX,
+            $posY,
+            $width,
+            $height,
+            $background,
+            $fontFamily,
+            $fontSize,
+            $fontColor,
+            $lineHeight,
+            $textAlign
+        );
+
+        return $this;
+    }
+
+    /**
      * Get the attributes of the left reference number element
      *
      * @return array The attributes of the left reference number element.
@@ -206,6 +269,16 @@ class OrangePaymentSlip extends PaymentSlip
     public function getReferenceNumberRightAttr()
     {
         return $this->referenceNumberRightAttr;
+    }
+
+    /**
+     * Get the attributes of the code line element
+     *
+     * @return array The attributes of the code line element.
+     */
+    public function getCodeLineAttr()
+    {
+        return $this->codeLineAttr;
     }
 
     /**
@@ -233,6 +306,20 @@ class OrangePaymentSlip extends PaymentSlip
             return false;
         }
         return $this->displayReferenceNr;
+    }
+
+    /**
+     * Set whether or not to display the code line at the bottom
+     *
+     * @param bool $displayCodeLine True if yes, false if no
+     * @return $this The current instance for a fluent interface.
+     */
+    public function setDisplayCodeLine($displayCodeLine = true)
+    {
+        $this->isBool($displayCodeLine, 'displayCodeLine');
+        $this->displayCodeLine = $displayCodeLine;
+
+        return $this;
     }
 
     /**
@@ -280,6 +367,16 @@ class OrangePaymentSlip extends PaymentSlip
             $elements['referenceNumberRight'] = array(
                 'lines' => $lines,
                 'attributes' => $this->getReferenceNumberRightAttr()
+            );
+        }
+
+        // Place code line
+        if ($this->getDisplayCodeLine()) {
+            $lines = array(
+                $paymentSlipData->getCodeLine($fillZeroes));
+            $elements['codeLine'] = array(
+                'lines' => $lines,
+                'attributes' => $this->getCodeLineAttr()
             );
         }
 

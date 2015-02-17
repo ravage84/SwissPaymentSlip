@@ -328,19 +328,6 @@ class RedPaymentSlip extends PaymentSlip
     }
 
     /**
-     * Get whether or not to display the code line at the bottom
-     *
-     * @return bool True if yes, false if no.
-     */
-    public function getDisplayCodeLine()
-    {
-        if ($this->getPaymentSlipData()->getWithIban() !== true) {
-            return false;
-        }
-        return $this->displayCodeLine;
-    }
-
-    /**
      * Get all elements of the slip
      *
      * @param bool $fillZeroes Whether to return the code line filled with zeros or not.

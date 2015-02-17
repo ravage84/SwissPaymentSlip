@@ -493,28 +493,6 @@ class PaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Tests the default attributes of the code line element
-     *
-     * @return void
-     * @covers ::setDefaults
-     */
-    public function testCodeLineAttrDefaultValues()
-    {
-        $attributes = $this->paymentSlip->getCodeLineAttr();
-
-        $expectedAttributes = $this->defaultAttributes;
-
-        $expectedAttributes['PosX'] = 64;
-        $expectedAttributes['PosY'] = 85;
-        $expectedAttributes['Width'] = 140;
-        $expectedAttributes['Height'] = 4;
-        $expectedAttributes['FontFamily'] = 'OCRB10';
-        $expectedAttributes['TextAlign'] = 'R';
-
-        $this->assertEquals($expectedAttributes, $attributes);
-    }
-
-    /**
      * Tests the default background
      *
      * @return void
@@ -706,21 +684,6 @@ class PaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Tests the setCodeLineAttr method
-     *
-     * @return void
-     * @covers ::setCodeLineAttr
-     * @covers ::setAttributes
-     * @covers ::getCodeLineAttr
-     */
-    public function testSetCodeLineAttr()
-    {
-        $returned = $this->paymentSlip->setCodeLineAttr(123, 456, 987, 654, '#123456', 'Courier', '1', '#654321', '15', 'C');
-        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
-        $this->assertEquals($this->setAttributes, $this->paymentSlip->getCodeLineAttr());
-    }
-
-    /**
      * Tests the setDisplayBank method
      *
      * @return void
@@ -906,43 +869,6 @@ class PaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Tests the setDisplayCodeLine method
-     *
-     * @return void
-     * @covers ::setDisplayCodeLine
-     * @covers ::getDisplayCodeLine
-     * @covers ::isBool
-     */
-    public function testSetDisplayCodeLine()
-    {
-        // Test the default value
-        $this->assertTrue($this->paymentSlip->getDisplayCodeLine());
-
-        // Disable feature, also check for returned instance
-        $returned = $this->paymentSlip->setDisplayCodeLine(false);
-        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
-        $this->assertFalse($this->paymentSlip->getDisplayCodeLine());
-
-        // Re-enable the feature
-        $this->paymentSlip->setDisplayCodeLine();
-        $this->assertTrue($this->paymentSlip->getDisplayCodeLine());
-    }
-
-    /**
-     * Tests the setDisplayCodeLine method with an invalid parameter
-     *
-     * @return void
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage $displayCodeLine is not a boolean.
-     * @covers ::setDisplayCodeLine
-     * @covers ::isBool
-     */
-    public function testSetDisplayCodeLineInvalidParameter()
-    {
-        $this->paymentSlip->setDisplayCodeLine('true');
-    }
-
-    /**
      * Tests the getAllElements method
      *
      * @return void
@@ -964,8 +890,7 @@ class PaymentSlipTest extends PaymentSlipTestCase
             'amountCentsLeft',
             'amountCentsRight',
             'payerLeft',
-            'payerRight',
-            'codeLine'
+            'payerRight'
         );
 
         $this->assertElementsArray($expectedElements, $elements);
@@ -984,7 +909,6 @@ class PaymentSlipTest extends PaymentSlipTestCase
         $this->paymentSlip->setDisplayBank(false);
         $this->paymentSlip->setDisplayPayer(false);
         $this->paymentSlip->setDisplayRecipient(false);
-        $this->paymentSlip->setDisplayCodeLine(false);
 
         $elements = $this->paymentSlip->getAllElements();
 

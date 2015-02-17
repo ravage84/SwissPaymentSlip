@@ -360,18 +360,4 @@ class RedPaymentSlipData extends PaymentSlipData
         return $this->breakStringIntoBlocks($iban, 4, false);
 
     }
-
-    /**
-     * Get the full code line at the bottom of the ES
-     *
-     * @param bool $fillZeros Fill up with leading zeros.
-     * @return string The full code line.
-     * @throws \Exception When called,not yet implemented
-     *
-     * @todo Implement red slip support
-     */
-    public function getCodeLine($fillZeros = true)
-    {
-        throw new \Exception('Not yet implemented!');
-    }
 }
