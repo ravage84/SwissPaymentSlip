@@ -440,12 +440,12 @@ abstract class PaymentSlip
         } elseif (!isset($element['Height'])) {
             $element['Height'] = 0;
         }
-        if ($background) {
+        if (!empty($background)) {
             $element['Background'] = $background;
         } elseif (!isset($element['Background'])) {
             $element['Background'] = 'transparent';
         }
-        if ($fontFamily) {
+        if (!empty($fontFamily)) {
             $element['FontFamily'] = $fontFamily;
         } elseif (!isset($element['FontFamily'])) {
             $element['FontFamily'] = $this->defaultFontFamily;
@@ -455,7 +455,7 @@ abstract class PaymentSlip
         } elseif (!isset($element['FontSize'])) {
             $element['FontSize'] = $this->defaultFontSize;
         }
-        if ($fontColor) {
+        if (!empty($fontColor)) {
             $element['FontColor'] = $fontColor;
         } elseif (!isset($element['FontColor'])) {
             $element['FontColor'] = $this->defaultFontColor;
@@ -465,7 +465,7 @@ abstract class PaymentSlip
         } elseif (!isset($element['LineHeight'])) {
             $element['LineHeight'] = $this->defaultLineHeight;
         }
-        if ($textAlign) {
+        if (!empty($textAlign)) {
             $element['TextAlign'] = $textAlign;
         } elseif (!isset($element['TextAlign'])) {
             $element['TextAlign'] = $this->defaultTextAlign;
@@ -765,7 +765,7 @@ abstract class PaymentSlip
         $lineHeight = null,
         $textAlign = null
     ) {
-        if (!$textAlign) {
+        if ($textAlign === null) {
             $textAlign = 'R';
         }
 
@@ -813,7 +813,7 @@ abstract class PaymentSlip
         $lineHeight = null,
         $textAlign = null
     ) {
-        if (!$textAlign) {
+        if ($textAlign === null) {
             $textAlign = 'R';
         }
 

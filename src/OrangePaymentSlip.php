@@ -207,7 +207,7 @@ class OrangePaymentSlip extends PaymentSlip
         $lineHeight = null,
         $textAlign = null
     ) {
-        if (!$textAlign) {
+        if ($textAlign === null) {
             $textAlign = 'R';
         }
 
@@ -255,7 +255,7 @@ class OrangePaymentSlip extends PaymentSlip
         $lineHeight = null,
         $textAlign = null
     ) {
-        if (!$textAlign) {
+        if ($textAlign === null) {
             $textAlign = 'R';
         }
 

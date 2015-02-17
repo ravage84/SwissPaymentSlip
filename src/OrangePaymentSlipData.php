@@ -68,7 +68,7 @@ class OrangePaymentSlipData extends PaymentSlipData
         $this->isBool($withReferenceNumber, 'withReferenceNumber');
         $this->withReferenceNumber = $withReferenceNumber;
 
-        if (!$withReferenceNumber) {
+        if ($withReferenceNumber === false) {
             $this->referenceNumber = '';
         }
 

@@ -205,7 +205,7 @@ abstract class PaymentSlipData
         $this->isBool($withBank, 'withBank');
         $this->withBank = $withBank;
 
-        if (!$withBank) {
+        if ($withBank === false) {
             $this->bankName = '';
             $this->bankCity = '';
         }
