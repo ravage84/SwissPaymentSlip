@@ -970,4 +970,48 @@ class PaymentSlipTest extends PaymentSlipTestCase
 
         $this->assertElementsArray($expectedElements, $elements);
     }
+
+    /**
+     * Tests the getAllElements method when no elements are shown
+     *
+     * @return void
+     * @covers ::getAllElements
+     */
+    public function testGetAllElementsNoElementsShown()
+    {
+        $this->paymentSlip->setDisplayAccount(false);
+        $this->paymentSlip->setDisplayAmount(false);
+        $this->paymentSlip->setDisplayBank(false);
+        $this->paymentSlip->setDisplayPayer(false);
+        $this->paymentSlip->setDisplayRecipient(false);
+        $this->paymentSlip->setDisplayCodeLine(false);
+
+        $elements = $this->paymentSlip->getAllElements();
+
+        $expectedElements = array();
+
+        $this->assertElementsArray($expectedElements, $elements);
+    }
+
+    /**
+     * Tests the getAllElements method when all data is disabled
+     *
+     * @return void
+     * @covers ::getAllElements
+     */
+    public function testGetAllElementsDisabledData()
+    {
+        $paymentSlipData = $this->paymentSlip->getPaymentSlipData();
+        $paymentSlipData->setWithAccountNumber(false);
+        $paymentSlipData->setWithAmount(false);
+        $paymentSlipData->setWithBank(false);
+        $paymentSlipData->setWithPayer(false);
+        $paymentSlipData->setWithRecipient(false);
+
+        $elements = $this->paymentSlip->getAllElements();
+
+        $expectedElements = array();
+
+        $this->assertElementsArray($expectedElements, $elements);
+    }
 }

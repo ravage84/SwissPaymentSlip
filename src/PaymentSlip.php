@@ -1276,6 +1276,9 @@ abstract class PaymentSlip
      */
     public function getDisplayAccount()
     {
+        if ($this->getPaymentSlipData()->getWithAccountNumber() !== true) {
+            return false;
+        }
         return $this->displayAccount;
     }
 
@@ -1300,6 +1303,9 @@ abstract class PaymentSlip
      */
     public function getDisplayAmount()
     {
+        if ($this->getPaymentSlipData()->getWithAmount() !== true) {
+            return false;
+        }
         return $this->displayAmount;
     }
 
@@ -1324,6 +1330,9 @@ abstract class PaymentSlip
      */
     public function getDisplayBank()
     {
+        if ($this->getPaymentSlipData()->getWithBank() !== true) {
+            return false;
+        }
         return $this->displayBank;
     }
 
@@ -1348,6 +1357,9 @@ abstract class PaymentSlip
      */
     public function getDisplayPayer()
     {
+        if ($this->getPaymentSlipData()->getWithPayer() !== true) {
+            return false;
+        }
         return $this->displayPayer;
     }
 
@@ -1372,6 +1384,9 @@ abstract class PaymentSlip
      */
     public function getDisplayRecipient()
     {
+        if ($this->getPaymentSlipData()->getWithRecipient() !== true) {
+            return false;
+        }
         return $this->displayRecipient;
     }
 
@@ -1405,8 +1420,6 @@ abstract class PaymentSlip
      * @param bool $fillZeroes Whether to return the code line filled with zeros or not.
      * @return array All elements with their lines and attributes.
      * @todo Consider extracting the parameter as settable property, e.g. $fillWithZeros
-     * @todo Make sure getCodeLine method gets only called if the necessary data is enabled
-     * @todo Consider making the getDisplayXXXX methods dependent on the related data setting(s)
      */
     public function getAllElements($fillZeroes = true)
     {

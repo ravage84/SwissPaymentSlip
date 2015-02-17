@@ -229,7 +229,28 @@ class OrangePaymentSlip extends PaymentSlip
      */
     public function getDisplayReferenceNr()
     {
+        if ($this->getPaymentSlipData()->getWithReferenceNumber() !== true) {
+            return false;
+        }
         return $this->displayReferenceNr;
+    }
+
+    /**
+     * Get whether or not to display the code line at the bottom
+     *
+     * Overwrites the parent method as it checks additional settings.
+     *
+     * @return bool True if yes, false if no.
+     */
+    public function getDisplayCodeLine()
+    {
+        if (
+            $this->getPaymentSlipData()->getWithAccountNumber() !== true ||
+            $this->getPaymentSlipData()->getWithReferenceNumber() !== true
+        ) {
+            return false;
+        }
+        return $this->displayCodeLine;
     }
 
     /**

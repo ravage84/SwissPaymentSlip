@@ -294,6 +294,9 @@ class RedPaymentSlip extends PaymentSlip
      */
     public function getDisplayIban()
     {
+        if ($this->getPaymentSlipData()->getWithIban() !== true) {
+            return false;
+        }
         return $this->displayIban;
     }
 
@@ -318,7 +321,23 @@ class RedPaymentSlip extends PaymentSlip
      */
     public function getDisplayPaymentReason()
     {
+        if ($this->getPaymentSlipData()->getWithPaymentReason() !== true) {
+            return false;
+        }
         return $this->displayPaymentReason;
+    }
+
+    /**
+     * Get whether or not to display the code line at the bottom
+     *
+     * @return bool True if yes, false if no.
+     */
+    public function getDisplayCodeLine()
+    {
+        if ($this->getPaymentSlipData()->getWithIban() !== true) {
+            return false;
+        }
+        return $this->displayCodeLine;
     }
 
     /**
