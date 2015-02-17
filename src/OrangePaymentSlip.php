@@ -127,6 +127,16 @@ class OrangePaymentSlip extends PaymentSlip
     }
 
     /**
+     * Get the slip data object of the slip
+     *
+     * @return OrangePaymentSlipData The data object of the slip.
+     */
+    public function getPaymentSlipData()
+    {
+        return parent::getPaymentSlipData();
+    }
+
+    /**
      * Set the left reference number attributes
      *
      * @param float|null $posX The X position.

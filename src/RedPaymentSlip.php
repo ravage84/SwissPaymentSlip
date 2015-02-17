@@ -112,6 +112,16 @@ class RedPaymentSlip extends PaymentSlip
     }
 
     /**
+     * Get the slip data object of the slip
+     *
+     * @return RedPaymentSlipData The data object of the slip.
+     */
+    public function getPaymentSlipData()
+    {
+        return parent::getPaymentSlipData();
+    }
+
+    /**
      * Set the left IBAN attributes
      *
      * @param float|null $posX The X position.
