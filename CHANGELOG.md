@@ -8,6 +8,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 ### Fixed
+- Make getDisplayXXXX methods dependent on the related data setting(s)
+  This fixes a newly introduced issue where calling the getAllElements method
+  would throw an exception, if there was one or more disabled element data.
 
 ## [0.9.0](https://github.com/ravage84/SwissPaymentSlip/releases/tag/0.9.0) - 2015-02-13
 ### Added
