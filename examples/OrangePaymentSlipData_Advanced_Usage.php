@@ -46,14 +46,6 @@ $paymentSlipData->setWithAccountNumber(true)
 // Fill the data container with your data
 $paymentSlipData->setAccountNumber('01-145-6');
 
-// This won't work, because it's disabled
-$paymentSlipData->setRecipientData(
-    'H. Muster AG',
-    'Versandhaus',
-    'Industriestrasse 88',
-    '8000 Zürich'
-);
-
 $paymentSlipData->setPayerData('Rutschmann Pia', 'Marktgasse 28', '9400 Rorschach')
     ->setReferenceNumber('7520033455900012');
 
@@ -74,7 +66,7 @@ echo "Complete reference number (ditto), not filled with zeroes : " .
     $paymentSlipData->getCompleteReferenceNumber(true, false) . "<br>";
 echo "<br>";
 echo "Code line (at the bottom): " . $paymentSlipData->getCodeLine() . "<br>";
-echo "Code line (at the bottom), not filled with zeroes: " . $paymentSlipData->getCodeLine(false) . "<br>";
+echo "Code line (at the bottom), not filled with zeros: " . $paymentSlipData->getCodeLine(false) . "<br>";
 echo "<br>";
 
 // Dump object to screen
