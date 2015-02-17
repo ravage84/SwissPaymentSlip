@@ -61,6 +61,21 @@ class OrangePaymentSlip extends PaymentSlip
     protected $displayCodeLine = true;
 
     /**
+     * Whether to return the reference number formatted in blocks of five (for better readability)
+     *
+     * @var bool
+     */
+    protected $referenceNrFormatted = true;
+
+    /**
+     * Whether to fill up the reference number with leading zeros,
+     * only applies to the case where no banking customer ID is used.
+     *
+     * @var bool
+     */
+    protected $referenceNrFillZeros = true;
+
+    /**
      * Attributes of the left reference number element
      *
      * @var array
@@ -323,6 +338,52 @@ class OrangePaymentSlip extends PaymentSlip
     }
 
     /**
+     * Set whether to format the reference number for better readability
+     *
+     * @param bool $referenceNrFormatted True if yes, else false.
+     * @return $this The current instance for a fluent interface.
+     */
+    public function setReferenceNrFormatted($referenceNrFormatted)
+    {
+        $this->isBool($referenceNrFormatted, 'referenceNrFormatted');
+        $this->referenceNrFormatted = $referenceNrFormatted;
+        return $this;
+    }
+
+    /**
+     * Get whether to format the reference number for better readability
+     *
+     * @return bool True if yes, else false.
+     */
+    public function getReferenceNrFormatted()
+    {
+        return $this->referenceNrFormatted;
+    }
+
+    /**
+     * Set whether to fill the reference number with zeros
+     *
+     * @param bool $referenceNrFillZeros True if yes, else false.
+     * @return $this The current instance for a fluent interface.
+     */
+    public function setReferenceNrFillZeros($referenceNrFillZeros)
+    {
+        $this->isBool($referenceNrFillZeros, 'referenceNrFillZeros');
+        $this->referenceNrFillZeros = $referenceNrFillZeros;
+        return $this;
+    }
+
+    /**
+     * Get whether to fill the reference number with zeros
+     *
+     * @return bool True if yes, else false.
+     */
+    public function getReferenceNrFillZeros()
+    {
+        return $this->referenceNrFillZeros;
+    }
+
+    /**
      * Get whether or not to display the code line at the bottom
      *
      * Overwrites the parent method as it checks additional settings.
@@ -343,22 +404,26 @@ class OrangePaymentSlip extends PaymentSlip
     /**
      * Get all elements of the slip
      *
-     * @param bool $fillZeroes Whether to return the reference number filled with zeros or not.
-     * @param bool $formatted Whether to return the reference number formatted or not.
      * @return array All elements with their lines and attributes.
-     * @todo Consider extracting the parameters as settable properties, e.g. $fillWithZeros & $referenceNrFormatted
      */
-    public function getAllElements($fillZeroes = true, $formatted = true)
+    public function getAllElements()
     {
         $paymentSlipData = $this->paymentSlipData;
+        $formatted = $this->getReferenceNrFormatted();
+        $fillZeros = $this->getReferenceNrFillZeros();
 
-        $elements = parent::getAllElements($fillZeroes);
+        $elements = parent::getAllElements();
+
         // Place left reference number
         if ($this->getDisplayReferenceNr()) {
             $lines = array(
-                $paymentSlipData->getCompleteReferenceNumber($formatted, $fillZeroes)
+                $paymentSlipData->getCompleteReferenceNumber(
+                    $formatted,
+                    $fillZeros
+                )
             );
-            $elements['referenceNumberLeft'] = array('lines' => $lines,
+            $elements['referenceNumberLeft'] = array(
+                'lines' => $lines,
                 'attributes' => $this->getReferenceNumberLeftAttr()
             );
 
@@ -373,7 +438,7 @@ class OrangePaymentSlip extends PaymentSlip
         // Place code line
         if ($this->getDisplayCodeLine()) {
             $lines = array(
-                $paymentSlipData->getCodeLine($fillZeroes));
+                $paymentSlipData->getCodeLine($fillZeros));
             $elements['codeLine'] = array(
                 'lines' => $lines,
                 'attributes' => $this->getCodeLineAttr()

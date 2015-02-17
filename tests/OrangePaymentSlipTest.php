@@ -310,7 +310,6 @@ class OrangePaymentSlipTest extends PaymentSlipTestCase
      *
      * @return void
      * @covers ::getAllElements
-     * @todo Cover the parameters of getAllElements()
      */
     public function testGetAllElements()
     {

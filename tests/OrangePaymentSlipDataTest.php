@@ -216,6 +216,11 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
             '21 57030 00075 20033 45590 00126',
             $this->slipData->getCompleteReferenceNumber(true, false)
         );
+        // Neither formatted nor filled with zeros
+        $this->assertEquals(
+            '215703000075200334559000126',
+            $this->slipData->getCompleteReferenceNumber(false, false)
+        );
 
         // Test with reference number but without banking customer ID
         $this->slipData->setWithBankingCustomerId(false);
@@ -234,6 +239,11 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(
             '75 20033 45590 00129',
             $this->slipData->getCompleteReferenceNumber(true, false)
+        );
+        // Neither formatted nor filled with zeros
+        $this->assertEquals(
+            '75200334559000129',
+            $this->slipData->getCompleteReferenceNumber(false, false)
         );
     }
 

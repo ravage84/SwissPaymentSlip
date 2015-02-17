@@ -330,15 +330,13 @@ class RedPaymentSlip extends PaymentSlip
     /**
      * Get all elements of the slip
      *
-     * @param bool $fillZeroes Whether to return the code line filled with zeros or not.
      * @return array All elements with their lines and attributes.
-     * @todo Consider extracting the parameter as settable property, e.g. $fillWithZeros
      */
-    public function getAllElements($fillZeroes = true)
+    public function getAllElements()
     {
         $paymentSlipData = $this->paymentSlipData;
 
-        $elements = parent::getAllElements($fillZeroes);
+        $elements = parent::getAllElements();
 
         // Place left IBAN
         if ($this->getDisplayIban()) {

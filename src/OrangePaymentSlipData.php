@@ -26,7 +26,6 @@ use SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException;
  */
 class OrangePaymentSlipData extends PaymentSlipData
 {
-
     /**
      * Determines if the payment slip has a reference number. Can be disabled for pre-printed payment slips
      *
@@ -206,7 +205,6 @@ class OrangePaymentSlipData extends PaymentSlipData
      * @param bool $formatted Should the returned reference be formatted in blocks of five (for better readability).
      * @param bool $fillZeros Fill up with leading zeros, only applies to the case where no banking customer ID is used.
      * @return string The complete (with/without bank customer ID), formatted reference number with check digit
-     * or false if withReferenceNumber is false.
      */
     public function getCompleteReferenceNumber($formatted = true, $fillZeros = true)
     {
@@ -215,7 +213,7 @@ class OrangePaymentSlipData extends PaymentSlipData
 
         $completeReferenceNumber = $referenceNumber;
         if ($notForPayment) {
-            $completeReferenceNumber =  str_pad($referenceNumber, 26, 'X', STR_PAD_LEFT);
+            $completeReferenceNumber = str_pad($referenceNumber, 26, 'X', STR_PAD_LEFT);
         } elseif ($this->getWithBankingCustomerId()) {
             // Get reference number and fill with zeros
             $referenceNumber = str_pad($referenceNumber, 20, '0', STR_PAD_LEFT);
