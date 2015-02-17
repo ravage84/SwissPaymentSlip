@@ -129,9 +129,9 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($this->slipData->getWithBankingCustomerId());
 
         // Set data when enabled, also check for returned instance
-        $returned = $this->slipData->setBankingCustomerId('0123456789');
+        $returned = $this->slipData->setBankingCustomerId('012345');
         $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlipData', $returned);
-        $this->assertEquals('0123456789', $this->slipData->getBankingCustomerId());
+        $this->assertEquals('012345', $this->slipData->getBankingCustomerId());
 
         // Disable feature, also check for returned instance
         $returned = $this->slipData->setWithBankingCustomerId(false);
