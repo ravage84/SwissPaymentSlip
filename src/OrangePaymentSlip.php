@@ -402,8 +402,7 @@ class OrangePaymentSlip extends PaymentSlip
      */
     public function getDisplayCodeLine()
     {
-        if (
-            $this->getPaymentSlipData()->getWithAccountNumber() !== true ||
+        if ($this->getPaymentSlipData()->getWithAccountNumber() !== true ||
             $this->getPaymentSlipData()->getWithReferenceNumber() !== true
         ) {
             return false;
