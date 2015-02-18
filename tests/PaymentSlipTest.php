@@ -704,6 +704,10 @@ class PaymentSlipTest extends PaymentSlipTestCase
         // Re-enable the feature
         $this->paymentSlip->setDisplayBank();
         $this->assertTrue($this->paymentSlip->getDisplayBank());
+
+        // Check if the data is disabled
+        $this->paymentSlip->getPaymentSlipData()->setWithBank(false);
+        $this->assertFalse($this->paymentSlip->getDisplayBank());
     }
 
     /**
@@ -741,6 +745,10 @@ class PaymentSlipTest extends PaymentSlipTestCase
         // Re-enable the feature
         $this->paymentSlip->setDisplayAccount();
         $this->assertTrue($this->paymentSlip->getDisplayAccount());
+
+        // Check if the data is disabled
+        $this->paymentSlip->getPaymentSlipData()->setWithAccountNumber(false);
+        $this->assertFalse($this->paymentSlip->getDisplayAccount());
     }
 
     /**
@@ -778,6 +786,10 @@ class PaymentSlipTest extends PaymentSlipTestCase
         // Re-enable the feature
         $this->paymentSlip->setDisplayRecipient();
         $this->assertTrue($this->paymentSlip->getDisplayRecipient());
+
+        // Check if the data is disabled
+        $this->paymentSlip->getPaymentSlipData()->setWithRecipient(false);
+        $this->assertFalse($this->paymentSlip->getDisplayRecipient());
     }
 
     /**
@@ -815,6 +827,10 @@ class PaymentSlipTest extends PaymentSlipTestCase
         // Re-enable the feature
         $this->paymentSlip->setDisplayAmount();
         $this->assertTrue($this->paymentSlip->getDisplayAmount());
+
+        // Check if the data is disabled
+        $this->paymentSlip->getPaymentSlipData()->setWithAmount(false);
+        $this->assertFalse($this->paymentSlip->getDisplayAmount());
     }
 
     /**
@@ -852,6 +868,10 @@ class PaymentSlipTest extends PaymentSlipTestCase
         // Re-enable the feature
         $this->paymentSlip->setDisplayPayer();
         $this->assertTrue($this->paymentSlip->getDisplayPayer());
+
+        // Check if the data is disabled
+        $this->paymentSlip->getPaymentSlipData()->setWithPayer(false);
+        $this->assertFalse($this->paymentSlip->getDisplayPayer());
     }
 
     /**

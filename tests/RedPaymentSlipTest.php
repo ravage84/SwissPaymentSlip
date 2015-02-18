@@ -230,6 +230,10 @@ class RedPaymentSlipTest extends PaymentSlipTestCase
         // Re-enable the feature
         $this->paymentSlip->setDisplayIban();
         $this->assertTrue($this->paymentSlip->getDisplayIban());
+
+        // Check if the data is disabled
+        $this->paymentSlip->getPaymentSlipData()->setWithIban(false);
+        $this->assertFalse($this->paymentSlip->getDisplayIban());
     }
 
     /**
@@ -267,6 +271,10 @@ class RedPaymentSlipTest extends PaymentSlipTestCase
         // Re-enable the feature
         $this->paymentSlip->setDisplayPaymentReason();
         $this->assertTrue($this->paymentSlip->getDisplayPaymentReason());
+
+        // Check if the data is disabled
+        $this->paymentSlip->getPaymentSlipData()->setWithPaymentReason(false);
+        $this->assertFalse($this->paymentSlip->getDisplayPaymentReason());
     }
 
     /**

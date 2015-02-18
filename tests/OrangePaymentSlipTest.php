@@ -252,6 +252,10 @@ class OrangePaymentSlipTest extends PaymentSlipTestCase
         // Re-enable the feature
         $this->paymentSlip->setDisplayReferenceNr();
         $this->assertTrue($this->paymentSlip->getDisplayReferenceNr());
+
+        // Check if the data is disabled
+        $this->paymentSlip->getPaymentSlipData()->setWithReferenceNumber(false);
+        $this->assertFalse($this->paymentSlip->getDisplayReferenceNr());
     }
 
     /**
@@ -289,6 +293,16 @@ class OrangePaymentSlipTest extends PaymentSlipTestCase
         // Re-enable the feature
         $this->paymentSlip->setDisplayCodeLine();
         $this->assertTrue($this->paymentSlip->getDisplayCodeLine());
+
+        // Check if the data is disabled
+        $this->paymentSlip->getPaymentSlipData()->setWithAccountNumber(true);
+        $this->paymentSlip->getPaymentSlipData()->setWithReferenceNumber(false);
+        $this->assertFalse($this->paymentSlip->getDisplayCodeLine());
+
+        // Check if the data is disabled
+        $this->paymentSlip->getPaymentSlipData()->setWithAccountNumber(false);
+        $this->paymentSlip->getPaymentSlipData()->setWithReferenceNumber(true);
+        $this->assertFalse($this->paymentSlip->getDisplayCodeLine());
     }
 
     /**
