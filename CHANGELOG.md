@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 ### Changed
+- Exclude development/testing only related stuff from the Composer package
 
 ### Fixed
 
@@ -17,7 +18,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Removed the parameters from the getAllElements (API breaking)
   Added gettable/settable properties instead.
-- Moved code line data & element to orange payment slip classes (API breaking)  
+- Moved code line data & element to orange payment slip classes (API breaking)
 
 ### Fixed
 - Removed breaking code from example
