@@ -8,10 +8,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Removed the parameters from the getAllElements (API breaking).
   Added gettable/settable properties instead.
+- Moved code line data & element to orange payment slip classes  
 
 ### Fixed
 - Removed breaking code from example
-- Make getDisplayXXXX methods dependent on the related data setting(s)
+- Made getDisplayXXXX methods dependent on the related data setting(s)
   This fixes a newly introduced issue where calling the getAllElements method
   would throw an exception, if there was one or more disabled element data.
 
