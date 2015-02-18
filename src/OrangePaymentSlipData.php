@@ -29,7 +29,7 @@ class OrangePaymentSlipData extends PaymentSlipData
     /**
      * Determines if the payment slip has a reference number. Can be disabled for pre-printed payment slips
      *
-     * @var bool True if yes, false if no.
+     * @var bool
      */
     protected $withReferenceNumber = true;
 
@@ -37,21 +37,21 @@ class OrangePaymentSlipData extends PaymentSlipData
      * Determines if the payment slip's reference number should contain the banking customer ID.
      * Can be disabled for recipients who don't need this
      *
-     * @var bool True if yes, false if no.
+     * @var bool
      */
     protected $withBankingCustomerId = true;
 
     /**
      * The reference number, without banking customer ID and check digit
      *
-     * @var string The reference number.
+     * @var string
      */
     protected $referenceNumber = '';
 
     /**
      * The banking customer ID, which will be prepended to the reference number
      *
-     * @var string The banking customer ID.
+     * @var string
      */
     protected $bankingCustomerId = '';
 

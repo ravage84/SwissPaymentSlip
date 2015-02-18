@@ -32,7 +32,7 @@ class RedPaymentSlipData extends PaymentSlipData
      * Determines if the payment slip has an IBAN specified. Can be disabled for pre-printed payment slips
      * Only possible for ES, but not for ESR
      *
-     * @var bool True if yes, false if no.
+     * @var bool
      */
     protected $withIban = true;
 
@@ -40,42 +40,42 @@ class RedPaymentSlipData extends PaymentSlipData
      * Determines if the payment slip has a payment reason. Can be disabled for pre-printed payment slips
      * Only possible for ES, but not for ESR
      *
-     * @var bool True if yes, false if no.
+     * @var bool
      */
     protected $withPaymentReason = true;
 
     /**
      * The IBAN of the recipient of a ES. Not available on a ESR
      *
-     * @var string The IBAN of the recipient.
+     * @var string
      */
     protected $iban = '';
 
     /**
      * The first line of the payment reason of a ES. Not available on a ESR
      *
-     * @var string The first line of the payment reason.
+     * @var string
      */
     protected $paymentReasonLine1 = '';
 
     /**
      * The second line of the payment reason of a ES. Not available on a ESR
      *
-     * @var string The second line of the payment reason.
+     * @var string
      */
     protected $paymentReasonLine2 = '';
 
     /**
      * The third line of the payment reason of a ES. Not available on a ESR
      *
-     * @var string The third line of the payment reason.
+     * @var string
      */
     protected $paymentReasonLine3 = '';
 
     /**
      * The fourth line of the payment reason of a ES. Not available on a ESR
      *
-     * @var string The fourth line of the payment reason.
+     * @var string
      */
     protected $paymentReasonLine4 = '';
 

@@ -39,21 +39,21 @@ abstract class PaymentSlip
     /**
      * The payment slip value object, which contains the payment slip data
      *
-     * @var PaymentSlipData The payment slip value object
+     * @var PaymentSlipData
      */
     protected $paymentSlipData = null;
 
     /**
-     * Starting X position of the slip
+     * Starting X position of the slip in mm
      *
-     * @var int|float Starting X position of the slip in mm
+     * @var int|float
      */
     protected $slipPosX = 0;
 
     /**
-     * Starting Y position of the slip
+     * Starting Y position of the slip in mm
      *
-     * @var int|float Starting Y position of the slip in mm
+     * @var int|float
      */
     protected $slipPosY = 191;
 
@@ -118,35 +118,35 @@ abstract class PaymentSlip
     /**
      * Determines whether the bank details should be displayed
      *
-     * @var bool True if yes, false if no
+     * @var bool
      */
     protected $displayBank = true;
 
     /**
      * Determines whether the recipient details should be displayed
      *
-     * @var bool True if yes, false if no
+     * @var bool
      */
     protected $displayRecipient = true;
 
     /**
      * Determines whether the account should be displayed
      *
-     * @var bool True if yes, false if no
+     * @var bool
      */
     protected $displayAccount = true;
 
     /**
      * Determines whether the amount should be displayed
      *
-     * @var bool True if yes, false if no
+     * @var bool
      */
     protected $displayAmount = true;
 
     /**
      * Determines whether the payer details should be displayed
      *
-     * @var bool True if yes, false if no
+     * @var bool
      */
     protected $displayPayer = true;
 

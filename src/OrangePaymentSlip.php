@@ -26,9 +26,9 @@ namespace SwissPaymentSlip\SwissPaymentSlip;
 class OrangePaymentSlip extends PaymentSlip
 {
     /**
-     * The red payment slip value object, which contains the payment slip data
+     * The orange payment slip value object, which contains the payment slip data
      *
-     * @var OrangePaymentSlipData The orange payment slip value object
+     * @var OrangePaymentSlipData
      */
     protected $paymentSlipData = null;
 
@@ -49,14 +49,14 @@ class OrangePaymentSlip extends PaymentSlip
     /**
      * Determines whether the reference number should be displayed
      *
-     * @var bool True if yes, false if no
+     * @var bool
      */
     protected $displayReferenceNr = true;
 
     /**
      * Determines whether the code line at the bottom should be displayed
      *
-     * @var bool True if yes, false if no
+     * @var bool
      */
     protected $displayCodeLine = true;
 

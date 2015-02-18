@@ -60,135 +60,135 @@ abstract class PaymentSlipData
 {
 
     /**
-     * Consists the array table for calculating the check digit by modulo 10
+     * The array table for calculating the check digit by modulo 10
      *
-     * @var array Table for calculating the check digit by modulo 10.
+     * @var array
      */
     private $moduloTable = array(0, 9, 4, 6, 8, 2, 7, 1, 3, 5);
 
     /**
      * Determines if the payment slip has a recipient bank. Can be disabled for pre-printed payment slips
      *
-     * @var bool True if yes, false if no.
+     * @var bool
      */
     protected $withBank = true;
 
     /**
      * Determines if the payment slip has a account number. Can be disabled for pre-printed payment slips
      *
-     * @var bool True if yes, false if no.
+     * @var bool
      */
     protected $withAccountNumber = true;
 
     /**
      * Determines if the payment slip has a recipient. Can be disabled for pre-printed payment slips
      *
-     * @var bool True if yes, false if no.
+     * @var bool
      */
     protected $withRecipient = true;
 
     /**
      * Determines if it's an ESR or an ESR+
      *
-     * @var bool True for ESR, false for ESR+.
+     * @var bool
      */
     protected $withAmount = true;
 
     /**
      * Determines if the payment slip has a payer. Can be disabled for pre-printed payment slips
      *
-     * @var bool True if yes, false if no.
+     * @var bool
      */
     protected $withPayer = true;
 
     /**
      * The name of the bank
      *
-     * @var string The name of the bank.
+     * @var string
      */
     protected $bankName = '';
 
     /**
      * The postal code and city of the bank
      *
-     * @var string The postal code and city of the bank.
+     * @var string
      */
     protected $bankCity = '';
 
     /**
      * The bank or post cheque account where the money will be transferred to
      *
-     * @var string The bank or post cheque account.
+     * @var string
      */
     protected $accountNumber = '';
 
     /**
      * The first line of the recipient, e.g. "My Company Ltd."
      *
-     * @var string The first line of the recipient.
+     * @var string
      */
     protected $recipientLine1 = '';
 
     /**
      * The second line of the recipient, e.g. "Examplestreet 61"
      *
-     * @var string The second line of the recipient.
+     * @var string
      */
     protected $recipientLine2 = '';
 
     /**
      * The third line of the recipient, e.g. "8000 Zürich"
      *
-     * @var string The third line of the recipient.
+     * @var string
      */
     protected $recipientLine3 = '';
 
     /**
      * The fourth line of the recipient, if needed
      *
-     * @var string The fourth line of the recipient.
+     * @var string
      */
     protected $recipientLine4 = '';
 
     /**
      * The amount to be payed into. Can be disabled with withAmount = false for ESR+ slips
      *
-     * @var float The amount to be payed into.
+     * @var float
      */
     protected $amount = 0.0;
 
     /**
      * The first line of the payer, e.g. "Hans Mustermann"
      *
-     * @var string The first line of the payer.
+     * @var string
      */
     protected $payerLine1 = '';
 
     /**
      * The second line of the payer, e.g. "Main Street 11"
      *
-     * @var string The second line of the payer.
+     * @var string
      */
     protected $payerLine2 = '';
 
     /**
      * The third line of the payer, e.g. "4052 Basel"
      *
-     * @var string The third line of the payer.
+     * @var string
      */
     protected $payerLine3 = '';
 
     /**
      * The fourth line of the payer, if needed
      *
-     * @var string The fourth line of the payer.
+     * @var string
      */
     protected $payerLine4 = '';
 
     /**
      * Determines if the payment slip must not be used for payment (XXXed out)
      *
-     * @var bool Normally false, true if not for payment.
+     * @var bool
      */
     protected $notForPayment = false;
 

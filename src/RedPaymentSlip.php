@@ -26,9 +26,9 @@ namespace SwissPaymentSlip\SwissPaymentSlip;
 class RedPaymentSlip extends PaymentSlip
 {
     /**
-     * The payment slip value object, which contains the payment slip data
+     * The red payment slip value object, which contains the payment slip data
      *
-     * @var RedPaymentSlipData The orange payment slip value object
+     * @var RedPaymentSlipData
      */
     protected $paymentSlipData = null;
 
@@ -48,14 +48,14 @@ class RedPaymentSlip extends PaymentSlip
     /**
      * Determines whether the IBAN should be displayed
      *
-     * @var bool True if yes, false if no
+     * @var bool
      */
     protected $displayIban = true;
 
     /**
      * Determines whether the payment reason should be displayed
      *
-     * @var bool True if yes, false if no
+     * @var bool
      */
     protected $displayPaymentReason = true;
 
