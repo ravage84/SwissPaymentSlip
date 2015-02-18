@@ -116,6 +116,13 @@ abstract class PaymentSlip
     protected $defaultTextAlign = 'L';
 
     /**
+     * Determines whether the background should be displayed
+     *
+     * @var bool
+     */
+    protected $displayBackground = true;
+
+    /**
      * Determines whether the bank details should be displayed
      *
      * @var bool
@@ -1180,6 +1187,30 @@ abstract class PaymentSlip
     public function getSlipHeight()
     {
         return $this->slipHeight;
+    }
+
+    /**
+     * Set whether or not to display the background
+     *
+     * @param bool $displayBackground True if yes, false if no.
+     * @return $this The current instance for a fluent interface..
+     */
+    public function setDisplayBackground($displayBackground = true)
+    {
+        $this->isBool($displayBackground, 'displayBackground');
+        $this->displayBackground = $displayBackground;
+
+        return $this;
+    }
+
+    /**
+     * Get whether or not to display the background
+     *
+     * @return bool True if yes, false if no.
+     */
+    public function getDisplayBackground()
+    {
+        return $this->displayBackground;
     }
 
     /**

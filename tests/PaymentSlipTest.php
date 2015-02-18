@@ -684,6 +684,43 @@ class PaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
+     * Tests the setDisplayBackground method
+     *
+     * @return void
+     * @covers ::setDisplayBackground
+     * @covers ::getDisplayBackground
+     * @covers ::isBool
+     */
+    public function testSetDisplayBackground()
+    {
+        // Test the default value
+        $this->assertTrue($this->paymentSlip->getDisplayBackground());
+
+        // Disable feature, also check for returned instance
+        $returned = $this->paymentSlip->setDisplayBackground(false);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlip', $returned);
+        $this->assertFalse($this->paymentSlip->getDisplayBackground());
+
+        // Re-enable the feature
+        $this->paymentSlip->setDisplayBackground();
+        $this->assertTrue($this->paymentSlip->getDisplayBackground());
+    }
+
+    /**
+     * Tests the setDisplayBackground method with an invalid parameter
+     *
+     * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $displayBackground is not a boolean.
+     * @covers ::setDisplayBackground
+     * @covers ::isBool
+     */
+    public function testSetDisplayBackgroundInvalidParameter()
+    {
+        $this->paymentSlip->setDisplayBackground('true');
+    }
+
+    /**
      * Tests the setDisplayBank method
      *
      * @return void
