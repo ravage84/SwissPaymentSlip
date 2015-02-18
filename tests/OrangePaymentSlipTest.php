@@ -306,6 +306,80 @@ class OrangePaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
+     * Tests the setReferenceNrFormatted method
+     *
+     * @return void
+     * @covers ::setReferenceNrFormatted
+     * @covers ::getReferenceNrFormatted
+     * @covers ::isBool
+     */
+    public function testSetReferenceNrFormatted()
+    {
+        // Test the default value
+        $this->assertTrue($this->paymentSlip->getReferenceNrFormatted());
+
+        // Disable feature, also check for returned instance
+        $returned = $this->paymentSlip->setReferenceNrFormatted(false);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlip', $returned);
+        $this->assertFalse($this->paymentSlip->getReferenceNrFormatted());
+
+        // Re-enable the feature
+        $this->paymentSlip->setReferenceNrFormatted(true);
+        $this->assertTrue($this->paymentSlip->getReferenceNrFormatted());
+    }
+
+    /**
+     * Tests the setReferenceNrFormatted method with an invalid parameter
+     *
+     * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $referenceNrFormatted is not a boolean.
+     * @covers ::setReferenceNrFormatted
+     * @covers ::isBool
+     */
+    public function testSetReferenceNrFormattedInvalidParameter()
+    {
+        $this->paymentSlip->setReferenceNrFormatted('true');
+    }
+
+    /**
+     * Tests the setReferenceNrFillZeros method
+     *
+     * @return void
+     * @covers ::setReferenceNrFillZeros
+     * @covers ::getReferenceNrFillZeros
+     * @covers ::isBool
+     */
+    public function testSetReferenceNrFillZeros()
+    {
+        // Test the default value
+        $this->assertTrue($this->paymentSlip->getReferenceNrFillZeros());
+
+        // Disable feature, also check for returned instance
+        $returned = $this->paymentSlip->setReferenceNrFillZeros(false);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlip', $returned);
+        $this->assertFalse($this->paymentSlip->getReferenceNrFillZeros());
+
+        // Re-enable the feature
+        $this->paymentSlip->setReferenceNrFillZeros(true);
+        $this->assertTrue($this->paymentSlip->getReferenceNrFillZeros());
+    }
+
+    /**
+     * Tests the setReferenceNrFillZeros method with an invalid parameter
+     *
+     * @return void
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage $referenceNrFillZeros is not a boolean.
+     * @covers ::setReferenceNrFillZeros
+     * @covers ::isBool
+     */
+    public function testSetReferenceNrFillZerosInvalidParameter()
+    {
+        $this->paymentSlip->setReferenceNrFillZeros('true');
+    }
+
+    /**
      * Tests the getAllElements method
      *
      * @return void
