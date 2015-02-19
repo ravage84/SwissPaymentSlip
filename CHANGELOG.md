@@ -55,7 +55,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - Removed misleading time key, which fooled Packagist
-- Improved DobBlocks and documentation
+- Improved DocBlocks and documentation
 - Vastly reworked and cleaned up the all tests
 
 ## [0.7.0](https://github.com/ravage84/SwissPaymentSlip/releases/tag/0.7.0) - 2015-02-06
