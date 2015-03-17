@@ -706,7 +706,8 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('', $this->slipData->getPayerLine3());
         $this->assertEquals('', $this->slipData->getPayerLine4());
 
-        $this->slipData->setNotForPayment(true);
+        $returned = $this->slipData->setNotForPayment(true);
+        $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlipData', $returned);
         $this->assertTrue($this->slipData->getNotForPayment());
 
         $this->assertEquals('XXXXXX', $this->slipData->getBankName());
