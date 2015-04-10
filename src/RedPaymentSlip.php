@@ -64,21 +64,21 @@ class RedPaymentSlip extends PaymentSlip
      *
      * @var array
      */
-    protected $ibanLeftAttr = array();
+    protected $ibanLeftAttr = [];
 
     /**
      * Attributes of the rightIBAN element
      *
      * @var array
      */
-    protected $ibanRightAttr = array();
+    protected $ibanRightAttr = [];
 
     /**
      * Attributes of the payment reason element
      *
      * @var array
      */
-    protected $paymentReasonAttr = array();
+    protected $paymentReasonAttr = [];
 
     /**
      * Create a new red payment slip
@@ -350,33 +350,33 @@ class RedPaymentSlip extends PaymentSlip
 
         // Place left IBAN
         if ($this->getDisplayIban()) {
-            $lines = array(
+            $lines = [
                 $paymentSlipData->getFormattedIban()
-            );
-            $elements['IbanLeft'] = array('lines' => $lines,
+            ];
+            $elements['IbanLeft'] = ['lines' => $lines,
                 'attributes' => $this->getIbanLeftAttr()
-            );
+            ];
 
             // Place right IBAN
             // Reuse lines from above
-            $elements['IbanRight'] = array(
+            $elements['IbanRight'] = [
                 'lines' => $lines,
                 'attributes' => $this->getIbanRightAttr()
-            );
+            ];
         }
 
         if ($this->getDisplayPaymentReason()) {
             // Place payment reason lines
-            $lines = array(
+            $lines = [
                 $paymentSlipData->getPaymentReasonLine1(),
                 $paymentSlipData->getPaymentReasonLine2(),
                 $paymentSlipData->getPaymentReasonLine3(),
                 $paymentSlipData->getPaymentReasonLine4()
-            );
-            $elements['paymentReason'] = array(
+            ];
+            $elements['paymentReason'] = [
                 'lines' => $lines,
                 'attributes' => $this->getPaymentReasonAttr()
-            );
+            ];
         }
 
         return $elements;

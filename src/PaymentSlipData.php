@@ -64,7 +64,7 @@ abstract class PaymentSlipData
      *
      * @var array
      */
-    private $moduloTable = array(0, 9, 4, 6, 8, 2, 7, 1, 3, 5);
+    private $moduloTable = [0, 9, 4, 6, 8, 2, 7, 1, 3, 5];
 
     /**
      * Determines if the payment slip has a recipient bank. Can be disabled for pre-printed payment slips

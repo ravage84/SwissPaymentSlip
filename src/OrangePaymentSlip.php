@@ -80,21 +80,21 @@ class OrangePaymentSlip extends PaymentSlip
      *
      * @var array
      */
-    protected $referenceNumberLeftAttr = array();
+    protected $referenceNumberLeftAttr = [];
 
     /**
      * Attributes of the right reference number element
      *
      * @var array
      */
-    protected $referenceNumberRightAttr = array();
+    protected $referenceNumberRightAttr = [];
 
     /**
      * Attributes of the code line element
      *
      * @var array
      */
-    protected $codeLineAttr = array();
+    protected $codeLineAttr = [];
 
     /**
      * Create a new orange payment slip
@@ -425,33 +425,33 @@ class OrangePaymentSlip extends PaymentSlip
 
         // Place left reference number
         if ($this->getDisplayReferenceNr()) {
-            $lines = array(
+            $lines = [
                 $paymentSlipData->getCompleteReferenceNumber(
                     $formatted,
                     $fillZeros
                 )
-            );
-            $elements['referenceNumberLeft'] = array(
+            ];
+            $elements['referenceNumberLeft'] = [
                 'lines' => $lines,
-                'attributes' => $this->getReferenceNumberLeftAttr()
-            );
+            'attributes' => $this->getReferenceNumberLeftAttr()
+            ];
 
             // Place right reference number
             // Reuse lines from above
-            $elements['referenceNumberRight'] = array(
+            $elements['referenceNumberRight'] = [
                 'lines' => $lines,
                 'attributes' => $this->getReferenceNumberRightAttr()
-            );
+            ];
         }
 
         // Place code line
         if ($this->getDisplayCodeLine()) {
-            $lines = array(
-                $paymentSlipData->getCodeLine($fillZeros));
-            $elements['codeLine'] = array(
+            $lines = [
+                $paymentSlipData->getCodeLine($fillZeros)];
+            $elements['codeLine'] = [
                 'lines' => $lines,
                 'attributes' => $this->getCodeLineAttr()
-            );
+            ];
         }
 
         return $elements;
