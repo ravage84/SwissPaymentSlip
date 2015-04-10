@@ -6,6 +6,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 ### Changed
+- Updated PHP dependency to 5.4 or higher
+- Changed to short array syntax
 
 ### Fixed
 

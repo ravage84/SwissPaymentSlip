@@ -162,84 +162,84 @@ abstract class PaymentSlip
      *
      * @var array
      */
-    protected $bankLeftAttr = array();
+    protected $bankLeftAttr = [];
 
     /**
      * Attributes of the right bank element
      *
      * @var array
      */
-    protected $bankRightAttr = array();
+    protected $bankRightAttr = [];
 
     /**
      * Attributes of the left recipient element
      *
      * @var array
      */
-    protected $recipientLeftAttr = array();
+    protected $recipientLeftAttr = [];
 
     /**
      * Attributes of the right recipient element
      *
      * @var array
      */
-    protected $recipientRightAttr = array();
+    protected $recipientRightAttr = [];
 
     /**
      * Attributes of the left account element
      *
      * @var array
      */
-    protected $accountLeftAttr = array();
+    protected $accountLeftAttr = [];
 
     /**
      * Attributes of the right account element
      *
      * @var array
      */
-    protected $accountRightAttr = array();
+    protected $accountRightAttr = [];
 
     /**
      * Attributes of the left francs amount element
      *
      * @var array
      */
-    protected $amountFrancsLeftAttr = array();
+    protected $amountFrancsLeftAttr = [];
 
     /**
      * Attributes of the right francs amount element
      *
      * @var array
      */
-    protected $amountFrancsRightAttr = array();
+    protected $amountFrancsRightAttr = [];
 
     /**
      * Attributes of the left cents amount element
      *
      * @var array
      */
-    protected $amountCentsLeftAttr = array();
+    protected $amountCentsLeftAttr = [];
 
     /**
      * Attributes of the right cents amount element
      *
      * @var array
      */
-    protected $amountCentsRightAttr = array();
+    protected $amountCentsRightAttr = [];
 
     /**
      * Attributes of the left payer element
      *
      * @var array
      */
-    protected $payerLeftAttr = array();
+    protected $payerLeftAttr = [];
 
     /**
      * Attributes of the right payer element
      *
      * @var array
      */
-    protected $payerRightAttr = array();
+    protected $payerRightAttr = [];
 
     /**
      * Create a new payment slip
@@ -1357,118 +1357,112 @@ abstract class PaymentSlip
     {
         $paymentSlipData = $this->paymentSlipData;
 
-        $elements = array();
+        $elements = [];
         // Place left bank lines
         if ($this->getDisplayBank()) {
-            $lines = array(
+            $lines = [
                 $paymentSlipData->getBankName(),
                 $paymentSlipData->getBankCity()
-            );
-            $elements['bankLeft'] = array(
+            ];
+            $elements['bankLeft'] = [
                 'lines' => $lines,
                 'attributes' => $this->getBankLeftAttr()
-            );
+            ];
 
             // Place right bank lines
             // Reuse lines from above
-            $elements['bankRight'] = array(
+            $elements['bankRight'] = [
                 'lines' => $lines,
                 'attributes' => $this->getBankRightAttr()
-            );
+            ];
         }
 
         // Place left recipient lines
         if ($this->getDisplayRecipient()) {
-            $lines = array(
+            $lines = [
                 $paymentSlipData->getRecipientLine1(),
                 $paymentSlipData->getRecipientLine2(),
                 $paymentSlipData->getRecipientLine3(),
                 $paymentSlipData->getRecipientLine4()
-            );
-            $elements['recipientLeft'] = array(
+            ];
+            $elements['recipientLeft'] = [
                 'lines' => $lines,
                 'attributes' => $this->getRecipientLeftAttr()
-            );
+            ];
 
             // Place right recipient lines
             // Reuse lines from above
-            $elements['recipientRight'] = array(
+            $elements['recipientRight'] = [
                 'lines' => $lines,
                 'attributes' => $this->getRecipientRightAttr()
-            );
+            ];
         }
 
         // Place left account number
         if ($this->getDisplayAccount()) {
-            $lines = array(
-                $paymentSlipData->getAccountNumber()
-            );
-            $elements['accountLeft'] = array(
+            $lines = [$paymentSlipData->getAccountNumber()];
+            $elements['accountLeft'] = [
                 'lines' => $lines,
                 'attributes' => $this->getAccountLeftAttr()
-            );
+            ];
 
             // Place right account number
             // Reuse lines from above
-            $elements['accountRight'] = array(
+            $elements['accountRight'] = [
                 'lines' => $lines,
                 'attributes' => $this->getAccountRightAttr()
-            );
+            ];
         }
 
         // Place left amount in francs
         if ($this->getDisplayAmount()) {
-            $lines = array(
-                $paymentSlipData->getAmountFrancs()
-            );
-            $elements['amountFrancsLeft'] = array(
+            $lines = [$paymentSlipData->getAmountFrancs()];
+            $elements['amountFrancsLeft'] = [
                 'lines' => $lines,
                 'attributes' => $this->getAmountFrancsLeftAttr()
-            );
+            ];
 
             // Place right amount in francs
             // Reuse lines from above
-            $elements['amountFrancsRight'] = array(
+            $elements['amountFrancsRight'] = [
                 'lines' => $lines,
                 'attributes' => $this->getAmountFrancsRightAttr()
-            );
+            ];
 
             // Place left amount in cents
-            $lines = array(
-                $paymentSlipData->getAmountCents()
-            );
-            $elements['amountCentsLeft'] = array(
+            $lines = [$paymentSlipData->getAmountCents()];
+            $elements['amountCentsLeft'] = [
                 'lines' => $lines,
                 'attributes' => $this->getAmountCentsLeftAttr()
-            );
+            ];
 
             // Place right amount in cents
             // Reuse lines from above
-            $elements['amountCentsRight'] = array(
+            $elements['amountCentsRight'] = [
                 'lines' => $lines,
                 'attributes' => $this->getAmountCentsRightAttr()
-            );
+            ];
         }
 
         // Place left payer lines
         if ($this->getDisplayPayer()) {
-            $lines = array(
+            $lines = [
                 $paymentSlipData->getPayerLine1(),
                 $paymentSlipData->getPayerLine2(),
                 $paymentSlipData->getPayerLine3(),
                 $paymentSlipData->getPayerLine4()
-            );
-            $elements['payerLeft'] = array(
+            ];
+            $elements['payerLeft'] = [
                 'lines' => $lines,
                 'attributes' => $this->getPayerLeftAttr()
-            );
+            ];
 
             // Place right payer lines
             // Reuse lines from above
-            $elements['payerRight'] = array(
+            $elements['payerRight'] = [
                 'lines' => $lines,
                 'attributes' => $this->getPayerRightAttr()
-            );
+            ];
         }
 
         return $elements;

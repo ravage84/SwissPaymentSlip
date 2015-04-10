@@ -32,7 +32,7 @@ Installation
 
 ### Requirements
 
-- PHP 5.3.x+
+- PHP 5.4.x+
 
 ### Composer
 
