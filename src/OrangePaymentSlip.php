@@ -21,6 +21,8 @@ namespace SwissPaymentSlip\SwissPaymentSlip;
  *
  * The data of the fields is organized by its sister class OrangePaymentSlipData.
  *
+ * @link https://www.postfinance.ch/content/dam/pf/de/doc/consult/templ/example/44218_templ_de_fr_it.pdf ESR layouting
+ * template.
  * @uses OrangePaymentSlipData To store the slip data.
  */
 class OrangePaymentSlip extends PaymentSlip
