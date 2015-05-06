@@ -23,6 +23,7 @@ namespace SwissPaymentSlip\SwissPaymentSlip;
  *
  * @link https://www.postfinance.ch/content/dam/pf/de/doc/consult/templ/example/44218_templ_de_fr_it.pdf ESR layouting
  * template.
+ * @link https://www.postfinance.ch/binp/postfinance/public/dam.7nf77hU5mnlo7r15PkmudMtCOvznYc0RFUecjFJued4.spool/content/dam/pf/de/doc/consult/templ/example/44205_templ_de_fr_it.pdf Payment slip ESR bank in CHF
  * @uses OrangePaymentSlipData To store the slip data.
  */
 class OrangePaymentSlip extends PaymentSlip

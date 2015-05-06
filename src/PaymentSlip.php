@@ -22,6 +22,7 @@ use InvalidArgumentException;
  *
  * The data of the fields is organized by its sister class PaymentSlipData.
  *
+ * @link https://www.postfinance.ch/en/cust/download/bizdoc.html Various documents for Post business customers
  * @uses PaymentSlipData To store the slip data.
  *
  * @todo Include EUR framed slip image (701) --> back side!
