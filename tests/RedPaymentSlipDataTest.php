@@ -323,4 +323,18 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('XXXX XXXX XXXX XXXX XXXX X', $this->slipData->getFormattedIban());
     }
+
+    /**
+     * Tests the setNotForPayment method when fields are disabled
+     *
+     * @return void
+     * @covers ::setNotForPayment
+     */
+    public function testSetNotForPaymentDisabledFields()
+    {
+        $this->slipData->setWithPaymentReason(false);
+        $this->slipData->setWithIban(false);
+
+        $this->slipData->setNotForPayment(true);
+    }
 }

@@ -15,6 +15,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Changed to short array syntax
 
 ### Fixed
+- Let setNotForPayment() respect disabled data
 
 ## [0.11.1](https://github.com/ravage84/SwissPaymentSlip/releases/tag/0.11.1) - 2015-02-18
 ### Changed

@@ -192,8 +192,12 @@ class OrangePaymentSlipData extends PaymentSlipData
         parent::setNotForPayment($notForPayment);
 
         if ($notForPayment === true) {
-            $this->setReferenceNumber('XXXXXXXXXXXXXXXXXXXX');
-            $this->setBankingCustomerId('XXXXXX');
+            if ($this->getWithReferenceNumber() === true) {
+                $this->setReferenceNumber('XXXXXXXXXXXXXXXXXXXX');
+            }
+            if ($this->getWithBankingCustomerId() === true) {
+                $this->setBankingCustomerId('XXXXXX');
+            }
         }
 
         return $this;

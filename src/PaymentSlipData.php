@@ -853,11 +853,21 @@ abstract class PaymentSlipData
         $this->notForPayment = $notForPayment;
 
         if ($notForPayment === true) {
-            $this->setBankData('XXXXXX', 'XXXXXX');
-            $this->setAccountNumber('XXXXXX');
-            $this->setRecipientData('XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX');
-            $this->setPayerData('XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX');
-            $this->setAmount('XXXXXXXX.XX');
+            if ($this->getWithBank() === true) {
+                $this->setBankData('XXXXXX', 'XXXXXX');
+            }
+            if ($this->getWithAccountNumber() === true) {
+                $this->setAccountNumber('XXXXXX');
+            }
+            if ($this->getWithRecipient() === true) {
+                $this->setRecipientData('XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX');
+            }
+            if ($this->getWithPayer() === true) {
+                $this->setPayerData('XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX');
+            }
+            if ($this->getWithAmount() === true) {
+                $this->setAmount('XXXXXXXX.XX');
+            }
         }
 
         return $this;

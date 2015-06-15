@@ -729,4 +729,21 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('XXXXXX', $this->slipData->getPayerLine3());
         $this->assertEquals('XXXXXX', $this->slipData->getPayerLine4());
     }
+
+    /**
+     * Tests the setNotForPayment method when fields are disabled
+     *
+     * @return void
+     * @covers ::setNotForPayment
+     */
+    public function testSetNotForPaymentDisabledFields()
+    {
+        $this->slipData->setWithAccountNumber(false);
+        $this->slipData->setWithAmount(false);
+        $this->slipData->setWithBank(false);
+        $this->slipData->setWithPayer(false);
+        $this->slipData->setWithRecipient(false);
+
+        $this->slipData->setNotForPayment(true);
+    }
 }

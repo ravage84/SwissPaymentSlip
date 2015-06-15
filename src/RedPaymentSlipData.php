@@ -339,8 +339,12 @@ class RedPaymentSlipData extends PaymentSlipData
         parent::setNotForPayment($notForPayment);
 
         if ($notForPayment === true) {
-            $this->setPaymentReasonData('XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX');
-            $this->setIban('XXXXXXXXXXXXXXXXXXXXX');
+            if ($this->getWithPaymentReason() === true) {
+                $this->setPaymentReasonData('XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX');
+            }
+            if ($this->getWithIban() === true) {
+                $this->setIban('XXXXXXXXXXXXXXXXXXXXX');
+            }
         }
 
         return $this;

@@ -364,4 +364,18 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('XXXXXXXXXXXXX>XXXXXXXXXXXXXXXXXXXXXXXXXXX+ XXXXXXXXX>', $this->slipData->getCodeLine());
     }
+
+    /**
+     * Tests the setNotForPayment method when fields are disabled
+     *
+     * @return void
+     * @covers ::setNotForPayment
+     */
+    public function testSetNotForPaymentDisabledFields()
+    {
+        $this->slipData->setWithReferenceNumber(false);
+        $this->slipData->setWithBankingCustomerId(false);
+
+        $this->slipData->setNotForPayment(true);
+    }
 }
