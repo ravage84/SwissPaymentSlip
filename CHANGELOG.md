@@ -4,9 +4,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/ravage84/SwissPaymentSlip/compare/0.11.1...master)
 ### Added
+- "composer test" command executing phpunit
+- "composer check-codestyle" executing phpcs
+- "composer fix-checkstyle" executing phpcbf
 
 ### Changed
 - Updated PHP dependency to 5.4 or higher
+- Updated squizlabs/php_codesniffer development dependency to version ^2.1.0
 - Changed to short array syntax
 
 ### Fixed
