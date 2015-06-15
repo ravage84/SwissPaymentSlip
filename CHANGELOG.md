@@ -11,6 +11,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Updated PHP dependency to 5.4 or higher
 - Updated squizlabs/php_codesniffer development dependency to version ^2.1.0
+- Updated phpunit/phpunit development dependency to version ^4.0.0
 - Changed to short array syntax
 
 ### Fixed
