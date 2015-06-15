@@ -15,7 +15,7 @@
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.38",
-        "squizlabs/php_codesniffer": "2.1.*"
+        "squizlabs/php_codesniffer": "^2.1.0"
     },
     "authors": [
         {
@@ -50,5 +50,11 @@
         "psr-4": {
             "SwissPaymentSlip\\SwissPaymentSlip\\Tests\\": "tests"
         }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "phpcs": "phpcs --version",
+        "check-codestyle": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
+        "fix-codestyle": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
     }
 }
