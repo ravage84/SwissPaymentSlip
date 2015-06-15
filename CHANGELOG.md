@@ -2,7 +2,14 @@
 All notable changes to this project are documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/ravage84/SwissPaymentSlip/compare/0.11.1...master)
+## [Unreleased](https://github.com/ravage84/SwissPaymentSlip/compare/0.12.0...master)
+### Added
+
+### Changed
+
+### Fixed
+
+## [0.12.0](https://github.com/ravage84/SwissPaymentSlip/releases/tag/0.12.0) - 2015-06-15
 ### Added
 - "composer test" command executing phpunit
 - "composer check-codestyle" executing phpcs
