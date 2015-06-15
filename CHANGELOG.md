@@ -12,8 +12,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.12.0](https://github.com/ravage84/SwissPaymentSlip/releases/tag/0.12.0) - 2015-06-15
 ### Added
 - "composer test" command executing phpunit
-- "composer check-codestyle" executing phpcs
-- "composer fix-checkstyle" executing phpcbf
+- "composer check-codestyle" command executing phpcs
+- "composer fix-checkstyle" command executing phpcbf
 
 ### Changed
 - Updated PHP dependency to 5.4 or higher
