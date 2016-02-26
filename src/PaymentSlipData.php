@@ -837,7 +837,7 @@ abstract class PaymentSlipData
         $amount = $this->getAmount();
         $francs = intval($amount);
         $cents = round(($amount - $francs) * 100);
-        return str_pad($cents, 2, '0', STR_PAD_RIGHT);
+        return str_pad($cents, 2, '0', STR_PAD_LEFT);
     }
 
     /**
