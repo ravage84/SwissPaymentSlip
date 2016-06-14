@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/ravage84/SwissPaymentSlip/compare/0.12.1...master)
 ### Added
+- Added a Stickler CI config file
 
 ### Changed
 
