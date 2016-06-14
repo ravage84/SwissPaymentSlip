@@ -24,8 +24,7 @@ require __DIR__.'/../vendor/autoload.php';
 /**
  * A wrapping class to allow testing the abstract class PaymentSlipData
  */
-class TestablePaymentSlipData extends PaymentSlipData
-{
+class TestablePaymentSlipData extends PaymentSlipData{
 
 
 }

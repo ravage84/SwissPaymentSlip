@@ -106,7 +106,7 @@ class OrangePaymentSlip extends PaymentSlip
      * @param float|null $slipPosX The optional X position of the slip.
      * @param float|null $slipPosY The optional Y position of the slip.
      */
-    public function __construct(OrangePaymentSlipData $paymentSlipData, $slipPosX = null, $slipPosY = null)
+    function __construct(OrangePaymentSlipData $paymentSlipData, $slipPosX = null, $slipPosY = null)
     {
         parent::__construct($paymentSlipData, $slipPosX, $slipPosY);
     }
@@ -120,9 +120,9 @@ class OrangePaymentSlip extends PaymentSlip
     {
         parent::setDefaults();
 
-        $this->setReferenceNumberLeftAttr(3, 60, 50, 4, null, null, 8);
-        $this->setReferenceNumberRightAttr(125, 33.5, 80, 4);
-        $this->setCodeLineAttr(64, 85, 140, 4, null, 'OCRB10');
+//        $this->setReferenceNumberLeftAttr(3, 60, 50, 4, null, null, 8);
+//        $this->setReferenceNumberRightAttr(125, 33.5, 80, 4);
+//        $this->setCodeLineAttr(64, 85, 140, 4, null, 'OCRB10');
 
         $this->setSlipBackground(__DIR__.'/Resources/img/ezs_orange.gif');
 
