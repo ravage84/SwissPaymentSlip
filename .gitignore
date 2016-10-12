@@ -3,6 +3,11 @@
 /nbproject
 .idea
 
+# Eclipse / PHP Development Tools / Aptana Studio
+.project
+.buildpath
+.settings
+
 # OS generated files #
 ######################
 .DS_Store
