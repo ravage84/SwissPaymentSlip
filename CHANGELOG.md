@@ -10,7 +10,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 ## [0.13.0]
-WIP
+- Add parameter to specify the length of the banking customer ID (up to 10) - 20161225
+- Adapt reference number to use the right banking customer ID length if exists
+- Add reference number verifications : is numeric / expected length
+- Pad banking customer ID with specified length
 
 ## [0.12.1](https://github.com/ravage84/SwissPaymentSlip/releases/tag/0.12.1) - 2016-02-26
 ### Fixed
