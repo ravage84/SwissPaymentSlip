@@ -259,7 +259,7 @@ class OrangePaymentSlipData extends PaymentSlipData
             $completeReferenceNumber = $this->getBankingCustomerId() . $referenceNumber;
             
             if (strlen($completeReferenceNumber) !== 26) {
-                throw new PaymentSlipException('Reference number must have 26 digits');       
+                throw new PaymentSlipException('Reference number must have 26 digits');
             }
             
             if (!is_numeric($completeReferenceNumber)) {

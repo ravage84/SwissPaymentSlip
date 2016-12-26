@@ -199,7 +199,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException(PaymentSlipException::class);
         $this->slipData->setReferenceNumber('752003345590001277777777777');
     }
-    
+
     /**
      * Tests the getCompleteReferenceNumber method
      * Throws exception because of banking customer ID with reference number is longer than max allowed (26)
@@ -212,8 +212,8 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException(PaymentSlipException::class);
         $this->slipData->setBankingCustomerId('1234567890', 10);
         $this->slipData->setReferenceNumber('75200334559000123');
-    }        
-    
+    }
+
     /**
      * Tests the setBankingCustomerId method
      * Throws exception because of banking customer ID is longer than max (10)
@@ -226,9 +226,9 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException(PaymentSlipException::class);
         $this->slipData->setBankingCustomerId('12345678901', 11);
     }
-    
+
     /**
-     * Tests the setBankingCustomerId method 
+     * Tests the setBankingCustomerId method
      * Throws exception because of banking customer ID is longer than expected by default (6)
      *
      * @return void
@@ -239,7 +239,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->setExpectedException(PaymentSlipException::class);
         $this->slipData->setBankingCustomerId('1234567890');
     }
-    
+
     /**
      * Tests the setBankingCustomerId method
      * Throws exception because of banking customer ID with reference number is longer than max allowed (26)
@@ -253,7 +253,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->slipData->setReferenceNumber('75200334559000123');
         $this->slipData->setBankingCustomerId('1234567890', 10);
     }
-    
+
     /**
      * Tests the getCompleteReferenceNumber method
      *
@@ -436,7 +436,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         );
         
         // With long banking customer ID without expected 0 filling
-        $this->slipData->setBankingCustomerId('1234567',7);
+        $this->slipData->setBankingCustomerId('1234567', 7);
 
         // Filled with zeros
         $this->assertEquals(
