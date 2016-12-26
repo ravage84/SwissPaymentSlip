@@ -61,7 +61,7 @@ class OrangePaymentSlipData extends PaymentSlipData
      *
      * @var integer
      */
-    protected $bankingCustomerIdLength = 0;    
+    protected $bankingCustomerIdLength = 0;
 
     /**
      * Set if payment slip has a reference number specified
@@ -138,8 +138,9 @@ class OrangePaymentSlipData extends PaymentSlipData
             throw new DisabledDataException('reference number');
         }
                 
-        if(strlen($referenceNumber) + $this->bankingCustomerIdLength > 26) {
-            throw new PaymentSlipException('Reference number will exceed the maximum of 26 digits when banking customer will be prepended');                        
+        if (strlen($referenceNumber) + $this->bankingCustomerIdLength > 26) {
+            throw new PaymentSlipException('Reference number will exceed the maximum '
+                    . 'of 26 digits when banking customer will be prepended');                        
         }
             
         // TODO validate reference number
@@ -176,16 +177,17 @@ class OrangePaymentSlipData extends PaymentSlipData
             throw new DisabledDataException('banking customer ID');
         }
         
-        if($bankingCustomerIdLength > 10) {
-            throw new PaymentSlipException('Banking cutomer ID must not be longer than 10 digits');            
+        if ($bankingCustomerIdLength > 10) {
+            throw new PaymentSlipException('Banking cutomer ID must not be longer than 10 digits');
         }
         
-        if(strlen($bankingCustomerId) > $bankingCustomerIdLength) {
-            throw new PaymentSlipException('Banking cutomer ID must not be longer than the specified length');            
+        if (strlen($bankingCustomerId) > $bankingCustomerIdLength) {
+            throw new PaymentSlipException('Banking cutomer ID must not be longer than the specified length');
         }
         
-        if(strlen($this->referenceNumber) + $bankingCustomerIdLength > 26) {
-            throw new PaymentSlipException('Reference number will exceed the maximum of 26 digits when banking customer will be prepended');                        
+        if (strlen($this->referenceNumber) + $bankingCustomerIdLength > 26) {
+            throw new PaymentSlipException('Reference number will exceed the maximum '
+                    . 'of 26 digits when banking customer will be prepended');
         }
         
         $this->bankingCustomerIdLength = $bankingCustomerIdLength;
@@ -206,7 +208,7 @@ class OrangePaymentSlipData extends PaymentSlipData
             throw new DisabledDataException('banking customer ID');
         }
         
-        return str_pad($this->bankingCustomerId, $this->bankingCustomerIdLength, '0', STR_PAD_LEFT);        
+        return str_pad($this->bankingCustomerId, $this->bankingCustomerIdLength, '0', STR_PAD_LEFT);
     }
 
     /**
@@ -256,12 +258,12 @@ class OrangePaymentSlipData extends PaymentSlipData
             // Prepend banking customer identification code
             $completeReferenceNumber = $this->getBankingCustomerId() . $referenceNumber;           
             
-            if(strlen($completeReferenceNumber) !== 26) {
-                throw new PaymentSlipException('Reference number must have 26 digits');                        
+            if (strlen($completeReferenceNumber) !== 26) {
+                throw new PaymentSlipException('Reference number must have 26 digits');       
             }
             
-            if(!is_numeric($completeReferenceNumber)) {
-                throw new PaymentSlipException('Reference number must be a numerical value');                        
+            if (!is_numeric($completeReferenceNumber)) {
+                throw new PaymentSlipException('Reference number must be a numerical value');
             }            
         } elseif ($fillZeros) {
             // Get reference number and fill with zeros

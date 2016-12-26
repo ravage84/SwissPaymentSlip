@@ -189,7 +189,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Tests the getCompleteReferenceNumber method
-     * Throws exception because of banking customer ID with reference number is longer than max allowed (26)  
+     * Throws exception because of banking customer ID with reference number is longer than max allowed (26)
      *
      * @return void
      * @covers ::setReferenceNumber
@@ -197,12 +197,12 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     public function testSetReferenceNumberLengthExceptionA()
     {
         $this->setExpectedException(PaymentSlipException::class);
-        $this->slipData->setReferenceNumber('752003345590001277777777777');        
+        $this->slipData->setReferenceNumber('752003345590001277777777777');
     }
     
     /**
      * Tests the getCompleteReferenceNumber method
-     * Throws exception because of banking customer ID with reference number is longer than max allowed (26)  
+     * Throws exception because of banking customer ID with reference number is longer than max allowed (26)
      *
      * @return void
      * @covers ::setReferenceNumber
@@ -210,13 +210,13 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     public function testSetReferenceNumberLengthExceptionB()
     {
         $this->setExpectedException(PaymentSlipException::class);
-        $this->slipData->setBankingCustomerId('1234567890',10);          
-        $this->slipData->setReferenceNumber('75200334559000123');                
+        $this->slipData->setBankingCustomerId('1234567890',10);
+        $this->slipData->setReferenceNumber('75200334559000123');
     }        
     
     /**
      * Tests the setBankingCustomerId method
-     * Throws exception because of banking customer ID is longer than max (10)     
+     * Throws exception because of banking customer ID is longer than max (10)
      *
      * @return void
      * @covers ::setBankingCustomerId
@@ -224,7 +224,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     public function testsetBankingCustomerIdLengthExceptionA()
     {
         $this->setExpectedException(PaymentSlipException::class);
-        $this->slipData->setBankingCustomerId('12345678901',11);        
+        $this->slipData->setBankingCustomerId('12345678901',11);
     }
     
     /**
@@ -237,12 +237,12 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     public function testsetBankingCustomerIdLengthExceptionB()
     {
         $this->setExpectedException(PaymentSlipException::class);
-        $this->slipData->setBankingCustomerId('1234567890');        
+        $this->slipData->setBankingCustomerId('1234567890');
     }
     
     /**
      * Tests the setBankingCustomerId method
-     * Throws exception because of banking customer ID with reference number is longer than max allowed (26)  
+     * Throws exception because of banking customer ID with reference number is longer than max allowed (26)
      *
      * @return void
      * @covers ::setBankingCustomerId
@@ -250,8 +250,8 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     public function testsetBankingCustomerIdLengthExceptionC()
     {
         $this->setExpectedException(PaymentSlipException::class);
-        $this->slipData->setReferenceNumber('75200334559000123');                
-        $this->slipData->setBankingCustomerId('1234567890',10);        
+        $this->slipData->setReferenceNumber('75200334559000123');
+        $this->slipData->setBankingCustomerId('1234567890',10);
     }
     
     /**
