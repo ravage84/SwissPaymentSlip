@@ -210,7 +210,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     public function testSetReferenceNumberLengthExceptionB()
     {
         $this->setExpectedException(PaymentSlipException::class);
-        $this->slipData->setBankingCustomerId('1234567890',10);
+        $this->slipData->setBankingCustomerId('1234567890', 10);
         $this->slipData->setReferenceNumber('75200334559000123');
     }        
     
@@ -224,7 +224,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     public function testsetBankingCustomerIdLengthExceptionA()
     {
         $this->setExpectedException(PaymentSlipException::class);
-        $this->slipData->setBankingCustomerId('12345678901',11);
+        $this->slipData->setBankingCustomerId('12345678901', 11);
     }
     
     /**
@@ -251,7 +251,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException(PaymentSlipException::class);
         $this->slipData->setReferenceNumber('75200334559000123');
-        $this->slipData->setBankingCustomerId('1234567890',10);
+        $this->slipData->setBankingCustomerId('1234567890', 10);
     }
     
     /**
@@ -264,7 +264,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      * @covers ::modulo10
      */
     public function testGetCompleteReferenceNumber()
-    {        
+    {
         // Test with reference number & banking customer ID
         $this->slipData->setReferenceNumber('7520033455900012');
         
@@ -292,7 +292,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         );
 
         // With long banking customer ID with expected 0 filling
-        $this->slipData->setBankingCustomerId('123456789',10);
+        $this->slipData->setBankingCustomerId('123456789', 10);
 
         // Formatted and filled with zeros
         $this->assertEquals(
@@ -317,7 +317,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         );
 
         // With long banking customer ID without expected 0 filling
-        $this->slipData->setBankingCustomerId('1234567',7);
+        $this->slipData->setBankingCustomerId('1234567', 7);
 
         // Formatted and filled with zeros
         $this->assertEquals(
@@ -422,7 +422,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         );
 
         // With long banking customer ID with expected 0 filling
-        $this->slipData->setBankingCustomerId('123456789',10);
+        $this->slipData->setBankingCustomerId('123456789', 10);
 
         // Filled with zeros
         $this->assertEquals(
@@ -447,7 +447,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(
             '0100002830509>123456700000000001234567891+ 010001456>',
             $this->slipData->getCodeLine(false)
-        );        
+        );
         
         $this->slipData->setWithBankingCustomerId(false);
 
