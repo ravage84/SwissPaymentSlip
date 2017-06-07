@@ -27,6 +27,9 @@ use SwissPaymentSlip\SwissPaymentSlip\Exception\PaymentSlipException;
  */
 class OrangePaymentSlipData extends PaymentSlipData
 {
+    const REFNR_MAX_LENGTH = 26;
+    const BANKING_CUST_ID_MAX_LENGTH = 10;
+
     /**
      * Determines if the payment slip has a reference number. Can be disabled for pre-printed payment slips
      *
@@ -55,7 +58,7 @@ class OrangePaymentSlipData extends PaymentSlipData
      * @var string
      */
     protected $bankingCustomerId = '';
-    
+
     /**
      * The banking customer ID expected length
      *
@@ -130,19 +133,19 @@ class OrangePaymentSlipData extends PaymentSlipData
      * @param string $referenceNumber The reference number.
      * @return $this The current instance for a fluent interface.
      * @throws DisabledDataException If the data is disabled.
-     * @throws PaymentSlipException If the length exceeds 26 when adding banking customer length.
+     * @throws PaymentSlipException If the length exceeds REFNR_MAX_LENGTH when adding banking customer length.
      */
     public function setReferenceNumber($referenceNumber)
     {
         if (!$this->getWithReferenceNumber()) {
             throw new DisabledDataException('reference number');
         }
-                
-        if (strlen($referenceNumber) + $this->bankingCustomerIdLength > 26) {
+
+        if (strlen($referenceNumber) + $this->bankingCustomerIdLength > $this::REFNR_MAX_LENGTH) {
             throw new PaymentSlipException('Reference number will exceed the maximum '
-                    . 'of 26 digits when banking customer will be prepended');
+                    . 'of '. $this::REFNR_MAX_LENGTH . ' digits when banking customer will be prepended');
         }
-            
+
         // TODO validate reference number
         $this->referenceNumber = $referenceNumber;
 
@@ -169,27 +172,28 @@ class OrangePaymentSlipData extends PaymentSlipData
      * @param string $bankingCustomerId The banking customer ID.
      * @return $this The current instance for a fluent interface.
      * @throws DisabledDataException If the data is disabled.
-     * @throws PaymentSlipException If the length is greater than 10 digits
+     * @throws PaymentSlipException If the length is greater than BANKING_CUST_ID_MAX_LENGTH digits
      */
     public function setBankingCustomerId($bankingCustomerId, $bankingCustomerIdLength = 6)
     {
         if (!$this->getWithBankingCustomerId()) {
             throw new DisabledDataException('banking customer ID');
         }
-        
-        if ($bankingCustomerIdLength > 10) {
-            throw new PaymentSlipException('Banking cutomer ID must not be longer than 10 digits');
+
+        if ($bankingCustomerIdLength > $this::BANKING_CUST_ID_MAX_LENGTH) {
+            throw new PaymentSlipException('Banking cutomer ID must not be longer than '
+                    . $this::BANKING_CUST_ID_MAX_LENGTH . ' digits');
         }
-        
+
         if (strlen($bankingCustomerId) > $bankingCustomerIdLength) {
             throw new PaymentSlipException('Banking cutomer ID must not be longer than the specified length');
         }
-        
-        if (strlen($this->referenceNumber) + $bankingCustomerIdLength > 26) {
+
+        if (strlen($this->referenceNumber) + $bankingCustomerIdLength > $this::REFNR_MAX_LENGTH) {
             throw new PaymentSlipException('Reference number will exceed the maximum '
-                    . 'of 26 digits when banking customer will be prepended');
+                    . 'of ' . $this::REFNR_MAX_LENGTH . ' digits when banking customer will be prepended');
         }
-        
+
         $this->bankingCustomerIdLength = $bankingCustomerIdLength;
         $this->bankingCustomerId = $bankingCustomerId;
 
@@ -197,7 +201,7 @@ class OrangePaymentSlipData extends PaymentSlipData
     }
 
     /**
-     * Get the banking customer ID padded with 0
+     * Get the banking customer ID padded with zeroes
      *
      * @return string The  banking customer ID, if withBankingCustomerId is set to true.
      * @throws DisabledDataException If the data is disabled.
@@ -207,7 +211,7 @@ class OrangePaymentSlipData extends PaymentSlipData
         if (!$this->getWithBankingCustomerId()) {
             throw new DisabledDataException('banking customer ID');
         }
-        
+
         return str_pad($this->bankingCustomerId, $this->bankingCustomerIdLength, '0', STR_PAD_LEFT);
     }
 
@@ -250,29 +254,31 @@ class OrangePaymentSlipData extends PaymentSlipData
 
         $completeReferenceNumber = $referenceNumber;
         if ($notForPayment) {
-            $completeReferenceNumber = str_pad($referenceNumber, 26, 'X', STR_PAD_LEFT);
+            $completeReferenceNumber = str_pad($referenceNumber, $this::REFNR_MAX_LENGTH, 'X', STR_PAD_LEFT);
         } elseif ($this->getWithBankingCustomerId()) {
             // Get reference number and fill with zeros
-            $padLength = 26 - $this->bankingCustomerIdLength;
+            $padLength = $this::REFNR_MAX_LENGTH - $this->bankingCustomerIdLength;
             $referenceNumber = str_pad($referenceNumber, $padLength, '0', STR_PAD_LEFT);
             // Prepend banking customer identification code
             $completeReferenceNumber = $this->getBankingCustomerId() . $referenceNumber;
-            
-            if (strlen($completeReferenceNumber) !== 26) {
-                throw new PaymentSlipException('Reference number must have 26 digits');
+
+            if (strlen($completeReferenceNumber) !== $this::REFNR_MAX_LENGTH) {
+                throw new PaymentSlipException('Reference number must have '
+                        . $this::REFNR_MAX_LENGTH . ' digits');
             }
-            
+
             if (!is_numeric($completeReferenceNumber)) {
-                throw new PaymentSlipException('Reference number must be a numerical value');
+                throw new PaymentSlipException('Reference number [ '
+                        . $completeReferenceNumber . '] must be a numerical value');
             }
         } elseif ($fillZeros) {
             // Get reference number and fill with zeros
-            $completeReferenceNumber = str_pad($referenceNumber, 26, '0', STR_PAD_LEFT);
+            $completeReferenceNumber = str_pad($referenceNumber, $this::REFNR_MAX_LENGTH, '0', STR_PAD_LEFT);
         }
-        
+
         // Add check digit
         $completeReferenceNumber = $this->appendCheckDigit($completeReferenceNumber, $notForPayment);
-        
+
         if ($formatted) {
             $completeReferenceNumber = $this->breakStringIntoBlocks($completeReferenceNumber);
         }
