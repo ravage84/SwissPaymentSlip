@@ -620,6 +620,13 @@ abstract class PaymentSlipData
         }
         $this->amount = $amount;
 
+        // Fix case where cents are 995 to 999 : the amount must be rounded
+        $francs = intval($amount);
+        $cents = round(($amount - $francs) * 100);
+        if ($cents >= 100) {
+            $this->amount = $francs + 1;
+        }
+
         return $this;
     }
 

@@ -671,15 +671,28 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         // Test with set value
         $this->slipData->setAmount(1234567.89);
         $this->assertEquals(89, $this->slipData->getAmountCents());
-        
+
         // Test with set value on amount with 0 after decimal point
         $this->slipData->setAmount(1234567.05);
         $this->assertEquals(05, $this->slipData->getAmountCents());
-        
+
         // Test with set value on amount with 0 two positions after decimal point
         // To show that it's still working as intended
         $this->slipData->setAmount(1234567.50);
         $this->assertEquals(50, $this->slipData->getAmountCents());
+
+        // Test case where cents are 995 to 999
+        $this->slipData->setAmount(114.994);
+        $this->assertEquals(114, $this->slipData->getAmountFrancs());
+        $this->assertEquals(99, $this->slipData->getAmountCents());
+
+        $this->slipData->setAmount(114.995);
+        $this->assertEquals(115, $this->slipData->getAmountFrancs());
+        $this->assertEquals(0, $this->slipData->getAmountCents());
+
+        $this->slipData->setAmount(114.9984);
+        $this->assertEquals(115, $this->slipData->getAmountFrancs());
+        $this->assertEquals(0, $this->slipData->getAmountCents());
     }
 
     /**
