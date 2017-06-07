@@ -9,8 +9,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 ### Fixed
+## [0.13.1]
+Fix case where cents are from 995 to 999 - 2017-06-07
+
+### Fixed
 ## [0.13.0]
-- Add parameter to specify the length of the banking customer ID (up to 10) - 20161225
+- Add parameter to specify the length of the banking customer ID (up to 10) - 2016-12-25
 - Adapt reference number to use the right banking customer ID length if exists
 - Add reference number verifications : is numeric / expected length
 - Pad banking customer ID with specified length
