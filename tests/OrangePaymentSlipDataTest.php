@@ -13,7 +13,8 @@
 namespace SwissPaymentSlip\SwissPaymentSlip\Tests;
 
 use SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlipData;
-use SwissPaymentSlip\SwissPaymentSlip\Exception\PaymentSlipException;
+use SwissPaymentSlip\SwissPaymentSlip\Exception\ReferenceNumberException;
+use SwissPaymentSlip\SwissPaymentSlip\Exception\BankingCustomerIdException;
 
 /**
  * Tests for the OrangePaymentSlipData class
@@ -196,7 +197,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetReferenceNumberLengthExceptionA()
     {
-        $this->setExpectedException(PaymentSlipException::class);
+        $this->setExpectedException(ReferenceNumberException::class);
         $this->slipData->setReferenceNumber('752003345590001277777777777');
     }
 
@@ -209,7 +210,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetReferenceNumberLengthExceptionB()
     {
-        $this->setExpectedException(PaymentSlipException::class);
+        $this->setExpectedException(ReferenceNumberException::class);
         $this->slipData->setBankingCustomerId('1234567890', 10);
         $this->slipData->setReferenceNumber('75200334559000123');
     }
@@ -223,7 +224,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testsetBankingCustomerIdLengthExceptionA()
     {
-        $this->setExpectedException(PaymentSlipException::class);
+        $this->setExpectedException(BankingCustomerIdException::class);
         $this->slipData->setBankingCustomerId('12345678901', 11);
     }
 
@@ -236,7 +237,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testsetBankingCustomerIdLengthExceptionB()
     {
-        $this->setExpectedException(PaymentSlipException::class);
+        $this->setExpectedException(BankingCustomerIdException::class);
         $this->slipData->setBankingCustomerId('1234567890');
     }
 
@@ -249,7 +250,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      */
     public function testsetBankingCustomerIdLengthExceptionC()
     {
-        $this->setExpectedException(PaymentSlipException::class);
+        $this->setExpectedException(ReferenceNumberException::class);
         $this->slipData->setReferenceNumber('75200334559000123');
         $this->slipData->setBankingCustomerId('1234567890', 10);
     }
@@ -267,7 +268,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     {
         // Test with reference number & banking customer ID
         $this->slipData->setReferenceNumber('7520033455900012');
-        
+
         $this->slipData->setBankingCustomerId('215703');
 
         // Formatted and filled with zeros
@@ -304,7 +305,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
             '012345678975200334559000128',
             $this->slipData->getCompleteReferenceNumber(false)
         );
-        
+
         // Formatted but not filled with zeros
         $this->assertEquals(
             '01 23456 78975 20033 45590 00128',
@@ -329,7 +330,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
             '123456700075200334559000128',
             $this->slipData->getCompleteReferenceNumber(false)
         );
-        
+
         // Formatted but not filled with zeros
         $this->assertEquals(
             '12 34567 00075 20033 45590 00128',
@@ -434,7 +435,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
             '0100002830509>012345678900000001234567891+ 010001456>',
             $this->slipData->getCodeLine(false)
         );
-        
+
         // With long banking customer ID without expected 0 filling
         $this->slipData->setBankingCustomerId('1234567', 7);
 
@@ -448,7 +449,7 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
             '0100002830509>123456700000000001234567891+ 010001456>',
             $this->slipData->getCodeLine(false)
         );
-        
+
         $this->slipData->setWithBankingCustomerId(false);
 
         // Filled with zeros
