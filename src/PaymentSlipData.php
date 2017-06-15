@@ -618,7 +618,14 @@ abstract class PaymentSlipData
         if (!$this->getWithAmount()) {
             throw new DisabledDataException('amount');
         }
-        $this->amount = $amount;
+
+        // Fix case where cents are from 995 to 999 : the amount must be rounded
+        // otherwise the amount of cents is "100"
+        if(is_numeric($amount)) {
+            $this->amount = round($amount, 2);
+        } else {
+            $this->amount = $amount;
+        }
 
         return $this;
     }
