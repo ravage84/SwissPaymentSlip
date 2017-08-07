@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Added a Stickler CI config file
 
 ### Changed
+- Removed HHVM support
 
 ### Fixed
 

@@ -91,9 +91,6 @@ class OrangePaymentSlipTest extends PaymentSlipTestCase
      */
     public function testInvalidSlipDataParameter()
     {
-        if (defined('HHVM_VERSION')) {
-            $this->markTestSkipped('This test fails with HHVM');
-        }
         new OrangePaymentSlip(new \ArrayObject());
     }
 
