@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Added a Stickler CI config file
 - Added test coverage under PHP 7.0, 7.1 and nightly (7.2) on Travis CI
+- Achieved compatibility with PHP 7.0, 7.1 and nightly (7.2)
 
 ### Changed
 - Removed HHVM support
