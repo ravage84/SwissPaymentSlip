@@ -2,7 +2,14 @@
 All notable changes to this project are documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/ravage84/SwissPaymentSlip/compare/0.12.1...master)
+## [Unreleased](https://github.com/ravage84/SwissPaymentSlip/compare/0.12.2...master)
+### Added
+
+### Changed
+
+### Fixed
+
+## [0.12.2](https://github.com/ravage84/SwissPaymentSlip/releases/tag/0.12.2) - 2017-08-07
 ### Added
 - Added a Stickler CI config file
 - Added test coverage under PHP 7.0, 7.1 and nightly (7.2) on Travis CI
