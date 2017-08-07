@@ -892,11 +892,9 @@ abstract class PaymentSlipData
      */
     protected function modulo10($number)
     {
-        $number = intval($number);
-
         $next = 0;
         for ($i=0; $i < strlen($number); $i++) {
-            $next = $this->moduloTable[($next + substr($number, $i, 1)) % 10];
+            $next = $this->moduloTable[($next + intval(substr($number, $i, 1))) % 10];
         }
 
         return (10 - $next) % 10;
