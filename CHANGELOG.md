@@ -10,6 +10,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Removed HHVM support
 
 ### Fixed
+- Fix type error in test suite on PHP 7.0 and upwards #35
 
 ## [0.12.1](https://github.com/ravage84/SwissPaymentSlip/releases/tag/0.12.1) - 2016-02-26
 ### Fixed

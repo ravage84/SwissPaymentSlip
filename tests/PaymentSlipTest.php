@@ -97,6 +97,11 @@ class PaymentSlipTest extends PaymentSlipTestCase
      */
     public function testNullSlipDataParameter()
     {
+        if (version_compare(PHP_VERSION, '7.0.0', '<')) {
+            $this->markTestSkipped(
+                'PHP 7.0 and upwards throws a Throwable instead of an Exception.'
+            );
+        }
         new TestablePaymentSlip(null);
     }
 
@@ -110,6 +115,11 @@ class PaymentSlipTest extends PaymentSlipTestCase
      */
     public function testInvalidSlipDataParameter()
     {
+        if (version_compare(PHP_VERSION, '7.0.0', '<')) {
+            $this->markTestSkipped(
+                'PHP 7.0 and upwards throws a Throwable instead of an Exception.'
+            );
+        }
         new TestablePaymentSlip(new \ArrayObject());
     }
 
