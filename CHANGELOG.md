@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - Removed HHVM support
+- Updated various dependencies incl. PHPUnit to 4.8.x and PHPCS to 2.9.x
 
 ### Fixed
 - Fix "A non-numeric value encountered" error #34
