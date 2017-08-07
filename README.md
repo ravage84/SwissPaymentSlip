@@ -21,11 +21,8 @@ Just install the the package (see [Installation](https://github.com/ravage84/Swi
 check out the contained examples in the
 [examples folder](https://github.com/ravage84/SwissPaymentSlip/tree/master/examples).
 
-How to extend for custom needs
-------------------------------
-
-[TODO]
-If you need help, ask for help.
+If you need help for extending and/or customizing the library
+to your needs, just ask for help.
 
 Installation
 ------------
