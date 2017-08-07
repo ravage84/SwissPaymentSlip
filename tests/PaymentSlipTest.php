@@ -88,42 +88,6 @@ class PaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Test the constructor method with a null parameter
-     *
-     * @return void
-     * @covers ::__construct
-     * @expectedException \PHPUnit_Framework_Error
-     * @expectedExceptionMessage Argument 1 passed to SwissPaymentSlip\SwissPaymentSlip\PaymentSlip::__construct() must be an instance of SwissPaymentSlip\SwissPaymentSlip\PaymentSlipData, null given
-     */
-    public function testNullSlipDataParameter()
-    {
-        if (version_compare(PHP_VERSION, '7.0.0', '<')) {
-            $this->markTestSkipped(
-                'PHP 7.0 and upwards throws a Throwable instead of an Exception.'
-            );
-        }
-        new TestablePaymentSlip(null);
-    }
-
-    /**
-     * Test the constructor method with a invalid object parameter
-     *
-     * @return void
-     * @covers ::__construct
-     * @expectedException \PHPUnit_Framework_Error
-     * @expectedExceptionMessage Argument 1 passed to SwissPaymentSlip\SwissPaymentSlip\PaymentSlip::__construct() must be an instance of SwissPaymentSlip\SwissPaymentSlip\PaymentSlipData, instance of ArrayObject given
-     */
-    public function testInvalidSlipDataParameter()
-    {
-        if (version_compare(PHP_VERSION, '7.0.0', '<')) {
-            $this->markTestSkipped(
-                'PHP 7.0 and upwards throws a Throwable instead of an Exception.'
-            );
-        }
-        new TestablePaymentSlip(new \ArrayObject());
-    }
-
-    /**
      * Tests the getPaymentSlipData method
      *
      * @return void
