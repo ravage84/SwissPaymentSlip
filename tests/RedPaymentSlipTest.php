@@ -69,32 +69,6 @@ class RedPaymentSlipTest extends PaymentSlipTestCase
     }
 
     /**
-     * Test the constructor method with a null parameter
-     *
-     * @return void
-     * @covers ::__construct
-     * @expectedException \PHPUnit_Framework_Error
-     * @expectedExceptionMessage Argument 1 passed to SwissPaymentSlip\SwissPaymentSlip\RedPaymentSlip::__construct() must be an instance of SwissPaymentSlip\SwissPaymentSlip\RedPaymentSlipData, null given
-     */
-    public function testNullSlipDataParameter()
-    {
-        new RedPaymentSlip(null);
-    }
-
-    /**
-     * Test the constructor method with a invalid object parameter
-     *
-     * @return void
-     * @covers ::__construct
-     * @expectedException \PHPUnit_Framework_Error
-     * @expectedExceptionMessage Argument 1 passed to SwissPaymentSlip\SwissPaymentSlip\RedPaymentSlip::__construct() must be an instance of SwissPaymentSlip\SwissPaymentSlip\RedPaymentSlipData, instance of ArrayObject given
-     */
-    public function testInvalidSlipDataParameter()
-    {
-        new RedPaymentSlip(new \ArrayObject());
-    }
-
-    /**
      * Tests the getPaymentSlipData method
      *
      * @return void
