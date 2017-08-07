@@ -33,23 +33,12 @@ Installation
 
 ### Composer
 
-Just [install composer](http://getcomposer.org/doc/00-intro.md#system-requirements) on your system, if not already there.
-Then create a [composer.json](http://getcomposer.org/doc/04-schema.md) file in your project's root folder
-and copy the following into it:
+To add this library to your project through [Composer](http://getcomposer.org),
+[install Composer](http://getcomposer.org/doc/00-intro.md#system-requirements) on your system first,
+then [initialize a composer.json file](https://getcomposer.org/doc/03-cli.md#init)
+and then execute the following from within your project's folder:
 
-```JSON
-{
-    "require": {
-        "swiss-payment-slip/swiss-payment-slip": "*"
-    }
-}
-```
-
-After that you can install the package using
-
-    $ php composer.phar install
-
-in your project's root folder.
+    $ php composer.phar require "swiss-payment-slip/swiss-payment-slip"
 
 Background Story
 ----------------
