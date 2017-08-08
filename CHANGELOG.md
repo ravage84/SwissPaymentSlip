@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 ### Changed
+- Add PHP 7.2 by name in Travis as PHP nightly seems to be PHP 7.3-dev
 
 ### Fixed
 
