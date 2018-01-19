@@ -73,7 +73,7 @@ class OrangePaymentSlipTest extends PaymentSlipTestCase
      *
      * @return void
      * @covers ::__construct
-     * @expectedException \PHPUnit_Framework_Error
+     * @expectedException \TypeError
      * @expectedExceptionMessage Argument 1 passed to SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlip::__construct() must be an instance of SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlipData, null given
      */
     public function testNullSlipDataParameter()
@@ -86,7 +86,7 @@ class OrangePaymentSlipTest extends PaymentSlipTestCase
      *
      * @return void
      * @covers ::__construct
-     * @expectedException \PHPUnit_Framework_Error
+     * @expectedException \TypeError
      * @expectedExceptionMessage Argument 1 passed to SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlip::__construct() must be an instance of SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlipData, instance of ArrayObject given
      */
     public function testInvalidSlipDataParameter()

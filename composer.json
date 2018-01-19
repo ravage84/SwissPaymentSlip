@@ -11,10 +11,10 @@
         "ES"
     ],
     "require": {
-        "php": ">=5.4.0"
+        "php": ">=7.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4.0.0",
+        "phpunit/phpunit": "^5.0.0",
         "squizlabs/php_codesniffer": "^2.1.0"
     },
     "authors": [
