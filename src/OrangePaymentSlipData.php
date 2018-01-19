@@ -326,7 +326,7 @@ class OrangePaymentSlipData extends PaymentSlipData
 
             // Only in case where the $amountPart is numeric to avoid PHP7.1 warning
             // These variables are set below
-            if($this->getNotForPayment() === false) {
+            if ($this->getNotForPayment() === false) {
                 $amountPrefix = '01';
                 $amountCheck = $this->modulo10($amountPrefix . $amountPart);
             }
