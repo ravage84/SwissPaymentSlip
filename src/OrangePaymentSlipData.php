@@ -322,19 +322,26 @@ class OrangePaymentSlipData extends PaymentSlipData
             $cents = $this->getAmountCents();
             $francs = str_pad($francs, 8, '0', STR_PAD_LEFT);
             $cents = str_pad($cents, 2, '0', STR_PAD_RIGHT);
-            $amountPrefix = '01';
             $amountPart = $francs . $cents;
-            $amountCheck = $this->modulo10($amountPrefix . $amountPart);
+
+            // Only in case where the $amountPart is numeric to avoid PHP7.1 warning
+            // These variables are set below
+            if($this->getNotForPayment() === false) {
+                $amountPrefix = '01';
+                $amountCheck = $this->modulo10($amountPrefix . $amountPart);
+            }
         } else {
             $amountPrefix = '04';
             $amountPart = '';
             $amountCheck = '2';
         }
+
         if ($fillZeros) {
             $referenceNumberPart = str_pad($referenceNumber, 27, '0', STR_PAD_LEFT);
         } else {
             $referenceNumberPart = $referenceNumber;
         }
+
         $accountNumberPart = substr($accountNumber, 0, 2) .
             str_pad(substr($accountNumber, 2), 7, '0', STR_PAD_LEFT);
 
