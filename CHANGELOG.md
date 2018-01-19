@@ -2,18 +2,14 @@
 All notable changes to this project are documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/ravage84/SwissPaymentSlip/compare/0.12.1...master)
+## [Unreleased](https://github.com/sdespont/SwissPaymentSlip/compare/0.13.0...master)
+
+## [0.13.0](https://github.com/sdespont/SwissPaymentSlip/releases/tag/0.13.0) - 2018-01-19
+### Fixed
+- Fix case where cents are from 995 to 999 - 2017-06-07
+
 ### Added
 - Added a Stickler CI config file
-
-### Changed
-
-### Fixed
-## [0.13.1]
-Fix case where cents are from 995 to 999 - 2017-06-07
-
-### Fixed
-## [0.13.0]
 - Add parameter to specify the length of the banking customer ID (up to 10) - 2016-12-25
 - Adapt reference number to use the right banking customer ID length if exists
 - Add reference number verifications : is numeric / expected length
