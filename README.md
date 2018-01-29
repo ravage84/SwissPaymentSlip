@@ -87,4 +87,3 @@ Thanks to
 ---------
 
 - <http://www.smoke8.net/> for public designs of Einzahlungsscheinen
-- <http://www.developers-guide.net/forums/5431,modulo10-rekursiv> for Modulo10 function
