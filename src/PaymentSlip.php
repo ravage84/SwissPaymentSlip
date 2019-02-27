@@ -1453,10 +1453,27 @@ abstract class PaymentSlip
                 $paymentSlipData->getPayerLine3(),
                 $paymentSlipData->getPayerLine4()
             ];
-            $elements['payerLeft'] = [
-                'lines' => $lines,
+            // need to separate, as left payer lines are much shorter
+            $leftLines = $lines;
+            // modify the array containing the left payer lines
+            foreach ($leftLines as $index => $line) {
+                $wrapString = wordwrap($line, 30, "\n", 38);
+                if (count($wrapArray = explode("\n", $wrapString)) > 1) {
+                    array_splice($leftLines, $index, 1, $wrapArray);
+                }
+            }
+            // modify the array containing the right payer lines
+            foreach ($lines as $index => $line) {
+                $wrapString = wordwrap($line, 48, "\n", 55);
+                if (count($wrapArray = explode("\n", $wrapString)) > 1) {
+                    array_splice($lines, $index, 1, $wrapArray);
+                }
+            }
+
+            $elements['payerLeft'] = array(
+                'lines' => $leftLines,
                 'attributes' => $this->getPayerLeftAttr()
-            ];
+            );
 
             // Place right payer lines
             // Reuse lines from above
