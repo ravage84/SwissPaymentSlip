@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - Add PHP 7.2 by name in Travis as PHP nightly seems to be PHP 7.3-dev
+- Removed unfinished support for Red Payment Slip (ES)
 
 ### Fixed
 

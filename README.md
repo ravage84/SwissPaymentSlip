@@ -12,7 +12,9 @@ Do you need to create Swiss payment slips (called ES or ESR) as PDF files in a p
 Then you found almost the right place, go to [SwissPaymentSlipFpdf](https://github.com/ravage84/SwissPaymentSlipFpdf)
 or [SwissPaymentSlipTcpdf](https://github.com/ravage84/SwissPaymentSlipTcpdf).
 
-If you need to include some basic logic for Swiss payment slips iny our PHP code base then you are probably right though...
+If you need to include some basic logic for Swiss payment slips in your PHP code base then you are probably right though...
+
+The partial and unfinished support for the red payment slip was dropped in version 0.13.0 due to lack of demand. 
 
 How to use
 ----------
@@ -60,9 +62,8 @@ I decided myself for the latter.
 TODOs
 -----
 
-- Finish support for red inpayment slips
 - Improve code documentation
-- Add more examples/improve existing ones
+- Add more examples/improve existing ones, showcase disabling the various field blocks better
 - Improve the tests
 - Release the stable release of the API
 
@@ -75,7 +76,7 @@ Author
 ------
 
 This project was created by [Marc Würth](https://github.com/ravage84).
-See Background Story for more details.
+See [Background Story](#background-story) for more details.
 
 License
 -------
