@@ -14,6 +14,8 @@ or [SwissPaymentSlipTcpdf](https://github.com/ravage84/SwissPaymentSlipTcpdf).
 
 If you need to include some basic logic for Swiss payment slips iny our PHP code base then you are probably right though...
 
+THE RED PAYMENT SLIP SUPPORT IS DROPPED
+
 How to use
 ----------
 
@@ -56,6 +58,8 @@ since it wasn't flexible enough.
 Now I had to decide whether I want to "just" change the script to fit my needs or to rewrite it and
 make it as flexible as possible.
 I decided myself for the latter.
+
+In Januar 2018 planned support for the red payment slip was dropped because of the vanishing interest.
 
 TODOs
 -----
