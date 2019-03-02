@@ -17,7 +17,7 @@ use SwissPaymentSlip\SwissPaymentSlip\PaymentSlipData;
 /**
  * Tests for the PaymentSlipData class
  *
- * @coversDefaultClass SwissPaymentSlip\SwissPaymentSlip\PaymentSlipData
+ * @coversDefaultClass PaymentSlipData
  */
 class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
 {

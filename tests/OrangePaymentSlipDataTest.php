@@ -19,7 +19,7 @@ use SwissPaymentSlip\SwissPaymentSlip\Exception\BankingCustomerIdException;
 /**
  * Tests for the OrangePaymentSlipData class
  *
- * @coversDefaultClass SwissPaymentSlip\SwissPaymentSlip\OrangePaymentSlipData
+ * @coversDefaultClass OrangePaymentSlipData
  */
 class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
 {

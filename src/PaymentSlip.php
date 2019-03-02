@@ -1475,7 +1475,7 @@ abstract class PaymentSlip
      *
      * @param mixed $parameter The given parameter to validate.
      * @param string $varName The name of the variable.
-     * @return true If the parameter is either  an integer or a float.
+     * @return true If the parameter is either an integer or a float.
      * @throws InvalidArgumentException If the parameter is neither an integer nor a float.
      */
     protected function isIntOrFloat($parameter, $varName)
@@ -1488,6 +1488,8 @@ abstract class PaymentSlip
                 )
             );
         }
+
+        return true;
     }
 
     /**

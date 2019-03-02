@@ -661,6 +661,7 @@ abstract class PaymentSlipData
      * @param string $payerLine2 The second line of the payer, e.g. "Main Street 11".
      * @param string $payerLine3 The third line of the payer, e.g. "4052 Basel".
      * @param string $payerLine4 The fourth line of the payer, if needed.
+     * @param string $payerLine5 The fifth line of the payer, if needed.
      * @return $this The current instance for a fluent interface.
      */
     public function setPayerData($payerLine1, $payerLine2, $payerLine3 = '', $payerLine4 = '', $payerLine5 = '')

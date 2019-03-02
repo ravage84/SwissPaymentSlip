@@ -69,7 +69,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - A common class for payment slip (not their data containers) test cases
 - Packagist Download & Latest badges to the README
-- Testing with HHVM for Travis CI
 - A .gitattributes
 - Implemented a fluent interface
 

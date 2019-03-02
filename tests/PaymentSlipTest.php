@@ -15,7 +15,7 @@ namespace SwissPaymentSlip\SwissPaymentSlip\Tests;
 /**
  * Tests for the PaymentSlip class
  *
- * @coversDefaultClass SwissPaymentSlip\SwissPaymentSlip\PaymentSlip
+ * @coversDefaultClass \SwissPaymentSlip\SwissPaymentSlip\PaymentSlip
  */
 class PaymentSlipTest extends PaymentSlipTestCase
 {
@@ -110,9 +110,6 @@ class PaymentSlipTest extends PaymentSlipTestCase
      */
     public function testInvalidSlipDataParameter()
     {
-        if (defined('HHVM_VERSION')) {
-            $this->markTestSkipped('This test fails with HHVM');
-        }
         new TestablePaymentSlip(new \ArrayObject());
     }
 
