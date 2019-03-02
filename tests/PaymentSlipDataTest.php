@@ -483,6 +483,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
      * @covers ::getPayerLine2
      * @covers ::getPayerLine3
      * @covers ::getPayerLine4
+     * @covers ::getPayerLine5
      */
     public function testSetWithPayer()
     {
@@ -491,15 +492,17 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('', $this->slipData->getPayerLine2());
         $this->assertEquals('', $this->slipData->getPayerLine3());
         $this->assertEquals('', $this->slipData->getPayerLine4());
+        $this->assertEquals('', $this->slipData->getPayerLine5());
         $this->assertTrue($this->slipData->getWithPayer());
 
         // Set data when enabled, also check for returned instance
-        $returned = $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD');
+        $returned = $this->slipData->setPayerData('AAAAAAAAAA', 'BBBBBBBBBB', 'CCCCCCCCCC', 'DDDDDDDDDD', 'EEEEEEEEEE');
         $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlipData', $returned);
         $this->assertEquals('AAAAAAAAAA', $this->slipData->getPayerLine1());
         $this->assertEquals('BBBBBBBBBB', $this->slipData->getPayerLine2());
         $this->assertEquals('CCCCCCCCCC', $this->slipData->getPayerLine3());
         $this->assertEquals('DDDDDDDDDD', $this->slipData->getPayerLine4());
+        $this->assertEquals('EEEEEEEEEE', $this->slipData->getPayerLine5());
 
         // Disable feature, also check for returned instance
         $returned = $this->slipData->setWithPayer(false);
@@ -513,6 +516,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('', $this->slipData->getPayerLine2());
         $this->assertEquals('', $this->slipData->getPayerLine3());
         $this->assertEquals('', $this->slipData->getPayerLine4());
+        $this->assertEquals('', $this->slipData->getPayerLine5());
     }
 
     /**
@@ -628,6 +632,34 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Tests the setPayerLine5 method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You are accessing the disabled payer line 5. You need to re-enable it first.
+     * @covers ::setPayerLine5
+     */
+    public function testSetPayerLine5WhenDisabled()
+    {
+        $this->slipData->setWithPayer(false);
+        $this->slipData->setPayerLine5('');
+    }
+
+    /**
+     * Tests the getPayerLine5 method when disabled
+     *
+     * @return void
+     * @expectedException \SwissPaymentSlip\SwissPaymentSlip\Exception\DisabledDataException
+     * @expectedExceptionMessage You are accessing the disabled payer line 5. You need to re-enable it first.
+     * @covers ::getPayerLine5
+     */
+    public function testGetPayerLine5WhenDisabled()
+    {
+        $this->slipData->setWithPayer(false);
+        $this->slipData->getPayerLine5();
+    }
+
+    /**
      * Tests the setWithPayer method with an invalid parameter
      *
      * @return void
@@ -727,6 +759,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('', $this->slipData->getPayerLine2());
         $this->assertEquals('', $this->slipData->getPayerLine3());
         $this->assertEquals('', $this->slipData->getPayerLine4());
+        $this->assertEquals('', $this->slipData->getPayerLine5());
 
         $returned = $this->slipData->setNotForPayment(true);
         $this->assertInstanceOf('SwissPaymentSlip\SwissPaymentSlip\Tests\TestablePaymentSlipData', $returned);
@@ -750,6 +783,7 @@ class PaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('XXXXXX', $this->slipData->getPayerLine2());
         $this->assertEquals('XXXXXX', $this->slipData->getPayerLine3());
         $this->assertEquals('XXXXXX', $this->slipData->getPayerLine4());
+        $this->assertEquals('XXXXXX', $this->slipData->getPayerLine5());
     }
 
     /**

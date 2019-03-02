@@ -172,6 +172,7 @@ class OrangePaymentSlipData extends PaymentSlipData
      * Set the banking customer ID
      *
      * @param string $bankingCustomerId The banking customer ID.
+     * @param int $bankingCustomerIdLength
      * @return $this The current instance for a fluent interface.
      * @throws DisabledDataException If the data is disabled.
      * @throws ReferenceNumberException If the total length is greater than REFNR_MAX_LENGTH digits.

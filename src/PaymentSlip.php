@@ -1451,7 +1451,8 @@ abstract class PaymentSlip
                 $paymentSlipData->getPayerLine1(),
                 $paymentSlipData->getPayerLine2(),
                 $paymentSlipData->getPayerLine3(),
-                $paymentSlipData->getPayerLine4()
+                $paymentSlipData->getPayerLine4(),
+                $paymentSlipData->getPayerLine5()
             ];
             $elements['payerLeft'] = [
                 'lines' => $lines,

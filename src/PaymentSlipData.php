@@ -186,6 +186,13 @@ abstract class PaymentSlipData
     protected $payerLine4 = '';
 
     /**
+     * The fifth line of the payer, if needed
+     *
+     * @var string
+     */
+    protected $payerLine5 = '';
+
+    /**
      * Determines if the payment slip must not be used for payment (XXXed out)
      *
      * @var bool
@@ -334,6 +341,7 @@ abstract class PaymentSlipData
             $this->payerLine2 = '';
             $this->payerLine3 = '';
             $this->payerLine4 = '';
+            $this->payerLine5 = '';
         }
 
         return $this;
@@ -655,12 +663,13 @@ abstract class PaymentSlipData
      * @param string $payerLine4 The fourth line of the payer, if needed.
      * @return $this The current instance for a fluent interface.
      */
-    public function setPayerData($payerLine1, $payerLine2, $payerLine3 = '', $payerLine4 = '')
+    public function setPayerData($payerLine1, $payerLine2, $payerLine3 = '', $payerLine4 = '', $payerLine5 = '')
     {
         $this->setPayerLine1($payerLine1);
         $this->setPayerLine2($payerLine2);
         $this->setPayerLine3($payerLine3);
         $this->setPayerLine4($payerLine4);
+        $this->setPayerLine5($payerLine5);
 
         return $this;
     }
@@ -790,6 +799,37 @@ abstract class PaymentSlipData
     }
 
     /**
+     * Set the fifth line of the payer
+     *
+     * @param string $payerLine5 The fifth line of the payer, if needed.
+     * @return $this The current instance for a fluent interface.
+     * @throws DisabledDataException If the data is disabled.
+     */
+    public function setPayerLine5($payerLine5)
+    {
+        if (!$this->getWithPayer()) {
+            throw new DisabledDataException('payer line 5');
+        }
+        $this->payerLine5 = $payerLine5;
+
+        return $this;
+    }
+
+    /**
+     * Get the fifth line of the payer
+     *
+     * @return string The fifth line of the payer, if withPayer is set to true.
+     * @throws DisabledDataException If the data is disabled.
+     */
+    public function getPayerLine5()
+    {
+        if (!$this->getWithPayer()) {
+            throw new DisabledDataException('payer line 5');
+        }
+        return $this->payerLine5;
+    }
+
+    /**
      * Clear the account of the two hyphens
      *
      * @return string The account of the two hyphens, 'XXXXXXXXX' if not for payment or else false.
@@ -870,7 +910,7 @@ abstract class PaymentSlipData
                 $this->setRecipientData('XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX');
             }
             if ($this->getWithPayer() === true) {
-                $this->setPayerData('XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX');
+                $this->setPayerData('XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX', 'XXXXXX');
             }
             if ($this->getWithAmount() === true) {
                 $this->setAmount('XXXXXXXX.XX');

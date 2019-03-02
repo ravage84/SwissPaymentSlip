@@ -320,6 +320,7 @@ class RedPaymentSlipDataTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('XXXXXX', $this->slipData->getPayerLine2());
         $this->assertEquals('XXXXXX', $this->slipData->getPayerLine3());
         $this->assertEquals('XXXXXX', $this->slipData->getPayerLine4());
+        $this->assertEquals('XXXXXX', $this->slipData->getPayerLine5());
 
         $this->assertEquals('XXXX XXXX XXXX XXXX XXXX X', $this->slipData->getFormattedIban());
     }

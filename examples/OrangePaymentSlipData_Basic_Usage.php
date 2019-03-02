@@ -56,6 +56,7 @@ echo "Payer line 1: " . $paymentSlipData->getPayerLine1() . "<br>";
 echo "Payer line 2: " . $paymentSlipData->getPayerLine2() . "<br>";
 echo "Payer line 3: " . $paymentSlipData->getPayerLine3() . "<br>";
 echo "Payer line 4: " . $paymentSlipData->getPayerLine4() . "<br>";
+echo "Payer line 5: " . $paymentSlipData->getPayerLine5() . "<br>";
 echo "<br>";
 echo "Banking customer ID: " . $paymentSlipData->getBankingCustomerId() . "<br>";
 echo "<br>";

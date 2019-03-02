@@ -362,6 +362,5 @@ class RedPaymentSlipData extends PaymentSlipData
     {
         $iban = $this->getIban();
         return $this->breakStringIntoBlocks($iban, 4, false);
-
     }
 }
