@@ -378,4 +378,80 @@ class OrangePaymentSlipDataTest extends \PHPUnit_Framework_TestCase
 
         $this->slipData->setNotForPayment(true);
     }
+
+    /**
+     * Tests the setAmount method with a problematic float as amount parameter
+     *
+     * It is common computer science knowledge that in some cases floats can be imprecise.
+     * The class should handle that by rounding it properly.
+     *
+     * @return void
+     * @covers ::setAmount
+     */
+    public function testSetAmountWithProblematicFloat()
+    {
+        $amounts = array (
+            0 => 1.8,
+            1 => 11.0,
+            2 => 18.3,
+            3 => 2.3,
+            4 => 7.0,
+            5 => 10.2,
+            6 => 7.6,
+            7 => 2.3,
+            8 => 7.0,
+            9 => 6.4,
+            10 => 1.8,
+            11 => 2.6,
+            12 => 15.5,
+            13 => 1.8,
+            14 => 7.6,
+            15 => 8.7,
+            16 => 5.6,
+            17 => 7.6,
+            18 => 5.4,
+            19 => 3.1,
+            20 => 10.8,
+            21 => 2.6,
+            22 => 2.6,
+            23 => 6.5,
+            24 => 10.2,
+            25 => 47.0,
+            26 => 3.1,
+            27 => 2.6,
+        );
+
+        $total = 0.0;
+        foreach ($amounts as $amount) {
+            $total += $amount;
+        }
+
+        $this->assertSame(218, (int)$total);
+
+        $this->slipData->setAmount($total);
+
+        $this->assertSame(219, $this->slipData->getAmountFrancs());
+        $this->assertSame('00', $this->slipData->getAmountCents());
+    }
+
+    /**
+     * Tests the setAmount method with a another problematic float as amount parameter
+     *
+     * It is common computer science knowledge that in some cases floats can be imprecise.
+     * The class should handle that by rounding it properly.
+     *
+     * @return void
+     * @covers ::setAmount
+     */
+    public function testSetAmountWithAnotherProblematicFloat()
+    {
+        $total = 114.9984;
+
+        $this->assertSame(114, (int)$total);
+
+        $this->slipData->setAmount($total);
+
+        $this->assertSame(115, $this->slipData->getAmountFrancs());
+        $this->assertSame('00', $this->slipData->getAmountCents());
+    }
 }

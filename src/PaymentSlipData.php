@@ -618,7 +618,11 @@ abstract class PaymentSlipData
         if (!$this->getWithAmount()) {
             throw new DisabledDataException('amount');
         }
-        $this->amount = $amount;
+        if (is_numeric($amount)) {
+            $this->amount = round($amount, 2);
+        } else {
+            $this->amount = $amount;
+        }
 
         return $this;
     }
