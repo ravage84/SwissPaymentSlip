@@ -10,6 +10,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Removed unfinished support for Red Payment Slip (ES)
 
 ### Fixed
+- Round amount to two digits to circumvent problematic float values
 
 ## [0.12.2](https://github.com/ravage84/SwissPaymentSlip/releases/tag/0.12.2) - 2017-08-07
 ### Added
