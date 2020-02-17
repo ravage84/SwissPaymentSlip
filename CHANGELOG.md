@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 ### Changed
+- Bumped PHP minimum requirement to PHP 5.6
 
 ### Fixed
 

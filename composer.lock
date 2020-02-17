@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6bdc3e701d387fcae375f431fca6a521",
+    "content-hash": "47b172f9300ab4dd110192b9434f5f2c",
     "packages": [],
     "packages-dev": [
         {
@@ -547,6 +547,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2015-10-02T06:51:40+00:00"
         },
         {
@@ -1055,10 +1056,10 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.4.0"
+        "php": ">=5.6.0"
     },
     "platform-dev": [],
     "platform-overrides": {
-        "php": "5.4.0"
+        "php": "5.6.0"
     }
 }
