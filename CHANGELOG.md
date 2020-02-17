@@ -6,11 +6,18 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 ### Changed
-- Add PHP 7.2 by name in Travis as PHP nightly seems to be PHP 7.3-dev
-- Removed unfinished support for Red Payment Slip (ES)
 
 ### Fixed
-- Round amount to two digits to circumvent problematic float values
+
+## [0.13.1](https://github.com/ravage84/SwissPaymentSlip/releases/tag/0.13.1) - 2020-02-17
+### Changed
+- Add PHP 7.2 to Travis matrix
+
+### Fixed
+- Round amount to two digits to circumvent problematic float values #31
+
+## [0.13.0](https://github.com/ravage84/SwissPaymentSlip/releases/tag/0.13.0) - 2019-02-27
+- Removed unfinished support for Red Payment Slip (ES)
 
 ## [0.12.2](https://github.com/ravage84/SwissPaymentSlip/releases/tag/0.12.2) - 2017-08-07
 ### Added
