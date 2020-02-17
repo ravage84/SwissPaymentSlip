@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="PaymentSlipTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+    <TestRunner class="SwissPaymentSlip\SwissPaymentSlip\Tests\PaymentSlipTest" file="$PROJECT_DIR$/tests/PaymentSlipTest.php" scope="Class" />
+    <RunnerSettings RunnerId="PhpRunner" />
+    <RunnerSettings RunnerId="PhpUnitCoverageRunner" />
+    <ConfigurationWrapper RunnerId="PhpRunner" />
+    <ConfigurationWrapper RunnerId="PhpUnitCoverageRunner" />
+    <method v="2" />
+  </configuration>
+</component>

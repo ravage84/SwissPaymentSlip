@@ -1,7 +1,7 @@
 # IDE and editor specific files #
 #################################
 /nbproject
-.idea
+.idea/*
 
 # Eclipse / PHP Development Tools / Aptana Studio
 .project
