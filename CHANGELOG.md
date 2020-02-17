@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased](https://github.com/ravage84/SwissPaymentSlip/compare/0.12.2...master)
 ### Added
 - Added PhpStorm run configurations for executing the tests
+- Added PHPCS config file set to PSR-2
 
 ### Changed
 - Bumped PHP minimum requirement to PHP 5.6
