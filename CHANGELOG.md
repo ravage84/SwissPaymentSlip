@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - Bumped PHP minimum requirement to PHP 5.6
+- Removed PHP 5.4 & 5.5 from Travis matrix as they aren't supported anymore
 
 ### Fixed
 
