@@ -14,7 +14,7 @@ or [SwissPaymentSlipTcpdf](https://github.com/ravage84/SwissPaymentSlipTcpdf).
 
 If you need to include some basic logic for Swiss payment slips in your PHP code base then you are probably right though...
 
-The partial and unfinished support for the red payment slip was dropped in version 0.13.0 due to lack of demand. 
+The partial and unfinished support for the red payment slip was dropped in version 0.13.0 due to lack of demand.
 
 How to use
 ----------
@@ -31,7 +31,7 @@ Installation
 
 ### Requirements
 
-- PHP 5.4.x+
+- PHP 5.6.x+
 
 ### Composer
 

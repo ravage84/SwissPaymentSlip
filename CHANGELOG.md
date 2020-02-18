@@ -4,8 +4,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/ravage84/SwissPaymentSlip/compare/0.12.2...master)
 ### Added
+- Added PhpStorm run configurations for executing the tests
+- Added PHPCS config file set to PSR-2
 
 ### Changed
+- Bumped PHP minimum requirement to PHP 5.6
+- Removed PHP 5.4 & 5.5 from Travis matrix as they aren't supported anymore
+- Added PHP 7.3 & 7.4 to Travis matrix
+- Upgraded to new Scrutinizer PHP Analysis engine
 
 ### Fixed
 

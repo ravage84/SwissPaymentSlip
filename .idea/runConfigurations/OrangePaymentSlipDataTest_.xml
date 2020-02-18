@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="OrangePaymentSlipDataTest " type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+    <TestRunner class="SwissPaymentSlip\SwissPaymentSlip\Tests\OrangePaymentSlipDataTest" configuration_file="$PROJECT_DIR$/phpunit.xml.dist" file="$PROJECT_DIR$/tests/OrangePaymentSlipDataTest.php" scope="Class" />
+    <RunnerSettings RunnerId="PhpRunner" />
+    <RunnerSettings RunnerId="PhpUnitDebugRunner" />
+    <ConfigurationWrapper RunnerId="PhpRunner" />
+    <ConfigurationWrapper RunnerId="PhpUnitDebugRunner" />
+    <method v="2" />
+  </configuration>
+</component>

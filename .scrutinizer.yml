@@ -1,11 +1,13 @@
 build:
-    tests:
+  nodes:
+    analysis:
+      tests:
         override:
-            -
-                command: 'vendor/bin/phpunit --coverage-clover=coverage.xml'
-                coverage:
-                    file: 'coverage.xml'
-                    format: 'php-clover'
+          - php-scrutinizer-run
+          - phpcs-run
+
+checks:
+  php: true
 
 tools:
     php_sim: true
